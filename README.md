@@ -133,14 +133,66 @@ PSC_REFRESH_TOKEN
 VITE_REFRESH_API_URL=https://你的-vercel-project.vercel.app/api/refresh
 ```
 
-### 權限模型
+### 權限模型：編輯者白名單
 
-目前預設：
+公開部署後，不建議讓「所有登入者」都能寫入。正式使用時請在 Supabase SQL Editor 執行：
+
+```text
+supabase/editor-allowlist.sql
+```
+
+執行後權限變成：
 
 - 所有人：可查看案例和來源。
-- 登入使用者：可新增/更新案例與來源。
+- 白名單 `source_editor`：登入後只可新增/更新來源網址。
+- 白名單 `editor`：可新增來源，也可同步案例資料。
+- 白名單 `owner`：你本人，擁有新增來源、同步資料、後端刷新權限。
 
-如果你之後想改成「只有指定 email 可寫入」，可以在 Supabase `profiles` / `allowed_editors` 表上加白名單 RLS。
+白名單存在 Supabase 表：
+
+```text
+public.psc_editors
+```
+
+#### 新增一個只能添加來源的人
+
+在 Supabase → SQL Editor 執行，把 email 換成對方登入用的 email：
+
+```sql
+insert into public.psc_editors (email, role, can_add_sources, can_sync_dataset, can_refresh, notes)
+values ('friend@example.com', 'source_editor', true, false, false, 'Can add source URLs only')
+on conflict (email) do update set
+  active = true,
+  role = 'source_editor',
+  can_add_sources = true,
+  can_sync_dataset = false,
+  can_refresh = false,
+  notes = excluded.notes;
+```
+
+#### 新增一個可信資料編輯者
+
+```sql
+insert into public.psc_editors (email, role, can_add_sources, can_sync_dataset, can_refresh, notes)
+values ('editor@example.com', 'editor', true, true, false, 'Trusted data editor')
+on conflict (email) do update set
+  active = true,
+  role = 'editor',
+  can_add_sources = true,
+  can_sync_dataset = true,
+  can_refresh = false,
+  notes = excluded.notes;
+```
+
+#### 停用某個人
+
+```sql
+update public.psc_editors
+set active = false
+where email = 'friend@example.com';
+```
+
+停用後，對方仍可打開網站查看公開資料，但不能再寫入雲端。
 
 ## 測試與構建
 
