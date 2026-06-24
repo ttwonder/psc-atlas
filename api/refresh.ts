@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { fetchLatestOfficialCases } from '../src/lib/officialRefresh'
 import { isRefreshAuthorized } from '../src/lib/serverRefreshAuth'
+import { normalizeSupabaseTimestamp } from '../src/lib/cloudStorage'
 import { sourceFromCase } from '../src/lib/storage'
 import type { InspectionCase, SourceBookmark } from '../src/types'
 
@@ -109,7 +110,7 @@ function toSourceRow(item: SourceBookmark) {
     source_type: item.sourceType,
     authority: item.authority ?? null,
     manual: item.manual,
-    added_at: item.addedAt,
+    added_at: normalizeSupabaseTimestamp(item.addedAt),
     payload: item,
   }
 }
