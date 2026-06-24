@@ -1,0 +1,189 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { ExternalLink, Search, X } from 'lucide-react'
+import type { Deficiency, InspectionCase } from '../types'
+
+interface FindingRow {
+  caseItem: InspectionCase
+  finding: Deficiency
+  index: number
+}
+
+const keywordRules = [
+  { label: '防火門', needles: ['fire door', 'fire doors', '防火門', '防火门'] },
+  { label: '火警探測', needles: ['fire detection', 'fire detecting', 'fire alarm', '火警探測', '火警探测', '火災探測', '火灾探测'] },
+  { label: '煙霧探測器', needles: ['smoke detector', 'smoke detectors', '煙霧探測器', '烟雾探测器'] },
+  { label: '消防泵', needles: ['fire pump', 'fire pumps', '消防泵'] },
+  { label: '應急消防泵', needles: ['emergency fire pump', 'emergency fire pumps', '應急消防泵', '应急消防泵'] },
+  { label: '防火風閘', needles: ['fire damper', 'fire dampers', 'damper', 'dampers', '防火風閘', '防火风闸', '風閘', '风闸'] },
+  { label: '速閉閥', needles: ['quick closing', 'quick-closing', 'quick closing valve', '速閉閥', '速闭阀'] },
+  { label: 'CO2 系統', needles: ['co2', 'co₂', 'carbon dioxide', '二氧化碳'] },
+  { label: '救生艇', needles: ['lifeboat', 'lifeboats', '救生艇'] },
+  { label: '救助艇', needles: ['rescue boat', 'rescue boats', '救助艇'] },
+  { label: '救生筏', needles: ['liferaft', 'life raft', 'liferafts', 'life rafts', '救生筏'] },
+  { label: '登乘安排', needles: ['embarkation', 'boarding ladder', '登乘'] },
+  { label: '應急發電機', needles: ['emergency generator', 'emergency generators', '應急發電機', '应急发电机'] },
+  { label: '應急照明', needles: ['emergency lighting', 'emergency light', '應急照明', '应急照明'] },
+  { label: 'blackout 測試', needles: ['blackout'] },
+  { label: 'BNWAS', needles: ['bnwas'] },
+  { label: 'VDR/S-VDR', needles: ['vdr', 's-vdr'] },
+  { label: 'ECDIS', needles: ['ecdis'] },
+  { label: '海圖', needles: ['chart', 'charts', 'enc', '海圖', '海图', '電子海圖', '电子海图'] },
+  { label: '航次計劃', needles: ['voyage plan', 'passage plan', '航次計劃', '航次计划'] },
+  { label: '油水分離器', needles: ['ows', 'oily water separator', 'oil water separator', '油水分離器', '油水分离器'] },
+  { label: '15ppm 報警', needles: ['15 ppm', '15ppm', '15-ppm'] },
+  { label: '生活污水裝置', needles: ['sewage', '生活污水', '污水處理', '污水处理'] },
+  { label: '壓載水系統', needles: ['ballast water', 'bwms', 'bwts', '壓載水', '压载水'] },
+  { label: '油類記錄簿', needles: ['oil record book', '油類記錄簿', '油类记录簿'] },
+  { label: 'GMDSS', needles: ['gmdss'] },
+  { label: 'INMARSAT-C', needles: ['inmarsat'] },
+  { label: '證書', needles: ['certificate', 'certificates', '證書', '证书'] },
+  { label: '船員熟悉', needles: ['crew', 'familiar', 'familiarization', '船員', '船员', '熟悉'] },
+  { label: '演習', needles: ['drill', 'drills', '演習', '演习'] },
+  { label: 'ISM', needles: ['ism', 'sms', 'safety management'] },
+  { label: '工資', needles: ['wage', 'wages', 'salary', '工資', '工资'] },
+  { label: '工時/休息', needles: ['rest hour', 'rest hours', 'work hour', 'hours of rest', '工時', '工时', '休息'] },
+  { label: '風雨密', needles: ['weathertight', 'weather tight', '風雨密', '风雨密'] },
+  { label: '水密', needles: ['watertight', 'water tight', '水密'] },
+  { label: '艙蓋', needles: ['hatch cover', 'hatch covers', '艙蓋', '舱盖'] },
+  { label: '腐蝕', needles: ['corrosion', 'corroded', '腐蝕', '腐蚀', '鏽', '锈'] },
+  { label: '機艙', needles: ['engine room', 'machinery space', 'e/r', '機艙', '机舱'] },
+  { label: '舵機', needles: ['steering gear', 's/g', '舵機', '舵机'] },
+  { label: '氣體探測器', needles: ['gas detector', 'gas detectors', 'gas detection', '氣體探測', '气体探测'] },
+  { label: '貨物繫固', needles: ['cargo securing', 'cargo secured', 'lashing', '貨物繫固', '货物系固'] },
+] as const
+
+function flattenFindings(cases: InspectionCase[]): FindingRow[] {
+  return cases.flatMap((caseItem) =>
+    caseItem.deficiencies.map((finding, index) => ({ caseItem, finding, index })),
+  )
+}
+
+function evidenceLabel(level: InspectionCase['evidenceLevel']) {
+  if (level === 'full-dossier') return '完整卷宗'
+  if (level === 'narrative') return '深度敘事'
+  if (level === 'index-only') return '只有索引'
+  return '官方摘要'
+}
+
+function rowText(row: FindingRow) {
+  const { caseItem, finding } = row
+  return `${caseItem.date} ${caseItem.vessel} ${caseItem.imo} ${caseItem.region} ${caseItem.port} ${caseItem.source.authority} ${finding.code} ${finding.category} ${finding.original} ${finding.translation} ${finding.sourceQuote ?? ''}`.toLocaleLowerCase()
+}
+
+function textMatchesKeyword(text: string, label: string) {
+  const normalized = text.toLocaleLowerCase()
+  const rule = keywordRules.find((item) => item.label === label)
+  if (!rule) return normalized.includes(label.toLocaleLowerCase())
+  return rule.needles.some((needle) => normalized.includes(needle.toLocaleLowerCase()))
+}
+
+function rowMatchesKeyword(row: FindingRow, label: string) {
+  return textMatchesKeyword(rowText(row), label)
+}
+
+function buildKeywordTags(rows: FindingRow[]) {
+  const counts = new Map<string, number>()
+  for (const row of rows) {
+    const text = rowText(row)
+    for (const rule of keywordRules) {
+      if (textMatchesKeyword(text, rule.label)) counts.set(rule.label, (counts.get(rule.label) ?? 0) + 1)
+    }
+  }
+  return Array.from(counts.entries())
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+    .slice(0, 28)
+}
+
+export const __findingKeywordTest = { textMatchesKeyword }
+
+export function FindingTable({
+  cases,
+  onSelect,
+  focusCaseId,
+  globalQuery = '',
+}: {
+  cases: InspectionCase[]
+  onSelect: (item: InspectionCase) => void
+  focusCaseId?: string | null
+  globalQuery?: string
+}) {
+  const [localQuery, setLocalQuery] = useState('')
+  const [keyword, setKeyword] = useState('')
+  const rows = useMemo(() => flattenFindings(cases), [cases])
+  const normalizedGlobal = globalQuery.trim().toLocaleLowerCase()
+  const normalizedLocal = localQuery.trim().toLocaleLowerCase()
+  const baseFilteredRows = useMemo(() => rows.filter((row) => {
+    const text = rowText(row)
+    return (!normalizedGlobal || text.includes(normalizedGlobal))
+      && (!normalizedLocal || text.includes(normalizedLocal))
+  }), [normalizedGlobal, normalizedLocal, rows])
+  const keywordTags = useMemo(() => buildKeywordTags(baseFilteredRows), [baseFilteredRows])
+  const filteredRows = useMemo(() => baseFilteredRows.filter((row) => {
+    return !keyword || rowMatchesKeyword(row, keyword)
+  }), [baseFilteredRows, keyword])
+  const focusedRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!focusCaseId) return
+    focusedRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [focusCaseId, filteredRows.length])
+
+  return (
+    <div className="finding-list-wrap">
+      <div className="finding-toolbar" aria-label="缺陷關鍵詞篩選">
+        <label className="finding-search-field">
+          <Search size={16} />
+          <span className="sr-only">搜尋缺陷關鍵詞</span>
+          <input value={localQuery} onChange={(event) => setLocalQuery(event.target.value)} placeholder="搜尋缺陷原文、設備、代碼、港口，例如 fire door / lifeboat / 07105" />
+        </label>
+        {localQuery || keyword ? <button type="button" className="text-clear-button" onClick={() => { setLocalQuery(''); setKeyword('') }}><X size={14} />清除缺陷篩選</button> : null}
+      </div>
+      <div className="keyword-chip-help">高頻關鍵詞標籤；圓圈數字 = 目前上方篩選範圍內命中該設備/作業詞的缺陷項數。點擊後會用同一套同義詞規則篩選。</div>
+      <div className="keyword-chip-list" aria-label="高頻缺陷關鍵詞">
+        {keywordTags.map((item) => (
+          <button key={item.label} type="button" className={keyword === item.label ? 'active' : ''} onClick={() => setKeyword((value) => value === item.label ? '' : item.label)}>
+            {item.label}<span>{item.count}</span>
+          </button>
+        ))}
+      </div>
+      <div className="finding-result-count">顯示 {filteredRows.length} / {rows.length} 項缺陷{keyword ? `｜關鍵詞：${keyword}` : ''}</div>
+      <div className="finding-card-list">
+        {filteredRows.map(({ caseItem, finding, index }) => (
+          <article
+            key={`${caseItem.id}-${finding.code}-${index}`}
+            ref={focusCaseId === caseItem.id && index === 0 ? focusedRef : undefined}
+            className={`finding-card ${caseItem.evidenceLevel === 'index-only' ? 'index-only-finding' : ''} ${focusCaseId === caseItem.id ? 'selected' : ''}`}
+            onClick={() => onSelect(caseItem)}
+            tabIndex={0}
+            onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(caseItem) }}
+          >
+            <div className="finding-card-meta">
+              <strong>{caseItem.date}</strong>
+              <span>{caseItem.vessel}</span>
+              <small>IMO {caseItem.imo}</small>
+            </div>
+            <div className="finding-card-region">
+              <span>{caseItem.region}</span>
+              <small>{caseItem.port}</small>
+              <code>{finding.code}</code>
+              <b>{finding.category}</b>
+            </div>
+            <div className="finding-card-copy">
+              <p className="finding-original" lang="en">{finding.original}</p>
+              {finding.translation && finding.translation !== finding.original ? <p className="finding-translation">{finding.translation.replace(/^英文原文：/, '')}</p> : null}
+            </div>
+            <div className="finding-card-actions">
+              <span className={`ground-state ${finding.detentionGround === true ? 'yes' : 'unknown'}`}>{finding.detentionGround === true ? '滯留依據' : '未公開'}</span>
+              <span className={`evidence-badge ${caseItem.evidenceLevel}`}>{evidenceLabel(caseItem.evidenceLevel)}</span>
+              <a className="source-mini-link" href={caseItem.source.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
+                官方來源<ExternalLink size={13} />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      {filteredRows.length === 0 ? <div className="empty-state"><strong>沒有符合條件的缺陷</strong><span>請放寬篩選條件或換一個關鍵詞。</span></div> : null}
+    </div>
+  )
+}

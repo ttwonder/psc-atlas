@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.local
+.vite/
+coverage/
+*.tsbuildinfo
+tmp/
+output/
+research_pages/
+uscg_detentions.html
+
+__pycache__/
+*.pyc
