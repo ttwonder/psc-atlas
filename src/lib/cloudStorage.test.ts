@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudSourceRow, type EditorProfile } from './cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudOperatorRosterRows, toCloudSourceRow, type EditorProfile } from './cloudStorage'
 
 const sampleCase: InspectionCase = {
   id: 'case-1',
@@ -98,6 +98,21 @@ describe('cloud storage row mapping', () => {
     expect(canEditSources(operator)).toBe(true)
     expect(canEditDataset(operator)).toBe(true)
     expect(canAddSources(null)).toBe(false)
+  })
+
+
+  it('builds operator roster rows with roles and without null ids for new rows', () => {
+    const rows = toCloudOperatorRosterRows(
+      { 管理組: ['陳治先'], 海技組: ['朱世毅'] } as any,
+      { 管理組: { 陳治先: 'admin' }, 海技組: { 朱世毅: 'operator' } } as any,
+      [],
+    )
+
+    expect(rows).toEqual([
+      { department: '管理組', name: '陳治先', role: 'admin', active: true, sort_order: 0 },
+      { department: '海技組', name: '朱世毅', role: 'operator', active: true, sort_order: 0 },
+    ])
+    expect(rows.some((row) => Object.prototype.hasOwnProperty.call(row, 'id'))).toBe(false)
   })
 
 })

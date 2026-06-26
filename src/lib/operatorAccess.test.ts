@@ -4,6 +4,8 @@ import {
   buildAuditLog,
   canOperatorPerform,
   normalizeOperatorRoster,
+  normalizeOperatorRoles,
+  identityFromRosterSelection,
   verifyOperatorIdentity,
   type OperatorIdentity,
   cloudProfileToIdentity,
@@ -44,6 +46,19 @@ describe('operator access workflow', () => {
     const identity = cloudProfileToIdentity({ email: 'admin@example.com', role: 'admin' })
 
     expect(identity).toEqual({ department: '管理組', name: 'admin@example.com', role: 'admin' })
+  })
+
+
+
+  it('stores a per-person roster role and turns a selected admin into admin identity', () => {
+    const roster = normalizeOperatorRoster({ 管理組: ['陳治先'], 海技組: ['朱世毅'] })
+    const roles = normalizeOperatorRoles({ 管理組: { 陳治先: 'admin' }, 海技組: { 朱世毅: 'operator' } }, roster)
+
+    expect(roles['管理組']['陳治先']).toBe('admin')
+    expect(roles['海技組']['朱世毅']).toBe('operator')
+    expect(identityFromRosterSelection('管理組', '陳治先', roles)).toEqual({ department: '管理組', name: '陳治先', role: 'admin' })
+    expect(canOperatorPerform(identityFromRosterSelection('管理組', '陳治先', roles), 'manage_roster')).toBe(true)
+    expect(canOperatorPerform(identityFromRosterSelection('海技組', '朱世毅', roles), 'manage_roster')).toBe(false)
   })
 
   it('builds an audit log with actor and target details', () => {

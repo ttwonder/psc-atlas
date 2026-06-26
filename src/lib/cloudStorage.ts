@@ -1,6 +1,6 @@
 import { createClient, type SupabaseClient, type User } from '@supabase/supabase-js'
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark } from '../types'
-import { normalizeOperatorRoster, type OperatorAuditLog, type OperatorRoster } from './operatorAccess'
+import { normalizeOperatorRoles, normalizeOperatorRoster, type OperatorAuditLog, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './operatorAccess'
 import { mergeCases, mergeSources, sourceFromCase, sourceFromGuide } from './storage'
 
 export interface CloudCaseRow {
@@ -250,17 +250,42 @@ export interface CloudOperatorRosterRow {
   id?: string
   department: string
   name: string
-  role: 'operator'
+  role: RosterManagedRole
   active: boolean
   sort_order: number
 }
 
-export async function loadCloudOperatorRoster(): Promise<OperatorRoster | null> {
+export interface CloudOperatorRosterState {
+  roster: OperatorRoster
+  roles: OperatorRoleMap
+}
+
+export function toCloudOperatorRosterRows(roster: OperatorRoster, roles: OperatorRoleMap = normalizeOperatorRoles(null, roster), existingRows: Array<{ id: string; department: string; name: string }> = []): CloudOperatorRosterRow[] {
+  const normalized = normalizeOperatorRoster(roster)
+  const normalizedRoles = normalizeOperatorRoles(roles, normalized)
+  const activeKeys = new Set(Object.entries(normalized).flatMap(([department, names]) => names.map((name) => `${department}\u0000${name}`)))
+  const rows: CloudOperatorRosterRow[] = []
+  Object.entries(normalized).forEach(([department, names]) => {
+    names.forEach((name, index) => rows.push({
+      department,
+      name,
+      role: normalizedRoles[department as keyof OperatorRoleMap]?.[name] === 'admin' ? 'admin' : 'operator',
+      active: true,
+      sort_order: index,
+    }))
+  })
+  existingRows.forEach((item) => {
+    if (!activeKeys.has(`${item.department}\u0000${item.name}`)) rows.push({ id: item.id, department: item.department, name: item.name, role: 'operator', active: false, sort_order: 0 })
+  })
+  return rows
+}
+
+export async function loadCloudOperatorRoster(): Promise<CloudOperatorRosterState | null> {
   const supabase = getSupabaseClient()
   if (!supabase) return null
   const { data, error } = await supabase
     .from('psc_operator_roster')
-    .select('department, name, active')
+    .select('department, name, role, active')
     .eq('active', true)
     .order('department', { ascending: true })
     .order('sort_order', { ascending: true })
@@ -268,14 +293,20 @@ export async function loadCloudOperatorRoster(): Promise<OperatorRoster | null> 
   if (error) throw error
   if (!data?.length) return null
   const grouped = data.reduce((acc, row) => {
-    const item = row as Pick<CloudOperatorRosterRow, 'department' | 'name'>
+    const item = row as Pick<CloudOperatorRosterRow, 'department' | 'name' | 'role'>
     acc[item.department] = [...(acc[item.department] ?? []), item.name]
     return acc
   }, {} as Record<string, string[]>)
-  return normalizeOperatorRoster(grouped)
+  const roleGrouped = data.reduce((acc, row) => {
+    const item = row as Pick<CloudOperatorRosterRow, 'department' | 'name' | 'role'>
+    acc[item.department] = { ...(acc[item.department] ?? {}), [item.name]: item.role === 'admin' ? 'admin' : 'operator' }
+    return acc
+  }, {} as Record<string, Record<string, RosterManagedRole>>)
+  const roster = normalizeOperatorRoster(grouped)
+  return { roster, roles: normalizeOperatorRoles(roleGrouped, roster) }
 }
 
-export async function upsertCloudOperatorRoster(roster: OperatorRoster) {
+export async function upsertCloudOperatorRoster(roster: OperatorRoster, roles: OperatorRoleMap = normalizeOperatorRoles(null, roster)) {
   const supabase = getSupabaseClient()
   if (!supabase) throw new Error('尚未設定 Supabase URL / anon key')
   const normalized = normalizeOperatorRoster(roster)
@@ -283,15 +314,7 @@ export async function upsertCloudOperatorRoster(roster: OperatorRoster) {
     .from('psc_operator_roster')
     .select('id, department, name')
   if (existingError) throw existingError
-  const activeKeys = new Set(Object.entries(normalized).flatMap(([department, names]) => names.map((name) => `${department}\u0000${name}`)))
-  const rows: CloudOperatorRosterRow[] = []
-  Object.entries(normalized).forEach(([department, names]) => {
-    names.forEach((name, index) => rows.push({ department, name, role: 'operator', active: true, sort_order: index }))
-  })
-  ;(existingRows ?? []).forEach((row) => {
-    const item = row as { id: string; department: string; name: string }
-    if (!activeKeys.has(`${item.department}\u0000${item.name}`)) rows.push({ id: item.id, department: item.department, name: item.name, role: 'operator', active: false, sort_order: 0 })
-  })
+  const rows = toCloudOperatorRosterRows(normalized, roles, (existingRows ?? []) as Array<{ id: string; department: string; name: string }>)
   const { error } = await supabase.from('psc_operator_roster').upsert(rows, { onConflict: 'department,name' })
   if (error) throw error
 }

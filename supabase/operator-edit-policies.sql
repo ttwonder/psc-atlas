@@ -58,18 +58,31 @@ to authenticated
 using (public.is_psc_operator() or public.is_psc_editor('dataset'))
 with check (public.is_psc_operator() or public.is_psc_editor('dataset'));
 
--- Operator roster table for future cloud-managed roster workflows.
+-- Operator roster table for cloud-managed roster workflows.
+create extension if not exists pgcrypto;
+
 create table if not exists public.psc_operator_roster (
   id uuid primary key default gen_random_uuid(),
   department text not null,
   name text not null,
-  role text not null default 'operator' check (role in ('operator')),
+  role text not null default 'operator' check (role in ('operator', 'admin')),
   active boolean not null default true,
   sort_order integer not null default 0,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (department, name)
 );
+
+alter table public.psc_operator_roster alter column id set default gen_random_uuid();
+
+
+-- If this table was created by an older script, widen the role constraint from operator-only to operator/admin.
+do $$
+begin
+  alter table public.psc_operator_roster drop constraint if exists psc_operator_roster_role_check;
+  alter table public.psc_operator_roster add constraint psc_operator_roster_role_check check (role in ('operator', 'admin'));
+exception when duplicate_object then null;
+end $$;
 
 alter table public.psc_operator_roster enable row level security;
 

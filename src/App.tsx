@@ -12,7 +12,7 @@ import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
-import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoster } from './lib/operatorAccess'
+import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, identityFromRosterSelection, normalizeOperatorRoles, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './lib/operatorAccess'
 import { buildRegionalReport } from './lib/report'
 import { loadStoredCases, loadStoredSources, mergeCases, mergeSources, saveStoredCases, saveStoredSources, sourceFromCase, sourceFromGuide, slugify } from './lib/storage'
 import { calculateTrendSummary, filterCasesByRangeAndRegion, getRegions, timeRangeLabels } from './lib/trends'
@@ -21,6 +21,7 @@ import type { InspectionCase, OfficialSourceGuide, SourceBookmark, TimeRangeKey 
 
 const OPERATOR_ROSTER_STORAGE_KEY = 'psc_operator_roster'
 const OPERATOR_AUDIT_STORAGE_KEY = 'psc_operator_audit_logs'
+const OPERATOR_ROLES_STORAGE_KEY = 'psc_operator_roles'
 
 function loadLocalOperatorRoster(): OperatorRoster {
   try {
@@ -32,6 +33,18 @@ function loadLocalOperatorRoster(): OperatorRoster {
 
 function saveLocalOperatorRoster(roster: OperatorRoster) {
   localStorage.setItem(OPERATOR_ROSTER_STORAGE_KEY, JSON.stringify(normalizeOperatorRoster(roster)))
+}
+
+function loadLocalOperatorRoles(roster: OperatorRoster): OperatorRoleMap {
+  try {
+    return normalizeOperatorRoles(JSON.parse(localStorage.getItem(OPERATOR_ROLES_STORAGE_KEY) || 'null'), roster)
+  } catch {
+    return normalizeOperatorRoles(null, roster)
+  }
+}
+
+function saveLocalOperatorRoles(roles: OperatorRoleMap, roster: OperatorRoster) {
+  localStorage.setItem(OPERATOR_ROLES_STORAGE_KEY, JSON.stringify(normalizeOperatorRoles(roles, roster)))
 }
 
 function loadLocalAuditLogs(): OperatorAuditLog[] {
@@ -76,6 +89,7 @@ function App() {
   const [serverRefreshMessage, setServerRefreshMessage] = useState('後端刷新 API 適用於 Vercel 部署；授權者輸入 refresh token 後可由伺服器抓取並寫入 Supabase。')
   const [serverRefreshLoading, setServerRefreshLoading] = useState(false)
   const [operatorRoster, setOperatorRoster] = useState<OperatorRoster>(() => loadLocalOperatorRoster())
+  const [operatorRoles, setOperatorRoles] = useState<OperatorRoleMap>(() => loadLocalOperatorRoles(loadLocalOperatorRoster()))
   const [currentOperator, setCurrentOperator] = useState<OperatorIdentity | null>(null)
   const [auditLogs, setAuditLogs] = useState<OperatorAuditLog[]>(() => loadLocalAuditLogs())
   const [pendingOperatorAction, setPendingOperatorAction] = useState<{ action: OperatorAction; targetTitle: string; onConfirm: (actor: OperatorIdentity) => void | Promise<void> } | null>(null)
@@ -107,8 +121,10 @@ function App() {
         try {
           const cloudRoster = await loadCloudOperatorRoster()
           if (cloudRoster) {
-            setOperatorRoster(cloudRoster)
-            saveLocalOperatorRoster(cloudRoster)
+            setOperatorRoster(cloudRoster.roster)
+            setOperatorRoles(cloudRoster.roles)
+            saveLocalOperatorRoster(cloudRoster.roster)
+            saveLocalOperatorRoles(cloudRoster.roles, cloudRoster.roster)
           }
         } catch (error) {
           console.warn('Load PSC operator roster failed', error)
@@ -190,23 +206,27 @@ function App() {
     await pending.onConfirm(identity)
   }
 
-  async function persistOperatorRoster(nextRoster: OperatorRoster) {
+  async function persistOperatorRoster(nextRoster: OperatorRoster, nextRoles: OperatorRoleMap = operatorRoles) {
     const normalized = normalizeOperatorRoster(nextRoster)
+    const normalizedRoles = normalizeOperatorRoles(nextRoles, normalized)
     setOperatorRoster(normalized)
+    setOperatorRoles(normalizedRoles)
     saveLocalOperatorRoster(normalized)
+    saveLocalOperatorRoles(normalizedRoles, normalized)
     if (cloudConfigured && canManageOperatorRoster) {
-      try { await upsertCloudOperatorRoster(normalized) } catch (error) { setCloudMessage(`操作員名單已保存到本機，但同步 Supabase 失敗：${describeCloudError(error)}`) }
+      try { await upsertCloudOperatorRoster(normalized, normalizedRoles) } catch (error) { setCloudMessage(`操作員名單已保存到本機，但同步 Supabase 失敗：${describeCloudError(error)}`) }
     }
   }
 
-  async function addRosterName(department: string, name: string) {
+  async function addRosterName(department: string, name: string, role: RosterManagedRole = 'operator') {
     requestOperator('manage_roster', `新增操作員 ${department}/${name}`, async (actor) => {
       const dept = department as keyof OperatorRoster
       const trimmed = name.trim()
       if (!trimmed || !operatorRoster[dept]) return
       const before = operatorRoster
       const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: [...operatorRoster[dept], trimmed] })
-      await persistOperatorRoster(next)
+      const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: { ...(operatorRoles[dept] ?? {}), [trimmed]: role } }, next)
+      await persistOperatorRoster(next, nextRoles)
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `新增 ${trimmed}`, before, after: next }))
     })
   }
@@ -217,8 +237,24 @@ function App() {
       if (!operatorRoster[dept]) return
       const before = operatorRoster
       const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: operatorRoster[dept].filter((item) => item !== name) })
-      await persistOperatorRoster(next)
+      const deptRoles = { ...(operatorRoles[dept] ?? {}) }
+      delete deptRoles[name]
+      const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: deptRoles }, next)
+      await persistOperatorRoster(next, nextRoles)
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `移除 ${name}`, before, after: next }))
+    })
+  }
+
+
+  async function updateRosterRole(department: string, name: string, role: RosterManagedRole) {
+    requestOperator('manage_roster', `修改權限 ${department}/${name}`, async (actor) => {
+      const dept = department as keyof OperatorRoster
+      if (!operatorRoster[dept]?.includes(name)) return
+      const before = operatorRoles
+      const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: { ...(operatorRoles[dept] ?? {}), [name]: role } }, operatorRoster)
+      await persistOperatorRoster(operatorRoster, nextRoles)
+      await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: `${department}/${name}`, targetTitle: `修改 ${name} 為 ${role === 'admin' ? '管理員' : '操作員'}`, before, after: nextRoles }))
+      if (currentOperator?.department === department && currentOperator?.name === name) setCurrentOperator({ ...currentOperator, role })
     })
   }
 
@@ -475,7 +511,7 @@ function App() {
   const mayEditSources = canEditSources(editorProfile)
   const mayEditFindings = canEditDataset(editorProfile)
   const adminIdentity = getAdminIdentity()
-  const canManageOperatorRoster = Boolean(adminIdentity && canOperatorPerform(adminIdentity, 'manage_roster'))
+  const canManageOperatorRoster = Boolean((adminIdentity && canOperatorPerform(adminIdentity, 'manage_roster')) || (currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid && canOperatorPerform(currentOperator, 'manage_roster')))
   const hasWriteIdentity = Boolean(adminIdentity || (currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid))
 
   return (
@@ -501,9 +537,9 @@ function App() {
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
         {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
-        {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} /> : null}
+        {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {})} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} onUpdateRosterRole={updateRosterRole} /> : null}
       </main>
-      {pendingOperatorAction ? <OperatorIdentityModal action={pendingOperatorAction.action} targetTitle={pendingOperatorAction.targetTitle} roster={operatorRoster} message={operatorIdentityMessage} onCancel={() => { setPendingOperatorAction(null); setOperatorIdentityMessage('') }} onConfirm={confirmOperatorIdentity} /> : null}
+      {pendingOperatorAction ? <OperatorIdentityModal action={pendingOperatorAction.action} targetTitle={pendingOperatorAction.targetTitle} roster={operatorRoster} roles={operatorRoles} message={operatorIdentityMessage} onCancel={() => { setPendingOperatorAction(null); setOperatorIdentityMessage('') }} onConfirm={confirmOperatorIdentity} /> : null}
     </div>
   )
 }
@@ -812,10 +848,11 @@ function SourcesPage(props: SourcesPageProps) {
 }
 
 
-function OperatorIdentityModal({ action, targetTitle, roster, message, onCancel, onConfirm }: {
+function OperatorIdentityModal({ action, targetTitle, roster, roles, message, onCancel, onConfirm }: {
   action: OperatorAction
   targetTitle: string
   roster: OperatorRoster
+  roles: OperatorRoleMap
   message: string
   onCancel: () => void
   onConfirm: (identity: OperatorIdentity) => void | Promise<void>
@@ -849,56 +886,64 @@ function OperatorIdentityModal({ action, targetTitle, roster, message, onCancel,
         <p className="panel-hint">操作員只需選擇部門與姓名；Owner/Admin 若已用 Supabase 登入，會自動使用管理身份，不會跳此窗口。</p>
         <div className="operator-modal-actions">
           <button className="text-button compact" type="button" onClick={onCancel}>取消</button>
-          <button className="primary-button" type="button" onClick={() => onConfirm({ department, name, role: 'operator' })} disabled={!department || !name}>確認並執行</button>
+          <button className="primary-button" type="button" onClick={() => onConfirm(identityFromRosterSelection(department, name, roles))} disabled={!department || !name}>確認並執行</button>
         </div>
       </section>
     </div>
   )
 }
 
-function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, operatorRoster, auditLogs, canManageRoster, onClearOperator, onAddRosterName, onRemoveRosterName }: {
+function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, operatorRoster, operatorRoles, auditLogs, canManageRoster, onRequestAdminAccess, onClearOperator, onAddRosterName, onRemoveRosterName, onUpdateRosterRole }: {
   cloudUserEmail: string | null
   editorProfile: EditorProfile | null
   currentOperator: OperatorIdentity | null
   operatorRoster: OperatorRoster
+  operatorRoles: OperatorRoleMap
   auditLogs: OperatorAuditLog[]
   canManageRoster: boolean
+  onRequestAdminAccess: () => void
   onClearOperator: () => void
-  onAddRosterName: (department: string, name: string) => void | Promise<void>
+  onAddRosterName: (department: string, name: string, role?: RosterManagedRole) => void | Promise<void>
   onRemoveRosterName: (department: string, name: string) => void | Promise<void>
+  onUpdateRosterRole: (department: string, name: string, role: RosterManagedRole) => void | Promise<void>
 }) {
   const [department, setDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
   const [name, setName] = useState('')
+  const [newRole, setNewRole] = useState<RosterManagedRole>('operator')
   const totalNames = Object.values(operatorRoster).reduce((sum, names) => sum + names.length, 0)
+  if (!canManageRoster) {
+    return <div className="permissions-page"><section className="panel permissions-denied full-span"><p className="eyebrow">ACCESS CONTROL</p><h2>權限管理</h2><p>此頁只限 Owner 或管理員進入。普通操作員不能查看或修改人員名單與操作 LOG。</p><button className="primary-button" type="button" onClick={onRequestAdminAccess}>確認管理員 / Owner 身份</button><small>{cloudUserEmail ? `目前 Supabase 登入：${cloudUserEmail}｜角色：${editorProfile?.role ?? '未在管理白名單'}` : '目前未用 Owner/Admin 登入，也未確認管理員身份。'}</small></section></div>
+  }
   return (
     <div className="permissions-page">
       <section className="panel permissions-hero full-span">
         <div>
           <p className="eyebrow">ACCESS CONTROL</p>
           <h2>權限管理</h2>
-          <p>沿用「法規追蹤」規則：Owner/Admin 由 Supabase 設定；普通操作員使用預設部門/姓名名單，操作時才確認身份並寫入 LOG。</p>
+          <p>沿用「法規追蹤」規則：Owner 由 Supabase 設定；管理員可由 Supabase 或本頁人員名單指定；普通操作員使用預設部門/姓名名單，操作時才確認身份並寫入 LOG。</p>
         </div>
         <div className="permission-status-grid">
           <article><span>Supabase 身份</span><strong>{cloudUserEmail ?? '未登入'}</strong><small>{editorProfile?.role ?? '未在管理白名單'}</small></article>
           <article><span>本次操作員</span><strong>{currentOperator ? `${currentOperator.department}/${currentOperator.name}` : '未選擇'}</strong><small>{currentOperator?.role ?? '操作時彈窗確認'}</small>{currentOperator ? <button className="text-button compact" type="button" onClick={onClearOperator}>切換操作員</button> : null}</article>
           <article><span>操作員名單</span><strong>{totalNames}</strong><small>{OPERATOR_DEPARTMENTS.length} 個部門</small></article>
-          <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>需要 Owner/Admin Supabase 身份</small></article>
+          <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>需要 Owner 或管理員身份</small></article>
         </div>
       </section>
 
       <section className="panel roster-panel">
         <h2>操作員預設名單</h2>
-        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/缺陷時會從這裡選部門和姓名。名單維護需要 Owner/Admin。</p>
+        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/缺陷時會從這裡選部門和姓名。名單維護只限 Owner 或管理員；可在每個人旁邊直接切換「操作員/管理員」。</p>
         <div className="roster-add-form">
           <label>部門<select value={department} onChange={(event) => setDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
           <label>姓名<input value={name} onChange={(event) => setName(event.target.value)} placeholder="輸入姓名" /></label>
-          <button className="primary-button" type="button" disabled={!canManageRoster || !name.trim()} onClick={() => { onAddRosterName(department, name); setName('') }}>新增操作員</button>
+          <label>權限<select value={newRole} onChange={(event) => setNewRole(event.target.value as RosterManagedRole)}><option value="operator">操作員</option><option value="admin">管理員</option></select></label>
+          <button className="primary-button" type="button" disabled={!canManageRoster || !name.trim()} onClick={() => { onAddRosterName(department, name, newRole); setName('') }}>新增人員</button>
         </div>
         {!canManageRoster ? <div className="permission-note">目前不能維護名單；請用 Owner/Admin 帳號登入 Supabase。</div> : null}
         <div className="roster-list">
           {OPERATOR_DEPARTMENTS.map((dept) => <article key={dept}>
             <h3>{dept}<span>{operatorRoster[dept].length}</span></h3>
-            <div>{operatorRoster[dept].map((person) => <span key={person}>{person}{canManageRoster ? <button type="button" aria-label={`移除 ${person}`} onClick={() => onRemoveRosterName(dept, person)}>×</button> : null}</span>)}</div>
+            <div>{operatorRoster[dept].map((person) => { const role = operatorRoles[dept]?.[person] ?? 'operator'; return <span key={person} className={`roster-person roster-role-${role}`}>{person}<select value={role} onChange={(event) => onUpdateRosterRole(dept, person, event.target.value as RosterManagedRole)} aria-label={`${person} 權限`}><option value="operator">操作員</option><option value="admin">管理員</option></select><button type="button" aria-label={`移除 ${person}`} onClick={() => onRemoveRosterName(dept, person)}>×</button></span> })}</div>
           </article>)}
         </div>
       </section>

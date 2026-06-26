@@ -1,4 +1,5 @@
 export type OperatorRole = 'owner' | 'admin' | 'operator'
+export type RosterManagedRole = 'admin' | 'operator'
 
 export type OperatorAction =
   | 'add_source'
@@ -36,6 +37,7 @@ export const OPERATOR_DEPARTMENTS = ['管理層', '管理組', '資材組', '營
 export type OperatorDepartment = typeof OPERATOR_DEPARTMENTS[number]
 
 export type OperatorRoster = Record<OperatorDepartment, string[]>
+export type OperatorRoleMap = Record<OperatorDepartment, Record<string, RosterManagedRole>>
 
 export const DEFAULT_OPERATOR_ROSTER: OperatorRoster = {
   管理層: ['呂學修副總', '蔡宏仁協理', '李勻寧協理'],
@@ -58,6 +60,33 @@ export function normalizeOperatorRoster(value: unknown): OperatorRoster {
     acc[department] = Array.from(new Set(entries.map((name) => String(name ?? '').trim()).filter(Boolean)))
     return acc
   }, {} as OperatorRoster)
+}
+
+
+export function normalizeOperatorRoles(value: unknown, roster: OperatorRoster = DEFAULT_OPERATOR_ROSTER): OperatorRoleMap {
+  const source = value && typeof value === 'object' ? value as Partial<Record<string, unknown>> : {}
+  const normalizedRoster = normalizeOperatorRoster(roster)
+  return OPERATOR_DEPARTMENTS.reduce((acc, department) => {
+    const rawDepartmentRoles = source[department]
+    const roleRecord = rawDepartmentRoles && typeof rawDepartmentRoles === 'object' && !Array.isArray(rawDepartmentRoles)
+      ? rawDepartmentRoles as Record<string, unknown>
+      : {}
+    acc[department] = normalizedRoster[department].reduce((deptAcc, name) => {
+      const rawRole = roleRecord[name]
+      deptAcc[name] = rawRole === 'admin' ? 'admin' : 'operator'
+      return deptAcc
+    }, {} as Record<string, RosterManagedRole>)
+    return acc
+  }, {} as OperatorRoleMap)
+}
+
+export function roleForRosterMember(department: string, name: string, roles: OperatorRoleMap = normalizeOperatorRoles(null)) {
+  if (!OPERATOR_DEPARTMENTS.includes(department as OperatorDepartment)) return 'operator' as RosterManagedRole
+  return roles[department as OperatorDepartment]?.[name] === 'admin' ? 'admin' : 'operator'
+}
+
+export function identityFromRosterSelection(department: string, name: string, roles: OperatorRoleMap = normalizeOperatorRoles(null)): OperatorIdentity {
+  return { department, name, role: roleForRosterMember(department, name, roles) }
 }
 
 export function verifyOperatorIdentity(identity: OperatorIdentity | null | undefined, roster: OperatorRoster = DEFAULT_OPERATOR_ROSTER) {
