@@ -27,7 +27,7 @@ const sampleCase: InspectionCase = {
   source: { authority: 'Authority', title: 'Report', url: 'https://example.com', publishedAt: '2026-05-02', sourceType: 'PDF' },
   evidenceNote: 'note',
   deficiencies: [
-    { code: '07105', category: '消防安全', original: 'Fire door failed to close.', translation: '不應匯出', detentionGround: true, notes: 'test before PSC', priority: 'high', novel: true },
+    { code: '07105', category: '消防安全', original: 'Fire door failed to close.', detentionGround: true, notes: 'test note', priority: 'high', novel: true },
   ],
 }
 

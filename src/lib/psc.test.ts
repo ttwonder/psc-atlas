@@ -29,10 +29,13 @@ const sampleCase = (id: string, date: string, region = 'UK / Paris MoU', categor
   evidenceLevel: 'official-summary',
   shortSummary: '消防設備不可用並構成滯留依據。',
   narrative: ['官方摘要案例。'],
-  deficiencies: [{ code: '07109', category, original: 'Fixed fire extinguishing installation — Not as required.', translation: '固定式滅火裝置不符合要求。', detentionGround: true }],
   source: { authority: 'UK Maritime and Coastguard Agency', title: 'Demo', url: `https://example.test/${id}`, publishedAt: date, sourceType: '官方月度滯留報告' },
   evidenceNote: 'test',
   fetchedAt: '2026-06-22T00:00:00.000Z',
+  deficiencies: [
+    { code: '07105', category, original: 'Fire detection system not as required.', detentionGround: true },
+    { code: '10111', category: '救生設備', original: 'Lifeboat equipment not as required.', detentionGround: false },
+  ],
 })
 
 describe('storage merge', () => {
@@ -112,7 +115,7 @@ describe('official refresh parsers', () => {
     const cases = parseParisCurrentDetentionsHtml(html, '2026-06-23T00:00:00.000Z')
     expect(cases).toHaveLength(1)
     expect(cases[0].evidenceLevel).toBe('index-only')
-    expect(cases[0].deficiencies[0].translation).toContain('未公開')
+    expect(cases[0].deficiencies[0].original).toContain('具體缺陷未公開')
   })
 })
 

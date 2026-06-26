@@ -7,7 +7,7 @@ import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
-import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type SourceBookmarkDraft } from './lib/editorWorkflow'
+import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, isCloudConfigured, loadCloudDataset, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
@@ -297,7 +297,7 @@ function App() {
     await persistSources(next, '已還原來源。')
   }
 
-  async function saveFindingEdit(caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: 'low' | 'medium' | 'high'; novel: boolean }) {
+  async function saveFindingEdit(caseId: string, findingIndex: number, draft: FindingDraft) {
     if (!mayEditFindings) { setCloudMessage('只有 editor/owner 可以修改缺陷分類、備註、關注度和新穎標記。'); return }
     const nextCases = updateFinding(cases, caseId, findingIndex, draft)
     setCases(nextCases)
@@ -394,7 +394,7 @@ function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | 
   )
 }
 
-function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onUpdateFinding: (caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: 'low' | 'medium' | 'high'; novel: boolean }) => void }) {
+function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onUpdateFinding: (caseId: string, findingIndex: number, draft: FindingDraft) => void }) {
   return (
     <div className="dossier-workbench">
       <section className="case-list evidence-card" aria-label="PSC 缺陷詳情清單">
@@ -410,13 +410,11 @@ function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
   return (
     <div className="dossier-workbench">
       <section className="case-list evidence-card" aria-label="重點與新穎缺陷">
-        <header className="section-header"><div><h2>重點 + 新穎缺陷</h2><p>只展示關注度為中/高或已勾選「新穎」的具體缺陷內容；上方時間段和其他篩選同樣生效。</p></div></header>
+        <header className="section-header"><div><h2>重點 + 新穎缺陷</h2><p>只展示關注度為中/高或已勾選「新穎」的具體缺陷原文；上方時間段和其他篩選同樣生效。</p></div></header>
         <div className="priority-finding-list">
           {rows.map(({ caseItem, finding, index }) => (
             <article key={`${caseItem.id}-${index}`}>
-              <div><strong>{finding.priority === 'high' ? '高關注' : finding.priority === 'medium' ? '中關注' : '新穎'}</strong>{finding.novel ? <span>新穎</span> : null}</div>
               <p lang="en">{finding.original}</p>
-              {finding.notes ? <small>備註：{finding.notes}</small> : null}
             </article>
           ))}
         </div>
@@ -504,7 +502,7 @@ interface SourcesPageProps {
 function SourcesPage(props: SourcesPageProps) {
   const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'pdf' | 'refresh'>('guides')
   const [editingSourceId, setEditingSourceId] = useState('')
-  const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '' })
+  const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '', publishedAt: '', fetchedAt: '', evidenceLevel: undefined, autoFetch: undefined, status: 'new', tags: '', storageUrl: '' })
   const [deleteReason, setDeleteReason] = useState('')
   const activeSourceList = activeSources(props.sources)
   const deletedSourceList = deletedSources(props.sources)
@@ -601,6 +599,13 @@ function SourcesPage(props: SourcesPageProps) {
                     <label>類型<input value={sourceDraft.sourceType} onChange={(event) => setSourceDraft((draft) => ({ ...draft, sourceType: event.target.value }))} /></label>
                     <label>機關<input value={sourceDraft.authority ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, authority: event.target.value }))} /></label>
                     <label>備註<textarea value={sourceDraft.notes ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, notes: event.target.value }))} /></label>
+                    <label>發布日期<input value={sourceDraft.publishedAt ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, publishedAt: event.target.value }))} placeholder="YYYY-MM-DD" /></label>
+                    <label>抓取/歸檔時間<input value={sourceDraft.fetchedAt ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, fetchedAt: event.target.value }))} placeholder="YYYY-MM-DD 或 ISO 時間" /></label>
+                    <label>證據層級<select value={sourceDraft.evidenceLevel ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, evidenceLevel: event.target.value as SourceBookmarkDraft['evidenceLevel'] || undefined }))}><option value="">未標記</option><option value="index-only">index-only</option><option value="official-summary">official-summary</option><option value="narrative">narrative</option><option value="full-dossier">full-dossier</option></select></label>
+                    <label>自動抓取<select value={sourceDraft.autoFetch ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, autoFetch: event.target.value as SourceBookmarkDraft['autoFetch'] || undefined }))}><option value="">未標記</option><option value="enabled">enabled</option><option value="partial">partial</option><option value="manual">manual</option><option value="restricted">restricted</option></select></label>
+                    <label>狀態<select value={sourceDraft.status ?? 'new'} onChange={(event) => setSourceDraft((draft) => ({ ...draft, status: event.target.value as SourceBookmarkDraft['status'] }))}><option value="new">new</option><option value="queued">queued</option><option value="downloaded">downloaded</option><option value="analysis-ready">analysis-ready</option><option value="failed">failed</option><option value="archived">archived</option></select></label>
+                    <label>標籤<input value={typeof sourceDraft.tags === 'string' ? sourceDraft.tags : sourceDraft.tags?.join(', ') ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, tags: event.target.value }))} placeholder="pdf, uscg, fire" /></label>
+                    <label>網盤/歸檔地址<input value={sourceDraft.storageUrl ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, storageUrl: event.target.value }))} placeholder="webdav:// 或 https://drive..." /></label>
                   </div> : null}
                 </div>
                 <div className="source-row-actions">
@@ -609,7 +614,7 @@ function SourcesPage(props: SourcesPageProps) {
                     <button className="text-button compact" type="button" onClick={() => { props.onSaveSource(item.id, sourceDraft); setEditingSourceId('') }}>保存</button>
                     <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
                   </> : <>
-                    <button className="text-button compact" type="button" onClick={() => { setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '' }) }}>修改</button>
+                    <button className="text-button compact" type="button" onClick={() => { setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }}>修改</button>
                     <button className="danger-button compact" type="button" onClick={() => props.onDeleteSource(item.id, deleteReason)}>刪除</button>
                   </> : null}
                 </div>

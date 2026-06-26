@@ -1,5 +1,5 @@
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark } from '../types'
-import { purgeExpiredDeletedSources } from './editorWorkflow'
+import { purgeExpiredDeletedSources, stripDeficiencyTranslations } from './editorWorkflow'
 
 const CASES_KEY = 'psc-atlas:cumulative-cases:v10-china-1321-detention-only-no-fpmc'
 const SOURCES_KEY = 'psc-atlas:source-bookmarks:v10-china-1321-detention-only-no-fpmc'
@@ -55,12 +55,12 @@ export function mergeSources(existing: SourceBookmark[], incoming: SourceBookmar
 }
 
 export function loadStoredCases(fallback: InspectionCase[]) {
-  const sortedFallback = mergeCases([], fallback)
+  const sortedFallback = mergeCases([], stripDeficiencyTranslations(fallback))
   if (typeof localStorage === 'undefined') return sortedFallback
   try {
     const raw = localStorage.getItem(CASES_KEY)
     if (!raw) return sortedFallback
-    return mergeCases(sortedFallback, JSON.parse(raw) as InspectionCase[])
+    return mergeCases(sortedFallback, stripDeficiencyTranslations(JSON.parse(raw) as InspectionCase[]))
   } catch {
     return sortedFallback
   }

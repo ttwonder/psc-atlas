@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { activeSources, deletedSources, purgeExpiredDeletedSources, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings } from './editorWorkflow'
+import { activeSources, deletedSources, purgeExpiredDeletedSources, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings, stripDeficiencyTranslations, pdfCandidateToDeficiencyDraft } from './editorWorkflow'
 
 const source: SourceBookmark = {
   id: 's1',
@@ -37,25 +37,39 @@ const caseItem: InspectionCase = {
   source: { authority: 'Authority', title: 'Report', url: 'https://example.com', publishedAt: '2026-05-02', sourceType: 'PDF' },
   evidenceNote: 'note',
   deficiencies: [
-    { code: '07105', category: '消防安全', original: 'Fire door failed to close.', translation: '防火門不能關閉', detentionGround: true },
-    { code: '10111', category: 'ISM／安全管理', original: 'SMS failed to ensure maintenance.', translation: 'SMS 未確保維護', detentionGround: true },
+    { code: '07105', category: '消防安全', original: 'Fire door failed to close.', detentionGround: true },
+    { code: '10111', category: 'ISM／安全管理', original: 'SMS failed to ensure maintenance.', detentionGround: true },
   ],
 }
 
 describe('editor workflow helpers', () => {
-  it('updates source fields without losing URL identity', () => {
+  it('updates complete source fields without losing URL identity', () => {
     const updated = updateSourceBookmark(source, {
       title: 'New title',
       url: 'https://example.com/new-report.pdf',
       sourceType: 'PDF',
       authority: 'Paris MoU',
       notes: 'follow page 3',
+      publishedAt: '2026-01-20',
+      fetchedAt: '2026-02-01T00:00:00.000Z',
+      evidenceLevel: 'full-dossier',
+      autoFetch: 'partial',
+      status: 'analysis-ready',
+      tags: 'pdf,uscg,fire',
+      storageUrl: 'webdav://psc/report.pdf',
     }, '2026-02-01T00:00:00.000Z')
 
     expect(updated.title).toBe('New title')
     expect(updated.url).toBe('https://example.com/new-report.pdf')
     expect(updated.authority).toBe('Paris MoU')
     expect(updated.notes).toBe('follow page 3')
+    expect(updated.publishedAt).toBe('2026-01-20')
+    expect(updated.fetchedAt).toBe('2026-02-01T00:00:00.000Z')
+    expect(updated.evidenceLevel).toBe('full-dossier')
+    expect(updated.autoFetch).toBe('partial')
+    expect(updated.status).toBe('analysis-ready')
+    expect(updated.tags).toEqual(['pdf', 'uscg', 'fire'])
+    expect(updated.storageUrl).toBe('webdav://psc/report.pdf')
     expect(updated.updatedAt).toBe('2026-02-01T00:00:00.000Z')
   })
 
@@ -67,19 +81,46 @@ describe('editor workflow helpers', () => {
     expect(purgeExpiredDeletedSources([deleted], new Date('2026-03-05T00:00:00.000Z'))).toHaveLength(0)
   })
 
-  it('updates finding metadata while preserving original wording', () => {
+  it('updates editable finding fields while tracking operator metadata', () => {
     const updatedCases = updateFinding([caseItem], 'case-1', 0, {
+      code: '07106',
+      original: 'Corrected original wording from Form B.',
       category: '消防安全',
+      observedCondition: 'fire door test failed',
+      inspectorFinding: 'PSCO observed the fire door could not close',
+      detentionReason: 'Repeated fire boundary failure',
+      requiredRectification: 'Repair and test all fire doors',
+      releaseCondition: 'Verified operational test',
+      sourcePage: 'p. 3',
+      sourceQuote: 'Form B quote',
+      detentionGround: true,
       notes: 'Company should test fire doors before PSC.',
       priority: 'high',
       novel: true,
     }, '2026-02-01T00:00:00.000Z')
     const finding = updatedCases[0].deficiencies[0]
-    expect(finding.original).toBe('Fire door failed to close.')
-    expect(finding.translation).toBe('防火門不能關閉')
+    expect(finding.code).toBe('07106')
+    expect(finding.original).toBe('Corrected original wording from Form B.')
+    expect(finding.inspectorFinding).toContain('PSCO observed')
+    expect(finding.sourcePage).toBe('p. 3')
+    expect(finding.detentionGround).toBe(true)
     expect(finding.notes).toBe('Company should test fire doors before PSC.')
     expect(finding.priority).toBe('high')
     expect(finding.novel).toBe(true)
+  })
+
+  it('strips legacy translation values from loaded cases', () => {
+    const legacy = [{ ...caseItem, deficiencies: [{ ...caseItem.deficiencies[0], translation: 'legacy text' } as typeof caseItem.deficiencies[number] & { translation: string }] }]
+    const sanitized = stripDeficiencyTranslations(legacy)
+    expect('translation' in sanitized[0].deficiencies[0]).toBe(false)
+  })
+
+  it('turns PDF candidate text into an importable deficiency draft', () => {
+    const draft = pdfCandidateToDeficiencyDraft('The emergency fire pump failed to start during test.', 'https://example.com/report.pdf', 4)
+    expect(draft.original).toContain('emergency fire pump')
+    expect(draft.category).toBe('消防安全')
+    expect(draft.sourcePage).toBe('p. 4')
+    expect(draft.sourceQuote).toContain('https://example.com/report.pdf')
   })
 
   it('returns medium/high or novel findings for focus board', () => {

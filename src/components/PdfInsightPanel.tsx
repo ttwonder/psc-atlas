@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { ExternalLink, FileText, Link, Upload } from 'lucide-react'
+import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
 import type { SourceBookmark } from '../types'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
@@ -12,6 +13,7 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
   const [insights, setInsights] = useState<PdfInsights | null>(null)
   const [textPreview, setTextPreview] = useState('')
   const pdfSources = useMemo(() => sources.filter((item) => /\.pdf($|[?#])/i.test(item.url) || /pdf/i.test(`${item.sourceType} ${item.title}`)), [sources])
+  const deficiencyDrafts = useMemo(() => insights?.deficiencyCandidates.map((item, index) => pdfCandidateToDeficiencyDraft(item, pdfUrl || fileName || 'uploaded-pdf', index + 1)) ?? [], [fileName, insights, pdfUrl])
 
   async function extractPdf(data: ArrayBuffer, label: string) {
     setFileName(label)
@@ -117,6 +119,11 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
           <article className="pdf-candidates">
             <h3>疑似具體缺陷描述</h3>
             <ol>{insights.deficiencyCandidates.map((item, index) => <li key={`${index}-${item}`} lang="en">{item}</li>)}</ol>
+          </article>
+          <article className="pdf-candidates">
+            <h3>候選缺陷草稿</h3>
+            <p>這些草稿可複製給操作員核對後加入案例；不自動入庫，避免未審核 PDF 文字污染正式資料。</p>
+            <ol>{deficiencyDrafts.map((item, index) => <li key={`${index}-${item.original}`}><code>{item.category}</code><span lang="en">{item.original}</span><small>{item.sourcePage ?? ''} {item.priority ? `｜初判關注度：${item.priority}` : ''}</small></li>)}</ol>
           </article>
           <article className="pdf-preview">
             <h3>文字預覽</h3>

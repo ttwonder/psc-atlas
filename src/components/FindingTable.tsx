@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Edit3, ExternalLink, Search, X } from 'lucide-react'
 import type { Deficiency, FindingPriority, InspectionCase } from '../types'
-import { priorityLabel } from '../lib/editorWorkflow'
+import { priorityLabel, type FindingDraft } from '../lib/editorWorkflow'
 
 interface FindingRow {
   caseItem: InspectionCase
@@ -113,12 +113,22 @@ export function FindingTable({
   globalQuery?: string
   categories?: string[]
   canEdit?: boolean
-  onUpdateFinding?: (caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: FindingPriority; novel: boolean }) => void
+  onUpdateFinding?: (caseId: string, findingIndex: number, draft: FindingDraft) => void
 }) {
   const [localQuery, setLocalQuery] = useState('')
   const [keyword, setKeyword] = useState('')
   const [editingKey, setEditingKey] = useState('')
+  const [draftCode, setDraftCode] = useState('')
   const [draftCategory, setDraftCategory] = useState('')
+  const [draftOriginal, setDraftOriginal] = useState('')
+  const [draftObservedCondition, setDraftObservedCondition] = useState('')
+  const [draftInspectorFinding, setDraftInspectorFinding] = useState('')
+  const [draftDetentionReason, setDraftDetentionReason] = useState('')
+  const [draftRequiredRectification, setDraftRequiredRectification] = useState('')
+  const [draftReleaseCondition, setDraftReleaseCondition] = useState('')
+  const [draftSourcePage, setDraftSourcePage] = useState('')
+  const [draftSourceQuote, setDraftSourceQuote] = useState('')
+  const [draftDetentionGround, setDraftDetentionGround] = useState<string>('')
   const [draftNotes, setDraftNotes] = useState('')
   const [draftPriority, setDraftPriority] = useState<FindingPriority>('low')
   const [draftNovel, setDraftNovel] = useState(false)
@@ -191,11 +201,21 @@ export function FindingTable({
               {finding.notes ? <p className="finding-notes">備註：{finding.notes}</p> : null}
               {editing ? (
                 <div className="finding-edit-form" onClick={(event) => event.stopPropagation()}>
+                  <label>缺陷代碼<input value={draftCode} onChange={(event) => setDraftCode(event.target.value)} placeholder="例如 07105" /></label>
+                  <label>官方原文<textarea value={draftOriginal} onChange={(event) => setDraftOriginal(event.target.value)} placeholder="保留/修訂官方 Form B 原文" /></label>
                   <label>分類
                     <select value={draftCategory} onChange={(event) => setDraftCategory(event.target.value)}>
                       {Array.from(new Set([finding.category, ...categories])).map((item) => <option key={item} value={item}>{item}</option>)}
                     </select>
                   </label>
+                  <label>觀察狀態<input value={draftObservedCondition} onChange={(event) => setDraftObservedCondition(event.target.value)} placeholder="測試/現場觀察" /></label>
+                  <label>檢查員認定<textarea value={draftInspectorFinding} onChange={(event) => setDraftInspectorFinding(event.target.value)} /></label>
+                  <label>滯留理由<textarea value={draftDetentionReason} onChange={(event) => setDraftDetentionReason(event.target.value)} /></label>
+                  <label>整改要求<textarea value={draftRequiredRectification} onChange={(event) => setDraftRequiredRectification(event.target.value)} /></label>
+                  <label>解除條件<textarea value={draftReleaseCondition} onChange={(event) => setDraftReleaseCondition(event.target.value)} /></label>
+                  <label>來源頁碼<input value={draftSourcePage} onChange={(event) => setDraftSourcePage(event.target.value)} placeholder="p. 3" /></label>
+                  <label>來源摘錄<textarea value={draftSourceQuote} onChange={(event) => setDraftSourceQuote(event.target.value)} /></label>
+                  <label>是否滯留依據<select value={draftDetentionGround} onChange={(event) => setDraftDetentionGround(event.target.value)}><option value="">未公開</option><option value="true">是</option><option value="false">否</option></select></label>
                   <label>關注度
                     <select value={draftPriority} onChange={(event) => setDraftPriority(event.target.value as FindingPriority)}>
                       <option value="low">低</option>
@@ -213,9 +233,9 @@ export function FindingTable({
               <span className={`evidence-badge ${caseItem.evidenceLevel}`}>{evidenceLabel(caseItem.evidenceLevel)}</span>
               {canEdit && onUpdateFinding ? (
                 editing ? <>
-                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { category: draftCategory, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
+                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { code: draftCode, original: draftOriginal, category: draftCategory, observedCondition: draftObservedCondition, inspectorFinding: draftInspectorFinding, detentionReason: draftDetentionReason, requiredRectification: draftRequiredRectification, releaseCondition: draftReleaseCondition, sourcePage: draftSourcePage, sourceQuote: draftSourceQuote, detentionGround: draftDetentionGround === 'true' ? true : draftDetentionGround === 'false' ? false : null, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
                   <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey('') }}>取消</button>
-                </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey(key); setDraftCategory(finding.category); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>
+                </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey(key); setDraftCode(finding.code); setDraftOriginal(finding.original); setDraftCategory(finding.category); setDraftObservedCondition(finding.observedCondition ?? ''); setDraftInspectorFinding(finding.inspectorFinding ?? ''); setDraftDetentionReason(finding.detentionReason ?? ''); setDraftRequiredRectification(finding.requiredRectification ?? ''); setDraftReleaseCondition(finding.releaseCondition ?? ''); setDraftSourcePage(finding.sourcePage ?? ''); setDraftSourceQuote(finding.sourceQuote ?? ''); setDraftDetentionGround(finding.detentionGround === true ? 'true' : finding.detentionGround === false ? 'false' : ''); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>
               ) : null}
               <a className="source-mini-link" href={caseItem.source.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
                 官方來源<ExternalLink size={13} />

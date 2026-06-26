@@ -28,7 +28,6 @@ const sampleCase: InspectionCase = {
     code: '07115',
     category: '消防安全',
     original: 'The fire damper could not be closed.',
-    translation: '防火風閘無法關閉。',
     detentionGround: true,
   }],
   source: {

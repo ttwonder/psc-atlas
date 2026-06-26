@@ -64,8 +64,7 @@ function parseCaseBlock(block: string, context: McaParseContext): InspectionCase
   const deficiencyCount = parseFirstCount(summary, /(.+?)\s+deficien/i) ?? deficiencyRows.length
   const detentionGroundCount = parseFirstCount(summary, /with\s+(.+?)\s+grounds?/i) ?? deficiencyRows.filter((item) => item.detentionGround).length
   const status = /still under detention/i.test(block) ? 'detained' : releaseDate ? 'released' : 'detained'
-  const deficiencies = deficiencyRows.length ? deficiencyRows : [{ code: '官方未列明', category: '官方摘要', original: 'MCA page did not expose a machine-readable deficiency table in this block.', translation: '此區塊未解析到逐項缺陷表。', detentionGround: null }]
-  const shortSummary = `${vessel} 於 ${date || '未知日期'} 在 ${port || '英國港口'} 被滯留；公開資料列出 ${detentionGroundCount} 項滯留依據，主要涉及 ${topCategories(deficiencies).join('、')}。${releaseDate ? `已於 ${releaseDate} 解除滯留。` : '報告截止時仍可能處於滯留狀態。'}`
+  const shortSummary = `${vessel} 於 ${date || '未知日期'} 在 ${port || '英國港口'} 被滯留；公開資料列出 ${detentionGroundCount} 項滯留依據，主要涉及 ${topCategories(deficiencyRows).join('、')}。${releaseDate ? `已於 ${releaseDate} 解除滯留。` : '報告截止時仍可能處於滯留狀態。'}`
   return {
     id: `mca-${slugify(`${vessel}-${imo}-${date || context.publishedAt}`)}`,
     vessel,
@@ -92,7 +91,7 @@ function parseCaseBlock(block: string, context: McaParseContext): InspectionCase
       `公告摘要顯示共 ${deficiencyCount} 項缺失，其中 ${detentionGroundCount} 項列為 Grounds for Detention。`,
       releaseDate ? `公告記錄該船於 ${releaseDate} 解除滯留。` : '公告未提供明確解除滯留日期，或在統計截止時仍處於滯留狀態。',
     ],
-    deficiencies,
+    deficiencies: deficiencyRows,
     source: { authority: 'UK Maritime and Coastguard Agency', title: context.title, url: context.url, publishedAt: context.publishedAt, sourceType: '官方月度滯留報告' },
     evidenceNote: 'MCA 月報公開的是滯留依據摘要；App 保留原文與缺陷代碼，但不把 “Not as required” 擴寫為未公開的現場細節。',
     fetchedAt: context.fetchedAt,
@@ -124,7 +123,6 @@ function rowToDeficiency(item: string, nature: string, ground: string): Deficien
     code,
     category: categoryFromCode(code, title),
     original: `${item} — ${nature}.`,
-    translation: `${title || item}：${translateNature(nature)}。`,
     detentionGround: /^yes$/i.test(ground),
     inspectorFinding: nature,
     detentionReason: /^yes$/i.test(ground) ? 'MCA 公告表格將此項標示為 Ground for Detention。' : undefined,

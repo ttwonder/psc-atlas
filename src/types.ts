@@ -7,7 +7,6 @@ export interface Deficiency {
   code: string
   category: string
   original: string
-  translation: string
   observedCondition?: string
   inspectorFinding?: string
   detentionReason?: string
@@ -71,6 +70,14 @@ export interface SourceBookmark {
   deletedAt?: string
   deletedBy?: string
   deleteReason?: string
+  publishedAt?: string
+  fetchedAt?: string
+  evidenceLevel?: EvidenceLevel
+  autoFetch?: SourceAutoFetch
+  status?: 'new' | 'queued' | 'downloaded' | 'analysis-ready' | 'failed' | 'archived'
+  tags?: string[]
+  storageUrl?: string
+  pdfArchivedAt?: string
 }
 
 export type SourceAutoFetch = 'enabled' | 'partial' | 'manual' | 'restricted'
