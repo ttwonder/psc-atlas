@@ -26,8 +26,8 @@ export function CaseTable({ cases, selectedId, onSelect }: CaseTableProps) {
               <td className="vessel-name"><button className="row-jump-button" type="button" onClick={(event) => { event.stopPropagation(); onSelect(item) }}>{item.vessel}</button><span className="flag-line">IMO {item.imo} · {item.flagEmoji} {item.flag}</span></td>
               <td>{item.region}<span className="mou-line">{item.source.authority}</span></td>
               <td>{item.date}<span className="mou-line">{item.port}</span></td>
-              <td className="summary-cell">{item.shortSummary}</td>
-              <td className="defect-preview-cell">{defectPreview(item)}</td>
+              <td className="summary-cell"><div className="case-cell-clamp">{item.shortSummary}</div></td>
+              <td className="defect-preview-cell"><div className="case-cell-clamp">{defectPreview(item)}</div></td>
               <td><strong>{item.deficiencyCount || item.deficiencies.length}</strong><span className="mou-line">{item.detentionGroundCount} 項依據</span></td>
               <td><span className={`evidence-badge ${item.evidenceLevel}`}>{item.evidenceLevel === 'narrative' ? '完整敘事' : item.evidenceLevel === 'full-dossier' ? '完整卷宗' : item.evidenceLevel === 'index-only' ? '索引' : '官方摘要'}</span></td>
             </tr>
