@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient, type User } from '@supabase/supabase-js'
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark } from '../types'
+import { normalizeOperatorRoster, type OperatorAuditLog, type OperatorRoster } from './operatorAccess'
 import { mergeCases, mergeSources, sourceFromCase, sourceFromGuide } from './storage'
 
 export interface CloudCaseRow {
@@ -37,7 +38,7 @@ export interface CloudDataset {
 
 export interface EditorProfile {
   email: string
-  role: 'owner' | 'editor' | 'source_editor'
+  role: 'owner' | 'admin' | 'editor' | 'source_editor'
   active: boolean
   can_add_sources: boolean
   can_sync_dataset: boolean
@@ -45,15 +46,15 @@ export interface EditorProfile {
 }
 
 export function canEditDataset(profile: EditorProfile | null) {
-  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor' || profile.can_sync_dataset))
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'admin' || profile.role === 'editor' || profile.can_sync_dataset))
 }
 
 export function canEditSources(profile: EditorProfile | null) {
-  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor' || profile.role === 'source_editor' || profile.can_add_sources))
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'admin' || profile.role === 'editor' || profile.role === 'source_editor' || profile.can_add_sources))
 }
 
 export function canAddSources(profile: EditorProfile | null) {
-  return Boolean(profile?.active && profile.can_add_sources)
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'admin' || profile.role === 'editor' || profile.role === 'source_editor' || profile.can_add_sources))
 }
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
@@ -217,4 +218,80 @@ export async function upsertCloudSources(sources: SourceBookmark[]) {
 export async function upsertCloudDataset(cases: InspectionCase[], sources: SourceBookmark[]) {
   await upsertCloudCases(cases)
   await upsertCloudSources(sources)
+}
+
+
+export function toCloudAuditLogRow(log: OperatorAuditLog) {
+  return {
+    id: log.id,
+    created_at: log.createdAt,
+    actor_department: log.actorDepartment,
+    actor_name: log.actorName,
+    actor_role: log.actorRole,
+    action: log.action,
+    target_type: log.targetType,
+    target_id: log.targetId,
+    target_title: log.targetTitle,
+    before_payload: log.before ?? null,
+    after_payload: log.after ?? null,
+    payload: log,
+  }
+}
+
+export async function insertCloudAuditLog(log: OperatorAuditLog) {
+  const supabase = getSupabaseClient()
+  if (!supabase) return
+  const { error } = await supabase.from('psc_audit_logs').upsert([toCloudAuditLogRow(log)], { onConflict: 'id' })
+  if (error) throw error
+}
+
+
+export interface CloudOperatorRosterRow {
+  id?: string
+  department: string
+  name: string
+  role: 'operator'
+  active: boolean
+  sort_order: number
+}
+
+export async function loadCloudOperatorRoster(): Promise<OperatorRoster | null> {
+  const supabase = getSupabaseClient()
+  if (!supabase) return null
+  const { data, error } = await supabase
+    .from('psc_operator_roster')
+    .select('department, name, active')
+    .eq('active', true)
+    .order('department', { ascending: true })
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+  if (error) throw error
+  if (!data?.length) return null
+  const grouped = data.reduce((acc, row) => {
+    const item = row as Pick<CloudOperatorRosterRow, 'department' | 'name'>
+    acc[item.department] = [...(acc[item.department] ?? []), item.name]
+    return acc
+  }, {} as Record<string, string[]>)
+  return normalizeOperatorRoster(grouped)
+}
+
+export async function upsertCloudOperatorRoster(roster: OperatorRoster) {
+  const supabase = getSupabaseClient()
+  if (!supabase) throw new Error('尚未設定 Supabase URL / anon key')
+  const normalized = normalizeOperatorRoster(roster)
+  const { data: existingRows, error: existingError } = await supabase
+    .from('psc_operator_roster')
+    .select('id, department, name')
+  if (existingError) throw existingError
+  const activeKeys = new Set(Object.entries(normalized).flatMap(([department, names]) => names.map((name) => `${department}\u0000${name}`)))
+  const rows: CloudOperatorRosterRow[] = []
+  Object.entries(normalized).forEach(([department, names]) => {
+    names.forEach((name, index) => rows.push({ department, name, role: 'operator', active: true, sort_order: index }))
+  })
+  ;(existingRows ?? []).forEach((row) => {
+    const item = row as { id: string; department: string; name: string }
+    if (!activeKeys.has(`${item.department}\u0000${item.name}`)) rows.push({ id: item.id, department: item.department, name: item.name, role: 'operator', active: false, sort_order: 0 })
+  })
+  const { error } = await supabase.from('psc_operator_roster').upsert(rows, { onConflict: 'department,name' })
+  if (error) throw error
 }

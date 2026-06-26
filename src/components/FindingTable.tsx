@@ -114,6 +114,7 @@ export function FindingTable({
   globalQuery = '',
   categories = [],
   canEdit = false,
+  onRequestEdit,
   onUpdateFinding,
 }: {
   cases: InspectionCase[]
@@ -122,6 +123,7 @@ export function FindingTable({
   globalQuery?: string
   categories?: string[]
   canEdit?: boolean
+  onRequestEdit?: (targetTitle: string, proceed: () => void) => void
   onUpdateFinding?: (caseId: string, findingIndex: number, draft: FindingDraft) => void
 }) {
   const [localQuery, setLocalQuery] = useState('')
@@ -256,7 +258,7 @@ export function FindingTable({
               {editing && canEdit && onUpdateFinding ? <>
                 <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { code: draftCode, original: draftOriginal, category: draftCategory, observedCondition: draftObservedCondition, inspectorFinding: draftInspectorFinding, detentionReason: draftDetentionReason, requiredRectification: draftRequiredRectification, releaseCondition: draftReleaseCondition, sourcePage: draftSourcePage, sourceQuote: draftSourceQuote, detentionGround: draftDetentionGround === 'true' ? true : draftDetentionGround === 'false' ? false : null, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
                 <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey('') }}>取消</button>
-              </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); if (!canEdit || !onUpdateFinding) { setPermissionMessage('請先在「資料來源」頁用操作員帳號登入；只有 editor/owner 可以修改缺陷詳情。'); return } setPermissionMessage(''); setEditingKey(key); setDraftCode(finding.code); setDraftOriginal(finding.original); setDraftCategory(finding.category); setDraftObservedCondition(finding.observedCondition ?? ''); setDraftInspectorFinding(finding.inspectorFinding ?? ''); setDraftDetentionReason(finding.detentionReason ?? ''); setDraftRequiredRectification(finding.requiredRectification ?? ''); setDraftReleaseCondition(finding.releaseCondition ?? ''); setDraftSourcePage(finding.sourcePage ?? ''); setDraftSourceQuote(finding.sourceQuote ?? ''); setDraftDetentionGround(finding.detentionGround === true ? 'true' : finding.detentionGround === false ? 'false' : ''); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>}
+              </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); const beginEdit = () => { setPermissionMessage(''); setEditingKey(key); setDraftCode(finding.code); setDraftOriginal(finding.original); setDraftCategory(finding.category); setDraftObservedCondition(finding.observedCondition ?? ''); setDraftInspectorFinding(finding.inspectorFinding ?? ''); setDraftDetentionReason(finding.detentionReason ?? ''); setDraftRequiredRectification(finding.requiredRectification ?? ''); setDraftReleaseCondition(finding.releaseCondition ?? ''); setDraftSourcePage(finding.sourcePage ?? ''); setDraftSourceQuote(finding.sourceQuote ?? ''); setDraftDetentionGround(finding.detentionGround === true ? 'true' : finding.detentionGround === false ? 'false' : ''); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }; if (!canEdit) { if (onRequestEdit) { onRequestEdit(finding.original.slice(0, 100), beginEdit); return } setPermissionMessage('請先確認部門和姓名，才能修改缺陷詳情。'); return } if (!onUpdateFinding) { setPermissionMessage('缺少保存處理函式。'); return } beginEdit() }}><Edit3 size={13} />修改</button>}
               <a className="source-mini-link" href={caseItem.source.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
                 官方來源<ExternalLink size={13} />
               </a>

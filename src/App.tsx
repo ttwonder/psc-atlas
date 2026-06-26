@@ -9,13 +9,44 @@ import { categories as seedCategories, inspectionCases, shipTypes as seedShipTyp
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
 import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
-import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, isCloudConfigured, loadCloudDataset, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
+import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoster } from './lib/operatorAccess'
 import { buildRegionalReport } from './lib/report'
 import { loadStoredCases, loadStoredSources, mergeCases, mergeSources, saveStoredCases, saveStoredSources, sourceFromCase, sourceFromGuide, slugify } from './lib/storage'
 import { calculateTrendSummary, filterCasesByRangeAndRegion, getRegions, timeRangeLabels } from './lib/trends'
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark, TimeRangeKey } from './types'
+
+
+const OPERATOR_ROSTER_STORAGE_KEY = 'psc_operator_roster'
+const OPERATOR_AUDIT_STORAGE_KEY = 'psc_operator_audit_logs'
+
+function loadLocalOperatorRoster(): OperatorRoster {
+  try {
+    return normalizeOperatorRoster(JSON.parse(localStorage.getItem(OPERATOR_ROSTER_STORAGE_KEY) || 'null') ?? DEFAULT_OPERATOR_ROSTER)
+  } catch {
+    return normalizeOperatorRoster(DEFAULT_OPERATOR_ROSTER)
+  }
+}
+
+function saveLocalOperatorRoster(roster: OperatorRoster) {
+  localStorage.setItem(OPERATOR_ROSTER_STORAGE_KEY, JSON.stringify(normalizeOperatorRoster(roster)))
+}
+
+function loadLocalAuditLogs(): OperatorAuditLog[] {
+  try {
+    const value = JSON.parse(localStorage.getItem(OPERATOR_AUDIT_STORAGE_KEY) || '[]')
+    return Array.isArray(value) ? value : []
+  } catch {
+    return []
+  }
+}
+
+function saveLocalAuditLogs(logs: OperatorAuditLog[]) {
+  localStorage.setItem(OPERATOR_AUDIT_STORAGE_KEY, JSON.stringify(logs.slice(0, 500)))
+}
+
 
 function App() {
   const [cases, setCases] = useState<InspectionCase[]>(() => loadStoredCases(inspectionCases))
@@ -44,6 +75,11 @@ function App() {
   const [serverRefreshToken, setServerRefreshToken] = useState('')
   const [serverRefreshMessage, setServerRefreshMessage] = useState('後端刷新 API 適用於 Vercel 部署；授權者輸入 refresh token 後可由伺服器抓取並寫入 Supabase。')
   const [serverRefreshLoading, setServerRefreshLoading] = useState(false)
+  const [operatorRoster, setOperatorRoster] = useState<OperatorRoster>(() => loadLocalOperatorRoster())
+  const [currentOperator, setCurrentOperator] = useState<OperatorIdentity | null>(null)
+  const [auditLogs, setAuditLogs] = useState<OperatorAuditLog[]>(() => loadLocalAuditLogs())
+  const [pendingOperatorAction, setPendingOperatorAction] = useState<{ action: OperatorAction; targetTitle: string; onConfirm: (actor: OperatorIdentity) => void | Promise<void> } | null>(null)
+  const [operatorIdentityMessage, setOperatorIdentityMessage] = useState('')
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase())
 
   const regions = useMemo(() => getRegions(cases), [cases])
@@ -68,6 +104,15 @@ function App() {
         setSources(dataset.sources)
         saveStoredCases(dataset.cases)
         saveStoredSources(dataset.sources)
+        try {
+          const cloudRoster = await loadCloudOperatorRoster()
+          if (cloudRoster) {
+            setOperatorRoster(cloudRoster)
+            saveLocalOperatorRoster(cloudRoster)
+          }
+        } catch (error) {
+          console.warn('Load PSC operator roster failed', error)
+        }
         setCloudMessage(dataset.cloudCaseCount
           ? `已從雲端載入 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源；本機 seed 已合併。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在操作員白名單，僅可讀）'}` : '目前未登入，只能讀取公開資料。'}`
           : `雲端目前尚未有資料；正在使用本機 seed。${profile && canEditDataset(profile) ? '可按「同步目前資料到雲端」初始化資料庫。' : user ? '你已登入，但未獲 dataset/editor 權限。' : '請登入後同步目前資料到雲端。'}`)
@@ -99,6 +144,83 @@ function App() {
   function resetFilters() { setQuery(''); setRegion(''); setShipType(''); setCategory(''); setTimeRange('all'); setDetainedOnly(false) }
   function selectCase(item: InspectionCase) { setSelected(item); setActivePage('findings'); setMobileNavOpen(false) }
   function navigate(key: NavKey) { setActivePage(key); setMobileNavOpen(false) }
+
+  function getAdminIdentity() {
+    return cloudProfileToIdentity(editorProfile)
+  }
+
+  async function appendAuditLog(log: OperatorAuditLog) {
+    const nextLogs = [log, ...auditLogs].slice(0, 500)
+    setAuditLogs(nextLogs)
+    saveLocalAuditLogs(nextLogs)
+    if (cloudConfigured) {
+      try { await insertCloudAuditLog(log) } catch (error) { setCloudMessage(`操作已完成，但 LOG 同步雲端失敗：${describeCloudError(error)}`) }
+    }
+  }
+
+  function requestOperator(action: OperatorAction, targetTitle: string, run: (actor: OperatorIdentity) => void | Promise<void>) {
+    const adminIdentity = getAdminIdentity()
+    if (adminIdentity && canOperatorPerform(adminIdentity, action)) {
+      void run(adminIdentity)
+      return
+    }
+    if (currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid && canOperatorPerform(currentOperator, action)) {
+      void run(currentOperator)
+      return
+    }
+    setOperatorIdentityMessage('')
+    setPendingOperatorAction({ action, targetTitle, onConfirm: run })
+  }
+
+  async function confirmOperatorIdentity(identity: OperatorIdentity) {
+    if (!pendingOperatorAction) return
+    const verification = verifyOperatorIdentity(identity, operatorRoster)
+    if (!verification.valid) {
+      setOperatorIdentityMessage(verification.message)
+      return
+    }
+    if (!canOperatorPerform(identity, pendingOperatorAction.action)) {
+      setOperatorIdentityMessage('這項操作需要 Owner 或管理員權限。')
+      return
+    }
+    const pending = pendingOperatorAction
+    setCurrentOperator(identity)
+    setPendingOperatorAction(null)
+    setOperatorIdentityMessage('')
+    await pending.onConfirm(identity)
+  }
+
+  async function persistOperatorRoster(nextRoster: OperatorRoster) {
+    const normalized = normalizeOperatorRoster(nextRoster)
+    setOperatorRoster(normalized)
+    saveLocalOperatorRoster(normalized)
+    if (cloudConfigured && canManageOperatorRoster) {
+      try { await upsertCloudOperatorRoster(normalized) } catch (error) { setCloudMessage(`操作員名單已保存到本機，但同步 Supabase 失敗：${describeCloudError(error)}`) }
+    }
+  }
+
+  async function addRosterName(department: string, name: string) {
+    requestOperator('manage_roster', `新增操作員 ${department}/${name}`, async (actor) => {
+      const dept = department as keyof OperatorRoster
+      const trimmed = name.trim()
+      if (!trimmed || !operatorRoster[dept]) return
+      const before = operatorRoster
+      const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: [...operatorRoster[dept], trimmed] })
+      await persistOperatorRoster(next)
+      await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `新增 ${trimmed}`, before, after: next }))
+    })
+  }
+
+  async function removeRosterName(department: string, name: string) {
+    requestOperator('manage_roster', `移除操作員 ${department}/${name}`, async (actor) => {
+      const dept = department as keyof OperatorRoster
+      if (!operatorRoster[dept]) return
+      const before = operatorRoster
+      const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: operatorRoster[dept].filter((item) => item !== name) })
+      await persistOperatorRoster(next)
+      await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `移除 ${name}`, before, after: next }))
+    })
+  }
 
   async function handleCloudSignIn() {
     const email = cloudEmailInput.trim()
@@ -265,58 +387,78 @@ function App() {
   async function addManualSource() {
     const url = manualUrl.trim()
     if (!url) return
-    const item: SourceBookmark = {
-      id: `manual-${slugify(url)}-${Date.now()}`,
-      title: manualTitle.trim() || url,
-      url,
-      sourceType: '手動備忘',
-      addedAt: new Date().toISOString(),
-      manual: true,
-      notes: manualNotes.trim(),
-    }
-    await persistNewSource(item, mergeSources(sources, [item]), `已把新來源同步到雲端：${item.title}`)
-    setManualUrl(''); setManualTitle(''); setManualNotes('')
+    const title = manualTitle.trim() || url
+    requestOperator('add_source', title, async (actor) => {
+      const item: SourceBookmark = {
+        id: `manual-${slugify(url)}-${Date.now()}`,
+        title,
+        url,
+        sourceType: '手動備忘',
+        addedAt: new Date().toISOString(),
+        manual: true,
+        notes: manualNotes.trim(),
+      }
+      await persistNewSource(item, mergeSources(sources, [item]), `已把新來源保存：${item.title}`)
+      await appendAuditLog(buildAuditLog({ actor, action: 'add_source', targetType: 'source', targetId: item.id, targetTitle: item.title, after: item }))
+      setManualUrl(''); setManualTitle(''); setManualNotes('')
+    })
   }
 
   async function saveSourceEdit(id: string, draft: SourceBookmarkDraft) {
-    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以修改已採集來源。'); return }
-    const next = sources.map((item) => item.id === id ? updateSourceBookmark(item, draft) : item)
-    await persistSources(next, `已更新來源：${draft.title || id}`)
+    const before = sources.find((item) => item.id === id)
+    requestOperator('edit_source', before?.title ?? id, async (actor) => {
+      const after = before ? updateSourceBookmark(before, draft) : null
+      const next = sources.map((item) => item.id === id && after ? after : item)
+      await persistSources(next, `已更新來源：${draft.title || id}`)
+      await appendAuditLog(buildAuditLog({ actor, action: 'edit_source', targetType: 'source', targetId: id, targetTitle: after?.title ?? draft.title ?? id, before, after }))
+    })
   }
 
   async function softDeleteSource(id: string, reason = '') {
-    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以刪除來源。'); return }
-    const user = cloudConfigured ? await getCloudUser() : null
-    const next = sources.map((item) => item.id === id ? markSourceDeleted(item, user?.email, reason) : item)
-    await persistSources(next, '已移到「已刪除」板塊；30 天後會自動清除。')
+    const before = sources.find((item) => item.id === id)
+    requestOperator('delete_source', before?.title ?? id, async (actor) => {
+      const after = before ? markSourceDeleted(before, `${actor.department}/${actor.name}`, reason) : null
+      const next = sources.map((item) => item.id === id && after ? after : item)
+      await persistSources(next, '已移到「已刪除」板塊；30 天後會自動清除。')
+      await appendAuditLog(buildAuditLog({ actor, action: 'delete_source', targetType: 'source', targetId: id, targetTitle: before?.title ?? id, before, after }))
+    })
   }
 
   async function restoreDeletedSource(id: string) {
-    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以還原來源。'); return }
-    const next = sources.map((item) => item.id === id ? restoreSource(item) : item)
-    await persistSources(next, '已還原來源。')
+    const before = sources.find((item) => item.id === id)
+    requestOperator('restore_source', before?.title ?? id, async (actor) => {
+      const after = before ? restoreSource(before) : null
+      const next = sources.map((item) => item.id === id && after ? after : item)
+      await persistSources(next, '已還原來源。')
+      await appendAuditLog(buildAuditLog({ actor, action: 'restore_source', targetType: 'source', targetId: id, targetTitle: before?.title ?? id, before, after }))
+    })
   }
 
   async function saveFindingEdit(caseId: string, findingIndex: number, draft: FindingDraft) {
-    if (!mayEditFindings) { setCloudMessage('只有 editor/owner 可以修改缺陷分類、備註、關注度和新穎標記。'); return }
-    const nextCases = updateFinding(cases, caseId, findingIndex, draft)
-    setCases(nextCases)
-    saveStoredCases(nextCases)
-    setSelected((current) => nextCases.find((item) => item.id === (current?.id ?? caseId)) ?? current)
-    if (!cloudConfigured) return
-    try {
-      const user = await getCloudUser()
-      if (user) {
-        await upsertCloudDataset(nextCases, sources)
-        setCloudUserEmail(user.email ?? null)
-        setEditorProfile(await getEditorProfile())
-        setCloudMessage('缺陷備註/關注度已同步到雲端。')
-      } else {
-        setCloudMessage('缺陷修改已保存到本機；登入後可同步到雲端。')
+    const caseItem = cases.find((item) => item.id === caseId)
+    const before = caseItem?.deficiencies[findingIndex]
+    requestOperator('edit_finding', before?.original.slice(0, 80) ?? `${caseId}#${findingIndex}`, async (actor) => {
+      const nextCases = updateFinding(cases, caseId, findingIndex, draft)
+      const after = nextCases.find((item) => item.id === caseId)?.deficiencies[findingIndex]
+      setCases(nextCases)
+      saveStoredCases(nextCases)
+      setSelected((current) => nextCases.find((item) => item.id === (current?.id ?? caseId)) ?? current)
+      await appendAuditLog(buildAuditLog({ actor, action: 'edit_finding', targetType: 'finding', targetId: `${caseId}#${findingIndex}`, targetTitle: before?.original.slice(0, 120) ?? `${caseId}#${findingIndex}`, before, after }))
+      if (!cloudConfigured) return
+      try {
+        const user = await getCloudUser()
+        if (user && canEditDataset(await getEditorProfile())) {
+          await upsertCloudDataset(nextCases, sources)
+          setCloudUserEmail(user.email ?? null)
+          setEditorProfile(await getEditorProfile())
+          setCloudMessage('缺陷修改已同步到雲端，並已寫入 LOG。')
+        } else {
+          setCloudMessage('缺陷修改已保存到本機並已記錄 LOG；需 Owner/Admin 登入後同步到雲端。')
+        }
+      } catch (error) {
+        setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
       }
-    } catch (error) {
-      setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
-    }
+    })
   }
 
   function downloadReport() {
@@ -332,6 +474,9 @@ function App() {
   const mayAddSources = canAddSources(editorProfile)
   const mayEditSources = canEditSources(editorProfile)
   const mayEditFindings = canEditDataset(editorProfile)
+  const adminIdentity = getAdminIdentity()
+  const canManageOperatorRoster = Boolean(adminIdentity && canOperatorPerform(adminIdentity, 'manage_roster'))
+  const hasWriteIdentity = Boolean(adminIdentity || (currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid))
 
   return (
     <div className={`app-shell ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
@@ -352,11 +497,13 @@ function App() {
 
         {activePage === 'overview' ? <Overview trend={trend} cases={filteredCases} onSelect={selectCase} /> : null}
         {activePage === 'cases' ? <CasesPage cases={filteredCases} selected={selected} onSelect={selectCase} /> : null}
-        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={mayEditFindings} onUpdateFinding={saveFindingEdit} /> : null}
+        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
-        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={mayAddSources} canEditSources={mayEditSources} editorProfile={editorProfile} /> : null}
+        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
+        {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} /> : null}
       </main>
+      {pendingOperatorAction ? <OperatorIdentityModal action={pendingOperatorAction.action} targetTitle={pendingOperatorAction.targetTitle} roster={operatorRoster} message={operatorIdentityMessage} onCancel={() => { setPendingOperatorAction(null); setOperatorIdentityMessage('') }} onConfirm={confirmOperatorIdentity} /> : null}
     </div>
   )
 }
@@ -394,12 +541,12 @@ function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | 
   )
 }
 
-function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onUpdateFinding: (caseId: string, findingIndex: number, draft: FindingDraft) => void }) {
+function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onRequestEdit: (targetTitle: string, proceed: () => void) => void; onUpdateFinding: (caseId: string, findingIndex: number, draft: FindingDraft) => void }) {
   return (
     <div className="dossier-workbench">
       <section className="case-list evidence-card" aria-label="PSC 缺陷詳情清單">
         <header className="section-header"><div><h2>缺陷詳情清單</h2><p>這是獨立分頁；上方搜尋、時間段、地區、船型、缺陷類別會同步篩選這張表。登入的操作員可修改分類、備註、關注度與新穎標記。</p></div></header>
-        <FindingTable cases={props.cases} onSelect={props.onSelect} focusCaseId={props.selected?.id ?? null} globalQuery={props.query} categories={props.categories} canEdit={props.canEdit} onUpdateFinding={props.onUpdateFinding} />
+        <FindingTable cases={props.cases} onSelect={props.onSelect} focusCaseId={props.selected?.id ?? null} globalQuery={props.query} categories={props.categories} canEdit={props.canEdit} onRequestEdit={props.onRequestEdit} onUpdateFinding={props.onUpdateFinding} />
       </section>
     </div>
   )
@@ -494,6 +641,7 @@ interface SourcesPageProps {
   onNotes: (value: string) => void
   onAdd: () => void | Promise<void>
   onRefresh: () => void
+  onRequestOperator: (action: OperatorAction, targetTitle: string, run: (actor: OperatorIdentity) => void | Promise<void>) => void
   onSaveSource: (id: string, draft: SourceBookmarkDraft) => void | Promise<void>
   onDeleteSource: (id: string, reason?: string) => void | Promise<void>
   onRestoreSource: (id: string) => void | Promise<void>
@@ -523,7 +671,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="eyebrow">CLOUD DATABASE</p>
           <h2>雲端資料庫同步</h2>
           <p>{props.cloudMessage}</p>
-          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜${props.canEditSources ? '可修改/刪除來源' : props.canAddSources ? '可新增來源' : '只讀'}` : 'Supabase 已設定；目前未登入，公開資料可讀但不能寫入。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY。'}</small>
+          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜整批同步仍需 Owner/Admin；一般來源/缺陷操作會用部門+姓名確認。` : 'Supabase 已設定；目前未登入。一般來源/缺陷操作會用部門+姓名確認，雲端整批同步需 Owner/Admin。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY；操作會保存在本機並記錄 LOG。'}</small>
         </div>
         {props.cloudConfigured ? (
           <div className="cloud-actions">
@@ -580,8 +728,8 @@ function SourcesPage(props: SourcesPageProps) {
             <label>網址<input value={props.manualUrl} onChange={(event) => props.onUrl(event.target.value)} placeholder="https://..." /></label>
             <label>標題<input value={props.manualTitle} onChange={(event) => props.onTitle(event.target.value)} placeholder="例如：某港口 PSC detention notice" /></label>
             <label>備註<textarea value={props.manualNotes} onChange={(event) => props.onNotes(event.target.value)} placeholder="用途、需要回頭查的頁碼或重點" /></label>
-            <button className="primary-button" type="button" onClick={props.onAdd} disabled={props.cloudConfigured && props.cloudUserEmail !== null && !props.canAddSources}><Plus size={17} />加入網址清單</button>
-            {props.cloudUserEmail && !props.canAddSources ? <small className="permission-note">你的帳號目前不是 source_editor/editor/owner，不能寫入雲端來源。</small> : null}
+            <button className="primary-button" type="button" onClick={props.onAdd} disabled={false}><Plus size={17} />加入網址清單</button>
+            <small className="permission-note">新增/修改前會要求選擇部門和姓名；Owner/Admin 登入後可把資料同步到雲端。</small>
           </section>
           <section className="panel collected-sources-panel">
             <h2>已採集 / 備忘網址清單</h2>
@@ -616,8 +764,8 @@ function SourcesPage(props: SourcesPageProps) {
                     <button className="text-button compact" type="button" onClick={() => { props.onSaveSource(item.id, sourceDraft); setEditingSourceId('') }}>保存</button>
                     <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
                   </> : <>
-                    <button className="text-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能修改來源。'); return } setSourcePermissionMessage(''); setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }}>修改</button>
-                    <button className="danger-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能刪除來源。'); return } setSourcePermissionMessage(''); props.onDeleteSource(item.id, deleteReason) }}>刪除</button>
+                    <button className="text-button compact" type="button" onClick={() => { const beginEdit = () => { setSourcePermissionMessage(''); setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }; if (!props.canEditSources) { props.onRequestOperator('edit_source', item.title, beginEdit); return } beginEdit() }}>修改</button>
+                    <button className="danger-button compact" type="button" onClick={() => { const runDelete = () => { setSourcePermissionMessage(''); props.onDeleteSource(item.id, deleteReason) }; if (!props.canEditSources) { props.onRequestOperator('delete_source', item.title, runDelete); return } runDelete() }}>刪除</button>
                   </>}
                 </div>
               </article>
@@ -632,7 +780,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="panel-hint">這裡暫存已刪除來源；刪除滿 30 天後會在本機/同步時自動清除。</p>
           <div className="source-list deleted-source-list">{deletedSourceList.map((item) => <article key={item.id}>
             <div><strong>{item.title}</strong><span>{item.deletedAt ? `刪除時間：${item.deletedAt.slice(0, 10)}` : '已刪除'}{item.deletedBy ? ` · ${item.deletedBy}` : ''}</span>{item.deleteReason ? <small>{item.deleteReason}</small> : null}<a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></div>
-            <button className="text-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能還原來源。'); return } props.onRestoreSource(item.id) }}>還原</button>
+            <button className="text-button compact" type="button" onClick={() => { const runRestore = () => props.onRestoreSource(item.id); if (!props.canEditSources) { props.onRequestOperator('restore_source', item.title, runRestore); return } runRestore() }}>還原</button>
           </article>)}</div>
           {deletedSourceList.length === 0 ? <div className="empty-state"><strong>暫無已刪除來源</strong><span>刪除來源後會先出現在這裡。</span></div> : null}
         </section>
@@ -659,6 +807,114 @@ function SourcesPage(props: SourcesPageProps) {
           </div>
         </section>
       ) : null}
+    </div>
+  )
+}
+
+
+function OperatorIdentityModal({ action, targetTitle, roster, message, onCancel, onConfirm }: {
+  action: OperatorAction
+  targetTitle: string
+  roster: OperatorRoster
+  message: string
+  onCancel: () => void
+  onConfirm: (identity: OperatorIdentity) => void | Promise<void>
+}) {
+  const [department, setDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
+  const [name, setName] = useState('')
+  const names = roster[department as keyof OperatorRoster] ?? []
+  useEffect(() => {
+    setName((current) => names.includes(current) ? current : (names[0] ?? ''))
+  }, [department, names])
+  return (
+    <div className="operator-modal-backdrop" role="dialog" aria-modal="true" aria-label="確認操作身份">
+      <section className="operator-modal">
+        <p className="eyebrow">OPERATOR CHECK</p>
+        <h2>確認操作身份</h2>
+        <p>本次操作：<strong>{OPERATOR_ACTION_LABELS[action]}</strong></p>
+        <p className="operator-target">目標：{targetTitle}</p>
+        <div className="operator-modal-grid">
+          <label>部門
+            <select value={department} onChange={(event) => setDepartment(event.target.value)}>
+              {OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>姓名
+            <select value={name} onChange={(event) => setName(event.target.value)}>
+              {names.map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </label>
+        </div>
+        {message ? <div className="permission-note">{message}</div> : null}
+        <p className="panel-hint">操作員只需選擇部門與姓名；Owner/Admin 若已用 Supabase 登入，會自動使用管理身份，不會跳此窗口。</p>
+        <div className="operator-modal-actions">
+          <button className="text-button compact" type="button" onClick={onCancel}>取消</button>
+          <button className="primary-button" type="button" onClick={() => onConfirm({ department, name, role: 'operator' })} disabled={!department || !name}>確認並執行</button>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, operatorRoster, auditLogs, canManageRoster, onClearOperator, onAddRosterName, onRemoveRosterName }: {
+  cloudUserEmail: string | null
+  editorProfile: EditorProfile | null
+  currentOperator: OperatorIdentity | null
+  operatorRoster: OperatorRoster
+  auditLogs: OperatorAuditLog[]
+  canManageRoster: boolean
+  onClearOperator: () => void
+  onAddRosterName: (department: string, name: string) => void | Promise<void>
+  onRemoveRosterName: (department: string, name: string) => void | Promise<void>
+}) {
+  const [department, setDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
+  const [name, setName] = useState('')
+  const totalNames = Object.values(operatorRoster).reduce((sum, names) => sum + names.length, 0)
+  return (
+    <div className="permissions-page">
+      <section className="panel permissions-hero full-span">
+        <div>
+          <p className="eyebrow">ACCESS CONTROL</p>
+          <h2>權限管理</h2>
+          <p>沿用「法規追蹤」規則：Owner/Admin 由 Supabase 設定；普通操作員使用預設部門/姓名名單，操作時才確認身份並寫入 LOG。</p>
+        </div>
+        <div className="permission-status-grid">
+          <article><span>Supabase 身份</span><strong>{cloudUserEmail ?? '未登入'}</strong><small>{editorProfile?.role ?? '未在管理白名單'}</small></article>
+          <article><span>本次操作員</span><strong>{currentOperator ? `${currentOperator.department}/${currentOperator.name}` : '未選擇'}</strong><small>{currentOperator?.role ?? '操作時彈窗確認'}</small>{currentOperator ? <button className="text-button compact" type="button" onClick={onClearOperator}>切換操作員</button> : null}</article>
+          <article><span>操作員名單</span><strong>{totalNames}</strong><small>{OPERATOR_DEPARTMENTS.length} 個部門</small></article>
+          <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>需要 Owner/Admin Supabase 身份</small></article>
+        </div>
+      </section>
+
+      <section className="panel roster-panel">
+        <h2>操作員預設名單</h2>
+        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/缺陷時會從這裡選部門和姓名。名單維護需要 Owner/Admin。</p>
+        <div className="roster-add-form">
+          <label>部門<select value={department} onChange={(event) => setDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+          <label>姓名<input value={name} onChange={(event) => setName(event.target.value)} placeholder="輸入姓名" /></label>
+          <button className="primary-button" type="button" disabled={!canManageRoster || !name.trim()} onClick={() => { onAddRosterName(department, name); setName('') }}>新增操作員</button>
+        </div>
+        {!canManageRoster ? <div className="permission-note">目前不能維護名單；請用 Owner/Admin 帳號登入 Supabase。</div> : null}
+        <div className="roster-list">
+          {OPERATOR_DEPARTMENTS.map((dept) => <article key={dept}>
+            <h3>{dept}<span>{operatorRoster[dept].length}</span></h3>
+            <div>{operatorRoster[dept].map((person) => <span key={person}>{person}{canManageRoster ? <button type="button" aria-label={`移除 ${person}`} onClick={() => onRemoveRosterName(dept, person)}>×</button> : null}</span>)}</div>
+          </article>)}
+        </div>
+      </section>
+
+      <section className="panel audit-panel">
+        <h2>操作 LOG</h2>
+        <p className="panel-hint">記錄來源、缺陷與名單維護操作。若 Supabase 已建立 LOG 表，會嘗試同步到雲端；否則保存在本瀏覽器。</p>
+        <div className="audit-log-list">
+          {auditLogs.slice(0, 80).map((log) => <article key={log.id}>
+            <div><strong>{OPERATOR_ACTION_LABELS[log.action]}</strong><span>{log.actorDepartment}/{log.actorName} · {log.actorRole}</span></div>
+            <p>{log.targetTitle}</p>
+            <small>{log.createdAt.replace('T', ' ').slice(0, 19)} · {log.targetType} · {log.targetId}</small>
+          </article>)}
+        </div>
+        {auditLogs.length === 0 ? <div className="empty-state"><strong>暫無操作 LOG</strong><span>修改來源或缺陷後會出現在這裡。</span></div> : null}
+      </section>
     </div>
   )
 }
