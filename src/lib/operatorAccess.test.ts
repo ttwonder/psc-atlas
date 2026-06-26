@@ -16,7 +16,7 @@ describe('operator access workflow', () => {
     const roster = normalizeOperatorRoster({ 海技組: [' 朱世毅 ', '朱世毅', '', '陳思樺'], 不存在: ['測試'] })
 
     expect(roster['海技組']).toEqual(['朱世毅', '陳思樺'])
-    expect(roster['管理組']).toEqual([])
+    expect(Object.prototype.hasOwnProperty.call(roster, '管理組')).toBe(false)
     expect(verifyOperatorIdentity({ department: '海技組', name: '朱世毅', role: 'operator' }, roster).valid).toBe(true)
     expect(verifyOperatorIdentity({ department: '海技組', name: '不在名單', role: 'operator' }, roster).valid).toBe(false)
   })
@@ -35,7 +35,7 @@ describe('operator access workflow', () => {
 
   it('lets owner/admin identities perform every privileged action', () => {
     const admin: OperatorIdentity = { department: '海技組', name: '管理員', role: 'admin' }
-    const owner: OperatorIdentity = { department: '管理層', name: 'Owner', role: 'owner' }
+    const owner: OperatorIdentity = { department: '海技組', name: 'Owner', role: 'owner' }
 
     expect(canOperatorPerform(admin, 'sync_dataset')).toBe(true)
     expect(canOperatorPerform(admin, 'manage_roster')).toBe(true)
@@ -45,20 +45,28 @@ describe('operator access workflow', () => {
   it('converts Supabase admin role to an admin identity', () => {
     const identity = cloudProfileToIdentity({ email: 'admin@example.com', role: 'admin' })
 
-    expect(identity).toEqual({ department: '管理組', name: 'admin@example.com', role: 'admin' })
+    expect(identity).toEqual({ department: '海技組', name: 'admin@example.com', role: 'admin' })
   })
 
 
 
   it('stores a per-person roster role and turns a selected admin into admin identity', () => {
-    const roster = normalizeOperatorRoster({ 管理組: ['陳治先'], 海技組: ['朱世毅'] })
-    const roles = normalizeOperatorRoles({ 管理組: { 陳治先: 'admin' }, 海技組: { 朱世毅: 'operator' } }, roster)
+    const roster = normalizeOperatorRoster({ 海技組: ['朱世毅', '陳宜斌'] })
+    const roles = normalizeOperatorRoles({ 海技組: { 朱世毅: 'admin', 陳宜斌: 'operator' } }, roster)
 
-    expect(roles['管理組']['陳治先']).toBe('admin')
-    expect(roles['海技組']['朱世毅']).toBe('operator')
-    expect(identityFromRosterSelection('管理組', '陳治先', roles)).toEqual({ department: '管理組', name: '陳治先', role: 'admin' })
-    expect(canOperatorPerform(identityFromRosterSelection('管理組', '陳治先', roles), 'manage_roster')).toBe(true)
-    expect(canOperatorPerform(identityFromRosterSelection('海技組', '朱世毅', roles), 'manage_roster')).toBe(false)
+    expect(roles['海技組']['朱世毅']).toBe('admin')
+    expect(roles['海技組']['陳宜斌']).toBe('operator')
+    expect(identityFromRosterSelection('海技組', '朱世毅', roles)).toEqual({ department: '海技組', name: '朱世毅', role: 'admin' })
+    expect(canOperatorPerform(identityFromRosterSelection('海技組', '朱世毅', roles), 'manage_roster')).toBe(true)
+    expect(canOperatorPerform(identityFromRosterSelection('海技組', '陳宜斌', roles), 'manage_roster')).toBe(false)
+  })
+
+
+  it('keeps 航運處處長 as the default roster admin after removing management departments', () => {
+    const roles = normalizeOperatorRoles(null, DEFAULT_OPERATOR_ROSTER)
+
+    expect(roles['航運處']['吳建泰處長']).toBe('admin')
+    expect(canOperatorPerform(identityFromRosterSelection('航運處', '吳建泰處長', roles), 'manage_roster')).toBe(true)
   })
 
   it('builds an audit log with actor and target details', () => {

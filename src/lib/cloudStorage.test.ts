@@ -103,14 +103,14 @@ describe('cloud storage row mapping', () => {
 
   it('builds operator roster rows with roles and without null ids for new rows', () => {
     const rows = toCloudOperatorRosterRows(
-      { 管理組: ['陳治先'], 海技組: ['朱世毅'] } as any,
-      { 管理組: { 陳治先: 'admin' }, 海技組: { 朱世毅: 'operator' } } as any,
+      { 海技組: ['朱世毅', '陳宜斌'] } as any,
+      { 海技組: { 朱世毅: 'admin', 陳宜斌: 'operator' } } as any,
       [],
     )
 
     expect(rows).toEqual([
-      { department: '管理組', name: '陳治先', role: 'admin', active: true, sort_order: 0 },
-      { department: '海技組', name: '朱世毅', role: 'operator', active: true, sort_order: 0 },
+      { department: '海技組', name: '朱世毅', role: 'admin', active: true, sort_order: 0 },
+      { department: '海技組', name: '陳宜斌', role: 'operator', active: true, sort_order: 1 },
     ])
     expect(rows.some((row) => Object.prototype.hasOwnProperty.call(row, 'id'))).toBe(false)
   })

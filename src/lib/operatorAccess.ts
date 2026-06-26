@@ -32,7 +32,7 @@ export interface OperatorAuditLog {
   after?: unknown
 }
 
-export const OPERATOR_DEPARTMENTS = ['管理層', '管理組', '資材組', '營業處', '船工處', '安衛處', '航運處', '督導', '船員組', '航運組', '海技組'] as const
+export const OPERATOR_DEPARTMENTS = ['航運處', '督導', '航運組', '海技組'] as const
 
 export type OperatorDepartment = typeof OPERATOR_DEPARTMENTS[number]
 
@@ -40,15 +40,8 @@ export type OperatorRoster = Record<OperatorDepartment, string[]>
 export type OperatorRoleMap = Record<OperatorDepartment, Record<string, RosterManagedRole>>
 
 export const DEFAULT_OPERATOR_ROSTER: OperatorRoster = {
-  管理層: ['呂學修副總', '蔡宏仁協理', '李勻寧協理'],
-  管理組: ['陳治先', '王昱民', '方憲鵬組長', '陳韋自', '紀煒邦', '李雅雯', '曾湘柔', '周麗如'],
-  資材組: ['林建瑋', '鄧兆修', '鄧浚宏', '徐永兆', '王梓名', '林大詠', '周瑞廉組長', '楊延興', '許政子', '楊絜崴'],
-  營業處: ['王慈芬', '劉小萍', '翁敏芳', '李純瑛', '魏利育', '賴思妤', '陳建中', '粘家萍', '邱義泰', '倪嘉', '李耿志'],
-  船工處: ['廖晥妤', '吳燕桂', '楊弘羽', '王威譯', '李曜均', '劉煥章處長', '林冠辰', '盧玉玫', '林儀婷', '王昱斌', '賴朝瑜', '陳思翰', '顏仲楷'],
-  安衛處: ['楊順婷', '施品帆', '紀芳琪', '蘇上銘', '韓竹雅', '劉定淮', '江佳勳', '張鼎東'],
   航運處: ['吳建泰處長'],
   督導: ['尹德垿', '蔡繼來', '翁振傑', '黃傑治', '陳寰頤', '李幸龍', '廖麗蓁', '張議榮', '林滄龍', '蔡明哲', '陳昱宏', '陳思慧', '張雅琪', '張和中', '張志林', '餘雙', '唐洪新', '秦冰', '黃燕華', '潘獻波', '毛剛'],
-  船員組: ['徐意倫', '古美雪', '薛英林', '張育菁', '謝嘉穎', '王鈺婷', '湯雅帆', '陳必恆', '林竺諼', '鄭詩璇', '陳昱勳', '胡峻瑋', '吳思葦'],
   航運組: ['陳秀玉', '黃駿達', '江嘉卿', '陳秋縈', '溫雅媛', '王聖傑', '楊治華', '謝侑糖', '劉彥輝', '陳芮蓁'],
   海技組: ['朱世毅', '陳宜斌', '柯香吟', '陳思樺', '林建志', '張嘉珈', '吳易安'],
 }
@@ -73,7 +66,8 @@ export function normalizeOperatorRoles(value: unknown, roster: OperatorRoster = 
       : {}
     acc[department] = normalizedRoster[department].reduce((deptAcc, name) => {
       const rawRole = roleRecord[name]
-      deptAcc[name] = rawRole === 'admin' ? 'admin' : 'operator'
+      const defaultRole = department === '航運處' && name === '吳建泰處長' ? 'admin' : 'operator'
+      deptAcc[name] = rawRole === 'admin' ? 'admin' : rawRole === 'operator' ? 'operator' : defaultRole
       return deptAcc
     }, {} as Record<string, RosterManagedRole>)
     return acc
@@ -81,6 +75,7 @@ export function normalizeOperatorRoles(value: unknown, roster: OperatorRoster = 
 }
 
 export function roleForRosterMember(department: string, name: string, roles: OperatorRoleMap = normalizeOperatorRoles(null)) {
+  if (department === '航運處' && name === '吳建泰處長') return 'admin' as RosterManagedRole
   if (!OPERATOR_DEPARTMENTS.includes(department as OperatorDepartment)) return 'operator' as RosterManagedRole
   return roles[department as OperatorDepartment]?.[name] === 'admin' ? 'admin' : 'operator'
 }
@@ -111,8 +106,8 @@ export function canOperatorPerform(identity: OperatorIdentity | null | undefined
 
 export function cloudProfileToIdentity(profile: { email?: string | null, role?: string | null } | null | undefined): OperatorIdentity | null {
   if (!profile?.role) return null
-  if (profile.role === 'owner') return { department: '管理層', name: profile.email || 'Owner', role: 'owner' }
-  if (profile.role === 'admin' || profile.role === 'editor' || profile.role === 'source_editor') return { department: '管理組', name: profile.email || '管理員', role: 'admin' }
+  if (profile.role === 'owner') return { department: '海技組', name: profile.email || 'Owner', role: 'owner' }
+  if (profile.role === 'admin' || profile.role === 'editor' || profile.role === 'source_editor') return { department: '海技組', name: profile.email || '管理員', role: 'admin' }
   return null
 }
 

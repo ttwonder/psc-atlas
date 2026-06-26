@@ -22,6 +22,7 @@ import type { InspectionCase, OfficialSourceGuide, SourceBookmark, TimeRangeKey 
 const OPERATOR_ROSTER_STORAGE_KEY = 'psc_operator_roster'
 const OPERATOR_AUDIT_STORAGE_KEY = 'psc_operator_audit_logs'
 const OPERATOR_ROLES_STORAGE_KEY = 'psc_operator_roles'
+const OPERATOR_ROLES_VERSION_STORAGE_KEY = 'psc_operator_roles_version'
 
 function loadLocalOperatorRoster(): OperatorRoster {
   try {
@@ -37,7 +38,12 @@ function saveLocalOperatorRoster(roster: OperatorRoster) {
 
 function loadLocalOperatorRoles(roster: OperatorRoster): OperatorRoleMap {
   try {
-    return normalizeOperatorRoles(JSON.parse(localStorage.getItem(OPERATOR_ROLES_STORAGE_KEY) || 'null'), roster)
+    const raw = JSON.parse(localStorage.getItem(OPERATOR_ROLES_STORAGE_KEY) || 'null')
+    const roles = normalizeOperatorRoles(raw, roster)
+    if (localStorage.getItem(OPERATOR_ROLES_VERSION_STORAGE_KEY) !== '2' && roles['航運處']?.['吳建泰處長']) {
+      roles['航運處']['吳建泰處長'] = 'admin'
+    }
+    return roles
   } catch {
     return normalizeOperatorRoles(null, roster)
   }
@@ -45,6 +51,7 @@ function loadLocalOperatorRoles(roster: OperatorRoster): OperatorRoleMap {
 
 function saveLocalOperatorRoles(roles: OperatorRoleMap, roster: OperatorRoster) {
   localStorage.setItem(OPERATOR_ROLES_STORAGE_KEY, JSON.stringify(normalizeOperatorRoles(roles, roster)))
+  localStorage.setItem(OPERATOR_ROLES_VERSION_STORAGE_KEY, '2')
 }
 
 function loadLocalAuditLogs(): OperatorAuditLog[] {
@@ -436,18 +443,24 @@ function App() {
       setSources(mergedSources)
       saveStoredCases(merged)
       saveStoredSources(mergedSources)
-      const user = cloudConfigured ? await getCloudUser() : null
-      if (user) {
-        const profile = await getEditorProfile()
-        setEditorProfile(profile)
-        if (canEditDataset(profile)) {
-          await upsertCloudDataset(merged, mergedSources)
-          setCloudUserEmail(user.email ?? null)
-        } else {
-          setCloudMessage('已在本機完成刷新；你不是 editor/owner，不能把整個資料集寫入雲端。')
+      let cloudWriteMessage = cloudConfigured ? '已嘗試用部門/姓名模式寫入雲端資料庫。' : '目前使用本機資料。'
+      if (cloudConfigured) {
+        try {
+          const user = await getCloudUser()
+          const profile = user ? await getEditorProfile() : null
+          setCloudUserEmail(user?.email ?? null)
+          setEditorProfile(profile)
+          if (!user || canEditDataset(profile)) {
+            await upsertCloudDataset(merged, mergedSources)
+            cloudWriteMessage = user ? '已同步寫入雲端資料庫。' : '已用匿名 operator policy 寫入雲端資料庫。'
+          } else {
+            cloudWriteMessage = '已在本機完成刷新；目前帳號沒有整批寫入權限。'
+          }
+        } catch (error) {
+          cloudWriteMessage = `刷新結果已保存本機，但寫入雲端失敗：${describeCloudError(error)}`
         }
       }
-      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留缺陷，只保留 2025 年以後滯留項。${user ? '已同步寫入雲端資料庫。' : cloudConfigured ? '雲端未登入，暫存於本機；登入後可同步到雲端。' : '目前使用本機資料。'}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
+      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留缺陷，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
       if (!selected && merged.length) setSelected(merged[0])
     } catch (error) {
       setUpdateMessage(`更新失敗：${describeCloudError(error)}。既有資料已保留；可在「資料來源」手動加入網址備忘。`)
@@ -463,14 +476,11 @@ function App() {
     if (!cloudConfigured) return
     try {
       const user = await getCloudUser()
-      if (user) {
-        await upsertCloudSources(merged)
-        setCloudUserEmail(user.email ?? null)
-        setEditorProfile(await getEditorProfile())
-        setCloudMessage(successMessage)
-      } else {
-        setCloudMessage('來源變更已保存到本機；請登入後按「同步目前資料到雲端」。')
-      }
+      const profile = user ? await getEditorProfile() : null
+      await upsertCloudSources(merged)
+      setCloudUserEmail(user?.email ?? null)
+      setEditorProfile(profile)
+      setCloudMessage(user ? successMessage : `${successMessage}（已用部門/姓名模式寫入雲端，無需 Supabase email 登入。）`)
     } catch (error) {
       setCloudMessage(`來源已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
     }
@@ -483,19 +493,16 @@ function App() {
     if (!cloudConfigured) return
     try {
       const user = await getCloudUser()
-      if (user) {
-        const profile = await getEditorProfile()
+      const profile = user ? await getEditorProfile() : null
+      if (user && !canAddSources(profile)) {
         setEditorProfile(profile)
-        if (!canAddSources(profile)) {
-          setCloudMessage('來源已保存到本機；你的 email 未在來源提交白名單內，不能寫入雲端。')
-          return
-        }
-        await upsertCloudSources([item])
-        setCloudUserEmail(user.email ?? null)
-        setCloudMessage(successMessage)
-      } else {
-        setCloudMessage('來源已保存到本機；請登入後再提交到雲端。')
+        setCloudMessage('來源已保存到本機；目前登入帳號未在來源提交白名單內。')
+        return
       }
+      await upsertCloudSources([item])
+      setCloudUserEmail(user?.email ?? null)
+      setEditorProfile(profile)
+      setCloudMessage(user ? successMessage : `${successMessage}（已用部門/姓名模式寫入雲端，無需 Supabase email 登入。）`)
     } catch (error) {
       setCloudMessage(`來源已保存到本機，但同步新增來源失敗：${describeCloudError(error)}`)
     }
