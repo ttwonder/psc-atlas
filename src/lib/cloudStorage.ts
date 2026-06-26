@@ -108,6 +108,18 @@ export function toCloudSourceRow(item: SourceBookmark): CloudSourceRow {
   }
 }
 
+export function uniqueCloudSourceRows(sources: SourceBookmark[]) {
+  const byId = new Set<string>()
+  const byUrl = new Map<string, CloudSourceRow>()
+  for (const source of sources) {
+    const row = toCloudSourceRow(source)
+    if (byId.has(row.id)) continue
+    byId.add(row.id)
+    byUrl.set(row.url.trim().replace(/\/$/, ''), row)
+  }
+  return Array.from(byUrl.values())
+}
+
 export function normalizeSupabaseTimestamp(value: string | null | undefined) {
   const raw = (value ?? '').trim()
   if (/^\d{4}-\d{2}$/.test(raw)) return `${raw}-01T00:00:00.000Z`
@@ -210,7 +222,7 @@ export async function upsertCloudCases(cases: InspectionCase[]) {
 export async function upsertCloudSources(sources: SourceBookmark[]) {
   const supabase = getSupabaseClient()
   if (!supabase) throw new Error('尚未設定 Supabase URL / anon key')
-  const rows = sources.map(toCloudSourceRow)
+  const rows = uniqueCloudSourceRows(sources)
   const { error } = await supabase.from('psc_sources').upsert(rows, { onConflict: 'url' })
   if (error) throw error
 }

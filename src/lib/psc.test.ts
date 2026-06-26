@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { mergeCases, mergeSources } from './storage'
+import { mergeCases, mergeSources, sourceFromCase } from './storage'
 import { parseMcaDetentionHtml } from './govUkMca'
 import { calculateTrendSummary, filterCasesByRangeAndRegion } from './trends'
 import { buildRegionalReport } from './report'
@@ -65,6 +65,15 @@ describe('storage merge', () => {
     const incoming: SourceBookmark[] = [{ id: '2', title: 'Same', url: 'https://a.test', sourceType: '採集來源', addedAt: '2024-02-01', manual: false }]
     expect(mergeSources(existing, incoming)).toHaveLength(1)
     expect(mergeSources(existing, incoming)[0].manual).toBe(true)
+  })
+
+  it('creates stable unique source ids for manual cases without real source URLs', () => {
+    const one = sourceFromCase({ ...sampleCase('manual-one', '2026-06-01'), source: { ...sampleCase('manual-one', '2026-06-01').source, url: '#manual-entry' } })
+    const two = sourceFromCase({ ...sampleCase('manual-two', '2026-06-01'), vessel: 'SECOND', source: { ...sampleCase('manual-two', '2026-06-01').source, url: '#manual-entry' } })
+
+    expect(one.id).not.toBe(two.id)
+    expect(one.id).toContain('manual-one')
+    expect(two.id).toContain('manual-two')
   })
 })
 

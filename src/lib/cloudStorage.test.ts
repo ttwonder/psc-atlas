@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudOperatorRosterRows, toCloudSourceRow, type EditorProfile } from './cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudOperatorRosterRows, toCloudSourceRow, uniqueCloudSourceRows, type EditorProfile } from './cloudStorage'
 
 const sampleCase: InspectionCase = {
   id: 'case-1',
@@ -113,6 +113,20 @@ describe('cloud storage row mapping', () => {
       { department: '海技組', name: '陳宜斌', role: 'operator', active: true, sort_order: 1 },
     ])
     expect(rows.some((row) => Object.prototype.hasOwnProperty.call(row, 'id'))).toBe(false)
+  })
+
+
+  it('deduplicates source rows by both id and URL before Supabase upsert', () => {
+    const rows = uniqueCloudSourceRows([
+      { ...sampleSource, id: 'same-id', url: 'https://example.com/one' },
+      { ...sampleSource, id: 'same-id', url: 'https://example.com/two', title: 'Second with duplicate id' },
+      { ...sampleSource, id: 'third-id', url: 'https://example.com/two', title: 'Duplicate URL wins' },
+    ])
+
+    expect(rows.map((row) => row.id)).toEqual(['same-id', 'third-id'])
+    expect(rows.map((row) => row.url)).toEqual(['https://example.com/one', 'https://example.com/two'])
+    expect(new Set(rows.map((row) => row.id))).toHaveLength(rows.length)
+    expect(new Set(rows.map((row) => row.url))).toHaveLength(rows.length)
   })
 
 })

@@ -17,10 +17,11 @@ export function mergeCases(existing: InspectionCase[], incoming: InspectionCase[
 }
 
 export function sourceFromCase(item: InspectionCase): SourceBookmark {
+  const sourceUrl = sourceUrlForCase(item)
   return {
-    id: `case-source-${slugify(item.source.url)}`,
+    id: `case-source-${slugify(sourceUrl) || slugify(item.id)}`,
     title: item.source.title,
-    url: item.source.url,
+    url: sourceUrl,
     sourceType: item.source.sourceType,
     authority: item.source.authority,
     addedAt: item.fetchedAt ?? item.source.publishedAt,
@@ -92,6 +93,12 @@ export function slugify(value: string) {
 
 function normalizeUrl(url: string) {
   return url.trim().replace(/\/$/, '')
+}
+
+function sourceUrlForCase(item: InspectionCase) {
+  const raw = item.source.url.trim()
+  if (!raw || raw === '#' || raw === '#manual-entry') return `#manual-entry-${slugify(item.id)}`
+  return raw
 }
 
 function caseKey(item: InspectionCase) {
