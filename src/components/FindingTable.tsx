@@ -91,6 +91,29 @@ function rowMatchesKeyword(row: FindingRow, label: string) {
   return textMatchesKeyword(rowText(row), label)
 }
 
+
+function findingToDraft(finding: Deficiency, patch: Partial<FindingDraft> = {}): FindingDraft {
+  return {
+    code: finding.code,
+    original: finding.original,
+    category: finding.category,
+    observedCondition: finding.observedCondition ?? '',
+    inspectorFinding: finding.inspectorFinding ?? '',
+    detentionReason: finding.detentionReason ?? '',
+    requiredRectification: finding.requiredRectification ?? '',
+    releaseCondition: finding.releaseCondition ?? '',
+    sourcePage: finding.sourcePage ?? '',
+    sourceQuote: finding.sourceQuote ?? '',
+    detentionGround: finding.detentionGround,
+    notes: finding.notes ?? '',
+    priority: finding.priority ?? 'low',
+    novel: Boolean(finding.novel),
+    ...patch,
+  }
+}
+
+export const __findingDraftTest = { findingToDraft }
+
 function buildKeywordTags(rows: FindingRow[]) {
   const counts = new Map<string, number>()
   for (const row of rows) {
@@ -211,18 +234,21 @@ export function FindingTable({
               <strong>{caseItem.date}</strong>
               <span>{caseItem.vessel}</span>
               <small>IMO {caseItem.imo}</small>
-              <div className="finding-visible-flags">
-                <span className={`priority-pill priority-${finding.priority ?? 'low'}`}>關注等級：{priorityLabel(finding.priority)}</span>
-                <span className={`novel-toggle-pill ${finding.novel ? 'checked' : ''}`}>{finding.novel ? '☑' : '☐'} 新穎案例</span>
+              <div className="finding-visible-flags quick-edit-controls" onClick={(event) => event.stopPropagation()}>
+                <label className="quick-priority-select">關注等級
+                  <select value={finding.priority ?? 'low'} onChange={(event) => onUpdateFinding?.(caseItem.id, index, findingToDraft(finding, { priority: event.target.value as FindingPriority }))}>
+                    <option value="low">低</option>
+                    <option value="medium">中</option>
+                    <option value="high">高</option>
+                  </select>
+                </label>
+                <label className={`quick-novel-check ${finding.novel ? 'checked' : ''}`}><input type="checkbox" checked={Boolean(finding.novel)} onChange={(event) => onUpdateFinding?.(caseItem.id, index, findingToDraft(finding, { novel: event.target.checked }))} /> 新穎案例</label>
               </div>
             </div>
             <div className="finding-card-region">
               <span>{caseItem.region}</span>
               <small>{caseItem.port}</small>
-              <code>{finding.code}</code>
-              <b>{finding.category}</b>
-              <span className={`priority-pill priority-${finding.priority ?? 'low'}`}>關注度：{priorityLabel(finding.priority)}</span>
-              {finding.novel ? <span className="novel-pill">新穎</span> : null}
+              <div className="finding-code-line"><code>{finding.code}</code><b>{finding.category}</b></div>
             </div>
             <div className="finding-card-copy">
               <p className="finding-original" lang="en">{finding.original}</p>

@@ -697,3 +697,30 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 @media (max-width: 760px) {
   .case-card-row, .finding-edit-highlight { grid-template-columns: 1fr; }
 }
+
+
+/* Requested quick-edit refinements */
+.case-card-main .row-jump-button {
+  display: block !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  line-height: 1.32 !important;
+}
+.case-card-main span { white-space: normal; overflow-wrap: anywhere; }
+.finding-code-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.finding-code-line code { color: #183b5d; font-family: inherit; font-size: 12px; font-weight: 850; }
+.finding-code-line b { color: #17344e; font-size: 12px; }
+.quick-edit-controls { align-items: center; }
+.quick-priority-select { display: inline-flex; align-items: center; gap: 5px; min-height: 26px; padding: 3px 7px; border-radius: 999px; color: #6b5330; background: #fff4cf; font-size: 11px; font-weight: 850; white-space: nowrap; }
+.quick-priority-select select { width: 48px; min-height: 20px !important; padding: 1px 18px 1px 5px !important; border-radius: 999px !important; font-size: 11px !important; line-height: 1 !important; background-color: #fffdf6 !important; }
+.quick-novel-check { display: inline-flex; align-items: center; gap: 5px; min-height: 26px; padding: 3px 8px; border-radius: 999px; color: #6b6d82; background: #f2f4fb; font-size: 11px; font-weight: 850; white-space: nowrap; cursor: pointer; }
+.quick-novel-check.checked { color: #604bb8; background: #efe8ff; }
+.quick-novel-check input { width: 13px; min-height: 13px; accent-color: #8e77e8; }
+.priority-filter-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding: 10px 16px 2px; }
+.priority-filter-row label { display: grid; gap: 4px; color: #53607c; font-size: 11px; font-weight: 850; }
+.priority-filter-row select { min-width: 150px; min-height: 32px; padding: 5px 30px 5px 9px; border: 1px solid #cec9f5; border-radius: 9px; background: #fff; color: #263354; font: inherit; }
+.priority-filter-row span { margin-left: auto; color: #7357d4; font-size: 12px; font-weight: 850; }

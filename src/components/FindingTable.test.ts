@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { __findingKeywordTest, paginateFindings } from './FindingTable'
+import { __findingDraftTest, __findingKeywordTest, paginateFindings } from './FindingTable'
+import type { Deficiency } from '../types'
 
 describe('finding keyword chips', () => {
   it('uses the same synonym rule for the visible Chinese label and English source text', () => {
@@ -26,3 +27,32 @@ describe('finding pagination', () => {
     expect(paginateFindings(rows, 99).page).toBe(3)
   })
 })
+
+describe('finding quick edit draft', () => {
+  it('preserves original fields when changing priority or novel from the card controls', () => {
+    const finding: Deficiency = {
+      code: '07105',
+      category: '消防安全',
+      original: 'Fire door failed to close.',
+      observedCondition: 'during test',
+      inspectorFinding: 'failed',
+      detentionReason: 'grounds for detention',
+      requiredRectification: 'repair before departure',
+      releaseCondition: 'test again',
+      sourcePage: 'p. 3',
+      sourceQuote: 'quote',
+      detentionGround: true,
+      notes: 'note',
+      priority: 'low',
+      novel: false,
+    }
+
+    const draft = __findingDraftTest.findingToDraft(finding, { priority: 'high', novel: true })
+
+    expect(draft.original).toBe('Fire door failed to close.')
+    expect(draft.detentionGround).toBe(true)
+    expect(draft.priority).toBe('high')
+    expect(draft.novel).toBe(true)
+  })
+})
+

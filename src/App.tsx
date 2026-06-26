@@ -142,6 +142,55 @@ function App() {
     return () => { cancelled = true }
   }, [cloudConfigured])
 
+  async function loadLatestCloudState(reason = '手動同步') {
+    if (!cloudConfigured) {
+      setCloudMessage('尚未設定 Supabase，無法取得雲端最新內容；目前是本機快取資料。')
+      return
+    }
+    setCloudLoading(true)
+    try {
+      const user = await getCloudUser()
+      const profile = user ? await getEditorProfile() : null
+      const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
+      setCases(dataset.cases)
+      setSources(dataset.sources)
+      saveStoredCases(dataset.cases)
+      saveStoredSources(dataset.sources)
+      setCloudUserEmail(user?.email ?? null)
+      setEditorProfile(profile)
+      try {
+        const cloudRoster = await loadCloudOperatorRoster()
+        if (cloudRoster) {
+          setOperatorRoster(cloudRoster.roster)
+          setOperatorRoles(cloudRoster.roles)
+          saveLocalOperatorRoster(cloudRoster.roster)
+          saveLocalOperatorRoles(cloudRoster.roles, cloudRoster.roster)
+        }
+      } catch (error) {
+        console.warn('Load PSC operator roster failed', error)
+      }
+      setCloudMessage(`${reason}完成：已載入雲端 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在白名單）'}` : '目前未登入；若 Supabase RLS 僅允許登入寫入，修改只能先存本機。'}`)
+    } catch (error) {
+      setCloudMessage(`取得雲端最新內容失敗：${describeCloudError(error)}；已保留本機資料。`)
+    } finally {
+      setCloudLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!cloudConfigured) return
+    const onFocus = () => { void loadLatestCloudState('自動同步最新') }
+    const onVisibility = () => { if (document.visibilityState === 'visible') void loadLatestCloudState('自動同步最新') }
+    window.addEventListener('focus', onFocus)
+    document.addEventListener('visibilitychange', onVisibility)
+    const timer = window.setInterval(() => { void loadLatestCloudState('自動同步最新') }, 60000)
+    return () => {
+      window.removeEventListener('focus', onFocus)
+      document.removeEventListener('visibilitychange', onVisibility)
+      window.clearInterval(timer)
+    }
+  }, [cloudConfigured])
+
   const filteredCases = useMemo(() => {
     const ranged = filterCasesByRangeAndRegion(cases, timeRange, region)
     return ranged.filter((item) => {
@@ -206,14 +255,14 @@ function App() {
     await pending.onConfirm(identity)
   }
 
-  async function persistOperatorRoster(nextRoster: OperatorRoster, nextRoles: OperatorRoleMap = operatorRoles) {
+  async function persistOperatorRoster(nextRoster: OperatorRoster, nextRoles: OperatorRoleMap = operatorRoles, forceCloudSync = false) {
     const normalized = normalizeOperatorRoster(nextRoster)
     const normalizedRoles = normalizeOperatorRoles(nextRoles, normalized)
     setOperatorRoster(normalized)
     setOperatorRoles(normalizedRoles)
     saveLocalOperatorRoster(normalized)
     saveLocalOperatorRoles(normalizedRoles, normalized)
-    if (cloudConfigured && canManageOperatorRoster) {
+    if (cloudConfigured && (forceCloudSync || canManageOperatorRoster)) {
       try { await upsertCloudOperatorRoster(normalized, normalizedRoles) } catch (error) { setCloudMessage(`操作員名單已保存到本機，但同步 Supabase 失敗：${describeCloudError(error)}`) }
     }
   }
@@ -226,7 +275,7 @@ function App() {
       const before = operatorRoster
       const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: [...operatorRoster[dept], trimmed] })
       const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: { ...(operatorRoles[dept] ?? {}), [trimmed]: role } }, next)
-      await persistOperatorRoster(next, nextRoles)
+      await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `新增 ${trimmed}`, before, after: next }))
     })
   }
@@ -240,7 +289,7 @@ function App() {
       const deptRoles = { ...(operatorRoles[dept] ?? {}) }
       delete deptRoles[name]
       const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: deptRoles }, next)
-      await persistOperatorRoster(next, nextRoles)
+      await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `移除 ${name}`, before, after: next }))
     })
   }
@@ -252,7 +301,7 @@ function App() {
       if (!operatorRoster[dept]?.includes(name)) return
       const before = operatorRoles
       const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: { ...(operatorRoles[dept] ?? {}), [name]: role } }, operatorRoster)
-      await persistOperatorRoster(operatorRoster, nextRoles)
+      await persistOperatorRoster(operatorRoster, nextRoles, canOperatorPerform(actor, 'manage_roster'))
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: `${department}/${name}`, targetTitle: `修改 ${name} 為 ${role === 'admin' ? '管理員' : '操作員'}`, before, after: nextRoles }))
       if (currentOperator?.department === department && currentOperator?.name === name) setCurrentOperator({ ...currentOperator, role })
     })
@@ -313,6 +362,38 @@ function App() {
     } finally {
       setCloudLoading(false)
     }
+  }
+
+  async function saveCurrentChangesToCloud() {
+    if (!cloudConfigured) {
+      setCloudMessage('尚未設定 Supabase，無法保存到雲端；目前只保存在本機瀏覽器。')
+      return
+    }
+    requestOperator('edit_finding', '保存目前修改到雲端', async (actor) => {
+      setCloudLoading(true)
+      try {
+        const user = await getCloudUser()
+        const profile = user ? await getEditorProfile() : null
+        setCloudUserEmail(user?.email ?? null)
+        setEditorProfile(profile)
+        if (!user) {
+          // 嘗試匿名寫入；若 RLS 不允許，catch 會提示需要登入/調整 SQL。
+          await upsertCloudDataset(cases, sources)
+        } else if (canEditDataset(profile) || canOperatorPerform(actor, 'edit_finding')) {
+          await upsertCloudDataset(cases, sources)
+        } else {
+          setCloudMessage('你已登入，但沒有保存資料集權限。請改用 Owner/Admin/editor 帳號，或在 Supabase RLS 開放 operator 寫入。')
+          return
+        }
+        await upsertCloudOperatorRoster(operatorRoster, operatorRoles).catch(() => undefined)
+        setCloudMessage(`保存修改完成：已嘗試同步 ${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷、${sources.length} 個來源。`)
+        await appendAuditLog(buildAuditLog({ actor, action: 'edit_finding', targetType: 'dataset', targetId: 'current-dataset', targetTitle: '保存目前修改到雲端' }))
+      } catch (error) {
+        setCloudMessage(`保存修改失敗：${describeCloudError(error)}。本機修改仍已保存；若要所有人看到，請用 Owner/Admin 登入或更新 Supabase RLS。`)
+      } finally {
+        setCloudLoading(false)
+      }
+    })
   }
 
   async function refreshViaServer() {
@@ -483,16 +564,17 @@ function App() {
       if (!cloudConfigured) return
       try {
         const user = await getCloudUser()
-        if (user && canEditDataset(await getEditorProfile())) {
+        const profile = user ? await getEditorProfile() : null
+        setCloudUserEmail(user?.email ?? null)
+        setEditorProfile(profile)
+        if (!user || canEditDataset(profile) || canOperatorPerform(actor, 'edit_finding')) {
           await upsertCloudDataset(nextCases, sources)
-          setCloudUserEmail(user.email ?? null)
-          setEditorProfile(await getEditorProfile())
-          setCloudMessage('缺陷修改已同步到雲端，並已寫入 LOG。')
+          setCloudMessage(user ? '缺陷修改已自動同步到雲端，並已寫入 LOG。' : '缺陷修改已保存到本機，並已嘗試匿名同步雲端；若其他人未看到，請檢查 Supabase RLS 是否允許 operator/anon 寫入。')
         } else {
-          setCloudMessage('缺陷修改已保存到本機並已記錄 LOG；需 Owner/Admin 登入後同步到雲端。')
+          setCloudMessage('缺陷修改已保存到本機並已記錄 LOG；目前帳號沒有同步雲端權限。')
         }
       } catch (error) {
-        setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
+        setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}。若要所有人立即看到，請用 Owner/Admin 登入或更新 Supabase RLS。`)
       }
     })
   }
@@ -523,6 +605,7 @@ function App() {
           <div><h1>PSC 滯留案例卷宗 App</h1><p>累積官方來源、近期趨勢、地區報告、預防自查清單與 Excel 匯出</p></div>
           <div className="header-actions">
             <button className="export-button" type="button" onClick={refreshLatest} disabled={loading}><RefreshCw size={18} className={loading ? 'spin' : ''} />獲取最新缺失</button>
+            <button className="primary-button save-changes-button" type="button" onClick={saveCurrentChangesToCloud} disabled={cloudLoading}>保存修改</button>
             <button className="export-button" type="button" onClick={() => exportCasesWorkbook(filteredCases, sources, officialSourceMap)}><Download size={18} />匯出 Excel</button>
           </div>
           <button className="mobile-menu" type="button" aria-label="開啟導覽" onClick={() => setMobileNavOpen(true)}><Menu /></button>
@@ -590,11 +673,36 @@ function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase
 }
 
 function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
-  const rows = getPriorityNovelFindings(cases)
+  const [priorityFilter, setPriorityFilter] = useState<'all' | 'low' | 'medium' | 'high'>('all')
+  const [novelFilter, setNovelFilter] = useState<'all' | 'novel' | 'not-novel'>('all')
+  const rows = getPriorityNovelFindings(cases).filter(({ finding }) => {
+    const priority = finding.priority ?? 'low'
+    const matchesPriority = priorityFilter === 'all' || priority === priorityFilter
+    const matchesNovel = novelFilter === 'all' || (novelFilter === 'novel' ? Boolean(finding.novel) : !finding.novel)
+    return matchesPriority && matchesNovel
+  })
   return (
     <div className="dossier-workbench">
       <section className="case-list evidence-card" aria-label="重點與新穎缺陷">
         <header className="section-header"><div><h2>重點 + 新穎缺陷</h2><p>只展示關注度為中/高或已勾選「新穎」的具體缺陷原文；上方時間段和其他篩選同樣生效。</p></div></header>
+        <div className="priority-filter-row">
+          <label>關注程度
+            <select value={priorityFilter} onChange={(event) => setPriorityFilter(event.target.value as typeof priorityFilter)}>
+              <option value="all">全部關注程度</option>
+              <option value="high">高</option>
+              <option value="medium">中</option>
+              <option value="low">低</option>
+            </select>
+          </label>
+          <label>新穎案例
+            <select value={novelFilter} onChange={(event) => setNovelFilter(event.target.value as typeof novelFilter)}>
+              <option value="all">全部</option>
+              <option value="novel">只看新穎案例</option>
+              <option value="not-novel">不看新穎案例</option>
+            </select>
+          </label>
+          <span>目前顯示 {rows.length} 項</span>
+        </div>
         <div className="priority-finding-list">
           {rows.map(({ caseItem, finding, index }) => (
             <article key={`${caseItem.id}-${index}`}>
