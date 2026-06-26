@@ -9,6 +9,15 @@ interface FindingRow {
   index: number
 }
 
+const FINDINGS_PER_PAGE = 20
+
+export function paginateFindings<T>(items: T[], requestedPage: number, perPage = FINDINGS_PER_PAGE) {
+  const totalPages = Math.max(1, Math.ceil(items.length / perPage))
+  const page = Math.min(Math.max(1, requestedPage), totalPages)
+  const start = (page - 1) * perPage
+  return { page, totalPages, items: items.slice(start, start + perPage) }
+}
+
 const keywordRules = [
   { label: '防火門', needles: ['fire door', 'fire doors', '防火門', '防火门'] },
   { label: '火警探測', needles: ['fire detection', 'fire detecting', 'fire alarm', '火警探測', '火警探测', '火災探測', '火灾探测'] },
@@ -132,6 +141,8 @@ export function FindingTable({
   const [draftNotes, setDraftNotes] = useState('')
   const [draftPriority, setDraftPriority] = useState<FindingPriority>('low')
   const [draftNovel, setDraftNovel] = useState(false)
+  const [page, setPage] = useState(1)
+  const [permissionMessage, setPermissionMessage] = useState('')
   const rows = useMemo(() => flattenFindings(cases), [cases])
   const normalizedGlobal = globalQuery.trim().toLocaleLowerCase()
   const normalizedLocal = localQuery.trim().toLocaleLowerCase()
@@ -144,7 +155,17 @@ export function FindingTable({
   const filteredRows = useMemo(() => baseFilteredRows.filter((row) => {
     return !keyword || rowMatchesKeyword(row, keyword)
   }), [baseFilteredRows, keyword])
+  const pagedRows = useMemo(() => paginateFindings(filteredRows, page), [filteredRows, page])
+  const pageRows = pagedRows.items
   const focusedRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    setPage(1)
+  }, [normalizedGlobal, normalizedLocal, keyword, cases])
+
+  useEffect(() => {
+    if (page !== pagedRows.page) setPage(pagedRows.page)
+  }, [page, pagedRows.page])
 
   useEffect(() => {
     if (!focusCaseId) return
@@ -169,9 +190,10 @@ export function FindingTable({
           </button>
         ))}
       </div>
-      <div className="finding-result-count">顯示 {filteredRows.length} / {rows.length} 項缺陷{keyword ? `｜關鍵詞：${keyword}` : ''}</div>
+      <div className="finding-result-count">顯示第 {pagedRows.page} / {pagedRows.totalPages} 頁，每頁 20 項；共 {filteredRows.length} / {rows.length} 項缺陷{keyword ? `｜關鍵詞：${keyword}` : ''}</div>
+      {permissionMessage ? <div className="permission-note">{permissionMessage}</div> : null}
       <div className="finding-card-list">
-        {filteredRows.map(({ caseItem, finding, index }) => {
+        {pageRows.map(({ caseItem, finding, index }) => {
           const key = `${caseItem.id}-${finding.code}-${index}`
           const editing = editingKey === key
           return (
@@ -231,12 +253,10 @@ export function FindingTable({
             <div className="finding-card-actions">
               <span className={`ground-state ${finding.detentionGround === true ? 'yes' : 'unknown'}`}>{finding.detentionGround === true ? '滯留依據' : '未公開'}</span>
               <span className={`evidence-badge ${caseItem.evidenceLevel}`}>{evidenceLabel(caseItem.evidenceLevel)}</span>
-              {canEdit && onUpdateFinding ? (
-                editing ? <>
-                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { code: draftCode, original: draftOriginal, category: draftCategory, observedCondition: draftObservedCondition, inspectorFinding: draftInspectorFinding, detentionReason: draftDetentionReason, requiredRectification: draftRequiredRectification, releaseCondition: draftReleaseCondition, sourcePage: draftSourcePage, sourceQuote: draftSourceQuote, detentionGround: draftDetentionGround === 'true' ? true : draftDetentionGround === 'false' ? false : null, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
-                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey('') }}>取消</button>
-                </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey(key); setDraftCode(finding.code); setDraftOriginal(finding.original); setDraftCategory(finding.category); setDraftObservedCondition(finding.observedCondition ?? ''); setDraftInspectorFinding(finding.inspectorFinding ?? ''); setDraftDetentionReason(finding.detentionReason ?? ''); setDraftRequiredRectification(finding.requiredRectification ?? ''); setDraftReleaseCondition(finding.releaseCondition ?? ''); setDraftSourcePage(finding.sourcePage ?? ''); setDraftSourceQuote(finding.sourceQuote ?? ''); setDraftDetentionGround(finding.detentionGround === true ? 'true' : finding.detentionGround === false ? 'false' : ''); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>
-              ) : null}
+              {editing && canEdit && onUpdateFinding ? <>
+                <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { code: draftCode, original: draftOriginal, category: draftCategory, observedCondition: draftObservedCondition, inspectorFinding: draftInspectorFinding, detentionReason: draftDetentionReason, requiredRectification: draftRequiredRectification, releaseCondition: draftReleaseCondition, sourcePage: draftSourcePage, sourceQuote: draftSourceQuote, detentionGround: draftDetentionGround === 'true' ? true : draftDetentionGround === 'false' ? false : null, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
+                <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey('') }}>取消</button>
+              </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); if (!canEdit || !onUpdateFinding) { setPermissionMessage('請先在「資料來源」頁用操作員帳號登入；只有 editor/owner 可以修改缺陷詳情。'); return } setPermissionMessage(''); setEditingKey(key); setDraftCode(finding.code); setDraftOriginal(finding.original); setDraftCategory(finding.category); setDraftObservedCondition(finding.observedCondition ?? ''); setDraftInspectorFinding(finding.inspectorFinding ?? ''); setDraftDetentionReason(finding.detentionReason ?? ''); setDraftRequiredRectification(finding.requiredRectification ?? ''); setDraftReleaseCondition(finding.releaseCondition ?? ''); setDraftSourcePage(finding.sourcePage ?? ''); setDraftSourceQuote(finding.sourceQuote ?? ''); setDraftDetentionGround(finding.detentionGround === true ? 'true' : finding.detentionGround === false ? 'false' : ''); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>}
               <a className="source-mini-link" href={caseItem.source.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
                 官方來源<ExternalLink size={13} />
               </a>
@@ -245,6 +265,11 @@ export function FindingTable({
           )
         })}
       </div>
+      {filteredRows.length > 20 ? <div className="finding-pagination pagination" aria-label="缺陷詳情分頁">
+        <button type="button" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={pagedRows.page <= 1}>上一頁</button>
+        <span>第 {pagedRows.page} / {pagedRows.totalPages} 頁</span>
+        <button type="button" onClick={() => setPage((value) => Math.min(pagedRows.totalPages, value + 1))} disabled={pagedRows.page >= pagedRows.totalPages}>下一頁</button>
+      </div> : null}
       {filteredRows.length === 0 ? <div className="empty-state"><strong>沒有符合條件的缺陷</strong><span>請放寬篩選條件或換一個關鍵詞。</span></div> : null}
     </div>
   )

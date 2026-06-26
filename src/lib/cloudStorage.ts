@@ -49,7 +49,7 @@ export function canEditDataset(profile: EditorProfile | null) {
 }
 
 export function canEditSources(profile: EditorProfile | null) {
-  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor'))
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor' || profile.role === 'source_editor' || profile.can_add_sources))
 }
 
 export function canAddSources(profile: EditorProfile | null) {

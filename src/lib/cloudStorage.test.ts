@@ -88,12 +88,12 @@ describe('cloud storage row mapping', () => {
     expect(describeCloudError({ error_description: 'Invalid path specified in request URL' })).toBe('Invalid path specified in request URL')
   })
 
-  it('distinguishes source submitters from operators', () => {
+  it('allows source operators to edit sources while reserving finding edits for dataset editors', () => {
     const sourceEditor: EditorProfile = { email: 'source@example.com', role: 'source_editor', active: true, can_add_sources: true, can_sync_dataset: false, can_refresh: false }
     const operator: EditorProfile = { email: 'editor@example.com', role: 'editor', active: true, can_add_sources: true, can_sync_dataset: true, can_refresh: false }
 
     expect(canAddSources(sourceEditor)).toBe(true)
-    expect(canEditSources(sourceEditor)).toBe(false)
+    expect(canEditSources(sourceEditor)).toBe(true)
     expect(canEditDataset(sourceEditor)).toBe(false)
     expect(canEditSources(operator)).toBe(true)
     expect(canEditDataset(operator)).toBe(true)

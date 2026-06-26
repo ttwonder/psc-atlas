@@ -504,6 +504,7 @@ function SourcesPage(props: SourcesPageProps) {
   const [editingSourceId, setEditingSourceId] = useState('')
   const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '', publishedAt: '', fetchedAt: '', evidenceLevel: undefined, autoFetch: undefined, status: 'new', tags: '', storageUrl: '' })
   const [deleteReason, setDeleteReason] = useState('')
+  const [sourcePermissionMessage, setSourcePermissionMessage] = useState('')
   const activeSourceList = activeSources(props.sources)
   const deletedSourceList = deletedSources(props.sources)
   return (
@@ -522,7 +523,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="eyebrow">CLOUD DATABASE</p>
           <h2>雲端資料庫同步</h2>
           <p>{props.cloudMessage}</p>
-          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜${props.canEditSources ? '可修改/刪除來源與缺陷' : props.canAddSources ? '只能新增來源' : '只讀'}` : 'Supabase 已設定；目前未登入，公開資料可讀但不能寫入。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY。'}</small>
+          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜${props.canEditSources ? '可修改/刪除來源' : props.canAddSources ? '可新增來源' : '只讀'}` : 'Supabase 已設定；目前未登入，公開資料可讀但不能寫入。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY。'}</small>
         </div>
         {props.cloudConfigured ? (
           <div className="cloud-actions">
@@ -535,7 +536,7 @@ function SourcesPage(props: SourcesPageProps) {
               </label>
             )}
             {!props.cloudUserEmail ? <button className="primary-button" type="button" onClick={props.onCloudSignIn} disabled={props.cloudLoading || !props.cloudEmailInput.trim()}>發送登入連結</button> : null}
-            <button className="primary-button" type="button" onClick={props.onCloudSync} disabled={props.cloudLoading || !props.cloudUserEmail || !props.canEditSources}>{props.cloudLoading ? '同步中…' : '同步目前資料到雲端'}</button>
+            <button className="primary-button" type="button" onClick={props.onCloudSync} disabled={props.cloudLoading || !props.cloudUserEmail || !canEditDataset(props.editorProfile)}>{props.cloudLoading ? '同步中…' : '同步目前資料到雲端'}</button>
           </div>
         ) : (
           <div className="cloud-actions"><code>先建立 Supabase 專案並設定環境變數</code></div>
@@ -584,8 +585,9 @@ function SourcesPage(props: SourcesPageProps) {
           </section>
           <section className="panel collected-sources-panel">
             <h2>已採集 / 備忘網址清單</h2>
-            <p className="panel-hint">source_editor 只能新增來源；editor/owner 可修改來源標題、網址、類型、機關與備註；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
-            {props.canEditSources ? <label className="delete-reason-field">刪除原因（可選）<input value={deleteReason} onChange={(event) => setDeleteReason(event.target.value)} placeholder="例如：重複來源 / 無效網址 / 已合併到其他來源" /></label> : null}
+            <p className="panel-hint">操作員以上可修改來源各欄位並刪除來源；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
+            <label className="delete-reason-field">刪除原因（可選）<input value={deleteReason} onChange={(event) => setDeleteReason(event.target.value)} placeholder="例如：重複來源 / 無效網址 / 已合併到其他來源" /></label>
+            {sourcePermissionMessage ? <div className="permission-note">{sourcePermissionMessage}</div> : null}
             <div className="source-list">{activeSourceList.map((item) => {
               const editing = editingSourceId === item.id
               return <article key={item.id} className={editing ? 'source-editing' : ''}>
@@ -610,13 +612,13 @@ function SourcesPage(props: SourcesPageProps) {
                 </div>
                 <div className="source-row-actions">
                   <a href={item.url} target="_blank" rel="noreferrer">打開網址</a>
-                  {props.canEditSources ? editing ? <>
+                  {editing && props.canEditSources ? <>
                     <button className="text-button compact" type="button" onClick={() => { props.onSaveSource(item.id, sourceDraft); setEditingSourceId('') }}>保存</button>
                     <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
                   </> : <>
-                    <button className="text-button compact" type="button" onClick={() => { setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }}>修改</button>
-                    <button className="danger-button compact" type="button" onClick={() => props.onDeleteSource(item.id, deleteReason)}>刪除</button>
-                  </> : null}
+                    <button className="text-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能修改來源。'); return } setSourcePermissionMessage(''); setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }}>修改</button>
+                    <button className="danger-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能刪除來源。'); return } setSourcePermissionMessage(''); props.onDeleteSource(item.id, deleteReason) }}>刪除</button>
+                  </>}
                 </div>
               </article>
             })}</div>
@@ -630,7 +632,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="panel-hint">這裡暫存已刪除來源；刪除滿 30 天後會在本機/同步時自動清除。</p>
           <div className="source-list deleted-source-list">{deletedSourceList.map((item) => <article key={item.id}>
             <div><strong>{item.title}</strong><span>{item.deletedAt ? `刪除時間：${item.deletedAt.slice(0, 10)}` : '已刪除'}{item.deletedBy ? ` · ${item.deletedBy}` : ''}</span>{item.deleteReason ? <small>{item.deleteReason}</small> : null}<a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></div>
-            {props.canEditSources ? <button className="text-button compact" type="button" onClick={() => props.onRestoreSource(item.id)}>還原</button> : null}
+            <button className="text-button compact" type="button" onClick={() => { if (!props.canEditSources) { setSourcePermissionMessage('請先用操作員帳號登入；source_editor/editor/owner 才能還原來源。'); return } props.onRestoreSource(item.id) }}>還原</button>
           </article>)}</div>
           {deletedSourceList.length === 0 ? <div className="empty-state"><strong>暫無已刪除來源</strong><span>刪除來源後會先出現在這裡。</span></div> : null}
         </section>
