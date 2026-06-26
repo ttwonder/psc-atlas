@@ -748,3 +748,35 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 .manual-entry-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; }
 .manual-inline-check { align-content: center; min-height: 34px; padding: 7px 9px; border: 1px solid #e5ddff; border-radius: 9px; background: #fff; }
 @media (max-width: 960px) { .manual-entry-grid, .manual-entry-grid.compact { grid-template-columns: 1fr; } .manual-entry-header { align-items: stretch; flex-direction: column; } }
+
+
+/* Overview page wrapping fixes */
+.dashboard-page .panel,
+.dashboard-page .stat-grid article,
+.quick-case-grid button {
+  min-width: 0;
+}
+.quick-case-grid button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.quick-case-grid strong,
+.quick-case-grid span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.quick-case-grid strong {
+  line-height: 1.28;
+}
+.quick-case-grid span {
+  white-space: normal;
+}
+.stat-grid strong,
+.stat-grid small,
+.trend-list li,
+.overview-keywords span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
