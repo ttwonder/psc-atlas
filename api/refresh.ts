@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 import { fetchLatestOfficialCases } from '../src/lib/officialRefresh'
 import { isRefreshAuthorized } from '../src/lib/serverRefreshAuth'
-import { normalizeSupabaseTimestamp } from '../src/lib/cloudStorage'
+import { uniqueCloudSourceRows } from '../src/lib/cloudStorage'
+import { discoverPdfSourcesFromPages } from '../src/lib/pdfSources'
 import { sourceFromCase } from '../src/lib/storage'
 import type { InspectionCase, SourceBookmark } from '../src/types'
 
@@ -34,27 +35,33 @@ export default async function handler(req: any, res: any) {
     const result = await fetchLatestOfficialCases(Number.isFinite(limit) ? limit : 12)
     const incoming = result.cases.map(keepDetentionOnly).filter((item): item is InspectionCase => Boolean(item))
     const sources = incoming.map(sourceFromCase)
+    const existingSourceResult = await supabase.from('psc_sources').select('payload')
+    if (existingSourceResult.error) throw existingSourceResult.error
+    const existingSources = (existingSourceResult.data ?? []).map((row: any) => row.payload as SourceBookmark).filter(Boolean)
+    const pdfDiscovery = await discoverPdfSourcesFromPages([...existingSources, ...sources], { maxPages: 20, timeoutMs: 8000 })
+    const allSources = uniqueCloudSourceRows([...sources, ...pdfDiscovery.sources])
 
     if (incoming.length) {
       const { error } = await supabase.from('psc_cases').upsert(incoming.map(toCaseRow), { onConflict: 'id' })
       if (error) throw error
     }
-    if (sources.length) {
-      const { error } = await supabase.from('psc_sources').upsert(sources.map(toSourceRow), { onConflict: 'url' })
+    if (allSources.length) {
+      const { error } = await supabase.from('psc_sources').upsert(allSources, { onConflict: 'url' })
       if (error) throw error
     }
     await supabase.from('psc_sync_events').insert({
       event_type: 'server-refresh',
-      message: result.messages.join('；'),
+      message: [...result.messages, ...pdfDiscovery.messages].join('；'),
       case_count: incoming.length,
-      source_count: sources.length,
+      source_count: allSources.length,
     })
 
     return res.status(200).json({
       ok: true,
-      messages: result.messages,
+      messages: [...result.messages, ...pdfDiscovery.messages],
       insertedOrUpdatedCases: incoming.length,
-      insertedOrUpdatedSources: sources.length,
+      insertedOrUpdatedSources: allSources.length,
+      discoveredPdfSources: pdfDiscovery.sources.length,
       detainableDeficiencies: incoming.reduce((sum, item) => sum + item.deficiencies.length, 0),
     })
   } catch (error) {
@@ -98,19 +105,6 @@ function toCaseRow(item: InspectionCase) {
     deficiency_count: item.deficiencies.length,
     detention_ground_count: item.deficiencies.filter((entry) => entry.detentionGround === true).length,
     source_url: item.source.url,
-    payload: item,
-  }
-}
-
-function toSourceRow(item: SourceBookmark) {
-  return {
-    id: item.id,
-    title: item.title,
-    url: item.url,
-    source_type: item.sourceType,
-    authority: item.authority ?? null,
-    manual: item.manual,
-    added_at: normalizeSupabaseTimestamp(item.addedAt),
     payload: item,
   }
 }

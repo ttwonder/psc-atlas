@@ -12,6 +12,7 @@ import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
+import { discoverPdfSourcesFromPages } from './lib/pdfSources'
 import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, identityFromRosterSelection, normalizeOperatorRoles, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './lib/operatorAccess'
 import { buildRegionalReport } from './lib/report'
 import { loadStoredCases, loadStoredSources, mergeCases, mergeSources, saveStoredCases, saveStoredSources, sourceFromCase, sourceFromGuide, slugify } from './lib/storage'
@@ -413,7 +414,7 @@ function App() {
     setServerRefreshMessage('正在呼叫後端 API 抓取最新資料並寫入 Supabase……')
     try {
       const result = await runServerRefresh(token, 12)
-      setServerRefreshMessage(`後端刷新完成：${result.messages?.join('；') || '無訊息'}；寫入/更新 ${result.insertedOrUpdatedCases ?? 0} 案例、${result.detainableDeficiencies ?? 0} 項滯留滯留。`)
+      setServerRefreshMessage(`後端刷新完成：${result.messages?.join('；') || '無訊息'}；寫入/更新 ${result.insertedOrUpdatedCases ?? 0} 案例、${result.detainableDeficiencies ?? 0} 項滯留滯留、${result.discoveredPdfSources ?? 0} 個在線 PDF 連結。`)
       if (cloudConfigured) {
         const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
         setCases(dataset.cases)
@@ -431,14 +432,16 @@ function App() {
 
   async function refreshLatest() {
     setLoading(true)
-    setUpdateMessage('正在依來源頁策略抓取：GOV.UK/MCA 月報 + Paris MoU current detentions；舊案例會保留並合併……')
+    setUpdateMessage('正在依來源頁策略抓取：GOV.UK/MCA 月報 + Paris MoU current detentions，並掃描資料來源頁面的在線 PDF 連結；舊案例會保留並合併……')
     try {
       const result = await fetchLatestOfficialCases(12)
       const incoming = result.cases.map(keepDetentionOnly).filter((item): item is InspectionCase => Boolean(item))
       const current2025 = cases.map(keepDetentionOnly).filter((item): item is InspectionCase => Boolean(item))
       const merged = mergeCases(current2025, incoming)
       const newSources = mergeSources(incoming.map(sourceFromCase), officialSourceMap.map(sourceFromGuide))
-      const mergedSources = mergeSources(sources, newSources)
+      const baseSources = mergeSources(sources, newSources)
+      const pdfDiscovery = await discoverPdfSourcesFromPages(baseSources, { maxPages: 12 })
+      const mergedSources = mergeSources(baseSources, pdfDiscovery.sources)
       setCases(merged)
       setSources(mergedSources)
       saveStoredCases(merged)
@@ -460,7 +463,10 @@ function App() {
           cloudWriteMessage = `刷新結果已保存本機，但寫入雲端失敗：${describeCloudError(error)}`
         }
       }
-      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留滯留，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
+      const pdfMessage = pdfDiscovery.sources.length
+        ? `；PDF 掃描新增/更新 ${pdfDiscovery.sources.length} 個在線 PDF 連結：${pdfDiscovery.messages.slice(0, 3).join('；')}`
+        : `；PDF 掃描未新增連結：${pdfDiscovery.messages.slice(0, 3).join('；') || '沒有可掃描來源'}`
+      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留滯留，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據${pdfMessage}。`)
       if (!selected && merged.length) setSelected(merged[0])
     } catch (error) {
       setUpdateMessage(`更新失敗：${describeCloudError(error)}。既有資料已保留；可在「資料來源」手動加入網址備忘。`)

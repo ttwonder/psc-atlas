@@ -3,6 +3,7 @@ export interface ServerRefreshResponse {
   messages?: string[]
   insertedOrUpdatedCases?: number
   insertedOrUpdatedSources?: number
+  discoveredPdfSources?: number
   detainableDeficiencies?: number
   error?: string
 }
