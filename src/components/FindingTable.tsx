@@ -211,6 +211,10 @@ export function FindingTable({
               <strong>{caseItem.date}</strong>
               <span>{caseItem.vessel}</span>
               <small>IMO {caseItem.imo}</small>
+              <div className="finding-visible-flags">
+                <span className={`priority-pill priority-${finding.priority ?? 'low'}`}>關注等級：{priorityLabel(finding.priority)}</span>
+                <span className={`novel-toggle-pill ${finding.novel ? 'checked' : ''}`}>{finding.novel ? '☑' : '☐'} 新穎案例</span>
+              </div>
             </div>
             <div className="finding-card-region">
               <span>{caseItem.region}</span>
@@ -225,6 +229,17 @@ export function FindingTable({
               {finding.notes ? <p className="finding-notes">備註：{finding.notes}</p> : null}
               {editing ? (
                 <div className="finding-edit-form" onClick={(event) => event.stopPropagation()}>
+                  <div className="finding-edit-highlight">
+                    <label>是否滯留依據<select value={draftDetentionGround} onChange={(event) => setDraftDetentionGround(event.target.value)}><option value="">未公開</option><option value="true">是</option><option value="false">否</option></select></label>
+                    <label>關注度
+                      <select value={draftPriority} onChange={(event) => setDraftPriority(event.target.value as FindingPriority)}>
+                        <option value="low">低</option>
+                        <option value="medium">中</option>
+                        <option value="high">高</option>
+                      </select>
+                    </label>
+                    <label className="inline-check novel-edit-check"><input type="checkbox" checked={draftNovel} onChange={(event) => setDraftNovel(event.target.checked)} /> 新穎，需要關注</label>
+                  </div>
                   <label>缺陷代碼<input value={draftCode} onChange={(event) => setDraftCode(event.target.value)} placeholder="例如 07105" /></label>
                   <label>官方原文<textarea value={draftOriginal} onChange={(event) => setDraftOriginal(event.target.value)} placeholder="保留/修訂官方 Form B 原文" /></label>
                   <label>分類
@@ -239,15 +254,6 @@ export function FindingTable({
                   <label>解除條件<textarea value={draftReleaseCondition} onChange={(event) => setDraftReleaseCondition(event.target.value)} /></label>
                   <label>來源頁碼<input value={draftSourcePage} onChange={(event) => setDraftSourcePage(event.target.value)} placeholder="p. 3" /></label>
                   <label>來源摘錄<textarea value={draftSourceQuote} onChange={(event) => setDraftSourceQuote(event.target.value)} /></label>
-                  <label>是否滯留依據<select value={draftDetentionGround} onChange={(event) => setDraftDetentionGround(event.target.value)}><option value="">未公開</option><option value="true">是</option><option value="false">否</option></select></label>
-                  <label>關注度
-                    <select value={draftPriority} onChange={(event) => setDraftPriority(event.target.value as FindingPriority)}>
-                      <option value="low">低</option>
-                      <option value="medium">中</option>
-                      <option value="high">高</option>
-                    </select>
-                  </label>
-                  <label className="inline-check"><input type="checkbox" checked={draftNovel} onChange={(event) => setDraftNovel(event.target.checked)} /> 新穎，需要關注</label>
                   <label>備註<textarea value={draftNotes} onChange={(event) => setDraftNotes(event.target.value)} placeholder="公司預防措施、需跟蹤的設備/程序、內部備註" /></label>
                 </div>
               ) : null}

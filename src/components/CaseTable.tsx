@@ -9,31 +9,48 @@ interface CaseTableProps {
 function defectPreview(item: InspectionCase) {
   const concrete = item.deficiencies
     .filter((entry) => entry.category !== '索引資料')
-    .slice(0, 3)
+    .slice(0, 2)
     .map((entry) => entry.original)
   if (!concrete.length) return '此來源只提供近期滯留索引，未公開逐項缺陷內容。'
   return concrete.join('；')
 }
 
+function evidenceLabel(item: InspectionCase) {
+  if (item.evidenceLevel === 'narrative') return '完整敘事'
+  if (item.evidenceLevel === 'full-dossier') return '完整卷宗'
+  if (item.evidenceLevel === 'index-only') return '索引'
+  return '官方摘要'
+}
+
 export function CaseTable({ cases, selectedId, onSelect }: CaseTableProps) {
   return (
-    <div className="table-wrap">
-      <table className="case-table">
-        <thead><tr><th>船舶</th><th>地區/機關</th><th>檢查日期</th><th>滯留簡述</th><th>具體缺陷內容</th><th>缺失／滯留</th><th>證據深度</th></tr></thead>
-        <tbody>
-          {cases.map((item) => (
-            <tr key={item.id} className={`${selectedId === item.id ? 'selected' : ''} ${item.status === 'detained' ? 'detained-row' : ''}`} onClick={() => onSelect(item)} tabIndex={0} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(item) }}>
-              <td className="vessel-name"><button className="row-jump-button" type="button" onClick={(event) => { event.stopPropagation(); onSelect(item) }}>{item.vessel}</button><span className="flag-line">IMO {item.imo} · {item.flagEmoji} {item.flag}</span></td>
-              <td>{item.region}<span className="mou-line">{item.source.authority}</span></td>
-              <td>{item.date}<span className="mou-line">{item.port}</span></td>
-              <td className="summary-cell"><div className="case-cell-clamp">{item.shortSummary}</div></td>
-              <td className="defect-preview-cell"><div className="case-cell-clamp">{defectPreview(item)}</div></td>
-              <td><strong>{item.deficiencyCount || item.deficiencies.length}</strong><span className="mou-line">{item.detentionGroundCount} 項依據</span></td>
-              <td><span className={`evidence-badge ${item.evidenceLevel}`}>{item.evidenceLevel === 'narrative' ? '完整敘事' : item.evidenceLevel === 'full-dossier' ? '完整卷宗' : item.evidenceLevel === 'index-only' ? '索引' : '官方摘要'}</span></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="case-card-list" aria-label="PSC 案例總清單">
+      {cases.map((item) => (
+        <article
+          key={item.id}
+          className={`case-card-row ${selectedId === item.id ? 'selected' : ''} ${item.status === 'detained' ? 'detained-row' : ''}`}
+          onClick={() => onSelect(item)}
+          tabIndex={0}
+          onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(item) }}
+        >
+          <div className="case-card-main">
+            <button className="row-jump-button" type="button" onClick={(event) => { event.stopPropagation(); onSelect(item) }}>{item.vessel}</button>
+            <span>IMO {item.imo} · {item.flagEmoji} {item.flag}</span>
+          </div>
+          <div className="case-card-meta">
+            <strong>{item.region}</strong>
+            <span>{item.source.authority}</span>
+            <small>{item.date} · {item.port}</small>
+          </div>
+          <p className="case-card-summary">{item.shortSummary}</p>
+          <p className="case-card-defects" lang="en">{defectPreview(item)}</p>
+          <div className="case-card-badges">
+            <span>{item.deficiencyCount || item.deficiencies.length} 缺陷</span>
+            <span>{item.detentionGroundCount} 滯留依據</span>
+            <span className={`evidence-badge ${item.evidenceLevel}`}>{evidenceLabel(item)}</span>
+          </div>
+        </article>
+      ))}
       {cases.length === 0 ? <div className="empty-state"><strong>沒有符合條件的案例</strong><span>請放寬篩選條件後再試。</span></div> : null}
     </div>
   )

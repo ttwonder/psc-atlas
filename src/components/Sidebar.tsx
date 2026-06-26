@@ -1,7 +1,7 @@
-import { BarChart3, ChevronLeft, Database, LayoutDashboard, Library, ListChecks, ShieldCheck, Sparkles } from 'lucide-react'
+import { BarChart3, ChevronLeft, Database, FileText, LayoutDashboard, Library, ListChecks, ShieldCheck, Sparkles } from 'lucide-react'
 import { CompassMark } from './Icons'
 
-export type NavKey = 'overview' | 'cases' | 'findings' | 'priority' | 'analysis' | 'sources' | 'permissions'
+export type NavKey = 'overview' | 'cases' | 'findings' | 'priority' | 'analysis' | 'pdf' | 'sources' | 'permissions'
 
 const nav: Array<{ key: NavKey; label: string; icon: typeof LayoutDashboard }> = [
   { key: 'overview', label: '總覽', icon: LayoutDashboard },
@@ -9,6 +9,7 @@ const nav: Array<{ key: NavKey; label: string; icon: typeof LayoutDashboard }> =
   { key: 'findings', label: '缺陷詳情', icon: ListChecks },
   { key: 'priority', label: '重點缺陷', icon: Sparkles },
   { key: 'analysis', label: '缺陷分析', icon: BarChart3 },
+  { key: 'pdf', label: 'PDF 資料', icon: FileText },
   { key: 'sources', label: '資料來源', icon: Database },
   { key: 'permissions', label: '權限管理', icon: ShieldCheck },
 ]

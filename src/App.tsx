@@ -7,7 +7,7 @@ import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
-import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
+import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
@@ -536,6 +536,7 @@ function App() {
         {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
+        {activePage === 'pdf' ? <PdfInsightPanel sources={sources} /> : null}
         {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
         {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {})} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} onUpdateRosterRole={updateRosterRole} /> : null}
       </main>
@@ -597,7 +598,13 @@ function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
         <div className="priority-finding-list">
           {rows.map(({ caseItem, finding, index }) => (
             <article key={`${caseItem.id}-${index}`}>
+              <div className="priority-card-meta">
+                <strong>地區：{caseItem.region}</strong>
+                <span className={`priority-pill priority-${finding.priority ?? 'low'}`}>關注程度：{priorityLabel(finding.priority)}</span>
+                <span className={`novel-toggle-pill ${finding.novel ? 'checked' : ''}`}>{finding.novel ? '☑' : '☐'} 新穎案例</span>
+              </div>
               <p lang="en">{finding.original}</p>
+              <small>{caseItem.vessel}｜{caseItem.date}｜{finding.code}｜{finding.category}</small>
             </article>
           ))}
         </div>
@@ -684,7 +691,7 @@ interface SourcesPageProps {
 }
 
 function SourcesPage(props: SourcesPageProps) {
-  const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'pdf' | 'refresh'>('guides')
+  const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'refresh'>('guides')
   const [editingSourceId, setEditingSourceId] = useState('')
   const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '', publishedAt: '', fetchedAt: '', evidenceLevel: undefined, autoFetch: undefined, status: 'new', tags: '', storageUrl: '' })
   const [deleteReason, setDeleteReason] = useState('')
@@ -730,7 +737,6 @@ function SourcesPage(props: SourcesPageProps) {
         <button type="button" className={sourceTab === 'guides' ? 'active' : ''} onClick={() => setSourceTab('guides')}>官方來源地圖</button>
         <button type="button" className={sourceTab === 'collected' ? 'active' : ''} onClick={() => setSourceTab('collected')}>已採集/備忘網址</button>
         <button type="button" className={sourceTab === 'deleted' ? 'active' : ''} onClick={() => setSourceTab('deleted')}>已刪除</button>
-        <button type="button" className={sourceTab === 'pdf' ? 'active' : ''} onClick={() => setSourceTab('pdf')}>PDF 閱讀提煉</button>
         <button type="button" className={sourceTab === 'refresh' ? 'active' : ''} onClick={() => setSourceTab('refresh')}>自動抓取策略</button>
       </div>
 
@@ -760,7 +766,7 @@ function SourcesPage(props: SourcesPageProps) {
       {sourceTab === 'collected' ? (
         <>
           <section className="panel source-form">
-            <h2>手動添加網頁/PDF 備忘</h2>
+            <h2>手動添加網址備忘</h2>
             <label>網址<input value={props.manualUrl} onChange={(event) => props.onUrl(event.target.value)} placeholder="https://..." /></label>
             <label>標題<input value={props.manualTitle} onChange={(event) => props.onTitle(event.target.value)} placeholder="例如：某港口 PSC detention notice" /></label>
             <label>備註<textarea value={props.manualNotes} onChange={(event) => props.onNotes(event.target.value)} placeholder="用途、需要回頭查的頁碼或重點" /></label>
@@ -822,7 +828,6 @@ function SourcesPage(props: SourcesPageProps) {
         </section>
       ) : null}
 
-      {sourceTab === 'pdf' ? <PdfInsightPanel sources={props.sources} /> : null}
 
       {sourceTab === 'refresh' ? (
         <section className="panel refresh-plan-panel full-span">
