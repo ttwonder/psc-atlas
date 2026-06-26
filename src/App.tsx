@@ -3,9 +3,11 @@ import { Download, FileDown, Menu, RefreshCw, Plus } from 'lucide-react'
 import { CaseTable } from './components/CaseTable'
 import { FilterBar } from './components/FilterBar'
 import { FindingTable } from './components/FindingTable'
+import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
+import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, restoreSource, updateFinding, updateSourceBookmark, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
 import { describeCloudError, getCloudUser, isCloudConfigured, loadCloudDataset, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudSources } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
@@ -77,7 +79,7 @@ function App() {
   const filteredCases = useMemo(() => {
     const ranged = filterCasesByRangeAndRegion(cases, timeRange, region)
     return ranged.filter((item) => {
-      const findingText = item.deficiencies.map((entry) => `${entry.code} ${entry.category} ${entry.original} ${entry.translation} ${entry.sourceQuote ?? ''}`).join(' ')
+      const findingText = item.deficiencies.map((entry) => `${entry.code} ${entry.category} ${entry.original} ${entry.notes ?? ''} ${entry.sourceQuote ?? ''}`).join(' ')
       const haystack = `${item.vessel} ${item.imo} ${item.shortSummary} ${item.port} ${item.region} ${item.source.authority} ${findingText}`.toLocaleLowerCase()
       const matchesQuery = !deferredQuery || haystack.includes(deferredQuery)
       const matchesShip = !shipType || item.shipType === shipType
@@ -196,6 +198,25 @@ function App() {
     }
   }
 
+  async function persistSources(nextSources: SourceBookmark[], successMessage: string) {
+    const merged = mergeSources([], nextSources)
+    setSources(merged)
+    saveStoredSources(merged)
+    if (!cloudConfigured) return
+    try {
+      const user = await getCloudUser()
+      if (user) {
+        await upsertCloudSources(merged)
+        setCloudUserEmail(user.email ?? null)
+        setCloudMessage(successMessage)
+      } else {
+        setCloudMessage('來源變更已保存到本機；請登入後按「同步目前資料到雲端」。')
+      }
+    } catch (error) {
+      setCloudMessage(`來源已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
+    }
+  }
+
   async function addManualSource() {
     const url = manualUrl.trim()
     if (!url) return
@@ -208,23 +229,43 @@ function App() {
       manual: true,
       notes: manualNotes.trim(),
     }
-    const merged = mergeSources(sources, [item])
-    setSources(merged)
-    saveStoredSources(merged)
+    await persistSources(mergeSources(sources, [item]), `已把新來源同步到雲端：${item.title}`)
     setManualUrl(''); setManualTitle(''); setManualNotes('')
-    if (cloudConfigured) {
-      try {
-        const user = await getCloudUser()
-        if (user) {
-          await upsertCloudSources(merged)
-          setCloudUserEmail(user.email ?? null)
-          setCloudMessage(`已把新來源同步到雲端：${item.title}`)
-        } else {
-          setCloudMessage('新來源已保存到本機；請登入後按「同步目前資料到雲端」。')
-        }
-      } catch (error) {
-        setCloudMessage(`來源已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
+  }
+
+  async function saveSourceEdit(id: string, draft: SourceBookmarkDraft) {
+    const next = sources.map((item) => item.id === id ? updateSourceBookmark(item, draft) : item)
+    await persistSources(next, `已更新來源：${draft.title || id}`)
+  }
+
+  async function softDeleteSource(id: string, reason = '') {
+    const user = cloudConfigured ? await getCloudUser() : null
+    const next = sources.map((item) => item.id === id ? markSourceDeleted(item, user?.email, reason) : item)
+    await persistSources(next, '已移到「已刪除」板塊；30 天後會自動清除。')
+  }
+
+  async function restoreDeletedSource(id: string) {
+    const next = sources.map((item) => item.id === id ? restoreSource(item) : item)
+    await persistSources(next, '已還原來源。')
+  }
+
+  async function saveFindingEdit(caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: 'low' | 'medium' | 'high'; novel: boolean }) {
+    const nextCases = updateFinding(cases, caseId, findingIndex, draft)
+    setCases(nextCases)
+    saveStoredCases(nextCases)
+    setSelected((current) => nextCases.find((item) => item.id === (current?.id ?? caseId)) ?? current)
+    if (!cloudConfigured) return
+    try {
+      const user = await getCloudUser()
+      if (user) {
+        await upsertCloudDataset(nextCases, sources)
+        setCloudUserEmail(user.email ?? null)
+        setCloudMessage('缺陷備註/關注度已同步到雲端。')
+      } else {
+        setCloudMessage('缺陷修改已保存到本機；登入後可同步到雲端。')
       }
+    } catch (error) {
+      setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
     }
   }
 
@@ -252,14 +293,15 @@ function App() {
           <button className="mobile-menu" type="button" aria-label="開啟導覽" onClick={() => setMobileNavOpen(true)}><Menu /></button>
         </header>
 
-        <div className="update-strip"><span>{updateMessage}</span><span>目前累積：{cases.length} 案例 / {cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷 / {sources.length} 個網址</span></div>
+        <div className="update-strip"><span>{updateMessage}</span><span>目前累積：{cases.length} 案例 / {cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷 / {activeSources(sources).length} 個有效網址</span></div>
         <FilterBar query={query} region={region} shipType={shipType} category={category} timeRange={timeRange} detainedOnly={detainedOnly} regions={regions} shipTypes={shipTypes} categories={categories} onQueryChange={setQuery} onRegionChange={setRegion} onShipTypeChange={setShipType} onCategoryChange={setCategory} onTimeRangeChange={setTimeRange} onDetainedOnlyChange={setDetainedOnly} onReset={resetFilters} />
 
         {activePage === 'overview' ? <Overview trend={trend} cases={filteredCases} onSelect={selectCase} /> : null}
         {activePage === 'cases' ? <CasesPage cases={filteredCases} selected={selected} onSelect={selectCase} /> : null}
-        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} /> : null}
+        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={Boolean(cloudUserEmail)} onUpdateFinding={saveFindingEdit} /> : null}
+        {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
-        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} /> : null}
+        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canEditSources={Boolean(cloudUserEmail)} /> : null}
       </main>
     </div>
   )
@@ -298,12 +340,33 @@ function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | 
   )
 }
 
-function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string }) {
+function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onUpdateFinding: (caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: 'low' | 'medium' | 'high'; novel: boolean }) => void }) {
   return (
     <div className="dossier-workbench">
       <section className="case-list evidence-card" aria-label="PSC 缺陷詳情清單">
-        <header className="section-header"><div><h2>缺陷詳情清單</h2><p>這是獨立分頁；上方搜尋、時間段、地區、船型、缺陷類別會同步篩選這張表。</p></div></header>
-        <FindingTable cases={props.cases} onSelect={props.onSelect} focusCaseId={props.selected?.id ?? null} globalQuery={props.query} />
+        <header className="section-header"><div><h2>缺陷詳情清單</h2><p>這是獨立分頁；上方搜尋、時間段、地區、船型、缺陷類別會同步篩選這張表。登入的操作員可修改分類、備註、關注度與新穎標記。</p></div></header>
+        <FindingTable cases={props.cases} onSelect={props.onSelect} focusCaseId={props.selected?.id ?? null} globalQuery={props.query} categories={props.categories} canEdit={props.canEdit} onUpdateFinding={props.onUpdateFinding} />
+      </section>
+    </div>
+  )
+}
+
+function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
+  const rows = getPriorityNovelFindings(cases)
+  return (
+    <div className="dossier-workbench">
+      <section className="case-list evidence-card" aria-label="重點與新穎缺陷">
+        <header className="section-header"><div><h2>重點 + 新穎缺陷</h2><p>只展示關注度為中/高或已勾選「新穎」的具體缺陷內容；上方時間段和其他篩選同樣生效。</p></div></header>
+        <div className="priority-finding-list">
+          {rows.map(({ caseItem, finding, index }) => (
+            <article key={`${caseItem.id}-${index}`}>
+              <div><strong>{finding.priority === 'high' ? '高關注' : finding.priority === 'medium' ? '中關注' : '新穎'}</strong>{finding.novel ? <span>新穎</span> : null}</div>
+              <p lang="en">{finding.original}</p>
+              {finding.notes ? <small>備註：{finding.notes}</small> : null}
+            </article>
+          ))}
+        </div>
+        {rows.length === 0 ? <div className="empty-state"><strong>目前沒有標記為中/高或新穎的缺陷</strong><span>可到「缺陷詳情」修改缺陷關注度或勾選新穎。</span></div> : null}
       </section>
     </div>
   )
@@ -336,8 +399,45 @@ function AnalysisPage({ report, trend, range, onDownload }: { report: string; tr
   )
 }
 
-function SourcesPage(props: { sources: SourceBookmark[]; sourceGuides: OfficialSourceGuide[]; manualUrl: string; manualTitle: string; manualNotes: string; loading: boolean; updateMessage: string; cloudConfigured: boolean; cloudUserEmail: string | null; cloudEmailInput: string; cloudMessage: string; cloudLoading: boolean; serverRefreshToken: string; serverRefreshMessage: string; serverRefreshLoading: boolean; onServerRefreshToken: (value: string) => void; onServerRefresh: () => void; onCloudEmail: (value: string) => void; onCloudSignIn: () => void; onCloudSignOut: () => void; onCloudSync: () => void; onUrl: (value: string) => void; onTitle: (value: string) => void; onNotes: (value: string) => void; onAdd: () => void | Promise<void>; onRefresh: () => void }) {
-  const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'refresh'>('guides')
+interface SourcesPageProps {
+  sources: SourceBookmark[]
+  sourceGuides: OfficialSourceGuide[]
+  manualUrl: string
+  manualTitle: string
+  manualNotes: string
+  loading: boolean
+  updateMessage: string
+  cloudConfigured: boolean
+  cloudUserEmail: string | null
+  cloudEmailInput: string
+  cloudMessage: string
+  cloudLoading: boolean
+  serverRefreshToken: string
+  serverRefreshMessage: string
+  serverRefreshLoading: boolean
+  canEditSources: boolean
+  onServerRefreshToken: (value: string) => void
+  onServerRefresh: () => void
+  onCloudEmail: (value: string) => void
+  onCloudSignIn: () => void
+  onCloudSignOut: () => void
+  onCloudSync: () => void
+  onUrl: (value: string) => void
+  onTitle: (value: string) => void
+  onNotes: (value: string) => void
+  onAdd: () => void | Promise<void>
+  onRefresh: () => void
+  onSaveSource: (id: string, draft: SourceBookmarkDraft) => void | Promise<void>
+  onDeleteSource: (id: string, reason?: string) => void | Promise<void>
+  onRestoreSource: (id: string) => void | Promise<void>
+}
+
+function SourcesPage(props: SourcesPageProps) {
+  const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'pdf' | 'refresh'>('guides')
+  const [editingSourceId, setEditingSourceId] = useState('')
+  const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '' })
+  const activeSourceList = activeSources(props.sources)
+  const deletedSourceList = deletedSources(props.sources)
   return (
     <div className="sources-page">
       <section className="panel source-command-panel">
@@ -376,6 +476,8 @@ function SourcesPage(props: { sources: SourceBookmark[]; sourceGuides: OfficialS
       <div className="source-tabs" role="tablist" aria-label="資料來源分頁">
         <button type="button" className={sourceTab === 'guides' ? 'active' : ''} onClick={() => setSourceTab('guides')}>官方來源地圖</button>
         <button type="button" className={sourceTab === 'collected' ? 'active' : ''} onClick={() => setSourceTab('collected')}>已採集/備忘網址</button>
+        <button type="button" className={sourceTab === 'deleted' ? 'active' : ''} onClick={() => setSourceTab('deleted')}>已刪除</button>
+        <button type="button" className={sourceTab === 'pdf' ? 'active' : ''} onClick={() => setSourceTab('pdf')}>PDF 閱讀提煉</button>
         <button type="button" className={sourceTab === 'refresh' ? 'active' : ''} onClick={() => setSourceTab('refresh')}>自動抓取策略</button>
       </div>
 
@@ -413,10 +515,51 @@ function SourcesPage(props: { sources: SourceBookmark[]; sourceGuides: OfficialS
           </section>
           <section className="panel collected-sources-panel">
             <h2>已採集 / 備忘網址清單</h2>
-            <div className="source-list">{props.sources.map((item) => <article key={item.id}><div><strong>{item.title}</strong><span>{item.authority ?? item.sourceType} · {item.manual ? '手動備忘' : '來源庫'}</span>{item.notes ? <small>{item.notes}</small> : null}</div><a href={item.url} target="_blank" rel="noreferrer">打開網址</a></article>)}</div>
+            <p className="panel-hint">登入後可修改來源標題、網址、類型、機關與備註；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
+            <div className="source-list">{activeSourceList.map((item) => {
+              const editing = editingSourceId === item.id
+              return <article key={item.id} className={editing ? 'source-editing' : ''}>
+                <div>
+                  <strong>{item.title}</strong>
+                  <span>{item.authority ?? item.sourceType} · {item.manual ? '手動備忘' : '來源庫'}</span>
+                  {item.notes ? <small>{item.notes}</small> : null}
+                  {editing ? <div className="source-edit-form">
+                    <label>標題<input value={sourceDraft.title} onChange={(event) => setSourceDraft((draft) => ({ ...draft, title: event.target.value }))} /></label>
+                    <label>網址<input value={sourceDraft.url} onChange={(event) => setSourceDraft((draft) => ({ ...draft, url: event.target.value }))} /></label>
+                    <label>類型<input value={sourceDraft.sourceType} onChange={(event) => setSourceDraft((draft) => ({ ...draft, sourceType: event.target.value }))} /></label>
+                    <label>機關<input value={sourceDraft.authority ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, authority: event.target.value }))} /></label>
+                    <label>備註<textarea value={sourceDraft.notes ?? ''} onChange={(event) => setSourceDraft((draft) => ({ ...draft, notes: event.target.value }))} /></label>
+                  </div> : null}
+                </div>
+                <div className="source-row-actions">
+                  <a href={item.url} target="_blank" rel="noreferrer">打開網址</a>
+                  {props.canEditSources ? editing ? <>
+                    <button className="text-button compact" type="button" onClick={() => { props.onSaveSource(item.id, sourceDraft); setEditingSourceId('') }}>保存</button>
+                    <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
+                  </> : <>
+                    <button className="text-button compact" type="button" onClick={() => { setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '' }) }}>修改</button>
+                    <button className="danger-button compact" type="button" onClick={() => props.onDeleteSource(item.id)}>刪除</button>
+                  </> : null}
+                </div>
+              </article>
+            })}</div>
           </section>
         </>
       ) : null}
+
+      {sourceTab === 'deleted' ? (
+        <section className="panel collected-sources-panel full-span">
+          <h2>已刪除來源</h2>
+          <p className="panel-hint">這裡暫存已刪除來源；刪除滿 30 天後會在本機/同步時自動清除。</p>
+          <div className="source-list deleted-source-list">{deletedSourceList.map((item) => <article key={item.id}>
+            <div><strong>{item.title}</strong><span>{item.deletedAt ? `刪除時間：${item.deletedAt.slice(0, 10)}` : '已刪除'}{item.deletedBy ? ` · ${item.deletedBy}` : ''}</span>{item.deleteReason ? <small>{item.deleteReason}</small> : null}<a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></div>
+            {props.canEditSources ? <button className="text-button compact" type="button" onClick={() => props.onRestoreSource(item.id)}>還原</button> : null}
+          </article>)}</div>
+          {deletedSourceList.length === 0 ? <div className="empty-state"><strong>暫無已刪除來源</strong><span>刪除來源後會先出現在這裡。</span></div> : null}
+        </section>
+      ) : null}
+
+      {sourceTab === 'pdf' ? <PdfInsightPanel /> : null}
 
       {sourceTab === 'refresh' ? (
         <section className="panel refresh-plan-panel full-span">

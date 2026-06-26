@@ -51,7 +51,7 @@ export function calculateTrendSummary(cases: InspectionCase[], range: TimeRangeK
       cell.count += increment
       matrixMap.set(matrixKey, cell)
       if (increment) {
-        for (const keyword of extractKeywords(`${deficiency.original} ${deficiency.translation}`)) {
+        for (const keyword of extractKeywords(`${deficiency.original} ${deficiency.notes ?? ''}`)) {
           keywordMap.set(keyword, (keywordMap.get(keyword) ?? 0) + 1)
         }
       }
@@ -95,7 +95,7 @@ export function calculateTrendSummary(cases: InspectionCase[], range: TimeRangeK
     topKeywords,
     prioritySignals: buildPrioritySignals(scoped, topCategories, regionBreakdown),
     typicalCases,
-    focusDirections: topCategories.slice(0, 4).map((item) => focusText(item.category, item.count)),
+    focusDirections: buildFocusDirections(scoped, topCategories),
   }
 }
 
@@ -123,7 +123,17 @@ function buildPrioritySignals(cases: InspectionCase[], topCategories: Array<{ ca
   if (indexOnly.length) signals.push(`${indexOnly.length} 筆為最新索引但缺少缺陷原文，需優先追月度清單或 Form A/B，避免用空白索引做原因分析。`)
   const stillDetained = cases.filter((item) => item.status === 'detained')
   if (stillDetained.length) signals.push(`${stillDetained.length} 筆仍在滯留/未確認解除，適合作為本週跟蹤清單。`)
+  const manuallyPrioritized = cases.flatMap((item) => item.deficiencies).filter((finding) => finding.priority === 'high' || finding.priority === 'medium' || finding.novel)
+  if (manuallyPrioritized.length) signals.push(`人工標記重點/新穎缺陷 ${manuallyPrioritized.length} 項，應納入公司預檢和船岸跟蹤清單。`)
   return signals
+}
+
+function buildFocusDirections(cases: InspectionCase[], topCategories: Array<{ category: string; count: number }>) {
+  const manual = cases.flatMap((item) => item.deficiencies)
+    .filter((finding) => finding.priority === 'high' || finding.novel)
+    .slice(0, 4)
+    .map((finding) => `人工重點：${finding.category}｜${finding.novel ? '新穎缺陷' : '高關注'}｜${finding.original}`)
+  return [...manual, ...topCategories.slice(0, 4).map((item) => focusText(item.category, item.count))].slice(0, 6)
 }
 
 function extractKeywords(text: string) {

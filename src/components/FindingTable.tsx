@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ExternalLink, Search, X } from 'lucide-react'
-import type { Deficiency, InspectionCase } from '../types'
+import { Edit3, ExternalLink, Search, X } from 'lucide-react'
+import type { Deficiency, FindingPriority, InspectionCase } from '../types'
+import { priorityLabel } from '../lib/editorWorkflow'
 
 interface FindingRow {
   caseItem: InspectionCase
@@ -67,7 +68,7 @@ function evidenceLabel(level: InspectionCase['evidenceLevel']) {
 
 function rowText(row: FindingRow) {
   const { caseItem, finding } = row
-  return `${caseItem.date} ${caseItem.vessel} ${caseItem.imo} ${caseItem.region} ${caseItem.port} ${caseItem.source.authority} ${finding.code} ${finding.category} ${finding.original} ${finding.translation} ${finding.sourceQuote ?? ''}`.toLocaleLowerCase()
+  return `${caseItem.date} ${caseItem.vessel} ${caseItem.imo} ${caseItem.region} ${caseItem.port} ${caseItem.source.authority} ${finding.code} ${finding.category} ${finding.original} ${finding.notes ?? ''} ${finding.sourceQuote ?? ''}`.toLocaleLowerCase()
 }
 
 function textMatchesKeyword(text: string, label: string) {
@@ -102,14 +103,25 @@ export function FindingTable({
   onSelect,
   focusCaseId,
   globalQuery = '',
+  categories = [],
+  canEdit = false,
+  onUpdateFinding,
 }: {
   cases: InspectionCase[]
   onSelect: (item: InspectionCase) => void
   focusCaseId?: string | null
   globalQuery?: string
+  categories?: string[]
+  canEdit?: boolean
+  onUpdateFinding?: (caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: FindingPriority; novel: boolean }) => void
 }) {
   const [localQuery, setLocalQuery] = useState('')
   const [keyword, setKeyword] = useState('')
+  const [editingKey, setEditingKey] = useState('')
+  const [draftCategory, setDraftCategory] = useState('')
+  const [draftNotes, setDraftNotes] = useState('')
+  const [draftPriority, setDraftPriority] = useState<FindingPriority>('low')
+  const [draftNovel, setDraftNovel] = useState(false)
   const rows = useMemo(() => flattenFindings(cases), [cases])
   const normalizedGlobal = globalQuery.trim().toLocaleLowerCase()
   const normalizedLocal = localQuery.trim().toLocaleLowerCase()
@@ -149,14 +161,17 @@ export function FindingTable({
       </div>
       <div className="finding-result-count">顯示 {filteredRows.length} / {rows.length} 項缺陷{keyword ? `｜關鍵詞：${keyword}` : ''}</div>
       <div className="finding-card-list">
-        {filteredRows.map(({ caseItem, finding, index }) => (
+        {filteredRows.map(({ caseItem, finding, index }) => {
+          const key = `${caseItem.id}-${finding.code}-${index}`
+          const editing = editingKey === key
+          return (
           <article
-            key={`${caseItem.id}-${finding.code}-${index}`}
+            key={key}
             ref={focusCaseId === caseItem.id && index === 0 ? focusedRef : undefined}
-            className={`finding-card ${caseItem.evidenceLevel === 'index-only' ? 'index-only-finding' : ''} ${focusCaseId === caseItem.id ? 'selected' : ''}`}
-            onClick={() => onSelect(caseItem)}
+            className={`finding-card ${caseItem.evidenceLevel === 'index-only' ? 'index-only-finding' : ''} ${focusCaseId === caseItem.id ? 'selected' : ''} ${editing ? 'editing' : ''}`}
+            onClick={() => { if (!editing) onSelect(caseItem) }}
             tabIndex={0}
-            onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(caseItem) }}
+            onKeyDown={(event) => { if (!editing && (event.key === 'Enter' || event.key === ' ')) onSelect(caseItem) }}
           >
             <div className="finding-card-meta">
               <strong>{caseItem.date}</strong>
@@ -168,20 +183,47 @@ export function FindingTable({
               <small>{caseItem.port}</small>
               <code>{finding.code}</code>
               <b>{finding.category}</b>
+              <span className={`priority-pill priority-${finding.priority ?? 'low'}`}>關注度：{priorityLabel(finding.priority)}</span>
+              {finding.novel ? <span className="novel-pill">新穎</span> : null}
             </div>
             <div className="finding-card-copy">
               <p className="finding-original" lang="en">{finding.original}</p>
-              {finding.translation && finding.translation !== finding.original ? <p className="finding-translation">{finding.translation.replace(/^英文原文：/, '')}</p> : null}
+              {finding.notes ? <p className="finding-notes">備註：{finding.notes}</p> : null}
+              {editing ? (
+                <div className="finding-edit-form" onClick={(event) => event.stopPropagation()}>
+                  <label>分類
+                    <select value={draftCategory} onChange={(event) => setDraftCategory(event.target.value)}>
+                      {Array.from(new Set([finding.category, ...categories])).map((item) => <option key={item} value={item}>{item}</option>)}
+                    </select>
+                  </label>
+                  <label>關注度
+                    <select value={draftPriority} onChange={(event) => setDraftPriority(event.target.value as FindingPriority)}>
+                      <option value="low">低</option>
+                      <option value="medium">中</option>
+                      <option value="high">高</option>
+                    </select>
+                  </label>
+                  <label className="inline-check"><input type="checkbox" checked={draftNovel} onChange={(event) => setDraftNovel(event.target.checked)} /> 新穎，需要關注</label>
+                  <label>備註<textarea value={draftNotes} onChange={(event) => setDraftNotes(event.target.value)} placeholder="公司預防措施、需跟蹤的設備/程序、內部備註" /></label>
+                </div>
+              ) : null}
             </div>
             <div className="finding-card-actions">
               <span className={`ground-state ${finding.detentionGround === true ? 'yes' : 'unknown'}`}>{finding.detentionGround === true ? '滯留依據' : '未公開'}</span>
               <span className={`evidence-badge ${caseItem.evidenceLevel}`}>{evidenceLabel(caseItem.evidenceLevel)}</span>
+              {canEdit && onUpdateFinding ? (
+                editing ? <>
+                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); onUpdateFinding(caseItem.id, index, { category: draftCategory, notes: draftNotes, priority: draftPriority, novel: draftNovel }); setEditingKey('') }}>保存</button>
+                  <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey('') }}>取消</button>
+                </> : <button className="text-button compact" type="button" onClick={(event) => { event.stopPropagation(); setEditingKey(key); setDraftCategory(finding.category); setDraftNotes(finding.notes ?? ''); setDraftPriority(finding.priority ?? 'low'); setDraftNovel(Boolean(finding.novel)) }}><Edit3 size={13} />修改</button>
+              ) : null}
               <a className="source-mini-link" href={caseItem.source.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
                 官方來源<ExternalLink size={13} />
               </a>
             </div>
           </article>
-        ))}
+          )
+        })}
       </div>
       {filteredRows.length === 0 ? <div className="empty-state"><strong>沒有符合條件的缺陷</strong><span>請放寬篩選條件或換一個關鍵詞。</span></div> : null}
     </div>

@@ -1,6 +1,7 @@
 export type CaseStatus = 'detained' | 'released' | 'clear'
 export type EvidenceLevel = 'narrative' | 'official-summary' | 'index-only' | 'full-dossier'
 export type TimeRangeKey = '3m' | '6m' | '1y' | 'all'
+export type FindingPriority = 'low' | 'medium' | 'high'
 
 export interface Deficiency {
   code: string
@@ -15,6 +16,10 @@ export interface Deficiency {
   sourcePage?: string
   sourceQuote?: string
   detentionGround: boolean | null
+  notes?: string
+  priority?: FindingPriority
+  novel?: boolean
+  updatedAt?: string
 }
 
 export interface OfficialSource {
@@ -62,6 +67,10 @@ export interface SourceBookmark {
   manual: boolean
   notes?: string
   authority?: string
+  updatedAt?: string
+  deletedAt?: string
+  deletedBy?: string
+  deleteReason?: string
 }
 
 export type SourceAutoFetch = 'enabled' | 'partial' | 'manual' | 'restricted'

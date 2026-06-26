@@ -1,12 +1,13 @@
-import { BarChart3, ChevronLeft, Database, LayoutDashboard, Library, ListChecks } from 'lucide-react'
+import { BarChart3, ChevronLeft, Database, LayoutDashboard, Library, ListChecks, Sparkles } from 'lucide-react'
 import { CompassMark } from './Icons'
 
-export type NavKey = 'overview' | 'cases' | 'findings' | 'analysis' | 'sources'
+export type NavKey = 'overview' | 'cases' | 'findings' | 'priority' | 'analysis' | 'sources'
 
 const nav: Array<{ key: NavKey; label: string; icon: typeof LayoutDashboard }> = [
   { key: 'overview', label: '總覽', icon: LayoutDashboard },
   { key: 'cases', label: '案例庫', icon: Library },
   { key: 'findings', label: '缺陷詳情', icon: ListChecks },
+  { key: 'priority', label: '重點缺陷', icon: Sparkles },
   { key: 'analysis', label: '缺陷分析', icon: BarChart3 },
   { key: 'sources', label: '資料來源', icon: Database },
 ]

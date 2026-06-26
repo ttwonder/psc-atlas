@@ -1,4 +1,5 @@
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark } from '../types'
+import { purgeExpiredDeletedSources } from './editorWorkflow'
 
 const CASES_KEY = 'psc-atlas:cumulative-cases:v10-china-1321-detention-only-no-fpmc'
 const SOURCES_KEY = 'psc-atlas:source-bookmarks:v10-china-1321-detention-only-no-fpmc'
@@ -48,9 +49,9 @@ export function mergeSources(existing: SourceBookmark[], incoming: SourceBookmar
     const key = normalizeUrl(item.url)
     const current = byUrl.get(key)
     if (!current) byUrl.set(key, item)
-    else byUrl.set(key, current.manual ? { ...item, ...current } : { ...current, ...item })
+    else byUrl.set(key, current.deletedAt ? current : current.manual ? { ...item, ...current } : { ...current, ...item })
   }
-  return Array.from(byUrl.values()).sort((a, b) => b.addedAt.localeCompare(a.addedAt))
+  return purgeExpiredDeletedSources(Array.from(byUrl.values())).sort((a, b) => b.addedAt.localeCompare(a.addedAt))
 }
 
 export function loadStoredCases(fallback: InspectionCase[]) {

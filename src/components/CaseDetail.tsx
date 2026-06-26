@@ -5,7 +5,7 @@ function CompactDeficiency({ item }: { item: Deficiency }) {
   return (
     <li className="deficiency-item">
       <span className="deficiency-icon"><FileText size={20} strokeWidth={1.8} /></span>
-      <span className="deficiency-copy"><strong>{item.category}</strong><small>{item.translation}</small></span>
+      <span className="deficiency-copy"><strong>{item.category}</strong><small lang="en">{item.original}</small></span>
       <code>{item.code}</code>
     </li>
   )
@@ -17,7 +17,8 @@ function DeficiencyEvidence({ item, index }: { item: Deficiency; index: number }
       <header><span className="record-number">{String(index + 1).padStart(2, '0')}</span><div><strong>{item.category}</strong><code>{item.code}</code></div><span className={`ground-state ${item.detentionGround === true ? 'yes' : 'unknown'}`}>{item.detentionGround === true ? '滯留依據' : '個別判定未公開'}</span></header>
       <dl>
         <div><dt>官方原文</dt><dd lang="en">{item.original}</dd></div>
-        <div><dt>中文整理</dt><dd>{item.translation}</dd></div>
+        {item.notes ? <div><dt>操作備註</dt><dd>{item.notes}</dd></div> : null}
+        {item.priority || item.novel ? <div><dt>內部關注</dt><dd>{item.priority ? `關注度：${item.priority === 'high' ? '高' : item.priority === 'medium' ? '中' : '低'}` : '關注度：低'}{item.novel ? '；新穎缺陷，需要關注' : ''}</dd></div> : null}
         {item.inspectorFinding ? <div><dt>檢查員認定</dt><dd>{item.inspectorFinding}</dd></div> : null}
         {item.detentionReason ? <div><dt>滯留理由</dt><dd>{item.detentionReason}</dd></div> : null}
         {item.requiredRectification ? <div><dt>整改要求</dt><dd>{item.requiredRectification}</dd></div> : null}
@@ -53,7 +54,7 @@ export function CaseDetail({ item, expanded, onClose, onExpand }: CaseDetailProp
         <div className="dossier-body">
           <section className="narrative-section"><div className="section-title"><BookOpenText size={19} /><div><h3>案例經過與處置</h3><p>依官方敘事整理，不補寫未公開事實</p></div></div>{item.narrative.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>
           <aside className="source-note"><AlertTriangle size={19} /><div><strong>證據邊界</strong><p>{item.evidenceNote}</p></div></aside>
-          <section className="records-section"><div className="section-title"><FileText size={19} /><div><h3>逐項缺失證據</h3><p>官方原文、中文整理、檢查員認定、滯留理由與解除情況分欄保存</p></div></div><div className="records-list">{item.deficiencies.map((entry, index) => <DeficiencyEvidence item={entry} index={index} key={`${entry.code}-${index}`} />)}</div></section>
+          <section className="records-section"><div className="section-title"><FileText size={19} /><div><h3>逐項缺失證據</h3><p>保留官方原文、來源摘錄、檢查員認定、滯留理由與內部關注備註</p></div></div><div className="records-list">{item.deficiencies.map((entry, index) => <DeficiencyEvidence item={entry} index={index} key={`${entry.code}-${index}`} />)}</div></section>
           <section className="case-facts"><h3>船舶與來源資料</h3><dl><div><dt>總噸</dt><dd>{item.gt ?? '來源未列明'}</dd></div><div><dt>公司</dt><dd>{item.company}</dd></div><div><dt>船級社</dt><dd>{item.classSociety}</dd></div><div><dt>來源發布</dt><dd>{item.source.publishedAt}</dd></div></dl><a href={item.source.url} target="_blank" rel="noreferrer">{item.source.title}<ExternalLink size={15} /></a></section>
         </div>
       ) : (

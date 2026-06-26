@@ -338,3 +338,56 @@ th:first-child { padding-left: 16px; }
   .table-footer > label { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+
+/* Editor additions: source CRUD, finding metadata, priority board */
+.text-button.compact, .danger-button.compact { display: inline-flex; align-items: center; gap: 5px; min-height: 30px; margin: 0; padding: 0 9px; border-radius: 6px; font-size: 11px; font-weight: 850; }
+.text-button.compact { border: 1px solid #cbd7e3; color: #145a9e; background: #fff; }
+.text-button.compact:hover { background: #f2f7fb; }
+.danger-button.compact { border: 1px solid #f0c5be; color: #a33b31; background: #fff5f3; }
+.danger-button.compact:hover { background: #ffe8e4; }
+.panel-hint { margin: -8px 0 14px; color: #6f8498; font-size: 12px; line-height: 1.7; }
+.finding-card.editing { grid-template-columns: minmax(150px, 13%) minmax(180px, 16%) minmax(420px, 1fr) minmax(170px, 14%); border-color: #9fc2df; background: #f7fbff; }
+.finding-notes { padding: 8px 10px; border-left: 3px solid #d39b38; color: #5f461b; background: #fff9ec; font-size: 12.5px; line-height: 1.65; }
+.priority-pill, .novel-pill { display: inline-flex; align-items: center; width: max-content; padding: 4px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 850; }
+.priority-pill { color: #40576c; background: #eef3f7; }
+.priority-medium { color: #8a5a00; background: #fff1cf; }
+.priority-high { color: #a33b31; background: #ffebe7; }
+.novel-pill { color: #4d2a91; background: #f1eafe; }
+.finding-edit-form, .source-edit-form { display: grid; gap: 9px; padding: 12px; border: 1px solid #cfe1ef; border-radius: 8px; background: #fff; }
+.finding-edit-form label, .source-edit-form label { display: grid; gap: 5px; color: #37536d; font-size: 11px; font-weight: 800; }
+.finding-edit-form input, .finding-edit-form select, .finding-edit-form textarea, .source-edit-form input, .source-edit-form select, .source-edit-form textarea { width: 100%; min-height: 34px; padding: 7px 9px; border: 1px solid #cbd7e3; border-radius: 6px; color: #17344e; background: #fff; font: inherit; font-size: 12px; }
+.finding-edit-form textarea, .source-edit-form textarea { min-height: 76px; resize: vertical; }
+.inline-check { display: flex !important; grid-template-columns: none !important; align-items: center; gap: 8px !important; }
+.inline-check input { width: 16px; min-height: 16px; accent-color: var(--navy); }
+.source-list article { gap: 14px; }
+.source-list article.source-editing { align-items: start; border-color: #9fc2df; background: #f7fbff; }
+.source-row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
+.deleted-source-list article { opacity: .88; background: #fbfcfd; }
+.deleted-source-list a { word-break: break-all; }
+.priority-finding-list { display: grid; gap: 12px; padding: 16px; }
+.priority-finding-list article { padding: 16px 18px; border: 1px solid #d7e2ec; border-left: 4px solid #b23b30; border-radius: 10px; background: #fff; }
+.priority-finding-list article div { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.priority-finding-list article strong, .priority-finding-list article span { display: inline-flex; padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: 850; }
+.priority-finding-list article strong { color: #a33b31; background: #fff0ed; }
+.priority-finding-list article span { color: #4d2a91; background: #f1eafe; }
+.priority-finding-list p { margin: 0; color: #203a54; font-size: 13.5px; line-height: 1.75; }
+.priority-finding-list small { display: block; margin-top: 8px; color: #6b5330; line-height: 1.6; }
+
+
+.pdf-insight-panel header { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+.pdf-insight-panel header p:not(.eyebrow) { margin: 0; color: #536a7f; font-size: 13px; line-height: 1.7; }
+.pdf-upload-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 14px; border: 1px solid var(--navy); border-radius: 7px; color: #fff; background: var(--navy); font-size: 13px; font-weight: 850; cursor: pointer; }
+.pdf-upload-button input { display: none; }
+.pdf-status { display: flex; align-items: center; gap: 8px; margin: 16px 0; padding: 10px 12px; border: 1px solid #d6e2ec; border-radius: 8px; color: #2d4a64; background: #f8fbfd; font-size: 12.5px; }
+.pdf-insight-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.pdf-insight-grid article { padding: 14px; border: 1px solid #d7e2ec; border-radius: 8px; background: #fff; }
+.pdf-insight-grid h3 { margin: 0 0 10px; color: #17344e; font-size: 14px; }
+.pdf-insight-grid li { margin-bottom: 7px; color: #334e68; line-height: 1.7; font-size: 12.5px; }
+.pdf-keywords { display: flex; flex-wrap: wrap; gap: 7px; }
+.pdf-keywords span { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 1px solid #d5e1eb; border-radius: 999px; color: #25445f; background: #f8fbfd; font-size: 12px; font-weight: 800; }
+.pdf-keywords b { color: #b23b30; font-size: 11px; }
+.pdf-candidates, .pdf-preview { grid-column: 1 / -1; }
+.pdf-preview pre { max-height: 260px; overflow: auto; margin: 0; padding: 12px; border-radius: 8px; color: #223d57; background: #f7fafc; white-space: pre-wrap; font-size: 11.5px; line-height: 1.65; }
+.pdf-storage-note { margin-top: 14px; padding: 13px 14px; border-left: 3px solid #cf8b32; color: #704b18; background: #fff8ed; }
+.pdf-storage-note p { margin: 5px 0 0; line-height: 1.7; font-size: 12px; }
