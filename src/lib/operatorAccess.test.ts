@@ -6,6 +6,7 @@ import {
   normalizeOperatorRoster,
   verifyOperatorIdentity,
   type OperatorIdentity,
+  cloudProfileToIdentity,
 } from './operatorAccess'
 
 describe('operator access workflow', () => {
@@ -37,6 +38,12 @@ describe('operator access workflow', () => {
     expect(canOperatorPerform(admin, 'sync_dataset')).toBe(true)
     expect(canOperatorPerform(admin, 'manage_roster')).toBe(true)
     expect(canOperatorPerform(owner, 'purge_deleted')).toBe(true)
+  })
+
+  it('converts Supabase admin role to an admin identity', () => {
+    const identity = cloudProfileToIdentity({ email: 'admin@example.com', role: 'admin' })
+
+    expect(identity).toEqual({ department: '管理組', name: 'admin@example.com', role: 'admin' })
   })
 
   it('builds an audit log with actor and target details', () => {

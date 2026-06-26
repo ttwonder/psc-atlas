@@ -83,7 +83,7 @@ export function canOperatorPerform(identity: OperatorIdentity | null | undefined
 export function cloudProfileToIdentity(profile: { email?: string | null, role?: string | null } | null | undefined): OperatorIdentity | null {
   if (!profile?.role) return null
   if (profile.role === 'owner') return { department: '管理層', name: profile.email || 'Owner', role: 'owner' }
-  if (profile.role === 'editor' || profile.role === 'source_editor') return { department: '管理組', name: profile.email || '管理員', role: 'admin' }
+  if (profile.role === 'admin' || profile.role === 'editor' || profile.role === 'source_editor') return { department: '管理組', name: profile.email || '管理員', role: 'admin' }
   return null
 }
 
