@@ -101,7 +101,7 @@ export function verifyOperatorIdentity(identity: OperatorIdentity | null | undef
 export function canOperatorPerform(identity: OperatorIdentity | null | undefined, action: OperatorAction) {
   if (!identity) return false
   if (identity.role === 'owner' || identity.role === 'admin') return true
-  return ['add_source', 'edit_source', 'delete_source', 'restore_source', 'edit_finding'].includes(action)
+  return ['add_source', 'edit_source', 'delete_source', 'restore_source', 'edit_finding', 'server_refresh'].includes(action)
 }
 
 export function cloudProfileToIdentity(profile: { email?: string | null, role?: string | null } | null | undefined): OperatorIdentity | null {

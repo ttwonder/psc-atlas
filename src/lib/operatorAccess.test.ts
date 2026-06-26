@@ -28,6 +28,7 @@ describe('operator access workflow', () => {
     expect(canOperatorPerform(operator, 'delete_source')).toBe(true)
     expect(canOperatorPerform(operator, 'edit_finding')).toBe(true)
     expect(canOperatorPerform(operator, 'add_source')).toBe(true)
+    expect(canOperatorPerform(operator, 'server_refresh')).toBe(true)
     expect(canOperatorPerform(operator, 'sync_dataset')).toBe(false)
     expect(canOperatorPerform(operator, 'manage_roster')).toBe(false)
     expect(canOperatorPerform(operator, 'purge_deleted')).toBe(false)

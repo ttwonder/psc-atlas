@@ -122,10 +122,16 @@ function App() {
         }
         const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
         if (cancelled) return
-        setCases(dataset.cases)
-        setSources(dataset.sources)
-        saveStoredCases(dataset.cases)
-        saveStoredSources(dataset.sources)
+        setCases((current) => {
+          const mergedCases = mergeCases(dataset.cases, current)
+          saveStoredCases(mergedCases)
+          return mergedCases
+        })
+        setSources((current) => {
+          const mergedSources = mergeSources(dataset.sources, current)
+          saveStoredSources(mergedSources)
+          return mergedSources
+        })
         try {
           const cloudRoster = await loadCloudOperatorRoster()
           if (cloudRoster) {
@@ -160,10 +166,16 @@ function App() {
       const user = await getCloudUser()
       const profile = user ? await getEditorProfile() : null
       const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
-      setCases(dataset.cases)
-      setSources(dataset.sources)
-      saveStoredCases(dataset.cases)
-      saveStoredSources(dataset.sources)
+      setCases((current) => {
+        const mergedCases = mergeCases(dataset.cases, current)
+        saveStoredCases(mergedCases)
+        return mergedCases
+      })
+      setSources((current) => {
+        const mergedSources = mergeSources(dataset.sources, current)
+        saveStoredSources(mergedSources)
+        return mergedSources
+      })
       setCloudUserEmail(user?.email ?? null)
       setEditorProfile(profile)
       try {
@@ -231,13 +243,13 @@ function App() {
     }
   }
 
-  function requestOperator(action: OperatorAction, targetTitle: string, run: (actor: OperatorIdentity) => void | Promise<void>) {
+  function requestOperator(action: OperatorAction, targetTitle: string, run: (actor: OperatorIdentity) => void | Promise<void>, forcePrompt = false) {
     const adminIdentity = getAdminIdentity()
-    if (adminIdentity && canOperatorPerform(adminIdentity, action)) {
+    if (!forcePrompt && adminIdentity && canOperatorPerform(adminIdentity, action)) {
       void run(adminIdentity)
       return
     }
-    if (currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid && canOperatorPerform(currentOperator, action)) {
+    if (!forcePrompt && currentOperator && verifyOperatorIdentity(currentOperator, operatorRoster).valid && canOperatorPerform(currentOperator, action)) {
       void run(currentOperator)
       return
     }
@@ -417,11 +429,17 @@ function App() {
       setServerRefreshMessage(`後端刷新完成：${result.messages?.join('；') || '無訊息'}；寫入/更新 ${result.insertedOrUpdatedCases ?? 0} 案例、${result.detainableDeficiencies ?? 0} 項滯留滯留、${result.discoveredPdfSources ?? 0} 個在線 PDF 連結。`)
       if (cloudConfigured) {
         const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
-        setCases(dataset.cases)
-        setSources(dataset.sources)
-        saveStoredCases(dataset.cases)
-        saveStoredSources(dataset.sources)
-        setCloudMessage(`已重新從雲端載入：${dataset.cloudCaseCount} 筆雲端案例、${dataset.cloudSourceCount} 個雲端來源。`)
+        setCases((current) => {
+          const mergedCases = mergeCases(dataset.cases, current)
+          saveStoredCases(mergedCases)
+          return mergedCases
+        })
+        setSources((current) => {
+          const mergedSources = mergeSources(dataset.sources, current)
+          saveStoredSources(mergedSources)
+          return mergedSources
+        })
+        setCloudMessage(`已重新從雲端載入並保留本機未上雲資料：${dataset.cloudCaseCount} 筆雲端案例、${dataset.cloudSourceCount} 個雲端來源。`)
       }
     } catch (error) {
       setServerRefreshMessage(`後端刷新失敗：${describeCloudError(error)}。若目前不是 Vercel 部署，請先設定 VITE_REFRESH_API_URL 或部署 api/refresh.ts。`)
@@ -430,9 +448,10 @@ function App() {
     }
   }
 
-  async function refreshLatest() {
-    setLoading(true)
-    setUpdateMessage('正在依來源頁策略抓取：GOV.UK/MCA 月報 + Paris MoU current detentions，並掃描資料來源頁面的在線 PDF 連結；舊案例會保留並合併……')
+  function refreshLatest() {
+    requestOperator('server_refresh', '獲取最新滯留並掃描在線 PDF', async (actor) => {
+      setLoading(true)
+      setUpdateMessage('正在依來源頁策略抓取：GOV.UK/MCA 月報 + Paris MoU current detentions，並掃描資料來源頁面的在線 PDF 連結；舊案例會保留並合併……')
     try {
       const result = await fetchLatestOfficialCases(12)
       const incoming = result.cases.map(keepDetentionOnly).filter((item): item is InspectionCase => Boolean(item))
@@ -467,12 +486,27 @@ function App() {
         ? `；PDF 掃描新增/更新 ${pdfDiscovery.sources.length} 個在線 PDF 連結：${pdfDiscovery.messages.slice(0, 3).join('；')}`
         : `；PDF 掃描未新增連結：${pdfDiscovery.messages.slice(0, 3).join('；') || '沒有可掃描來源'}`
       setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留滯留，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據${pdfMessage}。`)
+      await appendAuditLog(buildAuditLog({
+        actor,
+        action: 'server_refresh',
+        targetType: 'refresh',
+        targetId: 'refresh-latest-detention-and-pdf',
+        targetTitle: '獲取最新滯留並掃描在線 PDF',
+        after: {
+          cases: merged.length,
+          detentions: merged.reduce((sum, item) => sum + item.deficiencies.length, 0),
+          sources: mergedSources.length,
+          discoveredPdfSources: pdfDiscovery.sources.length,
+          messages: [...result.messages, ...pdfDiscovery.messages],
+        },
+      }))
       if (!selected && merged.length) setSelected(merged[0])
     } catch (error) {
       setUpdateMessage(`更新失敗：${describeCloudError(error)}。既有資料已保留；可在「資料來源」手動加入網址備忘。`)
     } finally {
       setLoading(false)
     }
+    }, true)
   }
 
   async function persistSources(nextSources: SourceBookmark[], successMessage: string) {
