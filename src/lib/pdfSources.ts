@@ -20,6 +20,12 @@ export function getPdfSources(sources: SourceBookmark[]) {
   return sources.filter((item) => !item.deletedAt && isPdfSource(item))
 }
 
+export function displayPdfTitle(item: Pick<SourceBookmark, 'title' | 'url' | 'authority' | 'sourceType'>) {
+  const cleanTitle = item.title.trim()
+  if (cleanTitle && !isGenericPdfTitle(cleanTitle)) return cleanTitle
+  return fileNameFromUrl(item.url) || cleanTitle || item.authority || item.sourceType || 'PDF 文件'
+}
+
 export function buildPdfSourceBrief(item: SourceBookmark): PdfSourceBrief {
   const authority = item.authority || item.sourceType || '未標記來源'
   const status = item.status || (item.storageUrl ? 'archived' : 'new')
@@ -34,7 +40,7 @@ export function buildPdfSourceBrief(item: SourceBookmark): PdfSourceBrief {
   if (item.pdfArchivedAt) bullets.push(`備用歸檔時間：${item.pdfArchivedAt}`)
   return {
     id: item.id,
-    title: item.title,
+    title: displayPdfTitle(item),
     url: item.url,
     authority,
     status,
@@ -70,7 +76,8 @@ export function extractPdfLinksFromHtml(html: string, pageUrl: string): Extracte
     const absolute = resolveUrl(rawHref, pageUrl)
     if (!absolute || seen.has(absolute)) continue
     seen.add(absolute)
-    links.push({ url: absolute, title: htmlToPlainText(match[3]) || fileNameFromUrl(absolute) || 'PDF 文件' })
+    const anchorTitle = htmlToPlainText(match[3])
+    links.push({ url: absolute, title: isGenericPdfTitle(anchorTitle) ? (fileNameFromUrl(absolute) || anchorTitle || 'PDF 文件') : anchorTitle })
   }
 
   const barePattern = /https?:\/\/[^\s"'<>]+?\.pdf(?:[?#][^\s"'<>]*)?/gi
@@ -110,7 +117,7 @@ export async function discoverPdfSourcesFromPages(sources: SourceBookmark[], opt
       }
       const pdfSources = links.map((link): SourceBookmark => ({
         id: `auto-pdf-${slugify(link.url)}`,
-        title: link.title,
+        title: isGenericPdfTitle(link.title) ? `${fileNameFromUrl(link.url) || 'PDF 文件'}（${source.title}）` : link.title,
         url: link.url,
         sourceType: '在線 PDF / 自動抓取',
         authority: source.authority || source.title,
@@ -129,6 +136,11 @@ export async function discoverPdfSourcesFromPages(sources: SourceBookmark[], opt
     }
   }
   return { sources: discovered, messages }
+}
+
+
+function isGenericPdfTitle(value: string) {
+  return /^(pdf|pdf文件|pdf 文件|download|下載|打開|open|view|document)$/i.test(value.trim())
 }
 
 function isPdfUrlLike(value: string) {

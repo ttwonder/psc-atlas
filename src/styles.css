@@ -638,11 +638,17 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 .pdf-source-picker h3, .pdf-selected-summary h3, .pdf-insight-panel h3 { margin: 0; font-size: 15px; }
 .pdf-source-picker header span { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; min-height: 28px; border-radius: 999px; color: #604bb8; background: #efe8ff; font-weight: 850; }
 .pdf-check-list { display: grid; gap: 7px; max-height: 470px; overflow: auto; padding-right: 4px; }
-.pdf-check-list label { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; align-items: start; padding: 9px 10px; border: 1px solid #dedbfd; border-radius: 12px; background: #fff; cursor: pointer; }
-.pdf-check-list label.selected { border-color: #8e77e8; background: linear-gradient(135deg, #fff3fb, #f2f0ff); }
-.pdf-check-list input { width: 16px; height: 16px; margin-top: 3px; accent-color: #8e77e8; }
+.pdf-check-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 9px 10px; border: 1px solid #dedbfd; border-radius: 12px; background: #fff; }
+.pdf-check-item.selected { border-color: #8e77e8; background: linear-gradient(135deg, #fff3fb, #f2f0ff); }
+.pdf-check-toggle { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; align-items: start; min-width: 0; cursor: pointer; }
+.pdf-check-toggle input { width: 16px; height: 16px; margin-top: 3px; accent-color: #8e77e8; }
+.pdf-check-copy { min-width: 0; }
 .pdf-check-list strong { display: block; color: #37406b; font-size: 12.5px; line-height: 1.32; overflow-wrap: anywhere; }
 .pdf-check-list span, .pdf-check-list small { display: block; color: #778098; font-size: 11px; line-height: 1.35; }
+.pdf-check-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; align-items: center; }
+.pdf-check-actions a, .pdf-check-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 28px; padding: 0 8px; border-radius: 8px; font-size: 11px; font-weight: 850; white-space: nowrap; }
+.pdf-check-actions a { border: 1px solid #bfc7ff; color: #4f4bb8; background: #f6f5ff; text-decoration: none; }
+.pdf-check-actions .danger-button { border-color: #fecaca; color: #b42318; background: #fff5f5; }
 .pdf-selected-summary { display: grid; align-content: start; gap: 9px; }
 .pdf-brief-card { display: grid; gap: 8px; padding: 10px; border: 1px solid #dedbfd; border-radius: 12px; background: linear-gradient(135deg, #fff, #fbf8ff); }
 .pdf-brief-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }

@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
-import { CheckSquare, ExternalLink, FileText, Link, Upload } from 'lucide-react'
+import { CheckSquare, ExternalLink, FileText, Link, Trash2, Upload } from 'lucide-react'
 import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
-import { buildPdfSourceBrief, getPdfSources } from '../lib/pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, getPdfSources } from '../lib/pdfSources'
 import type { SourceBookmark } from '../types'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
 
-export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }) {
+export function PdfInsightPanel({ sources = [], onDeleteSource }: { sources?: SourceBookmark[]; onDeleteSource?: (id: string, reason?: string) => void | Promise<void> }) {
   const [fileName, setFileName] = useState('')
   const [status, setStatus] = useState('尚未上傳 PDF')
   const [pdfUrl, setPdfUrl] = useState('')
@@ -115,14 +115,20 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
             {pdfSources.length ? pdfSources.map((item) => {
               const checked = selectedIds.includes(item.id)
               return (
-                <label key={item.id} className={checked ? 'selected' : ''}>
-                  <input type="checkbox" checked={checked} onChange={() => togglePdf(item.id)} />
-                  <div>
-                    <strong>{item.title}</strong>
-                    <span>{item.authority ?? item.sourceType} · {item.status ?? 'new'}</span>
-                    <small>{item.storageUrl ? '已有備用歸檔地址' : '使用在線 PDF 原始網址'}</small>
+                <article key={item.id} className={checked ? 'pdf-check-item selected' : 'pdf-check-item'}>
+                  <label className="pdf-check-toggle">
+                    <input type="checkbox" checked={checked} onChange={() => togglePdf(item.id)} />
+                    <div className="pdf-check-copy">
+                      <strong>{displayPdfTitle(item)}</strong>
+                      <span>{item.authority ?? item.sourceType} · {item.status ?? 'new'}</span>
+                      <small>{item.storageUrl ? '已有備用歸檔地址' : '使用在線 PDF 原始網址'}</small>
+                    </div>
+                  </label>
+                  <div className="pdf-check-actions">
+                    <a href={item.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>打開 <ExternalLink size={12} /></a>
+                    {onDeleteSource ? <button className="danger-button compact" type="button" onClick={(event) => { event.stopPropagation(); onDeleteSource(item.id, 'PDF 資料頁刪除') }}><Trash2 size={12} />刪除</button> : null}
                   </div>
-                </label>
+                </article>
               )
             }) : <p className="panel-hint">目前來源清單中沒有識別到 PDF。可在本頁貼 PDF URL 或到資料來源新增網址備忘。</p>}
           </div>

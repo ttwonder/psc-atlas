@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildPdfSourceBrief, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, getPdfSources } from './pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, getPdfSources } from './pdfSources'
 import type { SourceBookmark } from '../types'
 
 const sources: SourceBookmark[] = [
@@ -76,6 +76,22 @@ describe('pdf source utilities', () => {
       status: 'new',
     })
     expect(discovered.messages[0]).toContain('ABS PSC resources 找到 1 個 PDF')
+  })
+
+
+  it('falls back to a readable filename when collected PDF title is generic', () => {
+    const item: SourceBookmark = {
+      id: 'generic-pdf',
+      title: 'PDF',
+      url: 'https://www.eagle.org/content/dam/eagle/publications/abs-port-state-control-guide-2026.pdf?download=1',
+      sourceType: '在線 PDF / 自動抓取',
+      authority: 'ABS',
+      addedAt: '2026-06-01T00:00:00.000Z',
+      manual: false,
+    }
+
+    expect(displayPdfTitle(item)).toBe('abs port state control guide 2026')
+    expect(buildPdfSourceBrief(item).title).toBe('abs port state control guide 2026')
   })
 
 })
