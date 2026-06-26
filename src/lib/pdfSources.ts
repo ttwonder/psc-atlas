@@ -6,7 +6,7 @@ export interface PdfSourceBrief {
   url: string
   authority: string
   status: string
-  storageUrl: string
+  storageUrl?: string
   bullets: string[]
 }
 
@@ -30,14 +30,14 @@ export function buildPdfSourceBrief(item: SourceBookmark): PdfSourceBrief {
   if (item.notes) bullets.push(`備註：${item.notes}`)
   if (item.publishedAt) bullets.push(`發布日期：${item.publishedAt}`)
   if (item.fetchedAt) bullets.push(`抓取時間：${item.fetchedAt}`)
-  if (item.pdfArchivedAt) bullets.push(`PDF 歸檔時間：${item.pdfArchivedAt}`)
+  if (item.pdfArchivedAt) bullets.push(`備用歸檔時間：${item.pdfArchivedAt}`)
   return {
     id: item.id,
     title: item.title,
     url: item.url,
     authority,
     status,
-    storageUrl: item.storageUrl || '尚未填寫網盤/歸檔地址',
+    storageUrl: item.storageUrl || undefined,
     bullets,
   }
 }

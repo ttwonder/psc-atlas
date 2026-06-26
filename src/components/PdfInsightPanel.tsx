@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Archive, CheckSquare, ExternalLink, FileText, Link, Upload } from 'lucide-react'
+import { CheckSquare, ExternalLink, FileText, Link, Upload } from 'lucide-react'
 import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
 import { buildPdfSourceBrief, getPdfSources } from '../lib/pdfSources'
@@ -64,7 +64,7 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
       await extractPdf(await response.arrayBuffer(), url.split('/').pop() || url)
       setUrlTaskMessage('已直接讀取 PDF URL 並完成初步提煉。若官方站被 CORS 阻止，需後端代下載。')
     } catch (error) {
-      setUrlTaskMessage(`瀏覽器無法直接讀取此 PDF：${error instanceof Error ? error.message : String(error)}。通常是 CORS/防盜鏈限制；需要 Vercel 後端 /api/pdf-ingest 代下載、歸檔和提煉。`)
+      setUrlTaskMessage(`瀏覽器無法直接讀取此 PDF：${error instanceof Error ? error.message : String(error)}。通常是官方站 CORS/防盜鏈限制；仍可先保存這個在線 PDF 原始網址，必要時再人工打開。`)
     }
   }
 
@@ -75,16 +75,16 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
       setUrlTaskMessage('這個 URL 看起來不像 PDF；如確實是 PDF，請先確認鏈接能直接打開 PDF 文件。')
       return
     }
-    setUrlTaskMessage(`已記錄 PDF URL 任務：${url}。真正自動下載到網盤需由後端 /api/pdf-ingest 用服務端密鑰處理。`)
+    setUrlTaskMessage(`已記錄在線 PDF 原始網址：${url}。目前先不做網盤自動歸檔，後續需要時再接入後端保存。`)
   }
 
   return (
     <div className="pdf-data-page">
       <section className="panel pdf-data-hero">
         <div>
-          <p className="eyebrow">PDF DATA CENTER</p>
-          <h2>PDF 資料</h2>
-          <p>集中管理 PDF 上傳、URL 任務、辨識提煉、資料狀態與網盤/歸檔地址。資料來源頁不再分散放 PDF 功能。</p>
+          <p className="eyebrow">ONLINE PDF MANAGER</p>
+          <h2>在線 PDF 管理</h2>
+          <p>集中保存官方在線 PDF 原始網址、來源說明、備註與辨識重點；暫不做網盤自動歸檔。</p>
         </div>
         <label className="pdf-upload-button">
           <Upload size={16} />上傳 PDF 辨識
@@ -95,9 +95,9 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
       <section className="panel pdf-command-card">
         <div className="pdf-status compact"><FileText size={16} /><span>{fileName ? `${fileName}｜` : ''}{status}</span></div>
         <div className="pdf-url-row">
-          <label><Link size={14} />PDF URL<input value={pdfUrl} onChange={(event) => setPdfUrl(event.target.value)} placeholder="https://.../report.pdf" /></label>
+          <label><Link size={14} />在線 PDF 原始網址<input value={pdfUrl} onChange={(event) => setPdfUrl(event.target.value)} placeholder="https://official-site/.../report.pdf" /></label>
           <button className="primary-button" type="button" onClick={extractPdfUrl}>讀取並提煉</button>
-          <button className="export-button" type="button" onClick={registerPdfUrlTask}>記錄任務</button>
+          <button className="export-button" type="button" onClick={registerPdfUrlTask}>記錄網址</button>
         </div>
         <small>{urlTaskMessage}</small>
       </section>
@@ -107,7 +107,7 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
           <header>
             <div>
               <p className="eyebrow">COLLECTED PDFS</p>
-              <h3>已獲取 / 已採集 PDF</h3>
+              <h3>已採集在線 PDF</h3>
             </div>
             <span>{pdfSources.length} 個</span>
           </header>
@@ -120,7 +120,7 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
                   <div>
                     <strong>{item.title}</strong>
                     <span>{item.authority ?? item.sourceType} · {item.status ?? 'new'}</span>
-                    <small>{item.storageUrl ? '已有網盤/歸檔地址' : '未填網盤地址'}</small>
+                    <small>{item.storageUrl ? '已有備用歸檔地址' : '使用在線 PDF 原始網址'}</small>
                   </div>
                 </label>
               )
@@ -132,7 +132,7 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
           <header>
             <div>
               <p className="eyebrow">SELECTED PDF BRIEF</p>
-              <h3>勾選 PDF 的介紹與重點</h3>
+              <h3>勾選 PDF 的來源與重點</h3>
             </div>
             <CheckSquare size={18} />
           </header>
@@ -143,9 +143,9 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
                 <a href={brief.url} target="_blank" rel="noreferrer">打開 PDF <ExternalLink size={12} /></a>
               </div>
               <ul>{brief.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
-              <p className="pdf-storage-line"><Archive size={13} />{brief.storageUrl}</p>
+              <p className="pdf-online-line"><Link size={13} /><a href={brief.url} target="_blank" rel="noreferrer">{brief.url}</a></p>{brief.storageUrl ? <p className="pdf-storage-line">備用歸檔地址：{brief.storageUrl}</p> : null}
             </section>
-          )) : <div className="empty-state compact"><strong>請先勾選左側 PDF</strong><span>勾選後，這裡會用清單形式顯示 PDF 大致介紹、狀態、標籤、備註與網盤地址。</span></div>}
+          )) : <div className="empty-state compact"><strong>請先勾選左側 PDF</strong><span>勾選後，這裡會用清單形式顯示 PDF 大致介紹、來源、狀態、標籤、備註與在線原始網址。</span></div>}
         </article>
       </section>
 
@@ -183,8 +183,8 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
       ) : null}
 
       <aside className="pdf-storage-note panel">
-        <strong>網盤自動歸檔說明</strong>
-        <p>完整自動化需後端：Vercel Function 接收 PDF URL → 服務端下載 → 保存到指定網盤/雲存儲 → OCR/提煉 → 寫回 Supabase。網盤帳密/OAuth/rclone 配置只能放在服務端環境變數，不放前端。</p>
+        <strong>目前策略：只管理在線 PDF 原始網址</strong>
+        <p>現階段不自動下載、不保存到網盤；網站只記錄官方 PDF URL、來源、備註與辨識結果。若官方 PDF 失效，之後再考慮接入 Cloudflare R2、Supabase Storage 或 Google Drive 做備用歸檔。</p>
       </aside>
     </div>
   )
