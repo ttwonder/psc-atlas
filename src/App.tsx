@@ -7,7 +7,7 @@ import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
-import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
+import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, getPriorityNovelFindings, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type ManualCaseDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
@@ -16,7 +16,7 @@ import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, 
 import { buildRegionalReport } from './lib/report'
 import { loadStoredCases, loadStoredSources, mergeCases, mergeSources, saveStoredCases, saveStoredSources, sourceFromCase, sourceFromGuide, slugify } from './lib/storage'
 import { calculateTrendSummary, filterCasesByRangeAndRegion, getRegions, timeRangeLabels } from './lib/trends'
-import type { InspectionCase, OfficialSourceGuide, SourceBookmark, TimeRangeKey } from './types'
+import type { FindingPriority, InspectionCase, OfficialSourceGuide, SourceBookmark, TimeRangeKey } from './types'
 
 
 const OPERATOR_ROSTER_STORAGE_KEY = 'psc_operator_roster'
@@ -363,7 +363,7 @@ function App() {
       await upsertCloudDataset(cases, sources)
       setCloudUserEmail(user.email ?? null)
       setEditorProfile(await getEditorProfile())
-      setCloudMessage(`已同步到雲端：${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷、${sources.length} 個來源。其他人重新打開網站即可看到。`)
+      setCloudMessage(`已同步到雲端：${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留、${sources.length} 個來源。其他人重新打開網站即可看到。`)
     } catch (error) {
       setCloudMessage(`同步雲端失敗：${describeCloudError(error)}`)
     } finally {
@@ -393,7 +393,7 @@ function App() {
           return
         }
         await upsertCloudOperatorRoster(operatorRoster, operatorRoles).catch(() => undefined)
-        setCloudMessage(`保存修改完成：已嘗試同步 ${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷、${sources.length} 個來源。`)
+        setCloudMessage(`保存修改完成：已嘗試同步 ${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留、${sources.length} 個來源。`)
         await appendAuditLog(buildAuditLog({ actor, action: 'edit_finding', targetType: 'dataset', targetId: 'current-dataset', targetTitle: '保存目前修改到雲端' }))
       } catch (error) {
         setCloudMessage(`保存修改失敗：${describeCloudError(error)}。本機修改仍已保存；若要所有人看到，請用 Owner/Admin 登入或更新 Supabase RLS。`)
@@ -413,7 +413,7 @@ function App() {
     setServerRefreshMessage('正在呼叫後端 API 抓取最新資料並寫入 Supabase……')
     try {
       const result = await runServerRefresh(token, 12)
-      setServerRefreshMessage(`後端刷新完成：${result.messages?.join('；') || '無訊息'}；寫入/更新 ${result.insertedOrUpdatedCases ?? 0} 案例、${result.detainableDeficiencies ?? 0} 項滯留缺陷。`)
+      setServerRefreshMessage(`後端刷新完成：${result.messages?.join('；') || '無訊息'}；寫入/更新 ${result.insertedOrUpdatedCases ?? 0} 案例、${result.detainableDeficiencies ?? 0} 項滯留滯留。`)
       if (cloudConfigured) {
         const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
         setCases(dataset.cases)
@@ -460,7 +460,7 @@ function App() {
           cloudWriteMessage = `刷新結果已保存本機，但寫入雲端失敗：${describeCloudError(error)}`
         }
       }
-      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留缺陷，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
+      setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留滯留，只保留 2025 年以後滯留項。${cloudWriteMessage}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
       if (!selected && merged.length) setSelected(merged[0])
     } catch (error) {
       setUpdateMessage(`更新失敗：${describeCloudError(error)}。既有資料已保留；可在「資料來源」手動加入網址備忘。`)
@@ -576,12 +576,54 @@ function App() {
         setEditorProfile(profile)
         if (!user || canEditDataset(profile) || canOperatorPerform(actor, 'edit_finding')) {
           await upsertCloudDataset(nextCases, sources)
-          setCloudMessage(user ? '缺陷修改已自動同步到雲端，並已寫入 LOG。' : '缺陷修改已保存到本機，並已嘗試匿名同步雲端；若其他人未看到，請檢查 Supabase RLS 是否允許 operator/anon 寫入。')
+          setCloudMessage(user ? '滯留修改已自動同步到雲端，並已寫入 LOG。' : '滯留修改已保存到本機，並已嘗試匿名同步雲端；若其他人未看到，請檢查 Supabase RLS 是否允許 operator/anon 寫入。')
         } else {
-          setCloudMessage('缺陷修改已保存到本機並已記錄 LOG；目前帳號沒有同步雲端權限。')
+          setCloudMessage('滯留修改已保存到本機並已記錄 LOG；目前帳號沒有同步雲端權限。')
         }
       } catch (error) {
-        setCloudMessage(`缺陷已保存到本機，但同步雲端失敗：${describeCloudError(error)}。若要所有人立即看到，請用 Owner/Admin 登入或更新 Supabase RLS。`)
+        setCloudMessage(`滯留已保存到本機，但同步雲端失敗：${describeCloudError(error)}。若要所有人立即看到，請用 Owner/Admin 登入或更新 Supabase RLS。`)
+      }
+    })
+  }
+
+  async function saveManualCase(draft: ManualCaseDraft) {
+    requestOperator('edit_finding', draft.vessel || '手動增加案例', async (actor) => {
+      const manualCase = createManualInspectionCase(draft)
+      const nextCases = mergeCases(cases, [manualCase])
+      const nextSources = mergeSources(sources, [sourceFromCase(manualCase)])
+      setCases(nextCases)
+      setSources(nextSources)
+      setSelected(manualCase)
+      setActivePage('findings')
+      saveStoredCases(nextCases)
+      saveStoredSources(nextSources)
+      await appendAuditLog(buildAuditLog({ actor, action: 'edit_finding', targetType: 'dataset', targetId: manualCase.id, targetTitle: `手動增加案例：${manualCase.vessel}`, after: manualCase }))
+      if (!cloudConfigured) return
+      try {
+        await upsertCloudDataset(nextCases, nextSources)
+        setCloudMessage(`已新增手動案例「${manualCase.vessel}」，並嘗試同步 ${manualCase.deficiencies.length} 項滯留到雲端。`)
+      } catch (error) {
+        setCloudMessage(`手動案例已保存本機，但同步雲端失敗：${describeCloudError(error)}`)
+      }
+    })
+  }
+
+  async function saveManualFinding(caseId: string, draft: FindingDraft) {
+    const caseItem = cases.find((item) => item.id === caseId)
+    requestOperator('edit_finding', `手動輸入滯留：${caseItem?.vessel ?? caseId}`, async (actor) => {
+      const nextCases = appendManualFindingToCase(cases, caseId, draft)
+      const afterCase = nextCases.find((item) => item.id === caseId)
+      const after = afterCase?.deficiencies.at(-1)
+      setCases(nextCases)
+      saveStoredCases(nextCases)
+      setSelected(afterCase ?? caseItem ?? null)
+      await appendAuditLog(buildAuditLog({ actor, action: 'edit_finding', targetType: 'finding', targetId: `${caseId}#manual`, targetTitle: draft.original?.slice(0, 120) || '手動輸入滯留', after }))
+      if (!cloudConfigured) return
+      try {
+        await upsertCloudDataset(nextCases, sources)
+        setCloudMessage(`已新增手動滯留到「${afterCase?.vessel ?? caseId}」，並嘗試同步雲端。`)
+      } catch (error) {
+        setCloudMessage(`手動滯留已保存本機，但同步雲端失敗：${describeCloudError(error)}`)
       }
     })
   }
@@ -611,19 +653,19 @@ function App() {
         <header className="page-header">
           <div><h1>PSC 滯留案例卷宗 App</h1><p>累積官方來源、近期趨勢、地區報告、預防自查清單與 Excel 匯出</p></div>
           <div className="header-actions">
-            <button className="export-button" type="button" onClick={refreshLatest} disabled={loading}><RefreshCw size={18} className={loading ? 'spin' : ''} />獲取最新缺失</button>
+            <button className="export-button" type="button" onClick={refreshLatest} disabled={loading}><RefreshCw size={18} className={loading ? 'spin' : ''} />獲取最新滯留</button>
             <button className="primary-button save-changes-button" type="button" onClick={saveCurrentChangesToCloud} disabled={cloudLoading}>保存修改</button>
             <button className="export-button" type="button" onClick={() => exportCasesWorkbook(filteredCases, sources, officialSourceMap)}><Download size={18} />匯出 Excel</button>
           </div>
           <button className="mobile-menu" type="button" aria-label="開啟導覽" onClick={() => setMobileNavOpen(true)}><Menu /></button>
         </header>
 
-        <div className="update-strip"><span>{updateMessage}</span><span>目前累積：{cases.length} 案例 / {cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷 / {activeSources(sources).length} 個有效網址</span></div>
+        <div className="update-strip"><span>{updateMessage}</span><span>目前累積：{cases.length} 案例 / {cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留 / {activeSources(sources).length} 個有效網址</span></div>
         <FilterBar query={query} region={region} shipType={shipType} category={category} timeRange={timeRange} detainedOnly={detainedOnly} regions={regions} shipTypes={shipTypes} categories={categories} onQueryChange={setQuery} onRegionChange={setRegion} onShipTypeChange={setShipType} onCategoryChange={setCategory} onTimeRangeChange={setTimeRange} onDetainedOnlyChange={setDetainedOnly} onReset={resetFilters} />
 
         {activePage === 'overview' ? <Overview trend={trend} cases={filteredCases} onSelect={selectCase} /> : null}
-        {activePage === 'cases' ? <CasesPage cases={filteredCases} selected={selected} onSelect={selectCase} /> : null}
-        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} /> : null}
+        {activePage === 'cases' ? <CasesPage cases={filteredCases} selected={selected} onSelect={selectCase} onAddManualCase={saveManualCase} /> : null}
+        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} onAddManualFinding={saveManualFinding} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
         {activePage === 'pdf' ? <PdfInsightPanel sources={sources} /> : null}
@@ -654,29 +696,111 @@ function Overview({ trend, cases, onSelect }: { trend: ReturnType<typeof calcula
 }
 
 function TrendCards({ trend }: { trend: ReturnType<typeof calculateTrendSummary> }) {
-  return <section className="stat-grid"><article><span>案例數</span><strong>{trend.totalCases}</strong><small>{trend.region} · {timeRangeLabels[trend.range]}</small></article><article><span>滯留依據</span><strong>{trend.totalDetainableDeficiencies}</strong><small>逐項缺陷累計</small></article><article><span>主要類別</span><strong>{trend.topCategories[0]?.category ?? '暫無'}</strong><small>{trend.topCategories[0]?.count ?? 0} 項</small></article><article><span>典型案例</span><strong>{trend.typicalCases[0]?.vessel ?? '暫無'}</strong><small>可點案例庫查看詳情</small></article></section>
+  return <section className="stat-grid"><article><span>案例數</span><strong>{trend.totalCases}</strong><small>{trend.region} · {timeRangeLabels[trend.range]}</small></article><article><span>滯留依據</span><strong>{trend.totalDetainableDeficiencies}</strong><small>逐項滯留累計</small></article><article><span>主要類別</span><strong>{trend.topCategories[0]?.category ?? '暫無'}</strong><small>{trend.topCategories[0]?.count ?? 0} 項</small></article><article><span>典型案例</span><strong>{trend.typicalCases[0]?.vessel ?? '暫無'}</strong><small>可點案例庫查看詳情</small></article></section>
 }
 
-function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void }) {
+function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; onAddManualCase: (draft: ManualCaseDraft) => void }) {
   return (
     <div className="dossier-workbench">
+      <ManualCaseForm onSubmit={props.onAddManualCase} />
       <section className="case-list evidence-card" aria-label="PSC 案例總清單">
-        <header className="section-header"><div><h2>案例總清單</h2><p>點擊任一船舶，會跳到「缺陷詳情」分頁中該船對應的缺陷位置。</p></div></header>
+        <header className="section-header"><div><h2>案例總清單</h2><p>點擊任一船舶，會跳到「滯留詳情」分頁中該船對應的滯留位置。</p></div></header>
         <CaseTable cases={props.cases} selectedId={props.selected?.id ?? null} onSelect={props.onSelect} />
       </section>
     </div>
   )
 }
 
-function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onRequestEdit: (targetTitle: string, proceed: () => void) => void; onUpdateFinding: (caseId: string, findingIndex: number, draft: FindingDraft) => void }) {
+function ManualCaseForm({ onSubmit }: { onSubmit: (draft: ManualCaseDraft) => void }) {
+  const [open, setOpen] = useState(false)
+  const [vessel, setVessel] = useState('')
+  const [imo, setImo] = useState('')
+  const [flag, setFlag] = useState('')
+  const [shipType, setShipType] = useState('')
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+  const [port, setPort] = useState('')
+  const [region, setRegion] = useState('')
+  const [authority, setAuthority] = useState('')
+  const [sourceUrl, setSourceUrl] = useState('')
+  const [summary, setSummary] = useState('')
+  const [detentionItemsText, setDetentionItemsText] = useState('')
+  const [message, setMessage] = useState('')
+
+  function submit() {
+    if (!vessel.trim()) { setMessage('請先輸入船名。'); return }
+    if (!detentionItemsText.trim()) { setMessage('請至少輸入一條滯留內容。'); return }
+    onSubmit({ vessel, imo, flag, shipType, date, port, region, authority, sourceUrl, sourceTitle: sourceUrl ? '手動輸入來源' : '手動輸入', summary, detentionItemsText })
+    setMessage(`已提交「${vessel}」手動案例，請完成身份確認後保存。`)
+    setOpen(false)
+  }
+
+  return <section className="panel manual-entry-panel">
+    <header className="manual-entry-header"><div><p className="eyebrow">MANUAL CASE ENTRY</p><h2>手動增加案例</h2><p>可批量輸入同一案例中的多條滯留；每行格式：代碼 | 類別 | 滯留原文。</p></div><button className="primary-button" type="button" onClick={() => setOpen((value) => !value)}>{open ? '收起' : '手動增加案例'}</button></header>
+    {open ? <div className="manual-entry-grid">
+      <label>船名<input value={vessel} onChange={(event) => setVessel(event.target.value)} placeholder="例如 MANUAL VESSEL" /></label>
+      <label>IMO<input value={imo} onChange={(event) => setImo(event.target.value)} placeholder="可留空" /></label>
+      <label>船旗<input value={flag} onChange={(event) => setFlag(event.target.value)} placeholder="Panama / Liberia..." /></label>
+      <label>船型<input value={shipType} onChange={(event) => setShipType(event.target.value)} placeholder="Bulk carrier" /></label>
+      <label>日期<input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
+      <label>港口<input value={port} onChange={(event) => setPort(event.target.value)} placeholder="Port" /></label>
+      <label>地區<input value={region} onChange={(event) => setRegion(event.target.value)} placeholder="例如 Taiwan / PSC" /></label>
+      <label>來源機關<input value={authority} onChange={(event) => setAuthority(event.target.value)} placeholder="手動輸入 / 官方機關" /></label>
+      <label className="wide">來源網址<input value={sourceUrl} onChange={(event) => setSourceUrl(event.target.value)} placeholder="https://... 可留空" /></label>
+      <label className="wide">案例摘要<textarea value={summary} onChange={(event) => setSummary(event.target.value)} placeholder="簡述本次滯留案例" /></label>
+      <label className="wide">批量滯留內容<textarea value={detentionItemsText} onChange={(event) => setDetentionItemsText(event.target.value)} placeholder={'07105 | 消防安全 | Fire door failed to close.\n10111 | ISM／安全管理 | SMS did not ensure maintenance.'} /></label>
+      <div className="manual-entry-actions"><button className="primary-button" type="button" onClick={submit}>保存手動案例</button><button className="text-button" type="button" onClick={() => setOpen(false)}>取消</button></div>
+    </div> : null}
+    {message ? <p className="permission-note">{message}</p> : null}
+  </section>
+}
+
+function FindingsPage(props: { cases: InspectionCase[]; selected: InspectionCase | null; onSelect: (item: InspectionCase) => void; query: string; categories: string[]; canEdit: boolean; onRequestEdit: (targetTitle: string, proceed: () => void) => void; onUpdateFinding: (caseId: string, findingIndex: number, draft: FindingDraft) => void; onAddManualFinding: (caseId: string, draft: FindingDraft) => void }) {
   return (
     <div className="dossier-workbench">
-      <section className="case-list evidence-card" aria-label="PSC 缺陷詳情清單">
-        <header className="section-header"><div><h2>缺陷詳情清單</h2><p>這是獨立分頁；上方搜尋、時間段、地區、船型、缺陷類別會同步篩選這張表。登入的操作員可修改分類、備註、關注度與新穎標記。</p></div></header>
+      <ManualFindingForm cases={props.cases} selected={props.selected} categories={props.categories} onSubmit={props.onAddManualFinding} />
+      <section className="case-list evidence-card" aria-label="PSC 滯留詳情清單">
+        <header className="section-header"><div><h2>滯留詳情清單</h2><p>這是獨立分頁；上方搜尋、時間段、地區、船型、滯留類別會同步篩選這張表。登入的操作員可修改分類、備註、關注度與新穎標記。</p></div></header>
         <FindingTable cases={props.cases} onSelect={props.onSelect} focusCaseId={props.selected?.id ?? null} globalQuery={props.query} categories={props.categories} canEdit={props.canEdit} onRequestEdit={props.onRequestEdit} onUpdateFinding={props.onUpdateFinding} />
       </section>
     </div>
   )
+}
+
+function ManualFindingForm({ cases, selected, categories, onSubmit }: { cases: InspectionCase[]; selected: InspectionCase | null; categories: string[]; onSubmit: (caseId: string, draft: FindingDraft) => void }) {
+  const [open, setOpen] = useState(false)
+  const [caseId, setCaseId] = useState(selected?.id ?? cases[0]?.id ?? '')
+  const [code, setCode] = useState('')
+  const [category, setCategory] = useState(categories[0] ?? '操作／設備滯留')
+  const [original, setOriginal] = useState('')
+  const [notes, setNotes] = useState('')
+  const [priority, setPriority] = useState<FindingPriority>('low')
+  const [novel, setNovel] = useState(false)
+  const [message, setMessage] = useState('')
+
+  useEffect(() => { if (selected?.id) setCaseId(selected.id) }, [selected?.id])
+
+  function submit() {
+    if (!caseId) { setMessage('請先選擇案例。'); return }
+    if (!original.trim()) { setMessage('請輸入滯留原文或說明。'); return }
+    onSubmit(caseId, { code, category, original, notes, priority, novel, detentionGround: true })
+    setMessage('已提交手動滯留，請完成身份確認後保存。')
+    setOriginal(''); setNotes(''); setCode(''); setNovel(false); setOpen(false)
+  }
+
+  return <section className="panel manual-entry-panel">
+    <header className="manual-entry-header"><div><p className="eyebrow">MANUAL DETENTION ENTRY</p><h2>手動輸入滯留</h2><p>給現有案例追加一條滯留，不需要進入完整修改表單。</p></div><button className="primary-button" type="button" onClick={() => setOpen((value) => !value)}>{open ? '收起' : '手動輸入滯留'}</button></header>
+    {open ? <div className="manual-entry-grid compact">
+      <label className="wide">選擇案例<select value={caseId} onChange={(event) => setCaseId(event.target.value)}>{cases.map((item) => <option key={item.id} value={item.id}>{item.date}｜{item.vessel}｜IMO {item.imo}</option>)}</select></label>
+      <label>滯留代碼<input value={code} onChange={(event) => setCode(event.target.value)} placeholder="07105 / 可留空" /></label>
+      <label>類別<select value={category} onChange={(event) => setCategory(event.target.value)}>{Array.from(new Set([category, ...categories])).filter(Boolean).map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+      <label>關注度<select value={priority} onChange={(event) => setPriority(event.target.value as FindingPriority)}><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></label>
+      <label className="inline-check manual-inline-check"><input type="checkbox" checked={novel} onChange={(event) => setNovel(event.target.checked)} /> 新穎案例</label>
+      <label className="wide">滯留原文 / 說明<textarea value={original} onChange={(event) => setOriginal(event.target.value)} placeholder="輸入官方原文或內部整理的滯留描述" /></label>
+      <label className="wide">備註<textarea value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="預防措施、需跟蹤設備或內部備註" /></label>
+      <div className="manual-entry-actions"><button className="primary-button" type="button" onClick={submit}>保存手動滯留</button><button className="text-button" type="button" onClick={() => setOpen(false)}>取消</button></div>
+    </div> : null}
+    {message ? <p className="permission-note">{message}</p> : null}
+  </section>
 }
 
 function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
@@ -690,8 +814,8 @@ function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
   })
   return (
     <div className="dossier-workbench">
-      <section className="case-list evidence-card" aria-label="重點與新穎缺陷">
-        <header className="section-header"><div><h2>重點 + 新穎缺陷</h2><p>只展示關注度為中/高或已勾選「新穎」的具體缺陷原文；上方時間段和其他篩選同樣生效。</p></div></header>
+      <section className="case-list evidence-card" aria-label="重點與新穎滯留">
+        <header className="section-header"><div><h2>重點 + 新穎滯留</h2><p>只展示關注度為中/高或已勾選「新穎」的具體滯留原文；上方時間段和其他篩選同樣生效。</p></div></header>
         <div className="priority-filter-row">
           <label>關注程度
             <select value={priorityFilter} onChange={(event) => setPriorityFilter(event.target.value as typeof priorityFilter)}>
@@ -723,14 +847,14 @@ function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
             </article>
           ))}
         </div>
-        {rows.length === 0 ? <div className="empty-state"><strong>目前沒有標記為中/高或新穎的缺陷</strong><span>可到「缺陷詳情」修改缺陷關注度或勾選新穎。</span></div> : null}
+        {rows.length === 0 ? <div className="empty-state"><strong>目前沒有標記為中/高或新穎的滯留</strong><span>可到「滯留詳情」修改滯留關注度或勾選新穎。</span></div> : null}
       </section>
     </div>
   )
 }
 
 function buildPreventionActions(trend: ReturnType<typeof calculateTrendSummary>) {
-  const actions = trend.topCategories.slice(0, 5).map((item) => `把「${item.category}」納入本週船舶預檢：按缺陷原文逐項核對，至少抽查 ${Math.min(item.count, 10)} 個對應設備/文件/演習記錄。`)
+  const actions = trend.topCategories.slice(0, 5).map((item) => `把「${item.category}」納入本週船舶預檢：按滯留原文逐項核對，至少抽查 ${Math.min(item.count, 10)} 個對應設備/文件/演習記錄。`)
   if (trend.topKeywords.length) actions.unshift(`高頻設備/作業詞：${trend.topKeywords.slice(0, 6).map((item) => `${item.keyword}(${item.count})`).join('、')}；優先安排船岸自查。`)
   if (trend.indexOnlyCases) actions.push(`${trend.indexOnlyCases} 筆 index-only 來源不能直接作原因分析，需追 Form A/B、PDF 或港口國月報補原文。`)
   return actions.slice(0, 7)
@@ -745,7 +869,7 @@ function AnalysisPage({ report, trend, range, onDownload }: { report: string; tr
         <div>
           <p className="eyebrow">SUMMARY ANALYSIS</p>
           <h2>匯總情況分析頁：先判斷要抓哪些重點</h2>
-          <p>所有圖表都受上方地區、期間、船型、類別篩選控制。索引-only 案例只作「最新跟蹤」，不混入可分析缺陷結論。</p>
+          <p>所有圖表都受上方地區、期間、船型、類別篩選控制。索引-only 案例只作「最新跟蹤」，不混入可分析滯留結論。</p>
         </div>
         <button className="export-button" type="button" onClick={onDownload}><FileDown size={17} />下載 Markdown 報告</button>
       </section>
@@ -759,11 +883,11 @@ function AnalysisPage({ report, trend, range, onDownload }: { report: string; tr
         <p>把趨勢直接轉成船岸可執行的預檢/跟蹤項，而不是只看統計。</p>
         <ol className="trend-list">{preventionActions.map((item) => <li key={item}>{item}</li>)}</ol>
       </section>
-      <section className="panel"><h2>{timeRangeLabels[range]}主要缺陷面向</h2><div className="category-bars">{trend.topCategories.map((item) => <div key={item.category}><span>{item.category}</span><strong>{item.count}</strong><progress max={trend.topCategories[0]?.count || 1} value={item.count} /></div>)}</div></section>
+      <section className="panel"><h2>{timeRangeLabels[range]}主要滯留面向</h2><div className="category-bars">{trend.topCategories.map((item) => <div key={item.category}><span>{item.category}</span><strong>{item.count}</strong><progress max={trend.topCategories[0]?.count || 1} value={item.count} /></div>)}</div></section>
       <section className="panel"><h2>地區案件與趨勢</h2><div className="region-breakdown">{trend.regionBreakdown.map((item) => <article key={item.region}><strong>{item.region}</strong><span>{item.cases} 案 / {item.detainable} 項依據</span><small>分析可用 {item.analysisReady}｜索引待補 {item.indexOnly}</small></article>)}</div></section>
       <section className="panel"><h2>證據深度與狀態</h2><div className="mix-grid"><div>{trend.evidenceMix.map((item) => <p key={item.level}><b>{item.level}</b><span>{item.count} 案</span></p>)}</div><div>{trend.statusBreakdown.map((item) => <p key={item.status}><b>{item.status}</b><span>{item.count} 案</span></p>)}</div></div></section>
       <section className="panel"><h2>月份走勢（最近12個月份）</h2><div className="month-trend">{trend.monthlyTrend.map((item) => <div key={item.month}><span>{item.month}</span><progress max={maxMonthly} value={item.detainable} /><strong>{item.detainable}</strong></div>)}</div></section>
-      <section className="panel matrix-panel"><h2>地區 × 缺陷面向矩陣</h2><div className="matrix-list">{trend.categoryRegionMatrix.map((item) => <span key={`${item.category}-${item.region}`}>{item.region}<b>{item.category}</b><strong>{item.count}</strong></span>)}</div></section>
+      <section className="panel matrix-panel"><h2>地區 × 滯留面向矩陣</h2><div className="matrix-list">{trend.categoryRegionMatrix.map((item) => <span key={`${item.category}-${item.region}`}>{item.region}<b>{item.category}</b><strong>{item.count}</strong></span>)}</div></section>
       <section className="panel report-panel"><header><h2>地區性總結報告</h2><button className="export-button" type="button" onClick={onDownload}><FileDown size={17} />下載 Markdown</button></header><pre>{report}</pre></section>
     </div>
   )
@@ -821,7 +945,7 @@ function SourcesPage(props: SourcesPageProps) {
           <h2>資料來源標籤頁</h2>
           <p>這裡集中放定期查看的官方/準官方入口，也標明哪些能自動抓取、哪些只能人工追完整卷宗。</p>
         </div>
-        <button className="primary-button" type="button" onClick={props.onRefresh} disabled={props.loading}><RefreshCw size={17} className={props.loading ? 'spin' : ''} />獲取最新缺失</button>
+        <button className="primary-button" type="button" onClick={props.onRefresh} disabled={props.loading}><RefreshCw size={17} className={props.loading ? 'spin' : ''} />獲取最新滯留</button>
         <small>{props.updateMessage}</small>
       </section>
       <section className="panel cloud-panel full-span">
@@ -829,7 +953,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="eyebrow">CLOUD DATABASE</p>
           <h2>雲端資料庫同步</h2>
           <p>{props.cloudMessage}</p>
-          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜整批同步仍需 Owner/Admin；一般來源/缺陷操作會用部門+姓名確認。` : 'Supabase 已設定；目前未登入。一般來源/缺陷操作會用部門+姓名確認，雲端整批同步需 Owner/Admin。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY；操作會保存在本機並記錄 LOG。'}</small>
+          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜整批同步仍需 Owner/Admin；一般來源/滯留操作會用部門+姓名確認。` : 'Supabase 已設定；目前未登入。一般來源/滯留操作會用部門+姓名確認，雲端整批同步需 Owner/Admin。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY；操作會保存在本機並記錄 LOG。'}</small>
         </div>
         {props.cloudConfigured ? (
           <div className="cloud-actions">
@@ -956,7 +1080,7 @@ function SourcesPage(props: SourcesPageProps) {
               Refresh token
               <input type="password" value={props.serverRefreshToken} onChange={(event) => props.onServerRefreshToken(event.target.value)} placeholder="輸入 PSC_REFRESH_TOKEN" />
             </label>
-            <button className="primary-button" type="button" onClick={props.onServerRefresh} disabled={props.serverRefreshLoading || !props.serverRefreshToken.trim()}>{props.serverRefreshLoading ? '後端抓取中…' : '由後端獲取最新缺失'}</button>
+            <button className="primary-button" type="button" onClick={props.onServerRefresh} disabled={props.serverRefreshLoading || !props.serverRefreshToken.trim()}>{props.serverRefreshLoading ? '後端抓取中…' : '由後端獲取最新滯留'}</button>
           </div>
           <div className="refresh-plan-grid">
             {props.sourceGuides.map((item) => <article key={item.id}><strong>{item.title}</strong><span>{item.autoFetch}</span><p>{item.refreshScope}</p><small>{item.nextAction}</small></article>)}
@@ -1052,7 +1176,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
 
       <section className="panel roster-panel">
         <h2>操作員預設名單</h2>
-        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/缺陷時會從這裡選部門和姓名。名單維護只限 Owner 或管理員；可在每個人旁邊直接切換「操作員/管理員」。</p>
+        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/滯留時會從這裡選部門和姓名。名單維護只限 Owner 或管理員；可在每個人旁邊直接切換「操作員/管理員」。</p>
         <div className="roster-add-form">
           <label>部門<select value={department} onChange={(event) => setDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
           <label>姓名<input value={name} onChange={(event) => setName(event.target.value)} placeholder="輸入姓名" /></label>
@@ -1070,7 +1194,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
 
       <section className="panel audit-panel">
         <h2>操作 LOG</h2>
-        <p className="panel-hint">記錄來源、缺陷與名單維護操作。若 Supabase 已建立 LOG 表，會嘗試同步到雲端；否則保存在本瀏覽器。</p>
+        <p className="panel-hint">記錄來源、滯留與名單維護操作。若 Supabase 已建立 LOG 表，會嘗試同步到雲端；否則保存在本瀏覽器。</p>
         <div className="audit-log-list">
           {auditLogs.slice(0, 80).map((log) => <article key={log.id}>
             <div><strong>{OPERATOR_ACTION_LABELS[log.action]}</strong><span>{log.actorDepartment}/{log.actorName} · {log.actorRole}</span></div>
@@ -1078,7 +1202,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
             <small>{log.createdAt.replace('T', ' ').slice(0, 19)} · {log.targetType} · {log.targetId}</small>
           </article>)}
         </div>
-        {auditLogs.length === 0 ? <div className="empty-state"><strong>暫無操作 LOG</strong><span>修改來源或缺陷後會出現在這裡。</span></div> : null}
+        {auditLogs.length === 0 ? <div className="empty-state"><strong>暫無操作 LOG</strong><span>修改來源或滯留後會出現在這裡。</span></div> : null}
       </section>
     </div>
   )

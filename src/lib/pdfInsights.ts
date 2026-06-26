@@ -34,7 +34,7 @@ export function buildPdfInsights(text: string): PdfInsights {
     .slice(0, 40)
   const keywordTrends = buildKeywordTrends(normalized)
   const summaryBullets = [
-    deficiencyCandidates.length ? `疑似具體缺陷描述 ${deficiencyCandidates.length} 條，應優先人工核對原 PDF 頁碼。` : '未自動識別到明確缺陷描述，可能是掃描件或格式需要 OCR。',
+    deficiencyCandidates.length ? `疑似具體滯留描述 ${deficiencyCandidates.length} 條，應優先人工核對原 PDF 頁碼。` : '未自動識別到明確滯留描述，可能是掃描件或格式需要 OCR。',
     keywordTrends.length ? `高頻設備/管理詞：${keywordTrends.slice(0, 6).map((item) => `${item.keyword}(${item.count})`).join('、')}。` : '未識別到常見 PSC 設備/管理關鍵詞。',
     '自動提煉只作初篩；正式入庫仍應保留官方原文、來源 URL、頁碼與人工確認。',
   ]

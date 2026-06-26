@@ -6,8 +6,8 @@ const SOURCES_KEY = 'psc-atlas:source-bookmarks:v10-china-1321-detention-only-no
 
 export function mergeCases(existing: InspectionCase[], incoming: InspectionCase[]) {
   const byKey = new Map<string, InspectionCase>()
-  for (const item of existing) byKey.set(caseKey(item), item)
-  for (const item of incoming) {
+  for (const item of existing.map(normalizeCaseWording)) byKey.set(caseKey(item), item)
+  for (const item of incoming.map(normalizeCaseWording)) {
     const key = caseKey(item)
     const current = byKey.get(key)
     if (!current) byKey.set(key, item)
@@ -44,8 +44,8 @@ export function sourceFromGuide(item: OfficialSourceGuide): SourceBookmark {
 
 export function mergeSources(existing: SourceBookmark[], incoming: SourceBookmark[]) {
   const byUrl = new Map<string, SourceBookmark>()
-  for (const item of existing) byUrl.set(normalizeUrl(item.url), item)
-  for (const item of incoming) {
+  for (const item of existing.map(normalizeSourceWording)) byUrl.set(normalizeUrl(item.url), item)
+  for (const item of incoming.map(normalizeSourceWording)) {
     const key = normalizeUrl(item.url)
     const current = byUrl.get(key)
     if (!current) byUrl.set(key, item)
@@ -118,6 +118,55 @@ function mergeDeficiencies<T extends { code: string; original: string }>(existin
   for (const item of existing) byKey.set(`${item.code}|${item.original}`, item)
   for (const item of incoming) byKey.set(`${item.code}|${item.original}`, item)
   return Array.from(byKey.values())
+}
+
+function normalizeChineseWording(value: string) {
+  return value.replace(/缺陷/g, '滯留').replace(/缺失/g, '滯留')
+}
+
+function normalizeCaseWording(item: InspectionCase): InspectionCase {
+  return {
+    ...item,
+    vessel: normalizeChineseWording(item.vessel),
+    flag: normalizeChineseWording(item.flag),
+    shipType: normalizeChineseWording(item.shipType),
+    company: normalizeChineseWording(item.company),
+    classSociety: normalizeChineseWording(item.classSociety),
+    port: normalizeChineseWording(item.port),
+    region: normalizeChineseWording(item.region),
+    shortSummary: normalizeChineseWording(item.shortSummary),
+    narrative: item.narrative.map(normalizeChineseWording),
+    evidenceNote: normalizeChineseWording(item.evidenceNote),
+    source: {
+      ...item.source,
+      authority: normalizeChineseWording(item.source.authority),
+      title: normalizeChineseWording(item.source.title),
+      sourceType: normalizeChineseWording(item.source.sourceType),
+    },
+    deficiencies: item.deficiencies.map((entry) => ({
+      ...entry,
+      category: normalizeChineseWording(entry.category),
+      original: normalizeChineseWording(entry.original),
+      observedCondition: entry.observedCondition ? normalizeChineseWording(entry.observedCondition) : entry.observedCondition,
+      inspectorFinding: entry.inspectorFinding ? normalizeChineseWording(entry.inspectorFinding) : entry.inspectorFinding,
+      detentionReason: entry.detentionReason ? normalizeChineseWording(entry.detentionReason) : entry.detentionReason,
+      requiredRectification: entry.requiredRectification ? normalizeChineseWording(entry.requiredRectification) : entry.requiredRectification,
+      releaseCondition: entry.releaseCondition ? normalizeChineseWording(entry.releaseCondition) : entry.releaseCondition,
+      sourceQuote: entry.sourceQuote ? normalizeChineseWording(entry.sourceQuote) : entry.sourceQuote,
+      notes: entry.notes ? normalizeChineseWording(entry.notes) : entry.notes,
+    })),
+  }
+}
+
+function normalizeSourceWording(item: SourceBookmark): SourceBookmark {
+  return {
+    ...item,
+    title: normalizeChineseWording(item.title),
+    sourceType: normalizeChineseWording(item.sourceType),
+    notes: item.notes ? normalizeChineseWording(item.notes) : item.notes,
+    authority: item.authority ? normalizeChineseWording(item.authority) : item.authority,
+    tags: item.tags?.map(normalizeChineseWording),
+  }
 }
 
 function richnessScore(item: InspectionCase) {

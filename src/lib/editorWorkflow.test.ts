@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { activeSources, deletedSources, purgeExpiredDeletedSources, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings, stripDeficiencyTranslations, pdfCandidateToDeficiencyDraft } from './editorWorkflow'
+import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, purgeExpiredDeletedSources, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings, stripDeficiencyTranslations, pdfCandidateToDeficiencyDraft } from './editorWorkflow'
 
 const source: SourceBookmark = {
   id: 's1',
@@ -107,6 +107,49 @@ describe('editor workflow helpers', () => {
     expect(finding.notes).toBe('Company should test fire doors before PSC.')
     expect(finding.priority).toBe('high')
     expect(finding.novel).toBe(true)
+  })
+
+
+
+  it('creates a manual case with multiple detention items from pasted lines', () => {
+    const created = createManualInspectionCase({
+      vessel: 'MANUAL VESSEL',
+      imo: '7654321',
+      flag: 'Panama',
+      flagEmoji: '🇵🇦',
+      shipType: 'Bulk carrier',
+      date: '2026-06-01',
+      port: 'Kaohsiung',
+      region: 'Taiwan / PSC',
+      authority: 'Manual PSC entry',
+      sourceUrl: 'https://example.com/manual',
+      sourceTitle: 'Manual case source',
+      summary: 'Manual detention case',
+      detentionItemsText: '07105 | 消防安全 | Fire door failed to close.\n10111 | ISM／安全管理 | SMS did not ensure maintenance.',
+    }, '2026-06-02T00:00:00.000Z')
+
+    expect(created.id).toBe('manual-manual-vessel-7654321-2026-06-01')
+    expect(created.deficiencies).toHaveLength(2)
+    expect(created.deficiencyCount).toBe(2)
+    expect(created.detentionGroundCount).toBe(2)
+    expect(created.deficiencies[0]).toMatchObject({ code: '07105', category: '消防安全', original: 'Fire door failed to close.', detentionGround: true })
+    expect(created.source.authority).toBe('Manual PSC entry')
+  })
+
+  it('appends a manual detention item to an existing case without replacing old items', () => {
+    const updated = appendManualFindingToCase([caseItem], 'case-1', {
+      code: '14104',
+      category: '防污染',
+      original: 'Oil filtering equipment alarm failed during test.',
+      notes: 'Manual follow-up item',
+      priority: 'medium',
+      novel: true,
+    }, '2026-06-02T00:00:00.000Z')
+
+    expect(updated[0].deficiencies).toHaveLength(3)
+    expect(updated[0].deficiencies[2]).toMatchObject({ code: '14104', category: '防污染', detentionGround: true, priority: 'medium', novel: true })
+    expect(updated[0].deficiencies[0].original).toBe('Fire door failed to close.')
+    expect(updated[0].detentionGroundCount).toBe(3)
   })
 
   it('strips legacy translation values from loaded cases', () => {

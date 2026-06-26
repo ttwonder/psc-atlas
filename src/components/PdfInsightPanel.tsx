@@ -167,11 +167,11 @@ export function PdfInsightPanel({ sources = [] }: { sources?: SourceBookmark[] }
               <div className="pdf-keywords">{insights.keywordTrends.map((item) => <span key={item.keyword}>{item.keyword}<b>{item.count}</b></span>)}</div>
             </article>
             <article className="pdf-candidates">
-              <h3>疑似具體缺陷描述</h3>
+              <h3>疑似具體滯留描述</h3>
               <ol>{insights.deficiencyCandidates.map((item, index) => <li key={`${index}-${item}`} lang="en">{item}</li>)}</ol>
             </article>
             <article className="pdf-candidates">
-              <h3>候選缺陷草稿</h3>
+              <h3>候選滯留草稿</h3>
               <ol>{deficiencyDrafts.map((item, index) => <li key={`${index}-${item.original}`}><code>{item.category}</code><span lang="en">{item.original}</span><small>{item.sourcePage ?? ''} {item.priority ? `｜初判關注度：${item.priority}` : ''}</small></li>)}</ol>
             </article>
             <article className="pdf-preview">

@@ -42,6 +42,22 @@ export interface PriorityFindingRow {
   index: number
 }
 
+export interface ManualCaseDraft {
+  vessel: string
+  imo?: string
+  flag?: string
+  flagEmoji?: string
+  shipType?: string
+  date: string
+  port?: string
+  region?: string
+  authority?: string
+  sourceUrl?: string
+  sourceTitle?: string
+  summary?: string
+  detentionItemsText: string
+}
+
 export function updateSourceBookmark(source: SourceBookmark, draft: SourceBookmarkDraft, now = new Date().toISOString()): SourceBookmark {
   return {
     ...source,
@@ -120,13 +136,104 @@ export function updateFinding(cases: InspectionCase[], caseId: string, findingIn
         updatedAt: now,
       })
     })
-    return {
+    return withFindingCounts({ ...item, deficiencies })
+  })
+}
+
+export function createManualInspectionCase(draft: ManualCaseDraft, now = new Date().toISOString()): InspectionCase {
+  const vessel = draft.vessel.trim() || '手動案例'
+  const date = draft.date.trim() || now.slice(0, 10)
+  const deficiencies = parseManualDetentionItems(draft.detentionItemsText, now)
+  return withFindingCounts({
+    id: `manual-${slugText(vessel)}-${slugText(draft.imo || 'no-imo')}-${date}`,
+    vessel,
+    imo: draft.imo?.trim() || '待補',
+    flag: draft.flag?.trim() || '待補',
+    flagEmoji: draft.flagEmoji?.trim() || '⚓',
+    shipType: draft.shipType?.trim() || 'Manual entry',
+    built: null,
+    gt: null,
+    company: '待補',
+    classSociety: '待補',
+    date,
+    releaseDate: null,
+    port: draft.port?.trim() || '待補',
+    mou: 'Other',
+    region: draft.region?.trim() || '手動輸入',
+    deficiencyCount: deficiencies.length,
+    detentionGroundCount: deficiencies.length,
+    status: 'detained',
+    evidenceLevel: 'narrative',
+    shortSummary: draft.summary?.trim() || `${vessel} 手動輸入滯留案例`,
+    narrative: [draft.summary?.trim() || '手動輸入案例；請後續補充官方來源與細節。'],
+    deficiencies,
+    source: {
+      authority: draft.authority?.trim() || '手動輸入',
+      title: draft.sourceTitle?.trim() || '手動輸入來源',
+      url: draft.sourceUrl?.trim() || '#manual-entry',
+      publishedAt: date,
+      sourceType: 'manual',
+    },
+    evidenceNote: '手動輸入案例：需後續用官方 Form A/B、PDF 或港口國公告核對。',
+    fetchedAt: now,
+  })
+}
+
+export function appendManualFindingToCase(cases: InspectionCase[], caseId: string, draft: FindingDraft, now = new Date().toISOString()) {
+  return cases.map((item) => {
+    if (item.id !== caseId) return item
+    const deficiencies = [...item.deficiencies, buildManualFinding(draft, now)]
+    return withFindingCounts({
       ...item,
       deficiencies,
-      deficiencyCount: deficiencies.length,
-      detentionGroundCount: deficiencies.filter((entry) => entry.detentionGround === true).length,
-    }
+      status: 'detained',
+      evidenceLevel: item.evidenceLevel === 'index-only' ? 'narrative' : item.evidenceLevel,
+      updatedAt: now,
+    } as InspectionCase & { updatedAt?: string })
   })
+}
+
+function withFindingCounts<T extends InspectionCase>(item: T): T {
+  return {
+    ...item,
+    deficiencyCount: item.deficiencies.length,
+    detentionGroundCount: item.deficiencies.filter((entry) => entry.detentionGround === true).length,
+  }
+}
+
+function parseManualDetentionItems(text: string, now: string): Deficiency[] {
+  const rows = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean)
+  const parsed = rows.map((line) => {
+    const parts = line.split('|').map((part) => part.trim())
+    if (parts.length >= 3) return buildManualFinding({ code: parts[0], category: parts[1], original: parts.slice(2).join(' | ') }, now)
+    return buildManualFinding({ original: line }, now)
+  })
+  return parsed.length ? parsed : [buildManualFinding({ original: '待補手動滯留內容' }, now)]
+}
+
+function buildManualFinding(draft: FindingDraft, now: string): Deficiency {
+  const original = draft.original?.trim() || '待補手動滯留內容'
+  return stripTranslation({
+    code: draft.code?.trim() || 'MANUAL',
+    category: draft.category?.trim() || inferCategory(original),
+    original,
+    observedCondition: trimOrUndefined(draft.observedCondition),
+    inspectorFinding: trimOrUndefined(draft.inspectorFinding),
+    detentionReason: trimOrUndefined(draft.detentionReason),
+    requiredRectification: trimOrUndefined(draft.requiredRectification),
+    releaseCondition: trimOrUndefined(draft.releaseCondition),
+    sourcePage: trimOrUndefined(draft.sourcePage),
+    sourceQuote: trimOrUndefined(draft.sourceQuote),
+    detentionGround: draft.detentionGround ?? true,
+    notes: trimOrUndefined(draft.notes),
+    priority: draft.priority ?? inferPriority(original),
+    novel: Boolean(draft.novel),
+    updatedAt: now,
+  })
+}
+
+function slugText(value: string) {
+  return value.trim().toLocaleLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-').replace(/^-+|-+$/g, '') || 'manual'
 }
 
 export function stripDeficiencyTranslations(cases: InspectionCase[]): InspectionCase[] {
@@ -205,5 +312,5 @@ function inferCategory(text: string) {
   if (/certificate|document/.test(lower)) return '證書／文件'
   if (/crew|wage|rest|mlc|accommodation/.test(lower)) return 'MLC／船員權益'
   if (/engine|generator|steering|machinery/.test(lower)) return '主輔機／機艙'
-  return '操作／設備缺陷'
+  return '操作／設備滯留'
 }

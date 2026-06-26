@@ -17,15 +17,15 @@ npm run dev -- --port 5175
 
 ## 目前已完成
 
-- **按鈕獲取最新缺失**：點擊「獲取最新缺失」後，從 GOV.UK / UK MCA 官方 API 抓取最近外國船舶 PSC 滯留公告，解析船名、IMO、港口、滯留日期、解除日期、缺陷代碼、Nature of defect、Ground for Detention。
+- **按鈕獲取最新滯留**：點擊「獲取最新滯留」後，從 GOV.UK / UK MCA 官方 API 抓取最近外國船舶 PSC 滯留公告，解析船名、IMO、港口、滯留日期、解除日期、滯留代碼、Nature of defect、Ground for Detention。
 - **累積保存**：資料保存在瀏覽器 localStorage；再次更新會合併新案例，舊案例不刪除；相同船名/IMO/日期會合併，避免重複。
 - **時間段趨勢**：支援最近 3 個月、6 個月、1 年、全部時間。
 - **地區篩選**：目前已支持 UK / Paris MoU、Germany / Paris MoU；後續可擴充 Tokyo MoU、USCG、AMSA、Canada 等 connector。
-- **主動查詢**：可按地區、時間段、船型、缺陷分類、仍在滯留狀態、船名/IMO/摘要搜尋。
-- **地區性總結報告**：缺陷分析頁自動生成近期檢查重點、主要缺陷類別、典型扣船案例、船舶督導自查清單、船上自查自糾清單、來源網址。
-- **Excel 匯出**：匯出 Excel 可打開的 `psc-detention-dossiers.xls` SpreadsheetML 工作簿，包含「案例總清單」「缺陷詳情清單」「網址清單」「代表性來源地圖」「總結報告」多個 sheet；不再依賴有安全告警的 `xlsx` 套件。
+- **主動查詢**：可按地區、時間段、船型、滯留分類、仍在滯留狀態、船名/IMO/摘要搜尋。
+- **地區性總結報告**：滯留分析頁自動生成近期檢查重點、主要滯留類別、典型扣船案例、船舶督導自查清單、船上自查自糾清單、來源網址。
+- **Excel 匯出**：匯出 Excel 可打開的 `psc-detention-dossiers.xls` SpreadsheetML 工作簿，包含「案例總清單」「滯留詳情清單」「網址清單」「代表性來源地圖」「總結報告」多個 sheet；不再依賴有安全告警的 `xlsx` 套件。
 - **完整網址清單**：資料來源頁列出所有採集來源 URL，並支持手動添加網址作備忘；同頁新增 Paris MoU、UK MCA、Tokyo MoU/APCIS、USCG、AMSA、Transport Canada 和 PSC Form A/B 申請路徑的代表性官方來源地圖。
-- **案例總清單 + 詳情清單**：案例庫中點擊單個案例，右側打開快速摘要與完整逐項缺陷詳情；完整詳情保留官方原文、中文整理、檢查員認定、滯留理由、整改/解除欄位。
+- **案例總清單 + 詳情清單**：案例庫中點擊單個案例，右側打開快速摘要與完整逐項滯留詳情；完整詳情保留官方原文、中文整理、檢查員認定、滯留理由、整改/解除欄位。
 - **快速摘要**：每個案例有短摘要，方便快速理解滯留主因。
 
 ## 雲端資料庫版（Supabase）
@@ -125,7 +125,7 @@ PSC_REFRESH_TOKEN
 資料來源 → 自動抓取策略 → Vercel 後端刷新
 ```
 
-輸入 `PSC_REFRESH_TOKEN` 後點「由後端獲取最新缺失」，Vercel Function 會在伺服器端抓取 GOV.UK/MCA + Paris MoU current detentions，過濾為 2025+ detention-only / GFD，然後寫入 Supabase。其他人重新打開同一網址即可看到最新雲端資料。
+輸入 `PSC_REFRESH_TOKEN` 後點「由後端獲取最新滯留」，Vercel Function 會在伺服器端抓取 GOV.UK/MCA + Paris MoU current detentions，過濾為 2025+ detention-only / GFD，然後寫入 Supabase。其他人重新打開同一網址即可看到最新雲端資料。
 
 如果前端不在同一個 Vercel project，而是放在 GitHub Pages，則還要設定：
 
@@ -207,8 +207,8 @@ npm run build
 - `npm run build`：TypeScript + Vite build 成功；靜態 HTTP server 驗證正常。
 - `npm run lint`：ESLint 10 flat config 通過。
 - `npm audit --json`：0 vulnerabilities。
-- 瀏覽器驗證：資料來源頁顯示代表性官方來源地圖；點擊「獲取最新缺失」成功從 GOV.UK/MCA 抓取並累積案例；Excel 匯出無控制台錯誤。
+- 瀏覽器驗證：資料來源頁顯示代表性官方來源地圖；點擊「獲取最新滯留」成功從 GOV.UK/MCA 抓取並累積案例；Excel 匯出無控制台錯誤。
 
 ## 證據邊界
 
-部分官方月報只公開滯留缺失摘要，例如 `Not as required`。App 會保留原文和來源 URL，但不會把摘要擴寫成未經來源支持的現場細節。真正完整卷宗仍應優先接入 PSC Form A/B、detention notice、release notice、官方 Caught in the Net case report 或 FOIA/資料申請文件。
+部分官方月報只公開滯留滯留摘要，例如 `Not as required`。App 會保留原文和來源 URL，但不會把摘要擴寫成未經來源支持的現場細節。真正完整卷宗仍應優先接入 PSC Form A/B、detention notice、release notice、官方 Caught in the Net case report 或 FOIA/資料申請文件。

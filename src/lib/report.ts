@@ -19,7 +19,7 @@ export function buildRegionalReport(cases: InspectionCase[], region: string, ran
     '## 二、近期檢查重點趨勢',
     summary.focusDirections.length ? summary.focusDirections.map((item) => `- ${item}`).join('\n') : '- 所選範圍內暫無足夠案例形成趨勢。',
     '',
-    '## 三、主要缺陷類別',
+    '## 三、主要滯留類別',
     summary.topCategories.length ? summary.topCategories.map((item) => `- ${item.category}：${item.count} 項；涉及案例：${item.cases.slice(0, 5).join('、')}`).join('\n') : '- 無。',
     '',
     '## 四、地區分布與證據深度',
@@ -41,13 +41,13 @@ export function buildRegionalReport(cases: InspectionCase[], region: string, ran
 
 export function buildChecklist(categories: string[]) {
   const baseSuperintendent = [
-    '核對近三次 PSC/內審/船級社缺陷是否已完成根因分析與關閉證據。',
+    '核對近三次 PSC/內審/船級社滯留是否已完成根因分析與關閉證據。',
     '抽查 PMS 維護記錄、備件、測試照片/影片與船員訪談是否一致。',
     '對照預抵港口 PSC 重點，提前安排船岸聯合遠程預檢。',
   ]
   const baseShipboard = [
     '船長組織抵港前 PSC brief，逐項確認責任人、證據和整改時限。',
-    '將所有臨時修理、失效設備、未完成缺陷主動報告公司並保留通信記錄。',
+    '將所有臨時修理、失效設備、未完成滯留主動報告公司並保留通信記錄。',
     '確認演習記錄、測試記錄與實際設備狀態一致，避免只具備紙面記錄。',
   ]
   const categoryMap: Record<string, { superintendent: string[]; shipboard: string[] }> = {
@@ -56,8 +56,8 @@ export function buildChecklist(categories: string[]) {
       shipboard: ['實測消防泵、探火警報、風閘/防火門，並由船員現場演示消防系統操作。'],
     },
     'ISM／安全管理': {
-      superintendent: ['對多系統缺陷啟動 SMS 有效性審查，確認船岸責任和資源支持。'],
-      shipboard: ['船長檢查缺陷報告、風險評估、permit to work 和演習改進是否形成閉環。'],
+      superintendent: ['對多系統滯留啟動 SMS 有效性審查，確認船岸責任和資源支持。'],
+      shipboard: ['船長檢查滯留報告、風險評估、permit to work 和演習改進是否形成閉環。'],
     },
     '救生設備': {
       superintendent: ['要求提交救生艇/救助艇釋放裝置、登乘安排、艇機和電池的近期測試證據。'],
@@ -79,7 +79,7 @@ export function buildChecklist(categories: string[]) {
   const superintendent = [...baseSuperintendent]
   const shipboard = [...baseShipboard]
   for (const category of categories) {
-    superintendent.push(...(categoryMap[category]?.superintendent ?? [`針對 ${category} 類缺陷建立船岸專項核查。`]))
+    superintendent.push(...(categoryMap[category]?.superintendent ?? [`針對 ${category} 類滯留建立船岸專項核查。`]))
     shipboard.push(...(categoryMap[category]?.shipboard ?? [`船上逐項核對 ${category} 相關設備、記錄與船員熟悉程度。`]))
   }
   return { superintendent, shipboard }

@@ -69,11 +69,11 @@ function rowToParisIndexCase(cells: string[], index: number, fetchedAt: string):
     detentionGroundCount: 0,
     status: 'detained',
     evidenceLevel: 'index-only',
-    shortSummary: `Paris MoU current detentions 列出 ${vessel} / IMO ${imo} 仍在 ${port} 滯留；此來源不公開逐項缺陷原文，需後續月度清單或 Form A/B 才能分析原因。`,
-    narrative: ['此筆由 Paris MoU current detentions 自動抓取，僅作最新滯留索引，不作缺陷原因分析。'],
-    deficiencies: [{ code: 'INDEX', category: '具體缺陷未公開', original: '具體缺陷未公開；需追 Form A/B、月度清單或官方附件。', detentionGround: null }],
+    shortSummary: `Paris MoU current detentions 列出 ${vessel} / IMO ${imo} 仍在 ${port} 滯留；此來源不公開逐項滯留原文，需後續月度清單或 Form A/B 才能分析原因。`,
+    narrative: ['此筆由 Paris MoU current detentions 自動抓取，僅作最新滯留索引，不作滯留原因分析。'],
+    deficiencies: [{ code: 'INDEX', category: '具體滯留未公開', original: '具體滯留未公開；需追 Form A/B、月度清單或官方附件。', detentionGround: null }],
     source: { authority: 'Paris MoU', title: 'Current detentions', url: 'https://parismou.org/Inspection-Database/current-detentions', publishedAt: isoDate, sourceType: 'Current detentions 索引' },
-    evidenceNote: '自動抓取只保存索引邊界；不要把此筆作為分析可用缺陷證據。',
+    evidenceNote: '自動抓取只保存索引邊界；不要把此筆作為分析可用滯留證據。',
     fetchedAt,
   }
 }

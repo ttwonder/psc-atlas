@@ -730,3 +730,21 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 .pdf-online-line { display: flex; align-items: center; gap: 6px; margin: 0; padding: 7px 9px; border-radius: 9px; color: #4f6397; background: #eef7ff; font-size: 11.5px; overflow-wrap: anywhere; }
 .pdf-online-line a { color: #4f4bb8; font-weight: 800; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .pdf-storage-line { color: #7a6688; background: #fff7fb; }
+
+
+/* Manual case / detention entry */
+.manual-entry-panel { border-left: 4px solid #8fd5f8; background: linear-gradient(135deg, #fff7fb, #f0fbff); }
+.manual-entry-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.manual-entry-header h2 { margin: 0 0 4px; }
+.manual-entry-header p:not(.eyebrow) { margin: 0; color: #66708a; font-size: 12px; line-height: 1.5; }
+.manual-entry-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.manual-entry-grid.compact { grid-template-columns: minmax(280px, 2fr) repeat(4, minmax(130px, 1fr)); }
+.manual-entry-grid label { display: grid; gap: 5px; color: #4d5575; font-size: 12px; font-weight: 800; }
+.manual-entry-grid .wide { grid-column: 1 / -1; }
+.manual-entry-grid input, .manual-entry-grid select, .manual-entry-grid textarea { width: 100%; border: 1px solid #cfc8fb; border-radius: 8px; background: rgba(255,255,255,.92); color: #24314f; font: inherit; font-size: 12px; }
+.manual-entry-grid input, .manual-entry-grid select { min-height: 34px; padding: 0 9px; }
+.manual-entry-grid textarea { min-height: 78px; padding: 8px 9px; resize: vertical; }
+.manual-entry-grid textarea[placeholder*="07105"] { min-height: 122px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.manual-entry-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; }
+.manual-inline-check { align-content: center; min-height: 34px; padding: 7px 9px; border: 1px solid #e5ddff; border-radius: 9px; background: #fff; }
+@media (max-width: 960px) { .manual-entry-grid, .manual-entry-grid.compact { grid-template-columns: 1fr; } .manual-entry-header { align-items: stretch; flex-direction: column; } }

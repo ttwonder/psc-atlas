@@ -22,9 +22,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：水密／結構。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -74,9 +74,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-safety-of-navigation",
@@ -98,9 +98,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 13,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留缺陷；重點：航行安全、消防安全。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留滯留；重點：航行安全、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -240,9 +240,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-radio-communications",
@@ -264,9 +264,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：證書／文件。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -306,9 +306,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-pollution-prevention-ballast-water",
@@ -330,9 +330,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -372,9 +372,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-mlc-2006-working-and-living-conditions",
@@ -396,15 +396,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷、防污染。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The multigas equipment was out of order: all gas values registered as zero.",
         "inspectorFinding": "The multigas equipment was out of order: all gas values registered as zero.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -428,9 +428,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-mlc-2006-conditions-of-employment",
@@ -452,9 +452,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -474,9 +474,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-mlc-2006-accommodation-recreational-facilities-food-and-catering",
@@ -498,9 +498,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -520,9 +520,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-life-saving-appliances",
@@ -544,9 +544,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 15,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留缺陷；重點：救生設備、操作／設備缺陷、證書／文件。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留滯留；重點：救生設備、操作／設備滯留、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -572,7 +572,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The MOB smoke signals had expired.",
         "inspectorFinding": "The MOB smoke signals had expired.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -592,7 +592,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The liferaft weak links were incorrectly installed.",
         "inspectorFinding": "The liferaft weak links were incorrectly installed.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -612,7 +612,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The LSA weekly checklists had not been completed for a long time, no records could be presented, and there were no entries in the bridge deck logbook.",
         "inspectorFinding": "The LSA weekly checklists had not been completed for a long time, no records could be presented, and there were no entries in the bridge deck logbook.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -662,7 +662,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Annual liferaft inspection carried out by an unauthorized service provider company.",
         "inspectorFinding": "Annual liferaft inspection carried out by an unauthorized service provider company.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -692,7 +692,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The liferaft painter line was permanently secured to the vessel’s structure instead of the hydrostatic release unit.",
         "inspectorFinding": "The liferaft painter line was permanently secured to the vessel’s structure instead of the hydrostatic release unit.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -706,9 +706,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-isps",
@@ -730,9 +730,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：船員熟悉／演習。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -752,9 +752,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-ism",
@@ -776,9 +776,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：消防安全、防污染、MLC／船員權益、應急準備、船員熟悉／演習。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：消防安全、防污染、MLC／船員權益、應急準備、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -838,9 +838,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-fire-safety",
@@ -862,9 +862,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 23,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 23 項滯留缺陷；重點：水密／結構、操作／設備缺陷、防污染、MLC／船員權益、消防安全、應急準備。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 23 項滯留滯留；重點：水密／結構、操作／設備滯留、防污染、MLC／船員權益、消防安全、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -880,7 +880,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The DO settling tank quick closing valve could not be closed.",
         "inspectorFinding": "The DO settling tank quick closing valve could not be closed.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -950,7 +950,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The closed cargo spaces (other than Ro-Ro cargo space) intended for the carriage of motor vehicles had no loss of required ventilating capacity indicator on the bridge.",
         "inspectorFinding": "The closed cargo spaces (other than Ro-Ro cargo space) intended for the carriage of motor vehicles had no loss of required ventilating capacity indicator on the bridge.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -1070,7 +1070,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Quick closing valves were not ready for use; the air reservoir tank was found empty.",
         "inspectorFinding": "Quick closing valves were not ready for use; the air reservoir tank was found empty.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -1104,9 +1104,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-emergency-systems",
@@ -1128,9 +1128,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 10,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 10 項滯留缺陷；重點：應急準備、消防安全、操作／設備缺陷、水密／結構、MLC／船員權益。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 10 項滯留滯留；重點：應急準備、消防安全、操作／設備滯留、水密／結構、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1176,7 +1176,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The PA System was not operative.",
         "inspectorFinding": "The PA System was not operative.",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -1240,9 +1240,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-certificates-documentation-ship-certificates",
@@ -1264,9 +1264,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 9,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留缺陷；重點：證書／文件、ISM／安全管理。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留滯留；重點：證書／文件、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1366,9 +1366,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-cargo-operations-including-equipment",
@@ -1390,15 +1390,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Cargo (used cars) not stowed and secured as per the Cargo Securing Manual",
         "inspectorFinding": "Cargo (used cars) not stowed and secured as per the Cargo Securing Manual",
         "detentionReason": "Dromon C26031 明確說明該清單為 grounds for detention，且 all contributed to detentions。",
@@ -1412,9 +1412,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26031-2026-alarms",
@@ -1436,9 +1436,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：防污染、消防安全、主輔機／機艙。",
+    "shortSummary": "2026-05-14 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：防污染、消防安全、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1478,9 +1478,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2026/05/19/alert-on-detainable-deficiencies-38/",
       "publishedAt": "2026-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dnv-q1-2026-detainable-examples",
@@ -1502,9 +1502,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-04-29 Multiple PSC inspections PSC 滯留案例，Container / bulk / general cargo majority / 多船旗 / DNV-classed vessels，已收錄 5 項滯留缺陷；重點：消防安全、應急準備、船員熟悉／演習。",
+    "shortSummary": "2026-04-29 Multiple PSC inspections PSC 滯留案例，Container / bulk / general cargo majority / 多船旗 / DNV-classed vessels，已收錄 5 項滯留滯留；重點：消防安全、應急準備、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1564,9 +1564,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "DNV / Port State Control - Q1 2026 Detention review and other updates",
       "url": "https://www.dnv.com/news/2026/port-state-control-q1-2026-detention-review-and-other-updates/",
       "publishedAt": "2026-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-water-weathertight-condition",
@@ -1588,9 +1588,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：水密／結構、MLC／船員權益、主輔機／機艙。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：水密／結構、MLC／船員權益、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1640,9 +1640,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-structural-condition",
@@ -1664,15 +1664,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was exposed electric cabling running throughout the ship.",
         "inspectorFinding": "There was exposed electric cabling running throughout the ship.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1686,9 +1686,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-safety-of-navigation",
@@ -1710,9 +1710,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 23,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 23 項滯留缺陷；重點：航行安全、操作／設備缺陷、證書／文件。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 23 項滯留滯留；重點：航行安全、操作／設備滯留、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -1738,7 +1738,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Notice to Mariners (NTMs) Cumulative List was not available. Not all NTMs were available on board; there was no publication's backup. It was not possible to check the Sailing Directions, Light Lists, Tide Tables or the List of Radio Signals due to an internet signal failure, and no backup was available.",
         "inspectorFinding": "The Notice to Mariners (NTMs) Cumulative List was not available. Not all NTMs were available on board; there was no publication's backup. It was not possible to check the Sailing Directions, Light Lists, Tide Tables or the List of Radio Signals due to an internet signal failure, and no backup was available.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1768,7 +1768,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The IAMSAR Vol 3, SOLAS, MARPOL, and STCW Books were not the latest editions.",
         "inspectorFinding": "The IAMSAR Vol 3, SOLAS, MARPOL, and STCW Books were not the latest editions.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1798,7 +1798,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The passage plan was not comprehensive and was not completed.",
         "inspectorFinding": "The passage plan was not comprehensive and was not completed.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1808,7 +1808,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The position observation frequency column was not completed.",
         "inspectorFinding": "The position observation frequency column was not completed.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1818,7 +1818,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Master/Pilot information exchange was not in line with the bridge procedure guide requirements.",
         "inspectorFinding": "The Master/Pilot information exchange was not in line with the bridge procedure guide requirements.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1828,7 +1828,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The pilot card was not signed by the Master.",
         "inspectorFinding": "The pilot card was not signed by the Master.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1838,7 +1838,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One of the two ECDIS had not been updated.",
         "inspectorFinding": "One of the two ECDIS had not been updated.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1848,7 +1848,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Several Nautical Publications were missing.",
         "inspectorFinding": "Several Nautical Publications were missing.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1858,7 +1858,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Several Nautical Publications were not the latest editions.",
         "inspectorFinding": "Several Nautical Publications were not the latest editions.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1898,7 +1898,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ship's bell was found missing from the forecastle deck.",
         "inspectorFinding": "The ship's bell was found missing from the forecastle deck.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1938,7 +1938,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Aldis signalling lamp was inoperative.",
         "inspectorFinding": "The Aldis signalling lamp was inoperative.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -1952,9 +1952,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-radio-communications",
@@ -1976,15 +1976,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：操作／設備缺陷、證書／文件。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：操作／設備滯留、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The INMARSAT-C station was not receiving EGC messages.",
         "inspectorFinding": "The INMARSAT-C station was not receiving EGC messages.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2004,7 +2004,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The enhanced group call (EGC) messages could not be received through the INMARSAT-C station.",
         "inspectorFinding": "The enhanced group call (EGC) messages could not be received through the INMARSAT-C station.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2018,9 +2018,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-propulsion-and-auxiliary-machinery",
@@ -2042,9 +2042,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：證書／文件、操作／設備缺陷、防污染。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：證書／文件、操作／設備滯留、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2060,7 +2060,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Barrels of D.O. were stowed in the E/R.",
         "inspectorFinding": "Barrels of D.O. were stowed in the E/R.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2084,9 +2084,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-pollution-prevention-ballast-water",
@@ -2108,9 +2108,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2170,9 +2170,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-mlc-2006-working-and-living-conditions",
@@ -2194,15 +2194,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷、MLC／船員權益。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The multi-gas detector was found to be inoperative.",
         "inspectorFinding": "The multi-gas detector was found to be inoperative.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2226,9 +2226,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-mlc-2006-conditions-of-employment",
@@ -2250,9 +2250,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2272,9 +2272,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-mlc-2006-accommodation-recreational-facilities-food-and-catering",
@@ -2296,15 +2296,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There were some broken sanitary facilities in an Officer's bathroom.",
         "inspectorFinding": "There were some broken sanitary facilities in an Officer's bathroom.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2318,9 +2318,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-loadline",
@@ -2342,15 +2342,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The vessel was overloaded.",
         "inspectorFinding": "The vessel was overloaded.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2364,9 +2364,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-life-saving-appliances",
@@ -2388,9 +2388,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 16,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留缺陷；重點：應急準備、救生設備、操作／設備缺陷、證書／文件、主輔機／機艙。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留滯留；重點：應急準備、救生設備、操作／設備滯留、證書／文件、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2466,7 +2466,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The liferaft painter was not secured to the hydrostatic release unit.",
         "inspectorFinding": "The liferaft painter was not secured to the hydrostatic release unit.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2560,9 +2560,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-isps",
@@ -2584,15 +2584,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "controls were missing.",
         "inspectorFinding": "controls were missing.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2602,7 +2602,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Visitor's Logbook was not utilised.",
         "inspectorFinding": "The Visitor's Logbook was not utilised.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2616,9 +2616,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-ism",
@@ -2640,9 +2640,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 25,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 25 項滯留缺陷；重點：救生設備、消防安全、應急準備、船員熟悉／演習、防污染、操作／設備缺陷、MLC／船員權益。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 25 項滯留滯留；重點：救生設備、消防安全、應急準備、船員熟悉／演習、防污染、操作／設備滯留、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2868,7 +2868,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The overboard valve was found unlocked.",
         "inspectorFinding": "The overboard valve was found unlocked.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2902,9 +2902,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-fire-safety",
@@ -2926,9 +2926,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 33,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 33 項滯留缺陷；重點：消防安全、操作／設備缺陷、應急準備、水密／結構、MLC／船員權益、主輔機／機艙。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 33 項滯留滯留；重點：消防安全、操作／設備滯留、應急準備、水密／結構、MLC／船員權益、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -2954,7 +2954,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Separator Room smoke detector was blocked with a plastic cover. Closed cargo spaces (other than RO-RO cargo spaces) intended for the carriage of motor vehicles were not provided with at least six air changes per hour.",
         "inspectorFinding": "The Separator Room smoke detector was blocked with a plastic cover. Closed cargo spaces (other than RO-RO cargo spaces) intended for the carriage of motor vehicles were not provided with at least six air changes per hour.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2964,7 +2964,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Two Accomodation smoke detectors were blocked with plastic covers.",
         "inspectorFinding": "Two Accomodation smoke detectors were blocked with plastic covers.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -2974,7 +2974,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Testing of the Galley heat detector failed.",
         "inspectorFinding": "Testing of the Galley heat detector failed.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3034,7 +3034,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "All three paint rooms' vent covers were missing.",
         "inspectorFinding": "All three paint rooms' vent covers were missing.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3064,7 +3064,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Quick-closing valves (forward deep tanks) were inoperative.",
         "inspectorFinding": "Quick-closing valves (forward deep tanks) were inoperative.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3104,7 +3104,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The smoke detection panel showed a `fault' indicator.",
         "inspectorFinding": "The smoke detection panel showed a `fault' indicator.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3184,7 +3184,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The smoke detector above the generator was signposted as a heat detector.",
         "inspectorFinding": "The smoke detector above the generator was signposted as a heat detector.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3224,7 +3224,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The settling tank quick-closing valves were inoperative.",
         "inspectorFinding": "The settling tank quick-closing valves were inoperative.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3268,9 +3268,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-emergency-systems",
@@ -3292,9 +3292,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 8,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留缺陷；重點：救生設備、操作／設備缺陷、應急準備、消防安全、航行安全、MLC／船員權益。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留滯留；重點：救生設備、操作／設備滯留、應急準備、消防安全、航行安全、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -3310,7 +3310,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The alarm on the portable gas detector was not operational.",
         "inspectorFinding": "The alarm on the portable gas detector was not operational.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3384,9 +3384,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-certificates-documentation",
@@ -3408,9 +3408,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：證書／文件、操作／設備缺陷、船員熟悉／演習、主輔機／機艙。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：證書／文件、操作／設備滯留、船員熟悉／演習、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -3426,7 +3426,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The required number of ER ratings was short of one rating (wiper).",
         "inspectorFinding": "The required number of ER ratings was short of one rating (wiper).",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3436,7 +3436,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was no deck rating onboard with an STCW A II-5 level of competence, required to be responsible for operating anchoring equipment.",
         "inspectorFinding": "There was no deck rating onboard with an STCW A II-5 level of competence, required to be responsible for operating anchoring equipment.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3470,9 +3470,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-cargo-operations-including-equipment",
@@ -3494,15 +3494,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Fixed Cargo lashing gear (D Rings) were not approved.",
         "inspectorFinding": "Fixed Cargo lashing gear (D Rings) were not approved.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3512,7 +3512,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Chain lashings used for securing vehicles were not in accordance with the approved method in the Cargo Securing Manual.",
         "inspectorFinding": "Chain lashings used for securing vehicles were not in accordance with the approved method in the Cargo Securing Manual.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3522,7 +3522,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Cargo securing was not carried out in accordance with the Manual.",
         "inspectorFinding": "Cargo securing was not carried out in accordance with the Manual.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3532,7 +3532,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The gas detector was inoperational.",
         "inspectorFinding": "The gas detector was inoperational.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3546,9 +3546,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c26016-2026-alarms",
@@ -3570,9 +3570,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：消防安全、操作／設備缺陷、防污染。",
+    "shortSummary": "2026-02-16 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：消防安全、操作／設備滯留、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -3588,7 +3588,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The bilge alarm (aft) could not be tested.",
         "inspectorFinding": "The bilge alarm (aft) could not be tested.",
         "detentionReason": "dromon-c26016-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3612,9 +3612,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C26016 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/wp-content/uploads/2026/02/C26016-Alert-on-detainable-deficiencies.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-uscg-psco-statutory-deficiency-comments",
@@ -3636,9 +3636,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 67,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 67 項滯留缺陷；重點：證書／文件、操作／設備缺陷、船員熟悉／演習、水密／結構、防污染、應急準備、救生設備、ISM／安全管理、主輔機／機艙、消防安全。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 67 項滯留滯留；重點：證書／文件、操作／設備滯留、船員熟悉／演習、水密／結構、防污染、應急準備、救生設備、ISM／安全管理、主輔機／機艙、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -3654,7 +3654,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCOs observed improper foam material used as a gasket on #3 hold portable, tarpaulins, starboards aft and #1 hold starboard forward.",
         "inspectorFinding": "PSCOs observed improper foam material used as a gasket on #3 hold portable, tarpaulins, starboards aft and #1 hold starboard forward.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3664,7 +3664,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCOs also observed wasted etc.",
         "inspectorFinding": "PSCOs also observed wasted etc.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3674,7 +3674,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed that while testing the system the pneumatic line between the suction pump and the position selector device was taped into place, due to improper tubing size and broken t-fitting.",
         "inspectorFinding": "PSCO observed that while testing the system the pneumatic line between the suction pump and the position selector device was taped into place, due to improper tubing size and broken t-fitting.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3684,7 +3684,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed that there was aged paint covering the mating surface between the auxiliary setting device and the pilot on cargo tanks number 2 and 3, on the port side, indicating it had been recently removed or installed.",
         "inspectorFinding": "PSCO observed that there was aged paint covering the mating surface between the auxiliary setting device and the pilot on cargo tanks number 2 and 3, on the port side, indicating it had been recently removed or installed.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3694,7 +3694,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed fusible plugs on port and starboard manifolds were painted over.",
         "inspectorFinding": "PSCO observed fusible plugs on port and starboard manifolds were painted over.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3704,7 +3704,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed 5 of the 6 water spray nozzles clogged and unable to provide uniform, adequate water spray to the horizontal surface of the tank top.",
         "inspectorFinding": "PSCO observed 5 of the 6 water spray nozzles clogged and unable to provide uniform, adequate water spray to the horizontal surface of the tank top.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3794,7 +3794,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed a substantial leak on the MDE salt water cooling pump.",
         "inspectorFinding": "PSCO observed a substantial leak on the MDE salt water cooling pump.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3804,7 +3804,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCOs observed the vessel missing required equipment to operate the gas monitoring equipment.",
         "inspectorFinding": "PSCOs observed the vessel missing required equipment to operate the gas monitoring equipment.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3814,7 +3814,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCOs also observed the Chief Mate not having the proper knowledge to utilize the gas monitoring equipment.",
         "inspectorFinding": "PSCOs also observed the Chief Mate not having the proper knowledge to utilize the gas monitoring equipment.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3824,7 +3824,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCOs observed the last LRIT conformance test expired on 09JUL24.",
         "inspectorFinding": "PSCOs observed the last LRIT conformance test expired on 09JUL24.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3854,7 +3854,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "the Administration or the RO, with a corresponding report of findings satisfactory to the OCMI must be submitted prior to clearance of this deficiency and release from detention.",
         "inspectorFinding": "the Administration or the RO, with a corresponding report of findings satisfactory to the OCMI must be submitted prior to clearance of this deficiency and release from detention.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3894,7 +3894,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "the administration, or the RO, with a corresponding report of findings satisfactory to the OCMI must be submitted prior to the clearance of these deficiencies and release from detention.",
         "inspectorFinding": "the administration, or the RO, with a corresponding report of findings satisfactory to the OCMI must be submitted prior to the clearance of these deficiencies and release from detention.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3964,7 +3964,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed safety crash bar on sliding failed to operate.",
         "inspectorFinding": "PSCO observed safety crash bar on sliding failed to operate.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -3974,7 +3974,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed door leading to stairway on \"C\" deck was not self-closing.",
         "inspectorFinding": "PSCO observed door leading to stairway on \"C\" deck was not self-closing.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4084,7 +4084,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed aux gen no.",
         "inspectorFinding": "PSCO observed aux gen no.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4124,7 +4124,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed missing panel with exposed wiring on No 2 HFO Purifier Control Panel.",
         "inspectorFinding": "PSCO observed missing panel with exposed wiring on No 2 HFO Purifier Control Panel.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4134,7 +4134,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed the deck in pool machinery room on deck 9 had an excessive amount of water on it, creating shock hazard with the electrical panels in the same space.",
         "inspectorFinding": "PSCO observed the deck in pool machinery room on deck 9 had an excessive amount of water on it, creating shock hazard with the electrical panels in the same space.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4154,7 +4154,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed daisy chained power strips and multiple appliances plugged into spliced wires in ECR.",
         "inspectorFinding": "PSCO observed daisy chained power strips and multiple appliances plugged into spliced wires in ECR.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4164,7 +4164,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed multiple light fixtures overhead air compressors improperly installed w/ modified equipment.",
         "inspectorFinding": "PSCO observed multiple light fixtures overhead air compressors improperly installed w/ modified equipment.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4174,7 +4174,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed approximately 05 lights in cargo compressor room with improperly installed wiring and missing ground wires.",
         "inspectorFinding": "PSCO observed approximately 05 lights in cargo compressor room with improperly installed wiring and missing ground wires.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4184,7 +4184,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed broken packing nuts and damaged wiring on 50% of cargo valves.",
         "inspectorFinding": "PSCO observed broken packing nuts and damaged wiring on 50% of cargo valves.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4194,7 +4194,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed bonding straps broken and/or missing on cargo deck piping systems.",
         "inspectorFinding": "PSCO observed bonding straps broken and/or missing on cargo deck piping systems.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4224,7 +4224,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed steel beams cargo blocking the starboard side primary egress route on the cargo main deck.",
         "inspectorFinding": "PSCO observed steel beams cargo blocking the starboard side primary egress route on the cargo main deck.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4234,7 +4234,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed escape route door obstructed by multiple curtains on deck 10 starboard side in club O2.",
         "inspectorFinding": "PSCO observed escape route door obstructed by multiple curtains on deck 10 starboard side in club O2.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4244,7 +4244,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO found escape routes not identified with signage in areas within the casino area.",
         "inspectorFinding": "PSCO found escape routes not identified with signage in areas within the casino area.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4264,7 +4264,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed extinguished low-location lighting in the forward stairway deck 14.",
         "inspectorFinding": "PSCO observed extinguished low-location lighting in the forward stairway deck 14.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4274,7 +4274,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed portable A/C units on port and stbd bridge wings with supply duct connected to bridge wing doors and blocking clear access to bridge wing means of escapes.",
         "inspectorFinding": "PSCO observed portable A/C units on port and stbd bridge wings with supply duct connected to bridge wing doors and blocking clear access to bridge wing means of escapes.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4284,7 +4284,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed three rolls of matting obstructing the restricted yellow marked path in the electrical locker.",
         "inspectorFinding": "PSCO observed three rolls of matting obstructing the restricted yellow marked path in the electrical locker.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4294,7 +4294,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "PSCO observed the low location photoluminescent was blocked by construction material on deck 03 FWD starboard side.",
         "inspectorFinding": "PSCO observed the low location photoluminescent was blocked by construction material on deck 03 FWD starboard side.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4318,9 +4318,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-panama-uscg-7120-fire-safety-means-of-escape",
@@ -4342,9 +4342,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留缺陷；重點：救生設備、消防安全、操作／設備缺陷、MLC／船員權益。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留滯留；重點：救生設備、消防安全、操作／設備滯留、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -4370,7 +4370,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Escape routes shall be maintained in a safe condition, clear of obstacles. Refrigerator door, leading into vegetable room, has an inoperable handle, impeding means of escape.",
         "inspectorFinding": "Escape routes shall be maintained in a safe condition, clear of obstacles. Refrigerator door, leading into vegetable room, has an inoperable handle, impeding means of escape.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4400,7 +4400,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "was found to have carts and cleaning supplies in way of escape path.",
         "inspectorFinding": "was found to have carts and cleaning supplies in way of escape path.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4414,9 +4414,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-panama-uscg-09209-working-and-living-conditions-electrical",
@@ -4438,9 +4438,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 16,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留缺陷；重點：消防安全、操作／設備缺陷、船員熟悉／演習、ISM／安全管理、主輔機／機艙。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留滯留；重點：消防安全、操作／設備滯留、船員熟悉／演習、ISM／安全管理、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -4456,7 +4456,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "light fixtures exposed to natural elements from water inside casing.",
         "inspectorFinding": "light fixtures exposed to natural elements from water inside casing.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4466,7 +4466,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "light fixtures located between tank domes",
         "inspectorFinding": "light fixtures located between tank domes",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4486,7 +4486,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "HFO Purifier Control Panel.",
         "inspectorFinding": "HFO Purifier Control Panel.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4506,7 +4506,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "had an excessive amount of water on it, creating shock hazard with the electrical panels in the same space.",
         "inspectorFinding": "had an excessive amount of water on it, creating shock hazard with the electrical panels in the same space.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4536,7 +4536,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "All electrical apparatus shall be so constructed and so installed as not to cause injury when handled or touched in the normal manner. PSCO observed multiple light fixtures overhead air compressors improperly installed w/ modified equipment.",
         "inspectorFinding": "All electrical apparatus shall be so constructed and so installed as not to cause injury when handled or touched in the normal manner. PSCO observed multiple light fixtures overhead air compressors improperly installed w/ modified equipment.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4546,7 +4546,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "In zones on open decks or non-enclosed spaces on the open deck, within 3M of any cargo tank outlet, gas or vapor outlet, cargo pipe flange, cargo compressor rooms; .",
         "inspectorFinding": "In zones on open decks or non-enclosed spaces on the open deck, within 3M of any cargo tank outlet, gas or vapor outlet, cargo pipe flange, cargo compressor rooms; .",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4556,7 +4556,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "certified safe type equipment; and .",
         "inspectorFinding": "certified safe type equipment; and .",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4566,7 +4566,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "through runs of cables PSCO observed approximately 05 lights in cargo compressor room with improperly installed wiring and missing ground wires. Additionally, all remote valve indicators are installed in such a way that operation of cargo valves causes damage to indicator wiring. PSCO observed broken packing nuts and damaged wiring on 50% of cargo valves.",
         "inspectorFinding": "through runs of cables PSCO observed approximately 05 lights in cargo compressor room with improperly installed wiring and missing ground wires. Additionally, all remote valve indicators are installed in such a way that operation of cargo valves causes damage to indicator wiring. PSCO observed broken packing nuts and damaged wiring on 50% of cargo valves.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4576,7 +4576,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The condition of the ship and its equipment shall be maintained to conform with the provisions of the present regulation to ensure that the ship in all respects will remain fit to proceed to sea without danger to the persons on board. PSCO observed bonding straps broken and/or missing on cargo deck piping systems.",
         "inspectorFinding": "The condition of the ship and its equipment shall be maintained to conform with the provisions of the present regulation to ensure that the ship in all respects will remain fit to proceed to sea without danger to the persons on board. PSCO observed bonding straps broken and/or missing on cargo deck piping systems.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4610,9 +4610,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-panama-uscg-07199-fire-safety-other-fire-safety",
@@ -4634,9 +4634,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 13,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留缺陷；重點：消防安全、救生設備、操作／設備缺陷、ISM／安全管理、應急準備。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留滯留；重點：消防安全、救生設備、操作／設備滯留、ISM／安全管理、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -4662,7 +4662,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Doorways and corridors and intermediate landings included in the means of escape shall be sized in the same manner as stairways, shall not be less than 900mm in clear width, the minimum clear width shall be increased by 10mm for every one person provided for in excess of 90 persons. PSCO observed escape route door obstructed by multiple curtains on deck",
         "inspectorFinding": "Doorways and corridors and intermediate landings included in the means of escape shall be sized in the same manner as stairways, shall not be less than 900mm in clear width, the minimum clear width shall be increased by 10mm for every one person provided for in excess of 90 persons. PSCO observed escape route door obstructed by multiple curtains on deck",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4672,7 +4672,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "starboard side in club O2.",
         "inspectorFinding": "starboard side in club O2.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4702,7 +4702,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "were not illuminated entirely to include the top and bottom indicators.",
         "inspectorFinding": "were not illuminated entirely to include the top and bottom indicators.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4732,7 +4732,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "amidships aft near wedding chapel found not illuminating.",
         "inspectorFinding": "amidships aft near wedding chapel found not illuminating.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4752,7 +4752,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The means of escape shall be marked by lighting or photoluminescent strip indicators. PSCO observed extinguished low-location lighting in the forward stairway deck 14.",
         "inspectorFinding": "The means of escape shall be marked by lighting or photoluminescent strip indicators. PSCO observed extinguished low-location lighting in the forward stairway deck 14.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4776,9 +4776,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-panama-uscg-07126-fire-safety-oil-accumulation-in-engine-room",
@@ -4800,9 +4800,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 13,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留缺陷；重點：防污染、主輔機／機艙、操作／設備缺陷。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 13 項滯留滯留；重點：防污染、主輔機／機艙、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -4868,7 +4868,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Means shall be provided to control leaks of flammable liquids. A small LO leak was discovered on the GE/LO pump.",
         "inspectorFinding": "Means shall be provided to control leaks of flammable liquids. A small LO leak was discovered on the GE/LO pump.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4878,7 +4878,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "To prevent the ignition of combustible materials or flammable liquids, the following requirements shall be met: means shall be provided to control leaks of flammable liquids. PSCO observed aux gen no.",
         "inspectorFinding": "To prevent the ignition of combustible materials or flammable liquids, the following requirements shall be met: means shall be provided to control leaks of flammable liquids. PSCO observed aux gen no.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4908,7 +4908,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Relief valves and air or over-flow pipes should discharge to a position which in the opinion of the Administration is safe. PSCO observed an overflow pipe for the port side #",
         "inspectorFinding": "Relief valves and air or over-flow pipes should discharge to a position which in the opinion of the Administration is safe. PSCO observed an overflow pipe for the port side #",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -4942,9 +4942,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "panama-uscg-mmn-04-2026-panama-uscg-07105-fire-safety-fire-doors-openings-in-fire-resisting-divisions",
@@ -4966,9 +4966,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 11,
     "status": "detained",
     "evidenceLevel": "official-summary",
-    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留缺陷；重點：消防安全、操作／設備缺陷、主輔機／機艙、船員熟悉／演習。",
+    "shortSummary": "2026-02-03 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留滯留；重點：消防安全、操作／設備滯留、主輔機／機艙、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -4994,7 +4994,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The speed of door closure shall, if necessary, be controlled so as to prevent undue danger to persons. PSCO observed safety crash bar on sliding failed to operate.",
         "inspectorFinding": "The speed of door closure shall, if necessary, be controlled so as to prevent undue danger to persons. PSCO observed safety crash bar on sliding failed to operate.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5004,7 +5004,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Stairways and lift trunks which penetrate more than a single deck shall be surrounded by at least \"A0\" class divisions and be protected by self-closing doors at all levels. PSCO observed door leading to stairway on \"C\" deck was not self-closing.",
         "inspectorFinding": "Stairways and lift trunks which penetrate more than a single deck shall be surrounded by at least \"A0\" class divisions and be protected by self-closing doors at all levels. PSCO observed door leading to stairway on \"C\" deck was not self-closing.",
         "detentionReason": "panama-uscg-mmn-04-2026 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5088,9 +5088,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Panama Maritime Authority / MMN-04-2026 Key Detainable Deficiencies under USCG PSC 2025",
       "url": "https://www.panamashipregistry.com/wp-content/uploads/2026/02/MMN-04-2026-PSC-USCG-03-02-2026.pdf",
       "publishedAt": "2026-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-water-weathertight-condition",
@@ -5112,15 +5112,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷、水密／結構。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留、水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "A portable A/C hose was fitted through a porthole in the Master’s cabin.",
         "inspectorFinding": "A portable A/C hose was fitted through a porthole in the Master’s cabin.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5144,9 +5144,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-structural-condition",
@@ -5168,9 +5168,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：水密／結構、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：水密／結構、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5196,7 +5196,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The mooring/anchor windlass was found damaged. The base foundation was cracked. The side drum was found with a damaged side collar – the drum was not able to rotate at all.",
         "inspectorFinding": "The mooring/anchor windlass was found damaged. The base foundation was cracked. The side drum was found with a damaged side collar – the drum was not able to rotate at all.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5210,9 +5210,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-safety-of-navigation",
@@ -5234,9 +5234,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 18,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 18 項滯留缺陷；重點：航行安全、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 18 項滯留滯留；重點：航行安全、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5252,7 +5252,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ECDIS was inoperative.",
         "inspectorFinding": "The ECDIS was inoperative.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5262,7 +5262,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "MARPOL Convention, LSA Code, some Sailing Directions are old editions (also noted at previous inspection).",
         "inspectorFinding": "MARPOL Convention, LSA Code, some Sailing Directions are old editions (also noted at previous inspection).",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5332,7 +5332,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Most of the nautical publications had expired.",
         "inspectorFinding": "Most of the nautical publications had expired.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5402,7 +5402,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The sailing directions, list of lights, timetables, and the list for radio signals were not available due to internet failure. No backup onboard.",
         "inspectorFinding": "The sailing directions, list of lights, timetables, and the list for radio signals were not available due to internet failure. No backup onboard.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5426,9 +5426,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-radio-communication",
@@ -5450,9 +5450,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：證書／文件、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：證書／文件、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5478,7 +5478,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There were no records of testing the EPIRB.",
         "inspectorFinding": "There were no records of testing the EPIRB.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5488,7 +5488,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The MF/HF radio installation after initialisation indicated “VC error . Please power off”.",
         "inspectorFinding": "The MF/HF radio installation after initialisation indicated “VC error . Please power off”.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -5512,9 +5512,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-propulsion-and-auxiliary-machinery",
@@ -5536,9 +5536,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：主輔機／機艙、應急準備。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：主輔機／機艙、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5588,9 +5588,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-pollution-prevention-marpol-annex-iv",
@@ -5612,9 +5612,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5644,9 +5644,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-pollution-prevention-marpol-annex-i",
@@ -5668,9 +5668,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：防污染、水密／結構。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：防污染、水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5710,9 +5710,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-pollution-prevention-ballast-water",
@@ -5734,9 +5734,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5816,9 +5816,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-mlc-2006-health-protection-medical-care-social-security",
@@ -5840,9 +5840,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：船員熟悉／演習、MLC／船員權益、航行安全。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：船員熟悉／演習、MLC／船員權益、航行安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5882,9 +5882,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-mlc-2006-conditions-of-employment",
@@ -5906,9 +5906,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：船員熟悉／演習。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -5928,9 +5928,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-life-saving-appliances",
@@ -5952,9 +5952,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 14,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 14 項滯留缺陷；重點：救生設備、消防安全、操作／設備缺陷、證書／文件、應急準備。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 14 項滯留滯留；重點：救生設備、消防安全、操作／設備滯留、證書／文件、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6000,7 +6000,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The MOBs had expired, and their foundations were poorly maintained.",
         "inspectorFinding": "The MOBs had expired, and their foundations were poorly maintained.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6104,9 +6104,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-isps",
@@ -6128,9 +6128,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6150,9 +6150,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-ism",
@@ -6174,9 +6174,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 12,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留缺陷；重點：ISM／安全管理、消防安全、應急準備、救生設備、船員熟悉／演習、主輔機／機艙、防污染。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留滯留；重點：ISM／安全管理、消防安全、應急準備、救生設備、船員熟悉／演習、主輔機／機艙、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6306,9 +6306,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-fire-safety",
@@ -6330,9 +6330,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 22,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 22 項滯留缺陷；重點：消防安全、應急準備、MLC／船員權益、水密／結構、船員熟悉／演習、操作／設備缺陷、主輔機／機艙、防污染。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 22 項滯留滯留；重點：消防安全、應急準備、MLC／船員權益、水密／結構、船員熟悉／演習、操作／設備滯留、主輔機／機艙、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6468,7 +6468,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One fuel quick-closing valve could not be closed remotely.",
         "inspectorFinding": "One fuel quick-closing valve could not be closed remotely.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6562,9 +6562,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-emergency-systems",
@@ -6586,15 +6586,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：操作／設備缺陷、消防安全、應急準備。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：操作／設備滯留、消防安全、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The muster station’s lights were not working.",
         "inspectorFinding": "The muster station’s lights were not working.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6628,9 +6628,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-certificates-documentation-documents",
@@ -6652,9 +6652,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：證書／文件、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：證書／文件、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6670,7 +6670,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The SOPEP was missing.",
         "inspectorFinding": "The SOPEP was missing.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6684,9 +6684,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-certificates-documentation-crew",
@@ -6708,15 +6708,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：操作／設備缺陷、證書／文件、主輔機／機艙。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：操作／設備滯留、證書／文件、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The number of persons carried onboard is more than allowed by Sec form E.",
         "inspectorFinding": "The number of persons carried onboard is more than allowed by Sec form E.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6736,7 +6736,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Officer flag endorsements were not available (the Flag Seafarers Verification system showed all endorsements as invalid).",
         "inspectorFinding": "Officer flag endorsements were not available (the Flag Seafarers Verification system showed all endorsements as invalid).",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6756,7 +6756,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The rest/work hours weekly calculation was missing for every duty.",
         "inspectorFinding": "The rest/work hours weekly calculation was missing for every duty.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6770,9 +6770,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-certificates-documentation",
@@ -6794,9 +6794,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：證書／文件、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：證書／文件、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6822,7 +6822,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Synopsis Records – some originals missing.",
         "inspectorFinding": "Synopsis Records – some originals missing.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6832,7 +6832,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Ship’s hull bottom survey exceeded 36 months.",
         "inspectorFinding": "The Ship’s hull bottom survey exceeded 36 months.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6846,9 +6846,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-cargo-operations-including-equipment",
@@ -6870,15 +6870,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The gas detector indicated ERROR O2.",
         "inspectorFinding": "The gas detector indicated ERROR O2.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6892,9 +6892,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25062-2025-alarms",
@@ -6916,9 +6916,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：消防安全、防污染、操作／設備缺陷。",
+    "shortSummary": "2025-11-06 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：消防安全、防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6944,7 +6944,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The E/R bilge alarm was inoperative.",
         "inspectorFinding": "The E/R bilge alarm was inoperative.",
         "detentionReason": "dromon-c25062-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -6958,9 +6958,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25062 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/11/06/alert-on-detainable-deficiencies-36/",
       "publishedAt": "2025-11",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "uscg-2025-0927-emil-selmer",
@@ -6982,9 +6982,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "full-dossier",
-    "shortSummary": "2025-09-27 USCG port not exposed in indexed snippet PSC 滯留案例，General cargo / cargo ship / Madeira / Portugal，已收錄 2 項滯留缺陷；重點：消防安全。",
+    "shortSummary": "2025-09-27 USCG port not exposed in indexed snippet PSC 滯留案例，General cargo / cargo ship / Madeira / Portugal，已收錄 2 項滯留滯留；重點：消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -6993,7 +6993,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Emergency fire pump did not provide any water to the bridge wing fire hose station",
         "inspectorFinding": "Emergency fire pump did not provide any water to the bridge wing fire hose station",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "應急消防泵未能向駕駛台翼消防水帶站供水（Emergency fire pump did not provide any water to the bridge wing fire hose station）",
         "detentionGround": true
@@ -7003,7 +7003,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Multiple fire hoses are deteriorated; numerous pin hole leaks and gasket failures on hoses located on deck, including port and starboard bridge wings",
         "inspectorFinding": "Multiple fire hoses are deteriorated; numerous pin hole leaks and gasket failures on hoses located on deck, including port and starboard bridge wings",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "多條甲板消防水帶老化，存在針孔漏水和墊片失效（Multiple fire hoses are deteriorated; numerous pin hole leaks and gasket failures on hoses located on deck, including port and starboard bridge wings）",
         "detentionGround": true
@@ -7014,9 +7014,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "United States Coast Guard / CVC-2 SOLAS detention PDF indexed excerpt",
       "url": "https://www.dco.uscg.mil/Our-Organization/Assistant-Commandant-for-Prevention-Policy-CG-5P/Inspections-Compliance-CG-5PC-/Commercial-Vessel-Compliance/Foreign-Offshore-Compliance-Division/Port-State-Control/Detentions/",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-ballast-water-detention-examples-2025-ballast-water-management",
@@ -7038,9 +7038,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-24 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-09-24 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7049,7 +7049,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "The BWMS not operated properly; the ship used bypass, no evidence showed challenging water situation, and no bypass alarm event was recorded in BWMS ballast water management.",
         "inspectorFinding": "The BWMS not operated properly; the ship used bypass, no evidence showed challenging water situation, and no bypass alarm event was recorded in BWMS ballast water management.",
-        "detentionReason": "xinde-ballast-water-detention-examples-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-ballast-water-detention-examples-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-ballast-water-detention-examples-2025 | Ballast Water Management | The BWMS not operated properly; the ship used bypass, no evidence showed challenging water situation, and no bypass alarm event was recorded in BWMS ballast water management. | 船舶使用 BWMS 旁通，無證據表明遭遇挑戰水質，且 BWMS 壓載水管理模塊未記錄旁通報警事件。",
         "detentionGround": true
@@ -7059,7 +7059,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Ship crew did not use ballast water treatment system; no evidence regarding BWTS; crew not familiar with ballast water management; BWTS switched off during inspection.",
         "inspectorFinding": "Ship crew did not use ballast water treatment system; no evidence regarding BWTS; crew not familiar with ballast water management; BWTS switched off during inspection.",
-        "detentionReason": "xinde-ballast-water-detention-examples-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-ballast-water-detention-examples-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-ballast-water-detention-examples-2025 | Ballast Water Management | Ship crew did not use ballast water treatment system; no evidence regarding BWTS; crew not familiar with ballast water management; BWTS switched off during inspection. | 船員未使用壓載水處理系統，缺少相關證據，不熟悉壓載水管理，且檢查期間關閉 BWTS。",
         "detentionGround": true
@@ -7067,12 +7067,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2个压载水大检查典型滞留缺陷",
+      "title": "信德海事 / 2个压载水大检查典型滞留滯留",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0924/61458.html",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-rotterdam-8",
@@ -7094,15 +7094,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 8,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-22 Rotterdam PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 8 項滯留缺陷；重點：操作／設備缺陷、消防安全、救生設備、ISM／安全管理。",
+    "shortSummary": "2025-09-22 Rotterdam PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 8 項滯留滯留；重點：操作／設備滯留、消防安全、救生設備、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Water for galley, handling rooms is yellow colored",
         "inspectorFinding": "Water for galley, handling rooms is yellow colored",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7112,7 +7112,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Gangway steel wires obstructing to go on board. The beam/hoisting part to lower gangway on shore waisted/corroded",
         "inspectorFinding": "Gangway steel wires obstructing to go on board. The beam/hoisting part to lower gangway on shore waisted/corroded",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7122,7 +7122,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Foumd winch forward under repair",
         "inspectorFinding": "Foumd winch forward under repair",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7147,7 +7147,7 @@ export const inspectionCases: InspectionCase[] = [
         "inspectorFinding": "Some lifebuoys missing not positioned",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "Action code 30 | Some lifebuoys missing not positioned | 一些救生圈缺失，未放置在指定位置",
+        "sourceQuote": "Action code 30 | Some lifebuoys missing not positioned | 一些救生圈滯留，未放置在指定位置",
         "detentionGround": true
       },
       {
@@ -7162,7 +7162,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Bridge window are non-glass but plastic",
         "inspectorFinding": "Bridge window are non-glass but plastic",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7183,12 +7183,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-donghae-6",
@@ -7210,9 +7210,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-22 Donghae PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 6 項滯留缺陷；重點：消防安全、救生設備、操作／設備缺陷、ISM／安全管理。",
+    "shortSummary": "2025-09-22 Donghae PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 6 項滯留滯留；重點：消防安全、救生設備、操作／設備滯留、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7248,7 +7248,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "NON-TYPE APPROVED PILOT LADDER FOUND IN USE ONBOARD",
         "inspectorFinding": "NON-TYPE APPROVED PILOT LADDER FOUND IN USE ONBOARD",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7279,12 +7279,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-zhoushan-3",
@@ -7306,15 +7306,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-19 Zhoushan PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留缺陷；重點：操作／設備缺陷、防污染。",
+    "shortSummary": "2025-09-19 Zhoushan PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留滯留；重點：操作／設備滯留、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "LRIT conformance test report not provided",
         "inspectorFinding": "LRIT conformance test report not provided",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7334,7 +7334,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Interlocker for combustion chamber of incinerator found malfunction",
         "inspectorFinding": "Interlocker for combustion chamber of incinerator found malfunction",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7345,12 +7345,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-tuticorin-3",
@@ -7372,9 +7372,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-19 Tuticorin PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留缺陷；重點：MLC／船員權益、主輔機／機艙、水密／結構。",
+    "shortSummary": "2025-09-19 Tuticorin PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留滯留；重點：MLC／船員權益、主輔機／機艙、水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7411,12 +7411,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-mersin-10",
@@ -7438,9 +7438,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 10,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-17 Mersin PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 10 項滯留缺陷；重點：應急準備、MLC／船員權益、防污染、操作／設備缺陷、救生設備。",
+    "shortSummary": "2025-09-17 Mersin PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 10 項滯留滯留；重點：應急準備、MLC／船員權益、防污染、操作／設備滯留、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7481,7 +7481,7 @@ export const inspectionCases: InspectionCase[] = [
         "inspectorFinding": "Emergency light not working and marking missing",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "Action code 30 | Emergency light not working and marking missing | 应急照明不工作且标记缺失",
+        "sourceQuote": "Action code 30 | Emergency light not working and marking missing | 应急照明不工作且标记滯留",
         "detentionGround": true
       },
       {
@@ -7516,7 +7516,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Smoke detector inoperative and closed with cover",
         "inspectorFinding": "Smoke detector inoperative and closed with cover",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7547,12 +7547,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-burgas-6",
@@ -7574,9 +7574,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-10 Burgas PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 6 項滯留缺陷；重點：水密／結構、防污染、應急準備、主輔機／機艙、MLC／船員權益、ISM／安全管理。",
+    "shortSummary": "2025-09-10 Burgas PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 6 項滯留滯留；重點：水密／結構、防污染、應急準備、主輔機／機艙、MLC／船員權益、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7643,12 +7643,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-valparaiso-1",
@@ -7670,9 +7670,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-05 Valparaiso PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 1 項滯留缺陷；重點：消防安全。",
+    "shortSummary": "2025-09-05 Valparaiso PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 1 項滯留滯留；重點：消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7689,12 +7689,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-shanghai-3",
@@ -7716,9 +7716,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-04 Shanghai PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留缺陷；重點：水密／結構、防污染、操作／設備缺陷。",
+    "shortSummary": "2025-09-04 Shanghai PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 3 項滯留滯留；重點：水密／結構、防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7744,7 +7744,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Four containers, each laden with Dangerous Goods, were stowed beneath the deck",
         "inspectorFinding": "Four containers, each laden with Dangerous Goods, were stowed beneath the deck",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
@@ -7755,12 +7755,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-ulsan-2",
@@ -7782,9 +7782,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-03 Ulsan PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 2 項滯留缺陷；重點：應急準備、主輔機／機艙。",
+    "shortSummary": "2025-09-03 Ulsan PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 2 項滯留滯留；重點：應急準備、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7811,12 +7811,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-veracruz-1",
@@ -7838,9 +7838,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-02 Veracruz PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 1 項滯留缺陷；重點：消防安全。",
+    "shortSummary": "2025-09-02 Veracruz PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 1 項滯留滯留；重點：消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7857,12 +7857,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "p2-2025-09-amsterdam-7",
@@ -7884,9 +7884,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-09-02 Amsterdam PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 7 項滯留缺陷；重點：消防安全、救生設備、ISM／安全管理。",
+    "shortSummary": "2025-09-02 Amsterdam PSC 滯留案例，Source did not disclose vessel type / 公開來源未披露，已收錄 7 項滯留滯留；重點：消防安全、救生設備、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -7897,7 +7897,7 @@ export const inspectionCases: InspectionCase[] = [
         "inspectorFinding": "THE SELF CLOSING MECHANISM INSTALLED ON THE FIRED DOORS LEADING FROM THE GALLEY TO THE OFFICERS MESSROOM AND THE CREW MESSROOM IS DISCONNECTED. REPEATING DEFICIENCY FROM PREVIOUS PSC INSPECTIONS GREECE 11.07.2025 AND ITALY 04.10.2022",
         "detentionReason": "來源行首 Action Taken Code = 30；本 App 僅將此類行作為滯留項導入。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "Action code 30 | THE SELF CLOSING MECHANISM INSTALLED ON THE FIRED DOORS LEADING FROM THE GALLEY TO THE OFFICERS MESSROOM AND THE CREW MESSROOM IS DISCONNECTED. REPEATING DEFICIENCY FROM PREVIOUS PSC INSPECTIONS GREECE 11.07.2025 AND ITALY 04.10.2022 | 从厨房通往高级船员餐厅和船员餐厅的防火门上安装的自闭装置被断开。此缺陷在之前的港口国监督检查中（希腊 2025年7月11日 和 意大利 2022年10月4日）重复出现",
+        "sourceQuote": "Action code 30 | THE SELF CLOSING MECHANISM INSTALLED ON THE FIRED DOORS LEADING FROM THE GALLEY TO THE OFFICERS MESSROOM AND THE CREW MESSROOM IS DISCONNECTED. REPEATING DEFICIENCY FROM PREVIOUS PSC INSPECTIONS GREECE 11.07.2025 AND ITALY 04.10.2022 | 从厨房通往高级船员餐厅和船员餐厅的防火门上安装的自闭装置被断开。此滯留在之前的港口国监督检查中（希腊 2025年7月11日 和 意大利 2022年10月4日）重复出现",
         "detentionGround": true
       },
       {
@@ -7963,12 +7963,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "52航海",
-      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與缺陷小結",
-      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC缺陷）",
+      "title": "52航海 / 大數跨境 2025年9月 8國11港口 PSC滯留與滯留小結",
+      "url": "https://www.10100.com/ （cached article title: 2025年9月份, 8国11个港口90+PSC滯留）",
       "publishedAt": "2025-09",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-water-weathertight-condition",
@@ -7990,9 +7990,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：水密／結構、MLC／船員權益、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：水密／結構、MLC／船員權益、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8018,7 +8018,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The sea chest was not watertight.",
         "inspectorFinding": "The sea chest was not watertight.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8042,9 +8042,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-structural-condition",
@@ -8066,9 +8066,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 12,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留缺陷；重點：水密／結構、操作／設備缺陷、主輔機／機艙、防污染。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留滯留；重點：水密／結構、操作／設備滯留、主輔機／機艙、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8094,7 +8094,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ship’s hull was excessively dented.",
         "inspectorFinding": "The ship’s hull was excessively dented.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8114,7 +8114,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Many water-tight doors were inoperative.",
         "inspectorFinding": "Many water-tight doors were inoperative.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8144,7 +8144,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The stability calculation for the last two cargoes had not been prepared.",
         "inspectorFinding": "The stability calculation for the last two cargoes had not been prepared.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8198,9 +8198,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-safety-of-navigation",
@@ -8222,9 +8222,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 26,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 26 項滯留缺陷；重點：航行安全、主輔機／機艙、操作／設備缺陷、證書／文件、救生設備。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 26 項滯留滯留；重點：航行安全、主輔機／機艙、操作／設備滯留、證書／文件、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8310,7 +8310,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Coastal warnings (Maritime Safety information) had not been received (gunnery bombing exercises area).",
         "inspectorFinding": "Coastal warnings (Maritime Safety information) had not been received (gunnery bombing exercises area).",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8320,7 +8320,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Some Nautical Publications were not corrected.",
         "inspectorFinding": "Some Nautical Publications were not corrected.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8340,7 +8340,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Some electronic publications are missing.",
         "inspectorFinding": "Some electronic publications are missing.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8350,7 +8350,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Life Saving Appliances",
         "inspectorFinding": "Life Saving Appliances",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8370,7 +8370,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The pilot ladder’s manila rope was broken, and the pilot entrance was not non-slip.",
         "inspectorFinding": "The pilot ladder’s manila rope was broken, and the pilot entrance was not non-slip.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8380,7 +8380,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The lifejacket’s lights had expired.",
         "inspectorFinding": "The lifejacket’s lights had expired.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8480,7 +8480,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The liferaft’s weak links were not fitted correctly and would not have released the liferaft as intended.",
         "inspectorFinding": "The liferaft’s weak links were not fitted correctly and would not have released the liferaft as intended.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8494,9 +8494,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-radio-communication",
@@ -8518,15 +8518,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "No VHF DSC internal tests had been carried out.",
         "inspectorFinding": "No VHF DSC internal tests had been carried out.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8540,9 +8540,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-propulsion-and-auxiliary-machinery",
@@ -8564,9 +8564,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 9,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留缺陷；重點：防污染、主輔機／機艙、操作／設備缺陷、救生設備。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留滯留；重點：防污染、主輔機／機艙、操作／設備滯留、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8642,7 +8642,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Key personnel were unable to demonstrate the correct procedure for launching the liferaft.",
         "inspectorFinding": "Key personnel were unable to demonstrate the correct procedure for launching the liferaft.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8666,9 +8666,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-pollution-prevention-marpol-annex-i",
@@ -8690,9 +8690,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：水密／結構、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：水密／結構、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8708,7 +8708,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The 15 PPM alarm testing had not been performed by the designated ER personnel.",
         "inspectorFinding": "The 15 PPM alarm testing had not been performed by the designated ER personnel.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8722,9 +8722,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-pollution-prevention-ballast-water",
@@ -8746,9 +8746,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：證書／文件、MLC／船員權益、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：證書／文件、MLC／船員權益、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8774,7 +8774,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "1 OS and 1 AB under 18 years of age were employed at night (between 0000 and 0600).",
         "inspectorFinding": "1 OS and 1 AB under 18 years of age were employed at night (between 0000 and 0600).",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8788,9 +8788,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-mlc-2006-health-protection-medical-care-social-security",
@@ -8812,9 +8812,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留缺陷；重點：主輔機／機艙、MLC／船員權益、防污染、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留滯留；重點：主輔機／機艙、MLC／船員權益、防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8860,7 +8860,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Other – SOLAS Operational",
         "inspectorFinding": "Other – SOLAS Operational",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -8894,9 +8894,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-mlc-2006-conditions-of-employment",
@@ -8918,9 +8918,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8940,9 +8940,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-ism",
@@ -8964,9 +8964,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：消防安全、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：消防安全、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -8982,7 +8982,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "not reporting for electrical power supply and ventilation cut off,",
         "inspectorFinding": "not reporting for electrical power supply and ventilation cut off,",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9026,9 +9026,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-fire-safety",
@@ -9050,9 +9050,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 17,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 17 項滯留缺陷；重點：消防安全、操作／設備缺陷、MLC／船員權益、防污染、航行安全、水密／結構。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 17 項滯留滯留；重點：消防安全、操作／設備滯留、MLC／船員權益、防污染、航行安全、水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9078,7 +9078,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The self-closing door on the upper deck – entrance to ER was out of order.",
         "inspectorFinding": "The self-closing door on the upper deck – entrance to ER was out of order.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9168,7 +9168,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The D/O settling tank quick-closing valve remote operation test failed.",
         "inspectorFinding": "The D/O settling tank quick-closing valve remote operation test failed.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9178,7 +9178,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Breathing Apparatus pressure was insufficient.",
         "inspectorFinding": "The Breathing Apparatus pressure was insufficient.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9208,7 +9208,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The goose-neck type ventilation cover for the A/C was missing.",
         "inspectorFinding": "The goose-neck type ventilation cover for the A/C was missing.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9232,9 +9232,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-emergency-systems",
@@ -9256,9 +9256,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 9,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留缺陷；重點：消防安全、船員熟悉／演習、救生設備、應急準備。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留滯留；重點：消防安全、船員熟悉／演習、救生設備、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9358,9 +9358,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-certificates-documentation-crew",
@@ -9382,9 +9382,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：證書／文件、操作／設備缺陷。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：證書／文件、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9400,7 +9400,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The vessel was one AB short of the minimum manning requirements. A Flag dispensation had been obtained, but the specific conditions indicated were not provided.",
         "inspectorFinding": "The vessel was one AB short of the minimum manning requirements. A Flag dispensation had been obtained, but the specific conditions indicated were not provided.",
         "detentionReason": "dromon-c25044-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9414,9 +9414,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25044-2025-alarms",
@@ -9438,9 +9438,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：防污染、主輔機／機艙、消防安全。",
+    "shortSummary": "2025-08-25 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：防污染、主輔機／機艙、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9490,9 +9490,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25044 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/08/25/alert-on-detainable-deficiencies-35/",
       "publishedAt": "2025-08",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dnv-top18-2025-detainable-focus-items",
@@ -9514,9 +9514,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 20,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-07-28 Multiple PSC regimes PSC 滯留案例，Multiple vessel types / 多船旗 / DNV-classed vessels，已收錄 20 項滯留缺陷；重點：水密／結構、應急準備、消防安全、航行安全、救生設備、操作／設備缺陷、主輔機／機艙、防污染、ISM／安全管理。",
+    "shortSummary": "2025-07-28 Multiple PSC regimes PSC 滯留案例，Multiple vessel types / 多船旗 / DNV-classed vessels，已收錄 20 項滯留滯留；重點：水密／結構、應急準備、消防安全、航行安全、救生設備、操作／設備滯留、主輔機／機艙、防污染、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9652,7 +9652,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "11112",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Launching arrangements for survival craft",
         "inspectorFinding": "Launching arrangements for survival craft",
         "detentionReason": "DNV 2025 Top 18 圖表明確稱為 detainable deficiencies list / most frequently recorded detainable deficiencies。",
@@ -9726,9 +9726,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "DNV / PSC CIC 2025 and DNV PSC Top 18 detainable deficiencies",
       "url": "https://www.dnv.com/news/2025/psc-cic-2025-on-ballast-water-management-and-dnvs-psc-top-18/",
       "publishedAt": "2025-07",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-water-weathertight-condition",
@@ -9750,9 +9750,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：主輔機／機艙、水密／結構、消防安全、防污染。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：主輔機／機艙、水密／結構、消防安全、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9802,9 +9802,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-structural-condition",
@@ -9826,9 +9826,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 12,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留缺陷；重點：應急準備、水密／結構、主輔機／機艙、操作／設備缺陷。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 12 項滯留滯留；重點：應急準備、水密／結構、主輔機／機艙、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -9894,7 +9894,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Water inlet from the rudder stock.",
         "inspectorFinding": "Water inlet from the rudder stock.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9904,7 +9904,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Many brackets were found corroded on the main deck.",
         "inspectorFinding": "Many brackets were found corroded on the main deck.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -9958,9 +9958,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-safety-of-navigation",
@@ -9982,15 +9982,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 19,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留缺陷；重點：操作／設備缺陷、主輔機／機艙、航行安全、證書／文件。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留滯留；重點：操作／設備滯留、主輔機／機艙、航行安全、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Compass observation logbook was missing. No compass errors had been determined.",
         "inspectorFinding": "The Compass observation logbook was missing. No compass errors had been determined.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10000,7 +10000,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The responsible officer was not able to find the spare magnetic compass and stated that “it is not onboard”.",
         "inspectorFinding": "The responsible officer was not able to find the spare magnetic compass and stated that “it is not onboard”.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10010,7 +10010,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ship’s bell was missing.",
         "inspectorFinding": "The ship’s bell was missing.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10020,7 +10020,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The passage plan was not berth to berth. There was no position fixing, including primary and secondary options, on arrival.",
         "inspectorFinding": "The passage plan was not berth to berth. There was no position fixing, including primary and secondary options, on arrival.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10030,7 +10030,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The International Code of Signals was missing.",
         "inspectorFinding": "The International Code of Signals was missing.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10090,7 +10090,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The main rudder indicator in the conning position and the bridgewing rudder indicators were not aligned.",
         "inspectorFinding": "The main rudder indicator in the conning position and the bridgewing rudder indicators were not aligned.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10130,7 +10130,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The light fixture foundations on the signalling light mast on the compass deck were loose and corroded.",
         "inspectorFinding": "The light fixture foundations on the signalling light mast on the compass deck were loose and corroded.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10140,7 +10140,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Admiralty Nautical Publications were not found onboard.",
         "inspectorFinding": "Admiralty Nautical Publications were not found onboard.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10150,7 +10150,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Admiralty List of Radio Signals, Volumes 2 & 4, were not the latest editions.",
         "inspectorFinding": "The Admiralty List of Radio Signals, Volumes 2 & 4, were not the latest editions.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10160,7 +10160,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "An unofficial ECDIS (laptop) was found on the bridge.",
         "inspectorFinding": "An unofficial ECDIS (laptop) was found on the bridge.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10170,7 +10170,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Aldis Lamp was damaged",
         "inspectorFinding": "The Aldis Lamp was damaged",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10184,9 +10184,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-radio-communication",
@@ -10208,9 +10208,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：證書／文件。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10230,9 +10230,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-pollution-prevention-marpol-annex-vi",
@@ -10254,15 +10254,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ozone-depleting substances record book was missing.",
         "inspectorFinding": "The ozone-depleting substances record book was missing.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10276,9 +10276,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-pollution-prevention-marpol-annex-i",
@@ -10300,9 +10300,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10342,9 +10342,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-pollution-prevention-ballast-water",
@@ -10366,9 +10366,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10388,9 +10388,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-mlc-2006-health-protection-medical-care-social-security",
@@ -10412,15 +10412,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：操作／設備缺陷、防污染。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：操作／設備滯留、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Protection from moving mechanical parts was missing from the diesel generators.",
         "inspectorFinding": "Protection from moving mechanical parts was missing from the diesel generators.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10454,9 +10454,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-mlc-2006-conditions-of-employment",
@@ -10478,9 +10478,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10500,9 +10500,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-mlc-2006-accommodation-recreational-facilities-food-and-catering",
@@ -10524,9 +10524,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 9,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留缺陷；重點：MLC／船員權益、航行安全、操作／設備缺陷、船員熟悉／演習、ISM／安全管理、防污染。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留滯留；重點：MLC／船員權益、航行安全、操作／設備滯留、船員熟悉／演習、ISM／安全管理、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10552,7 +10552,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was no fruit, fresh vegetables, or fish available on board. The meat was not properly segregated, and the fridges were not hygienic.",
         "inspectorFinding": "There was no fruit, fresh vegetables, or fish available on board. The meat was not properly segregated, and the fridges were not hygienic.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10592,7 +10592,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was water leakage in several cabins, causing the risk of electrical short circuits and rot.",
         "inspectorFinding": "There was water leakage in several cabins, causing the risk of electrical short circuits and rot.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10626,9 +10626,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-life-saving-appliances",
@@ -10650,15 +10650,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 18,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 18 項滯留缺陷；重點：操作／設備缺陷、救生設備、水密／結構、證書／文件。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 18 項滯留滯留；重點：操作／設備滯留、救生設備、水密／結構、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Liferafts were found permanently lashed to the ship and with improperly secured hydrostatic release units.",
         "inspectorFinding": "Liferafts were found permanently lashed to the ship and with improperly secured hydrostatic release units.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10678,7 +10678,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One immersion suit was found damaged.",
         "inspectorFinding": "One immersion suit was found damaged.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10718,7 +10718,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One lifejacket was found with a retroreflective strip missing.",
         "inspectorFinding": "One lifejacket was found with a retroreflective strip missing.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10728,7 +10728,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Some lifebuoy lights were inoperative.",
         "inspectorFinding": "Some lifebuoy lights were inoperative.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10808,7 +10808,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "All 4 line-throwing apparatus were found expired.",
         "inspectorFinding": "All 4 line-throwing apparatus were found expired.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10842,9 +10842,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-ism",
@@ -10866,9 +10866,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 19,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留缺陷；重點：消防安全、操作／設備缺陷、船員熟悉／演習。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留滯留；重點：消防安全、操作／設備滯留、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -10894,7 +10894,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The galley doors were not closed to insulate the area",
         "inspectorFinding": "The galley doors were not closed to insulate the area",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10904,7 +10904,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The air pressure inside the one BA bottle was too low (approximately 60 bar)",
         "inspectorFinding": "The air pressure inside the one BA bottle was too low (approximately 60 bar)",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10944,7 +10944,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The officer in charge did not bring the EPIRB.",
         "inspectorFinding": "The officer in charge did not bring the EPIRB.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10974,7 +10974,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Boundary cooling was not performed,",
         "inspectorFinding": "Boundary cooling was not performed,",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -10994,7 +10994,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Quick-closing valves were not closed,",
         "inspectorFinding": "Quick-closing valves were not closed,",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11004,7 +11004,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "BA sets were not properly donned,",
         "inspectorFinding": "BA sets were not properly donned,",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11014,7 +11014,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The two-way portable radiotelephone apparatus was not used,",
         "inspectorFinding": "The two-way portable radiotelephone apparatus was not used,",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11068,9 +11068,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-fire-safety",
@@ -11092,9 +11092,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 32,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 32 項滯留缺陷；重點：MLC／船員權益、消防安全、船員熟悉／演習、水密／結構、操作／設備缺陷、防污染、主輔機／機艙、應急準備。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 32 項滯留滯留；重點：MLC／船員權益、消防安全、船員熟悉／演習、水密／結構、操作／設備滯留、防污染、主輔機／機艙、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -11150,7 +11150,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Between the mess room and galley, one opening in the Class A bulkhead, for serving food, could not be closed properly.",
         "inspectorFinding": "Between the mess room and galley, one opening in the Class A bulkhead, for serving food, could not be closed properly.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11270,7 +11270,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The E/R Smoke detector was inoperative.",
         "inspectorFinding": "The E/R Smoke detector was inoperative.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11280,7 +11280,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The manually activated call point on the bridge was inoperative.",
         "inspectorFinding": "The manually activated call point on the bridge was inoperative.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11350,7 +11350,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The fuel tank quick-closing devices were found out of order.",
         "inspectorFinding": "The fuel tank quick-closing devices were found out of order.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11390,7 +11390,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was no record of testing the E/R quick-closing valves.",
         "inspectorFinding": "There was no record of testing the E/R quick-closing valves.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11424,9 +11424,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-emergency-systems",
@@ -11448,9 +11448,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 9,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留缺陷；重點：救生設備、防污染、消防安全、應急準備、操作／設備缺陷、水密／結構。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 9 項滯留滯留；重點：救生設備、防污染、消防安全、應急準備、操作／設備滯留、水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -11496,7 +11496,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The two-way radios malfunctioned, and one battery was not sufficiently charged.",
         "inspectorFinding": "The two-way radios malfunctioned, and one battery was not sufficiently charged.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11550,9 +11550,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-certificates-and-documentation",
@@ -11574,9 +11574,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 19,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留缺陷；重點：證書／文件、操作／設備缺陷、消防安全、防污染、主輔機／機艙。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留滯留；重點：證書／文件、操作／設備滯留、消防安全、防污染、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -11642,7 +11642,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was no risk assessment accompanying the Flag State Exemption for the malfunctioning speed log.",
         "inspectorFinding": "There was no risk assessment accompanying the Flag State Exemption for the malfunctioning speed log.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11692,7 +11692,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The weekly LSA inspections were not recorded in the logbook.",
         "inspectorFinding": "The weekly LSA inspections were not recorded in the logbook.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11712,7 +11712,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Propulsion and Auxiliary Machinery",
         "inspectorFinding": "Propulsion and Auxiliary Machinery",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11776,9 +11776,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25031-2025-certificates-documentation-crew",
@@ -11800,9 +11800,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留缺陷；重點：證書／文件、船員熟悉／演習、操作／設備缺陷。",
+    "shortSummary": "2025-06-11 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留滯留；重點：證書／文件、船員熟悉／演習、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -11848,7 +11848,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One Officer’s Flag state application had expired.",
         "inspectorFinding": "One Officer’s Flag state application had expired.",
         "detentionReason": "dromon-c25031-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -11882,9 +11882,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25031 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/06/11/alert-on-detainable-deficiencies-34/",
       "publishedAt": "2025-06",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -11906,18 +11906,18 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 11,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留缺陷；重點：操作／設備缺陷、防污染、MLC／船員權益。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留滯留；重點：操作／設備滯留、防污染、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Bosun store bilge well high level alarm fail to test (person in charge not know 30-second delay)",
         "inspectorFinding": "Bosun store bilge well high level alarm fail to test (person in charge not know 30-second delay)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Bosun store bilge well high level alarm fail to test (person in charge not know 30-second delay) | 水手长储藏室舱底水井高位警报测试失败（负责人不知道有30秒延迟）",
         "detentionGround": true
@@ -11927,7 +11927,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "15ppm bilge alarm not activated & bilge discharge not automatically stopped with sampling water cock valve closed; oil content meter unable to monitor the effluent from 15ppm bilge separator",
         "inspectorFinding": "15ppm bilge alarm not activated & bilge discharge not automatically stopped with sampling water cock valve closed; oil content meter unable to monitor the effluent from 15ppm bilge separator",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | 15ppm bilge alarm not activated & bilge discharge not automatically stopped with sampling water cock valve closed; oil content meter unable to monitor the effluent from 15ppm bilge separator | 15ppm舱底水警报未启动，且关闭取样水龙头阀时舱底水排放未自动停止；含油浓度计无法监测15ppm舱底水分离器的排放物",
         "detentionGround": true
@@ -11937,7 +11937,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Solenoid valve on oily water separator malfunctioned",
         "inspectorFinding": "Solenoid valve on oily water separator malfunctioned",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Solenoid valve on oily water separator malfunctioned | 油水分离器上的电磁阀故障",
         "detentionGround": true
@@ -11947,7 +11947,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Crew are not familiar with the operation method of oily water separator and can not proceed test",
         "inspectorFinding": "Crew are not familiar with the operation method of oily water separator and can not proceed test",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Crew are not familiar with the operation method of oily water separator and can not proceed test | 船员不熟悉油水分离器的操作方法，无法进行测试",
         "detentionGround": true
@@ -11957,7 +11957,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Dosing pump of sewage treatment plant not working properly",
         "inspectorFinding": "Dosing pump of sewage treatment plant not working properly",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Dosing pump of sewage treatment plant not working properly | 污水处理装置的加药泵无法正常工作",
         "detentionGround": true
@@ -11967,7 +11967,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Malfunction of overboard discharge valve of sewage treatment plant",
         "inspectorFinding": "Malfunction of overboard discharge valve of sewage treatment plant",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Malfunction of overboard discharge valve of sewage treatment plant | 污水处理装置的排放入海阀门故障",
         "detentionGround": true
@@ -11977,17 +11977,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Illegal discharge of oily water overboard",
         "inspectorFinding": "Illegal discharge of oily water overboard",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Illegal discharge of oily water overboard | 非法将含油污水排放入海",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Illegal discharge of cargo mixture overboard in port",
         "inspectorFinding": "Illegal discharge of cargo mixture overboard in port",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Illegal discharge of cargo mixture overboard in port | 在港口非法将货物混合物排放入海",
         "detentionGround": true
@@ -11997,7 +11997,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Overboard valve of sewage line was fixed in open position",
         "inspectorFinding": "Overboard valve of sewage line was fixed in open position",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Overboard valve of sewage line was fixed in open position | 污水管路的排放入海阀门被固定在开启位置",
         "detentionGround": true
@@ -12007,17 +12007,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Sewage treatment unable to use(plant was empty and chemical was missing)",
         "inspectorFinding": "Sewage treatment unable to use(plant was empty and chemical was missing)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Sewage treatment unable to use(plant was empty and chemical was missing) | 污水处理装置无法使用（装置内为空且缺少化学药剂）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Dumping of unground food at sea(in prohibited areas)",
         "inspectorFinding": "Dumping of unground food at sea(in prohibited areas)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 船舶在上海排放了污泥，但其油类残余物处理证书是假的 | Dumping of unground food at sea(in prohibited areas) | 在海上（禁止区域）倾倒未粉碎的食物",
         "detentionGround": true
@@ -12025,12 +12025,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-450-550-1966-ll66-p88-1-600",
@@ -12052,38 +12052,38 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留缺陷；重點：操作／設備缺陷、主輔機／機艙、證書／文件。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留滯留；重點：操作／設備滯留、主輔機／機艙、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Water ingress alarm sensor defective",
         "inspectorFinding": "Water ingress alarm sensor defective",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Water ingress alarm sensor defective | 进水警报传感器有缺陷",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Water ingress alarm sensor defective | 进水警报传感器有滯留",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Air pipe floats for topside tanks (TST) seized",
         "inspectorFinding": "Air pipe floats for topside tanks (TST) seized",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Air pipe floats for topside tanks (TST) seized | 顶边舱（TST）空气管浮球卡死",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Loss of weather tight function due to deformation of air pipe to cover",
         "inspectorFinding": "Loss of weather tight function due to deformation of air pipe to cover",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Loss of weather tight function due to deformation of air pipe to cover | 由于空气管至管盖变形，导致失去风雨密功能",
         "detentionGround": true
@@ -12093,17 +12093,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Escape door of steering gear room on main deck not weather-tight",
         "inspectorFinding": "Escape door of steering gear room on main deck not weather-tight",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Escape door of steering gear room on main deck not weather-tight | 主甲板上舵机房的逃生门不具备风雨密性",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Sterm ramp failure(partially separated)",
         "inspectorFinding": "Sterm ramp failure(partially separated)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Sterm ramp failure(partially separated) | 艉跳板故障（部分分离）",
         "detentionGround": true
@@ -12113,7 +12113,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "證書／文件",
         "original": "Certificate and Documentation 证书与文件",
         "inspectorFinding": "Certificate and Documentation 证书与文件",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 舱口围板高度（450毫米）和货油泵舱门槛高度（550毫米）未达到《1966年国际载重线公约》（LL66）/P88/附件1要求的600毫米 | Certificate and Documentation 证书与文件 | Certificate and Documentation 证书与文件",
         "detentionGround": true
@@ -12121,12 +12121,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -12148,9 +12148,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 8,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留缺陷；重點：水密／結構、操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留滯留；重點：水密／結構、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12159,7 +12159,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Goose neck vent pipe for cargo hold corroded and holed on top side",
         "inspectorFinding": "Goose neck vent pipe for cargo hold corroded and holed on top side",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Goose neck vent pipe for cargo hold corroded and holed on top side | 货舱鹅颈式通风管顶部腐蚀并出现孔洞",
         "detentionGround": true
@@ -12169,7 +12169,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Cargo hold damaged and flooded due to collision",
         "inspectorFinding": "Cargo hold damaged and flooded due to collision",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Cargo hold damaged and flooded due to collision | 货舱因碰撞而损坏并进水",
         "detentionGround": true
@@ -12179,17 +12179,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Small hatch of bosun store damaged and corroded",
         "inspectorFinding": "Small hatch of bosun store damaged and corroded",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Small hatch of bosun store damaged and corroded | 水手长储藏室的小舱口损坏并腐蚀",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Dewatering remote control system for bosun store out of order (driving line clogged)",
         "inspectorFinding": "Dewatering remote control system for bosun store out of order (driving line clogged)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Dewatering remote control system for bosun store out of order (driving line clogged) | 水手长储藏室的遥控排水系统故障（驱动管路堵塞）",
         "detentionGround": true
@@ -12199,7 +12199,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Hatch cover and hatch coaming rusted and holed",
         "inspectorFinding": "Hatch cover and hatch coaming rusted and holed",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Hatch cover and hatch coaming rusted and holed | 舱口盖和舱口围板生锈并出现孔洞",
         "detentionGround": true
@@ -12209,17 +12209,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Ventilator is stuck in open position",
         "inspectorFinding": "Ventilator is stuck in open position",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Ventilator is stuck in open position | 通风装置卡在开启位置",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Malfunction of Water Ingress System in wheel house",
         "inspectorFinding": "Malfunction of Water Ingress System in wheel house",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Malfunction of Water Ingress System in wheel house | 驾驶室的进水监测系统故障",
         "detentionGround": true
@@ -12229,7 +12229,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Hatch cover locking pins seized",
         "inspectorFinding": "Hatch cover locking pins seized",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行期间货舱舱口盖未有效系固 | Hatch cover locking pins seized | 舱口盖锁定销卡死",
         "detentionGround": true
@@ -12237,12 +12237,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-vdr-dru",
@@ -12264,9 +12264,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：航行安全、操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：航行安全、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12275,27 +12275,27 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Some charts expired edition in use",
         "inspectorFinding": "Some charts expired edition in use",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行数据记录仪（VDR）的数据存储单元（DRU）连接故障警报 | Some charts expired edition in use | 正在使用一些过期版本的海图",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Screen of stern light corroded seriously that the horizon angle incorrect",
         "inspectorFinding": "Screen of stern light corroded seriously that the horizon angle incorrect",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行数据记录仪（VDR）的数据存储单元（DRU）连接故障警报 | Screen of stern light corroded seriously that the horizon angle incorrect | 艉灯的灯罩严重腐蚀，导致水平角度不正确",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Speed log not working",
         "inspectorFinding": "Speed log not working",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 航行数据记录仪（VDR）的数据存储单元（DRU）连接故障警报 | Speed log not working | 计程仪不工作",
         "detentionGround": true
@@ -12303,12 +12303,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -12330,9 +12330,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留缺陷；重點：防污染、MLC／船員權益、操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留滯留；重點：防污染、MLC／船員權益、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12341,7 +12341,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Pollution Prevention防污染",
         "inspectorFinding": "Pollution Prevention防污染",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Pollution Prevention防污染 | Pollution Prevention防污染",
         "detentionGround": true
@@ -12351,7 +12351,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Cooking oil discharged into the sea illegally",
         "inspectorFinding": "Cooking oil discharged into the sea illegally",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Cooking oil discharged into the sea illegally | 食用油被非法排放入海",
         "detentionGround": true
@@ -12361,7 +12361,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Trunk of oily water separator damaged: water leakages",
         "inspectorFinding": "Trunk of oily water separator damaged: water leakages",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Trunk of oily water separator damaged: water leakages | 油水分离器的箱体损坏：漏水",
         "detentionGround": true
@@ -12371,9 +12371,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Oil water separator found out of order / 15PPM alarm monitor defective",
         "inspectorFinding": "Oil water separator found out of order / 15PPM alarm monitor defective",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Oil water separator found out of order / 15PPM alarm monitor defective | 发现油水分离器故障/15PPM警报监测器有缺陷",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Oil water separator found out of order / 15PPM alarm monitor defective | 发现油水分离器故障/15PPM警报监测器有滯留",
         "detentionGround": true
       },
       {
@@ -12381,17 +12381,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Sewage Treatment out of order due to the only air blower malfunction",
         "inspectorFinding": "Sewage Treatment out of order due to the only air blower malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Sewage Treatment out of order due to the only air blower malfunction | 由于唯一的鼓风机故障，污水处理装置无法运行",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Record of 15ppm bilge device not available",
         "inspectorFinding": "Record of 15ppm bilge device not available",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生艇的压力维持状况不佳 | Record of 15ppm bilge device not available | 无15ppm舱底水装置的记录",
         "detentionGround": true
@@ -12399,12 +12399,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -12426,9 +12426,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：救生設備。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12437,7 +12437,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat waterborne test not conducted within 3 months",
         "inspectorFinding": "Rescue boat waterborne test not conducted within 3 months",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生筏年度检验截止日期已过（船上无合格人员进行检验） | Rescue boat waterborne test not conducted within 3 months | 救助艇在3个月内未进行水上试验",
         "detentionGround": true
@@ -12447,7 +12447,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Emergency search light on STBD rescue boat can not adequately illuminate the area of water into which the rescue boat to be launched",
         "inspectorFinding": "Emergency search light on STBD rescue boat can not adequately illuminate the area of water into which the rescue boat to be launched",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 气胀式救生筏年度检验截止日期已过（船上无合格人员进行检验） | Emergency search light on STBD rescue boat can not adequately illuminate the area of water into which the rescue boat to be launched | 右舷救助艇上的应急探照灯无法充分照亮救助艇将要释放的水域",
         "detentionGround": true
@@ -12455,16 +12455,16 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-bnwas",
-    "vessel": "Tokyo MoU China Q1 2025 detainable deficiencies — 桥楼航行值班报警系统（BNWAS）有缺陷",
+    "vessel": "Tokyo MoU China Q1 2025 detainable deficiencies — 桥楼航行值班报警系统（BNWAS）有滯留",
     "imo": "待官方 Form A/B 補齊",
     "flag": "多船旗 / 未逐案披露",
     "flagEmoji": "⚓",
@@ -12482,9 +12482,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：航行安全。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：航行安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12493,9 +12493,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Harbor charts N/A",
         "inspectorFinding": "Harbor charts N/A",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有缺陷 | Harbor charts N/A | 无港口海图",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有滯留 | Harbor charts N/A | 无港口海图",
         "detentionGround": true
       },
       {
@@ -12503,9 +12503,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Latest local chart not available on board",
         "inspectorFinding": "Latest local chart not available on board",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有缺陷 | Latest local chart not available on board | 船上没有最新的当地海图",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有滯留 | Latest local chart not available on board | 船上没有最新的当地海图",
         "detentionGround": true
       },
       {
@@ -12513,20 +12513,20 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Electronic Navigational Charts (ENC) expired / Not updated",
         "inspectorFinding": "Electronic Navigational Charts (ENC) expired / Not updated",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有缺陷 | Electronic Navigational Charts (ENC) expired / Not updated | 电子海图（ENC）过期/未更新",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 桥楼航行值班报警系统（BNWAS）有滯留 | Electronic Navigational Charts (ENC) expired / Not updated | 电子海图（ENC）过期/未更新",
         "detentionGround": true
       }
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -12548,9 +12548,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：救生設備、操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：救生設備、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12559,17 +12559,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat davit limit switch inoperative",
         "inspectorFinding": "Rescue boat davit limit switch inoperative",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 救生艇登乘梯的固定眼板损坏 | Rescue boat davit limit switch inoperative | 救助艇吊艇架限位开关无法工作",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "EPIRB Hydrostatic Release Unit expired",
         "inspectorFinding": "EPIRB Hydrostatic Release Unit expired",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 救生艇登乘梯的固定眼板损坏 | EPIRB Hydrostatic Release Unit expired | 紧急位置指示无线电信标（EPIRB）静水压力释放器过期",
         "detentionGround": true
@@ -12577,12 +12577,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-2",
@@ -12604,9 +12604,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：船員熟悉／演習、消防安全、航行安全。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：船員熟悉／演習、消防安全、航行安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12615,7 +12615,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "船員熟悉／演習",
         "original": "Key crew not familiar with the DG container cargo handling procedure",
         "inspectorFinding": "Key crew not familiar with the DG container cargo handling procedure",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 救生艇/救助艇未能在2分钟内启动并运行 | Key crew not familiar with the DG container cargo handling procedure | 关键船员不熟悉危险货物（DG）集装箱货物的装卸程序",
         "detentionGround": true
@@ -12625,7 +12625,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire fighting drill failed",
         "inspectorFinding": "Fire fighting drill failed",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 救生艇/救助艇未能在2分钟内启动并运行 | Fire fighting drill failed | 消防演习失败",
         "detentionGround": true
@@ -12635,7 +12635,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Crew member not familiar with DSC transmission and Echo Sounder alarm",
         "inspectorFinding": "Crew member not familiar with DSC transmission and Echo Sounder alarm",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 救生艇/救助艇未能在2分钟内启动并运行 | Crew member not familiar with DSC transmission and Echo Sounder alarm | 船员不熟悉数字选择性呼叫（DSC）传输和回声测深仪警报",
         "detentionGround": true
@@ -12643,12 +12643,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-solas-iii-19-3-3-19-3-6",
@@ -12670,18 +12670,18 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 8,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留缺陷；重點：操作／設備缺陷、應急準備、主輔機／機艙、救生設備。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 8 項滯留滯留；重點：操作／設備滯留、應急準備、主輔機／機艙、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Enter enclosed space procedure not established according to MSC.350(92) and A.1050(27)",
         "inspectorFinding": "Enter enclosed space procedure not established according to MSC.350(92) and A.1050(27)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Enter enclosed space procedure not established according to MSC.350(92) and A.1050(27) | 未按照海安会（MSC）第350(92)号决议和A.1050(27)号文件的要求制定进入封闭空间的程序",
         "detentionGround": true
@@ -12691,7 +12691,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Crew not familiar with emergency steering",
         "inspectorFinding": "Crew not familiar with emergency steering",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Crew not familiar with emergency steering | 船员不熟悉应急操舵",
         "detentionGround": true
@@ -12701,7 +12701,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Lack of crew’s familiarization with the essential shipboard procedures relating to main engine failure",
         "inspectorFinding": "Lack of crew’s familiarization with the essential shipboard procedures relating to main engine failure",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Lack of crew’s familiarization with the essential shipboard procedures relating to main engine failure | 船员缺乏对与主发动机故障相关的基本船上程序的熟悉程度",
         "detentionGround": true
@@ -12711,7 +12711,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "False entries in official log book pertaining to emergency training and drills conducted",
         "inspectorFinding": "False entries in official log book pertaining to emergency training and drills conducted",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | False entries in official log book pertaining to emergency training and drills conducted | 官方航海日志中关于所进行的应急培训和演习的记录存在虚假内容",
         "detentionGround": true
@@ -12721,7 +12721,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Insufficient training for escape trunk",
         "inspectorFinding": "Insufficient training for escape trunk",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Insufficient training for escape trunk | 对应急逃生围阱的培训不足",
         "detentionGround": true
@@ -12731,7 +12731,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Life Saving Appliances救生设备",
         "inspectorFinding": "Life Saving Appliances救生设备",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Life Saving Appliances救生设备 | Life Saving Appliances救生设备",
         "detentionGround": true
@@ -12741,7 +12741,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat engine cannot be started by either of the batteries",
         "inspectorFinding": "Rescue boat engine cannot be started by either of the batteries",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Rescue boat engine cannot be started by either of the batteries | 救助艇发动机使用任何一块电池都无法启动",
         "detentionGround": true
@@ -12751,7 +12751,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Malfunction of cooling system of rescue boat",
         "inspectorFinding": "Malfunction of cooling system of rescue boat",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 封闭空间进入和救援演习未按照《国际海上人命安全公约》（SOLAS）第III章/规则19.3.3和19.3.6的要求进行 | Malfunction of cooling system of rescue boat | 救助艇冷却系统故障",
         "detentionGround": true
@@ -12759,16 +12759,16 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-ism",
-    "vessel": "Tokyo MoU China Q1 2025 detainable deficiencies — 基于多项缺陷，构成可导致滞留的国际安全管理规则（ISM）缺陷",
+    "vessel": "Tokyo MoU China Q1 2025 detainable deficiencies — 基于多项滯留，构成可导致滞留的国际安全管理规则（ISM）滯留",
     "imo": "待官方 Form A/B 補齊",
     "flag": "多船旗 / 未逐案披露",
     "flagEmoji": "⚓",
@@ -12786,9 +12786,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：救生設備。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -12797,20 +12797,20 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat cannot release in 10 minutes due to launching and recovery arrangements – Out of work",
         "inspectorFinding": "Rescue boat cannot release in 10 minutes due to launching and recovery arrangements – Out of work",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 基于多项缺陷，构成可导致滞留的国际安全管理规则（ISM）缺陷 | Rescue boat cannot release in 10 minutes due to launching and recovery arrangements – Out of work | 由于释放和回收装置故障，救助艇无法在10分钟内释放",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 基于多项滯留，构成可导致滞留的国际安全管理规则（ISM）滯留 | Rescue boat cannot release in 10 minutes due to launching and recovery arrangements – Out of work | 由于释放和回收装置故障，救助艇无法在10分钟内释放",
         "detentionGround": true
       }
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-dg-imdg-code",
@@ -12832,28 +12832,28 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 19,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留缺陷；重點：操作／設備缺陷、航行安全、水密／結構、防污染、主輔機／機艙。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 19 項滯留滯留；重點：操作／設備滯留、航行安全、水密／結構、防污染、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Ship was in service without going to the dry dock directly, after postponement of the Special Survey including the Docking Survey",
         "inspectorFinding": "Ship was in service without going to the dry dock directly, after postponement of the Special Survey including the Docking Survey",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Ship was in service without going to the dry dock directly, after postponement of the Special Survey including the Docking Survey | 在推迟包括坞内检验在内的特别检验后，船舶未直接进干船坞就投入营运",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Gas detectors for in-transit fumigation of cargo not properly recorded in log book",
         "inspectorFinding": "Gas detectors for in-transit fumigation of cargo not properly recorded in log book",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Gas detectors for in-transit fumigation of cargo not properly recorded in log book | 货物在运输途中熏蒸用的气体探测器情况未在航海日志中正确记录",
         "detentionGround": true
@@ -12863,17 +12863,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Insufficient fresh water supply for intended voyage",
         "inspectorFinding": "Insufficient fresh water supply for intended voyage",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Insufficient fresh water supply for intended voyage | 对于预定航程，淡水供应不足",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Seafarers' employment agreements not confirmed by ship's owner or his representative",
         "inspectorFinding": "Seafarers' employment agreements not confirmed by ship's owner or his representative",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Seafarers' employment agreements not confirmed by ship's owner or his representative | 海员就业协议未得到船东或其代表的确认",
         "detentionGround": true
@@ -12883,7 +12883,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Cargo hold access hatch modified without approval of flag Authority",
         "inspectorFinding": "Cargo hold access hatch modified without approval of flag Authority",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Cargo hold access hatch modified without approval of flag Authority | 货舱出入舱口未经船旗国主管机关批准就进行了改装",
         "detentionGround": true
@@ -12893,37 +12893,37 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Food waste discharged to China’s territorial waters",
         "inspectorFinding": "Food waste discharged to China’s territorial waters",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Food waste discharged to China’s territorial waters | 食物垃圾被排放入中国领海",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Doors between wheel house and open deck not gastight (for tankers)",
         "inspectorFinding": "Doors between wheel house and open deck not gastight (for tankers)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Doors between wheel house and open deck not gastight (for tankers) | 驾驶室与露天甲板之间的门不气密（适用于油轮）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Small diameter self closing control cock fitted below sounding pipes for FO tanks inoperative",
         "inspectorFinding": "Small diameter self closing control cock fitted below sounding pipes for FO tanks inoperative",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Small diameter self closing control cock fitted below sounding pipes for FO tanks inoperative | 安装在燃油舱测深管下方的小直径自闭控制旋塞无法工作",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Incinerator unable to operate with inoperative negative pressure sensor",
         "inspectorFinding": "Incinerator unable to operate with inoperative negative pressure sensor",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Incinerator unable to operate with inoperative negative pressure sensor | 由于负压传感器失效，焚烧炉无法运行",
         "detentionGround": true
@@ -12933,7 +12933,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Corrosion of manhole cover in Steering Gear Room",
         "inspectorFinding": "Corrosion of manhole cover in Steering Gear Room",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Corrosion of manhole cover in Steering Gear Room | 舵机房的人孔盖发生腐蚀",
         "detentionGround": true
@@ -12943,17 +12943,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Steering gear room Audible and visible alarm, overload alarm malfunction",
         "inspectorFinding": "Steering gear room Audible and visible alarm, overload alarm malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Steering gear room Audible and visible alarm, overload alarm malfunction | 舵机房的声光警报、过载警报故障",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Fake \"Letter of Protest\" on M/E LO pump reported to Port Authority",
         "inspectorFinding": "Fake \"Letter of Protest\" on M/E LO pump reported to Port Authority",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Fake \"Letter of Protest\" on M/E LO pump reported to Port Authority | 向港口当局报告的关于主发动机滑油泵的“抗议信”是伪造的",
         "detentionGround": true
@@ -12963,27 +12963,27 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Illegal Discharge of food waste into the sea",
         "inspectorFinding": "Illegal Discharge of food waste into the sea",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Illegal Discharge of food waste into the sea | 非法向海中排放食物垃圾",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Poor Cargo tank Inactivation",
         "inspectorFinding": "Poor Cargo tank Inactivation",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Poor Cargo tank Inactivation | 货舱惰化效果不佳",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "IGG system control panel malfunction",
         "inspectorFinding": "IGG system control panel malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | IGG system control panel malfunction | 惰性气体系统控制面板故障",
         "detentionGround": true
@@ -12993,7 +12993,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "M/E telegraph in engine room malfunction",
         "inspectorFinding": "M/E telegraph in engine room malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | M/E telegraph in engine room malfunction | 机舱内的主发动机传令钟故障",
         "detentionGround": true
@@ -13003,7 +13003,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "2 sets of communication means between the bridge and the engine room (including E/R local side)",
         "inspectorFinding": "2 sets of communication means between the bridge and the engine room (including E/R local side)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | 2 sets of communication means between the bridge and the engine room (including E/R local side) | 驾驶台与机舱之间（包括机舱本地）有2套通信方式（存在问题）",
         "detentionGround": true
@@ -13013,7 +13013,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Insufficient capacity of the LO storage tank for the steering gear minimum requirement",
         "inspectorFinding": "Insufficient capacity of the LO storage tank for the steering gear minimum requirement",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Insufficient capacity of the LO storage tank for the steering gear minimum requirement | 舵机滑油储存柜的容量未达到最低要求",
         "detentionGround": true
@@ -13023,7 +13023,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Use of cylindrical level gauge for the LO tank in the engine room",
         "inspectorFinding": "Use of cylindrical level gauge for the LO tank in the engine room",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 在釜山装载的危险货物（DG）集装箱未按照《国际海运危险货物规则》（IMDG Code）的要求进行隔离。然而，船上船员直到船舶抵达上海才发现危险货物隔离错误 | Use of cylindrical level gauge for the LO tank in the engine room | 在机舱滑油舱使用了圆柱形液位计",
         "detentionGround": true
@@ -13031,12 +13031,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-ill",
@@ -13058,9 +13058,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：水密／結構。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：水密／結構。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -13069,9 +13069,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "A lot of rubber packing of hatch covers damaged and missing",
         "inspectorFinding": "A lot of rubber packing of hatch covers damaged and missing",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 国际载重线（ILL） | A lot of rubber packing of hatch covers damaged and missing | 许多舱口盖的橡胶密封垫损坏或缺失",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 国际载重线（ILL） | A lot of rubber packing of hatch covers damaged and missing | 许多舱口盖的橡胶密封垫损坏或滯留",
         "detentionGround": true
       },
       {
@@ -13079,7 +13079,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Corrosion of Cargo hold catch cover and hatch coaming",
         "inspectorFinding": "Corrosion of Cargo hold catch cover and hatch coaming",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 国际载重线（ILL） | Corrosion of Cargo hold catch cover and hatch coaming | 货舱舱口盖锁扣和舱口围板腐蚀",
         "detentionGround": true
@@ -13087,12 +13087,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-isps",
@@ -13114,18 +13114,18 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Access to ship found out of control (No one on duty at gangway)",
         "inspectorFinding": "Access to ship found out of control (No one on duty at gangway)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 国际船舶和港口设施保安规则（ISPS） | Access to ship found out of control (No one on duty at gangway) | 发现船舶进入控制失控（舷梯处无人）",
         "detentionGround": true
@@ -13133,12 +13133,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-imdg-code",
@@ -13160,9 +13160,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：消防安全。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -13171,7 +13171,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Some air pipe, fire pipe and sounding pipe corroded",
         "inspectorFinding": "Some air pipe, fire pipe and sounding pipe corroded",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 两个集装箱未按照《国际海运危险货物规则》（IMDG Code）进行适当隔离 | Some air pipe, fire pipe and sounding pipe corroded | 一些空气管、消防管和测深管发生腐蚀",
         "detentionGround": true
@@ -13179,12 +13179,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-nuc-colreg-6",
@@ -13206,48 +13206,48 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：操作／設備缺陷、航行安全。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：操作／設備滯留、航行安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "EPIRB Battery expired",
         "inspectorFinding": "EPIRB Battery expired",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 不工作（NUC）灯的布置不符合《国际海上避碰规则》（COLREG）的要求（不可见角度扇形区域超过6度） | EPIRB Battery expired | 紧急位置指示无线电信标（EPIRB）电池过期",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Ship across the military prohibited area",
         "inspectorFinding": "Ship across the military prohibited area",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 不工作（NUC）灯的布置不符合《国际海上避碰规则》（COLREG）的要求（不可见角度扇形区域超过6度） | Ship across the military prohibited area | 船舶穿越军事禁区",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Day Signal Light Switch malfunction",
         "inspectorFinding": "Day Signal Light Switch malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 不工作（NUC）灯的布置不符合《国际海上避碰规则》（COLREG）的要求（不可见角度扇形区域超过6度） | Day Signal Light Switch malfunction | 白昼信号灯开关故障",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "AIS malfunction and not reporting to port authority",
         "inspectorFinding": "AIS malfunction and not reporting to port authority",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 不工作（NUC）灯的布置不符合《国际海上避碰规则》（COLREG）的要求（不可见角度扇形区域超过6度） | AIS malfunction and not reporting to port authority | 船舶自动识别系统（AIS）故障且未向港口当局报告",
         "detentionGround": true
@@ -13257,7 +13257,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "RADAR PM Test failure",
         "inspectorFinding": "RADAR PM Test failure",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 不工作（NUC）灯的布置不符合《国际海上避碰规则》（COLREG）的要求（不可见角度扇形区域超过6度） | RADAR PM Test failure | 雷达性能监测（PM）测试失败",
         "detentionGround": true
@@ -13265,12 +13265,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-port",
@@ -13292,18 +13292,18 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：操作／設備缺陷、航行安全、證書／文件。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：操作／設備滯留、航行安全、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "SEEMP Part 3 CoC not on board",
         "inspectorFinding": "SEEMP Part 3 CoC not on board",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 三本多载重线证书存放在一个本子里 | SEEMP Part 3 CoC not on board | 船上没有船舶能效管理计划（SEEMP）第3部分符合证明（CoC）",
         "detentionGround": true
@@ -13313,7 +13313,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Safety of Navigation 航行安全",
         "inspectorFinding": "Safety of Navigation 航行安全",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 三本多载重线证书存放在一个本子里 | Safety of Navigation 航行安全 | Safety of Navigation 航行安全",
         "detentionGround": true
@@ -13323,7 +13323,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "證書／文件",
         "original": "Reserve source of emergency for GMDSS radio installation cannot be supplied",
         "inspectorFinding": "Reserve source of emergency for GMDSS radio installation cannot be supplied",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | 三本多载重线证书存放在一个本子里 | Reserve source of emergency for GMDSS radio installation cannot be supplied | 全球海上遇险与安全系统（GMDSS）无线电设备的应急备用电源无法供应",
         "detentionGround": true
@@ -13331,12 +13331,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-r22-iapp",
@@ -13358,28 +13358,28 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Using fuels with higher sulfur content(exceeding limit value)",
         "inspectorFinding": "Using fuels with higher sulfur content(exceeding limit value)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | R22制冷剂未列入国际防止空气污染证书（IAPP）中 | Using fuels with higher sulfur content(exceeding limit value) | 使用含硫量较高（超过限值）的燃料",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Sludge bilge line not separated and does not match the drawings",
         "inspectorFinding": "Sludge bilge line not separated and does not match the drawings",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | R22制冷剂未列入国际防止空气污染证书（IAPP）中 | Sludge bilge line not separated and does not match the drawings | 污泥舱底水管路未分离且与图纸不符",
         "detentionGround": true
@@ -13387,12 +13387,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-others",
@@ -13414,9 +13414,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：應急準備、操作／設備缺陷。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：應急準備、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -13425,7 +13425,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Number of em'cy duties is different with actual ones",
         "inspectorFinding": "Number of em'cy duties is different with actual ones",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | Others 其他 | Number of em'cy duties is different with actual ones | 应急职责的数量与实际情况不符",
         "detentionGround": true
@@ -13435,17 +13435,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Emergency generator defective (motor burn-out, emergency stop function defective, battery problem, etc.)",
         "inspectorFinding": "Emergency generator defective (motor burn-out, emergency stop function defective, battery problem, etc.)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | Others 其他 | Emergency generator defective (motor burn-out, emergency stop function defective, battery problem, etc.) | 应急发电机有缺陷（电机烧毁、紧急停止功能故障、电池问题等）",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | Others 其他 | Emergency generator defective (motor burn-out, emergency stop function defective, battery problem, etc.) | 应急发电机有滯留（电机烧毁、紧急停止功能故障、电池问题等）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Three generators failed to start, during inspection",
         "inspectorFinding": "Three generators failed to start, during inspection",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | Others 其他 | Three generators failed to start, during inspection | 在检查期间，三台发电机未能启动",
         "detentionGround": true
@@ -13455,7 +13455,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Emergency generator failed to start more than 3 times within 30 minutes",
         "inspectorFinding": "Emergency generator failed to start more than 3 times within 30 minutes",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | Others 其他 | Emergency generator failed to start more than 3 times within 30 minutes | 应急发电机在30分钟内启动失败超过3次",
         "detentionGround": true
@@ -13463,12 +13463,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-tokyo-mou-china-q1-2025-fire-saety",
@@ -13490,9 +13490,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 37,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 37 項滯留缺陷；重點：消防安全、MLC／船員權益、水密／結構、操作／設備缺陷、防污染、主輔機／機艙、應急準備。",
+    "shortSummary": "2025-05-07 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 37 項滯留滯留；重點：消防安全、MLC／船員權益、水密／結構、操作／設備滯留、防污染、主輔機／機艙、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -13501,7 +13501,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Release control piping for fixed Co2 extinguisher to E/R go through the protective space that be likely cut off by fire inside",
         "inspectorFinding": "Release control piping for fixed Co2 extinguisher to E/R go through the protective space that be likely cut off by fire inside",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Release control piping for fixed Co2 extinguisher to E/R go through the protective space that be likely cut off by fire inside | 通往机舱的固定式二氧化碳灭火器释放控制管路穿过可能会被内部火灾切断的防护空间",
         "detentionGround": true
@@ -13511,7 +13511,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Some fire door at accommodation with back-hold hook",
         "inspectorFinding": "Some fire door at accommodation with back-hold hook",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Some fire door at accommodation with back-hold hook | 一些居住舱室的防火门装有后扣式挂钩",
         "detentionGround": true
@@ -13521,7 +13521,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire Alarm control system malfunction",
         "inspectorFinding": "Fire Alarm control system malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire Alarm control system malfunction | 火灾报警控制系统故障",
         "detentionGround": true
@@ -13531,7 +13531,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Fire damper for No.2 ventilator for E/R seized",
         "inspectorFinding": "Fire damper for No.2 ventilator for E/R seized",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire damper for No.2 ventilator for E/R seized | 机舱2号通风装置的防火风闸卡死",
         "detentionGround": true
@@ -13541,7 +13541,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire isolation on boundary between E/R and steering gear room not available, while em’cy fire pump stored in steering gear room",
         "inspectorFinding": "Fire isolation on boundary between E/R and steering gear room not available, while em’cy fire pump stored in steering gear room",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire isolation on boundary between E/R and steering gear room not available, while em’cy fire pump stored in steering gear room | 机舱与舵机房之间的边界处无防火隔离，且应急消防泵存放在舵机房内",
         "detentionGround": true
@@ -13551,7 +13551,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire damper of funnel could not be closed completely",
         "inspectorFinding": "Fire damper of funnel could not be closed completely",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire damper of funnel could not be closed completely | 烟囱的防火风闸无法完全关闭",
         "detentionGround": true
@@ -13561,7 +13561,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "E/R fire damper excessive gap",
         "inspectorFinding": "E/R fire damper excessive gap",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | E/R fire damper excessive gap | 机舱防火风闸间隙过大",
         "detentionGround": true
@@ -13571,17 +13571,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "A-class fire integrity partially damaged",
         "inspectorFinding": "A-class fire integrity partially damaged",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | A-class fire integrity partially damaged | A级防火完整性部分受损",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Funnel flap unable to be closed properly",
         "inspectorFinding": "Funnel flap unable to be closed properly",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Funnel flap unable to be closed properly | 烟囱百叶窗无法正常关闭",
         "detentionGround": true
@@ -13591,17 +13591,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire main pipe on deck: leaking",
         "inspectorFinding": "Fire main pipe on deck: leaking",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire main pipe on deck: leaking | 甲板上的消防总管漏水",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Isolation valve malfunction",
         "inspectorFinding": "Isolation valve malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Isolation valve malfunction | 隔离阀故障",
         "detentionGround": true
@@ -13611,9 +13611,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Emergency fire pump defective",
         "inspectorFinding": "Emergency fire pump defective",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Emergency fire pump defective | 应急消防泵有缺陷",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Emergency fire pump defective | 应急消防泵有滯留",
         "detentionGround": true
       },
       {
@@ -13621,17 +13621,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire hoses in fire hose box not available",
         "inspectorFinding": "Fire hoses in fire hose box not available",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire hoses in fire hose box not available | 消防水带箱内的消防水带缺失",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire hoses in fire hose box not available | 消防水带箱内的消防水带滯留",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Quick closing devices for M/E FO SERV. TK and M/E FO SET. TK – out of order",
         "inspectorFinding": "Quick closing devices for M/E FO SERV. TK and M/E FO SET. TK – out of order",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Quick closing devices for M/E FO SERV. TK and M/E FO SET. TK – out of order | 主发动机燃油日用柜和主发动机燃油沉淀柜的速闭装置故障",
         "detentionGround": true
@@ -13641,17 +13641,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Cover of control box to release for Co2 system",
         "inspectorFinding": "Cover of control box to release for Co2 system",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Cover of control box to release for Co2 system | 二氧化碳系统释放控制箱的盖子（存在问题）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Air cylinder to shut down the quick closing valve: No pressure air for standby",
         "inspectorFinding": "Air cylinder to shut down the quick closing valve: No pressure air for standby",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Air cylinder to shut down the quick closing valve: No pressure air for standby | 用于关闭速闭阀的气缸：无备用压缩空气",
         "detentionGround": true
@@ -13661,7 +13661,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire detecting system malfunction",
         "inspectorFinding": "Fire detecting system malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire detecting system malfunction | 火灾探测系统故障",
         "detentionGround": true
@@ -13671,7 +13671,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire damper of port and ventilation for E/R cannot be closed completely",
         "inspectorFinding": "Fire damper of port and ventilation for E/R cannot be closed completely",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire damper of port and ventilation for E/R cannot be closed completely | 机舱左舷通风装置的防火风闸无法完全关闭",
         "detentionGround": true
@@ -13681,17 +13681,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Fire main on upper & poop deck corroded and holed",
         "inspectorFinding": "Fire main on upper & poop deck corroded and holed",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire main on upper & poop deck corroded and holed | 上层甲板和艉楼甲板的消防总管腐蚀并出现孔洞",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One jet of water mist system on deck - out of order",
         "inspectorFinding": "One jet of water mist system on deck - out of order",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | One jet of water mist system on deck - out of order | 甲板上的一个水雾喷射系统故障",
         "detentionGround": true
@@ -13701,17 +13701,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "Cargo hold / engine room ventilator - not closed completely",
         "inspectorFinding": "Cargo hold / engine room ventilator - not closed completely",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Cargo hold / engine room ventilator - not closed completely | 货舱/机舱通风装置未完全关闭",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Some jacketed pipes for M/E high pressure fuel line broken",
         "inspectorFinding": "Some jacketed pipes for M/E high pressure fuel line broken",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Some jacketed pipes for M/E high pressure fuel line broken | 主发动机高压燃油管路的一些夹套管道破裂",
         "detentionGround": true
@@ -13721,7 +13721,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "水密／結構",
         "original": "CO2 nozzle and its pipe of the cargo hold for fixed CO2 system damaged/broken/holed",
         "inspectorFinding": "CO2 nozzle and its pipe of the cargo hold for fixed CO2 system damaged/broken/holed",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | CO2 nozzle and its pipe of the cargo hold for fixed CO2 system damaged/broken/holed | 货舱固定式二氧化碳系统的二氧化碳喷嘴及其管路损坏/破裂/穿孔",
         "detentionGround": true
@@ -13731,17 +13731,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Main fire pump water pressure not enough",
         "inspectorFinding": "Main fire pump water pressure not enough",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Main fire pump water pressure not enough | 主消防泵水压不足",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Generator exhaust pipe short of insulation material",
         "inspectorFinding": "Generator exhaust pipe short of insulation material",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Generator exhaust pipe short of insulation material | 发电机排气管缺少隔热材料",
         "detentionGround": true
@@ -13751,7 +13751,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Protect material of high pressure oil pipe in emergency generator not intact",
         "inspectorFinding": "Protect material of high pressure oil pipe in emergency generator not intact",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Protect material of high pressure oil pipe in emergency generator not intact | 应急发电机高压油管的防护材料不完整",
         "detentionGround": true
@@ -13761,7 +13761,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Stuck S/G room damper",
         "inspectorFinding": "Stuck S/G room damper",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Stuck S/G room damper | 发电机房的风闸卡死",
         "detentionGround": true
@@ -13771,9 +13771,9 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire alarm system defective",
         "inspectorFinding": "Fire alarm system defective",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
-        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire alarm system defective | 火灾报警系统有缺陷",
+        "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fire alarm system defective | 火灾报警系统有滯留",
         "detentionGround": true
       },
       {
@@ -13781,17 +13781,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "CO2 Room not fitted with a mechanical ventilation system, where the room is located below deck and an entrance from the open deck to the space is not provided in accordance with SOLAS II-2/Reg.10 4.3",
         "inspectorFinding": "CO2 Room not fitted with a mechanical ventilation system, where the room is located below deck and an entrance from the open deck to the space is not provided in accordance with SOLAS II-2/Reg.10 4.3",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | CO2 Room not fitted with a mechanical ventilation system, where the room is located below deck and an entrance from the open deck to the space is not provided in accordance with SOLAS II-2/Reg.10 4.3 | 二氧化碳储存间未安装机械通风系统，且该房间位于甲板以下，未按照《国际海上人命安全公约》（SOLAS）II-2/Reg.10 4.3 的要求设置从露天甲板到该空间的入口",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Fixed gas detection system in pump room not working properly",
         "inspectorFinding": "Fixed gas detection system in pump room not working properly",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Fixed gas detection system in pump room not working properly | 泵舱的固定式气体探测系统不能正常工作",
         "detentionGround": true
@@ -13801,17 +13801,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Starting air pipe for CO2 system not connected",
         "inspectorFinding": "Starting air pipe for CO2 system not connected",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Starting air pipe for CO2 system not connected | 二氧化碳系统的启动空气管未连接",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Remote level gauge of E/R DO tank malfunction",
         "inspectorFinding": "Remote level gauge of E/R DO tank malfunction",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Remote level gauge of E/R DO tank malfunction | 机舱柴油舱的遥控液位计故障",
         "detentionGround": true
@@ -13821,7 +13821,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Block multiple safety alarms in the engine room",
         "inspectorFinding": "Block multiple safety alarms in the engine room",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Block multiple safety alarms in the engine room | 机舱内多个安全警报被堵塞（屏蔽）",
         "detentionGround": true
@@ -13831,17 +13831,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Vertical ladder in E/R escape trunk not properly insulated",
         "inspectorFinding": "Vertical ladder in E/R escape trunk not properly insulated",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Vertical ladder in E/R escape trunk not properly insulated | 机舱应急逃生围阱内的垂直梯子隔热不当",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Missing local side alarm for the local water mist system",
         "inspectorFinding": "Missing local side alarm for the local water mist system",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Missing local side alarm for the local water mist system | 局部水雾系统缺少本地侧警报装置",
         "detentionGround": true
@@ -13851,17 +13851,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Improper placement of portable fire extinguisher in the engine room (exceeds 10 meters walking distance)",
         "inspectorFinding": "Improper placement of portable fire extinguisher in the engine room (exceeds 10 meters walking distance)",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Improper placement of portable fire extinguisher in the engine room (exceeds 10 meters walking distance) | 机舱内便携式灭火器放置不当（步行距离超过10米）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Faulty isolation valve shut-off state",
         "inspectorFinding": "Faulty isolation valve shut-off state",
-        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的缺陷或典型滯留缺陷。",
+        "detentionReason": "xinde-tokyo-mou-china-q1-2025 來源章節明確標示為 Detainable deficiencies / 可導致滯留的滯留或典型滯留滯留。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "xinde-tokyo-mou-china-q1-2025 | FIRE SAETY消防安全 | Faulty isolation valve shut-off state | 隔离阀关闭状态存在故障",
         "detentionGround": true
@@ -13869,12 +13869,12 @@ export const inspectionCases: InspectionCase[] = [
     ],
     "source": {
       "authority": "信德海事",
-      "title": "信德海事 / 2025第一季度PSC检查超多缺陷目录（TOKYO MOU-中国）",
+      "title": "信德海事 / 2025第一季度PSC检查超多滯留目录（TOKYO MOU-中国）",
       "url": "https://www.xindemarinenews.com/topic/PSC/2025/0507/59470.html",
       "publishedAt": "2025-05",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "uscg-2025-0416-hanze-gendt",
@@ -13896,9 +13896,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "full-dossier",
-    "shortSummary": "2025-04-16 USCG port not exposed in indexed snippet PSC 滯留案例，General cargo / cargo ship / Netherlands / not confirmed，已收錄 2 項滯留缺陷；重點：航行安全、ISM／安全管理。",
+    "shortSummary": "2025-04-16 USCG port not exposed in indexed snippet PSC 滯留案例，General cargo / cargo ship / Netherlands / not confirmed，已收錄 2 項滯留滯留；重點：航行安全、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -13907,7 +13907,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Voyage data recorder (VDR) / Simplified Voyage data recorder (S-VDR) — performance/equipment deficiency requiring corrective action",
         "inspectorFinding": "Voyage data recorder (VDR) / Simplified Voyage data recorder (S-VDR) — performance/equipment deficiency requiring corrective action",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "VDR/S-VDR 相關設備未能滿足要求，需要整改（Voyage data recorder (VDR) / Simplified Voyage data recorder (S-VDR) — performance/equipment deficiency requiring corrective action）",
         "detentionGround": true
@@ -13917,7 +13917,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "ISM／安全管理",
         "original": "Company responsibility and authority — failure to provide timely corrective action; external SMS audit required",
         "inspectorFinding": "Company responsibility and authority — failure to provide timely corrective action; external SMS audit required",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "公司未能及時採取整改行動，需要外部 SMS 稽核（Company responsibility and authority — failure to provide timely corrective action; external SMS audit required）",
         "detentionGround": true
@@ -13928,9 +13928,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "United States Coast Guard / CVC-2 SOLAS detention PDF indexed excerpt",
       "url": "https://www.dco.uscg.mil/Our-Organization/Assistant-Commandant-for-Prevention-Policy-CG-5P/Inspections-Compliance-CG-5PC-/Commercial-Vessel-Compliance/Foreign-Offshore-Compliance-Division/Port-State-Control/Detentions/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-water-weathertight-condition",
@@ -13952,9 +13952,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留缺陷；重點：水密／結構、MLC／船員權益、操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留滯留；重點：水密／結構、MLC／船員權益、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14010,7 +14010,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Exit doors to open decks were not closed due to a malfunction of the locking system.",
         "inspectorFinding": "Exit doors to open decks were not closed due to a malfunction of the locking system.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14024,9 +14024,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-structural-condition",
@@ -14048,15 +14048,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "During the inspection, areas were noted with unsafe electric installation, unsafe modifications, additional and non-approved fittings, broken cable lines etc.",
         "inspectorFinding": "During the inspection, areas were noted with unsafe electric installation, unsafe modifications, additional and non-approved fittings, broken cable lines etc.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14066,7 +14066,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The port side forward rail was missing, and there were some bent parts on the ship’s railing. The starboard side gangway was damaged and not properly maintained.",
         "inspectorFinding": "The port side forward rail was missing, and there were some bent parts on the ship’s railing. The starboard side gangway was damaged and not properly maintained.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14080,9 +14080,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-safety-of-navigation",
@@ -14104,9 +14104,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 32,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 32 項滯留缺陷；重點：航行安全、防污染、操作／設備缺陷、水密／結構、救生設備、船員熟悉／演習。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 32 項滯留滯留；重點：航行安全、防污染、操作／設備滯留、水密／結構、救生設備、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14162,7 +14162,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The bridge wing gyro repeater bodies were heavily corroded and damaged. The filling liquid was not visible.",
         "inspectorFinding": "The bridge wing gyro repeater bodies were heavily corroded and damaged. The filling liquid was not visible.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14172,7 +14172,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ship’s horn only worked manually. The bridge wing horn buttons were inoperative.",
         "inspectorFinding": "The ship’s horn only worked manually. The bridge wing horn buttons were inoperative.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14192,7 +14192,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The pilot ladder was not properly maintained.",
         "inspectorFinding": "The pilot ladder was not properly maintained.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14212,7 +14212,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The arc of visibility for NUC lights was not as per the COLREGS, the horizontal blind sector was greater than 6 degrees.",
         "inspectorFinding": "The arc of visibility for NUC lights was not as per the COLREGS, the horizontal blind sector was greater than 6 degrees.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14262,7 +14262,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "All the nautical publications were old editions.",
         "inspectorFinding": "All the nautical publications were old editions.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14282,7 +14282,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The propeller was not fully submerged during maneuvering on arrival, in violation of local regulations.",
         "inspectorFinding": "The propeller was not fully submerged during maneuvering on arrival, in violation of local regulations.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14292,7 +14292,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Life-saving appliances",
         "inspectorFinding": "Life-saving appliances",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14392,7 +14392,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "One liferaft had no hydrostatic release unit, and the hydrostatic release unit on the other liferaft was not installed properly.",
         "inspectorFinding": "One liferaft had no hydrostatic release unit, and the hydrostatic release unit on the other liferaft was not installed properly.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14412,7 +14412,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The MOB lifebuoys weighed less than 4kg.",
         "inspectorFinding": "The MOB lifebuoys weighed less than 4kg.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14422,7 +14422,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Key personnel were not aware of, and were unable to demonstrate, the correct operation of the launching of the liferaft by the davit.",
         "inspectorFinding": "Key personnel were not aware of, and were unable to demonstrate, the correct operation of the launching of the liferaft by the davit.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14436,9 +14436,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-pollution-prevention-marpol-annex-v",
@@ -14460,9 +14460,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14482,9 +14482,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-pollution-prevention-marpol-annex-iv",
@@ -14506,9 +14506,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14528,9 +14528,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-pollution-prevention-marpol-annex-i",
@@ -14552,15 +14552,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The 15 ppm bilge separator overboard valve piping was found out of position.",
         "inspectorFinding": "The 15 ppm bilge separator overboard valve piping was found out of position.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14574,9 +14574,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-pollution-prevention-ballast-water",
@@ -14598,9 +14598,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：防污染、操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14636,7 +14636,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The BWTS was malfunctioning, and the Flag Administration, RO, and Port Authorities had not been informed.",
         "inspectorFinding": "The BWTS was malfunctioning, and the Flag Administration, RO, and Port Authorities had not been informed.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14650,9 +14650,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-mlc-2006-conditions-of-employment",
@@ -14674,9 +14674,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：船員熟悉／演習。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14696,9 +14696,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-mlc-2006-accommodation-recreational-facilities-food-and-catering",
@@ -14720,9 +14720,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：MLC／船員權益、操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：MLC／船員權益、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -14748,7 +14748,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Most cabins did not meet the minimum criteria per the relevant provisions of the Standard.",
         "inspectorFinding": "Most cabins did not meet the minimum criteria per the relevant provisions of the Standard.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14758,7 +14758,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The flag state was not informed of an accident which impaired the ship’s seaworthiness.",
         "inspectorFinding": "The flag state was not informed of an accident which impaired the ship’s seaworthiness.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14772,9 +14772,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-ism",
@@ -14796,15 +14796,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 11,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留缺陷；重點：操作／設備缺陷、船員熟悉／演習、應急準備、消防安全、航行安全、防污染。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 11 項滯留滯留；重點：操作／設備滯留、船員熟悉／演習、應急準備、消防安全、航行安全、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Code implementation",
         "inspectorFinding": "Code implementation",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14874,7 +14874,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "There was no record of testing of the quick closing valves.",
         "inspectorFinding": "There was no record of testing of the quick closing valves.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14884,7 +14884,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The passage plan had not been completed.",
         "inspectorFinding": "The passage plan had not been completed.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -14918,9 +14918,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-fire-safety",
@@ -14942,15 +14942,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 31,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 31 項滯留缺陷；重點：操作／設備缺陷、消防安全、MLC／船員權益、水密／結構、主輔機／機艙。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 31 項滯留滯留；重點：操作／設備滯留、消防安全、MLC／船員權益、水密／結構、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The quick closing valves on all tanks were found not to close. The system could not be pressurised.",
         "inspectorFinding": "The quick closing valves on all tanks were found not to close. The system could not be pressurised.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15080,7 +15080,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ER FO tank’s quick closing valve air bottle was found empty, and the airline was broken during topping up of the air bottle. The FO tank’s quick closing system was not ready for use.",
         "inspectorFinding": "The ER FO tank’s quick closing valve air bottle was found empty, and the airline was broken during topping up of the air bottle. The FO tank’s quick closing system was not ready for use.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15110,7 +15110,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The jacketed high-pressure leakage alarm was inoperative.",
         "inspectorFinding": "The jacketed high-pressure leakage alarm was inoperative.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15150,7 +15150,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "required and was not ready for use.",
         "inspectorFinding": "required and was not ready for use.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15264,9 +15264,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-emergency-systems",
@@ -15288,9 +15288,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 10,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 10 項滯留缺陷；重點：消防安全、應急準備、水密／結構、操作／設備缺陷。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 10 項滯留滯留；重點：消防安全、應急準備、水密／結構、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15376,7 +15376,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "and there were residues from leakages on the deck.",
         "inspectorFinding": "and there were residues from leakages on the deck.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15400,9 +15400,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-certificates-and-documentation",
@@ -15424,9 +15424,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 16,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留缺陷；重點：船員熟悉／演習、操作／設備缺陷、消防安全、主輔機／機艙、防污染、MLC／船員權益。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 16 項滯留滯留；重點：船員熟悉／演習、操作／設備滯留、消防安全、主輔機／機艙、防污染、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15442,7 +15442,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "for each deck",
         "inspectorFinding": "for each deck",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15452,7 +15452,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "the control stations,",
         "inspectorFinding": "the control stations,",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15462,7 +15462,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "the “A” class and “B” class divisions,",
         "inspectorFinding": "the “A” class and “B” class divisions,",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15482,7 +15482,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "means of access to different compartments, decks, etc., and",
         "inspectorFinding": "means of access to different compartments, decks, etc., and",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15502,7 +15502,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Propulsion and Auxiliary Machinery",
         "inspectorFinding": "Propulsion and Auxiliary Machinery",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15532,7 +15532,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "In alarm mode, the electric power fault indicator of the remote control propulsion system was activated.",
         "inspectorFinding": "In alarm mode, the electric power fault indicator of the remote control propulsion system was activated.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15542,7 +15542,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The auxiliary generator cooling water inlet valve spindle was damaged.",
         "inspectorFinding": "The auxiliary generator cooling water inlet valve spindle was damaged.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15552,7 +15552,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The diesel generator high-pressure pump was inoperative.",
         "inspectorFinding": "The diesel generator high-pressure pump was inoperative.",
         "detentionReason": "dromon-c25021-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -15596,9 +15596,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-certificates-documentation-crew",
@@ -15620,9 +15620,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：船員熟悉／演習、主輔機／機艙。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：船員熟悉／演習、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15652,9 +15652,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25021-2025-alarms",
@@ -15676,9 +15676,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：應急準備。",
+    "shortSummary": "2025-04-08 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15698,9 +15698,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25021 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/04/08/alert-on-detainable-deficiencies-33/",
       "publishedAt": "2025-04",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "xinde-zhoushan-new-ship-detained-2025-03-12",
@@ -15722,9 +15722,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-03-12 Zhoushan PSC PSC 滯留案例，Bulk carrier / dangerous goods capable / 中國 / 船名匿名，已收錄 3 項滯留缺陷；重點：應急準備、消防安全。",
+    "shortSummary": "2025-03-12 Zhoushan PSC PSC 滯留案例，Bulk carrier / dangerous goods capable / 中國 / 船名匿名，已收錄 3 項滯留滯留；重點：應急準備、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15733,7 +15733,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "机舱应急吸口完全锈死无法打开",
         "inspectorFinding": "机舱应急吸口完全锈死无法打开",
-        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重缺陷。",
+        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重滯留。",
         "requiredRectification": "來源列明：拆解活絡應急吸口閥體；重新確認啟動電瓶浮充路徑；疏通清潔油漆間噴淋支路並增加噴頭。",
         "sourceQuote": "舟山海事局案例 | 机舱应急吸口完全锈死无法打开；检查时两名船员使用加力杆尚不能有效活络开。",
         "detentionGround": true
@@ -15743,7 +15743,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "应急发电机启动电瓶充电装置未通过应急配电板保持",
         "inspectorFinding": "应急发电机启动电瓶充电装置未通过应急配电板保持",
-        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重缺陷。",
+        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重滯留。",
         "requiredRectification": "來源列明：拆解活絡應急吸口閥體；重新確認啟動電瓶浮充路徑；疏通清潔油漆間噴淋支路並增加噴頭。",
         "sourceQuote": "舟山海事局案例 | 应急发电机启动电瓶充电装置未通过应急配电板保持，主电源切断后可能无法保证自动启动能源。",
         "detentionGround": true
@@ -15753,7 +15753,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "油漆间水喷淋装置在消防泵额定压力时不能维持供水量",
         "inspectorFinding": "油漆间水喷淋装置在消防泵额定压力时不能维持供水量",
-        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重缺陷。",
+        "detentionReason": "來源明確寫明“对该船依法实施了滞留”，並列出三項嚴重滯留。",
         "requiredRectification": "來源列明：拆解活絡應急吸口閥體；重新確認啟動電瓶浮充路徑；疏通清潔油漆間噴淋支路並增加噴頭。",
         "sourceQuote": "舟山海事局案例 | 油漆间水喷淋装置在消防泵额定压力时不能维持供水量，一分钟多仅接到不足四分之一桶水。",
         "detentionGround": true
@@ -15764,9 +15764,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "信德海事 / 舟山海事局：新船也被滞留！",
       "url": "https://xindemarine.com/topic/PSC/2025/0409/59085.html",
       "publishedAt": "2025-03",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0219-banten-liberia-bulk",
@@ -15788,9 +15788,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-19 Banten PSC 滯留案例，Bulk carrier / Liberia，已收錄 4 項滯留缺陷；重點：主輔機／機艙、防污染、救生設備。",
+    "shortSummary": "2025-02-19 Banten PSC 滯留案例，Bulk carrier / Liberia，已收錄 4 項滯留滯留；重點：主輔機／機艙、防污染、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15799,7 +15799,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Hypermist for engine room incinerator defective",
         "inspectorFinding": "Hypermist for engine room incinerator defective",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "機艙焚燒爐水霧噴淋系統故障（Hypermist for engine room incinerator defective）",
         "detentionGround": true
@@ -15809,7 +15809,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "OWS defective",
         "inspectorFinding": "OWS defective",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "油水分離器功能失效（OWS defective）",
         "detentionGround": true
@@ -15819,7 +15819,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Accumulator oil seal broken for rescue boat davit",
         "inspectorFinding": "Accumulator oil seal broken for rescue boat davit",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救助艇吊機蓄能器油封損壞（Accumulator oil seal broken for rescue boat davit）",
         "detentionGround": true
@@ -15829,7 +15829,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat engine defective",
         "inspectorFinding": "Rescue boat engine defective",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救助艇發動機故障（Rescue boat engine defective）",
         "detentionGround": true
@@ -15840,9 +15840,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0218-qinzhou-panama-chemical-tanker",
@@ -15864,9 +15864,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-18 Qinzhou PSC 滯留案例，Oil/Chemical tanker / Panama，已收錄 5 項滯留缺陷；重點：消防安全、主輔機／機艙、救生設備、船員熟悉／演習。",
+    "shortSummary": "2025-02-18 Qinzhou PSC 滯留案例，Oil/Chemical tanker / Panama，已收錄 5 項滯留滯留；重點：消防安全、主輔機／機艙、救生設備、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15875,7 +15875,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Fire alarm system malfunction",
         "inspectorFinding": "Fire alarm system malfunction",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "火災報警系統故障（Fire alarm system malfunction）",
         "detentionGround": true
@@ -15885,7 +15885,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "Alarm of No.1 steering gear can not be activated",
         "inspectorFinding": "Alarm of No.1 steering gear can not be activated",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "1號舵機報警無法觸發（Alarm of No.1 steering gear can not be activated）",
         "detentionGround": true
@@ -15895,7 +15895,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Free-fall lifeboat not synchronize with rudder",
         "inspectorFinding": "Free-fall lifeboat not synchronize with rudder",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "自由降落式救生艇舵系統不同步（Free-fall lifeboat not synchronize with rudder）",
         "detentionGround": true
@@ -15905,7 +15905,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Inflatable chamber of rescue boat not enough",
         "inspectorFinding": "Inflatable chamber of rescue boat not enough",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救助艇蓄能器壓力不足，不能釋放救助艇（Inflatable chamber of rescue boat not enough）",
         "detentionGround": true
@@ -15915,7 +15915,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "船員熟悉／演習",
         "original": "Enclosed space entry and rescue drill not satisfactory",
         "inspectorFinding": "Enclosed space entry and rescue drill not satisfactory",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "封閉處所進入及救援演習不滿足要求（Enclosed space entry and rescue drill not satisfactory）",
         "detentionGround": true
@@ -15926,9 +15926,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0217-tuapse-panama-chemical-tanker",
@@ -15950,9 +15950,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-17 Tuapse PSC 滯留案例，Oil/Chemical tanker / Panama，已收錄 3 項滯留缺陷；重點：防污染、操作／設備缺陷、船員熟悉／演習。",
+    "shortSummary": "2025-02-17 Tuapse PSC 滯留案例，Oil/Chemical tanker / Panama，已收錄 3 項滯留滯留；重點：防污染、操作／設備滯留、船員熟悉／演習。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -15961,17 +15961,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Ballast water was not treated",
         "inspectorFinding": "Ballast water was not treated",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "壓載水未按 D-2 標準處理（Ballast water was not treated）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "BWTS inoperative and not informed to Flag/Port Authorities/RO",
         "inspectorFinding": "BWTS inoperative and not informed to Flag/Port Authorities/RO",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "壓載水處理系統故障且未向船旗國/港口國/RO 報告（BWTS inoperative and not informed to Flag/Port Authorities/RO）",
         "detentionGround": true
@@ -15981,7 +15981,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "船員熟悉／演習",
         "original": "Not familiar with proper operation",
         "inspectorFinding": "Not familiar with proper operation",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "船員不熟悉壓載水系統正確操作（Not familiar with proper operation）",
         "detentionGround": true
@@ -15992,9 +15992,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-water-weathertight-condition",
@@ -16016,9 +16016,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留缺陷；重點：水密／結構、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留滯留；重點：水密／結構、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16064,7 +16064,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Doors at main deck not properly maintained / watertight.",
         "inspectorFinding": "Doors at main deck not properly maintained / watertight.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16098,9 +16098,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-structural-condition",
@@ -16122,15 +16122,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 15,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留缺陷；重點：操作／設備缺陷、水密／結構、防污染。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留滯留；重點：操作／設備滯留、水密／結構、防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Stability calculations were not prepared from the Load Port.",
         "inspectorFinding": "Stability calculations were not prepared from the Load Port.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16140,7 +16140,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Stability calculations were carried out using an unapproved program.",
         "inspectorFinding": "Stability calculations were carried out using an unapproved program.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16160,7 +16160,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Several parts of the main deck were corroded",
         "inspectorFinding": "Several parts of the main deck were corroded",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16170,7 +16170,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Stairways in way of the mooring station in fore part in bad conditions, especially at the junction with the deck and and in some joints between the step and structure",
         "inspectorFinding": "Stairways in way of the mooring station in fore part in bad conditions, especially at the junction with the deck and and in some joints between the step and structure",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16190,7 +16190,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The platform at the end of the stairway in way of the mooring station in the fore part was found very corroded.",
         "inspectorFinding": "The platform at the end of the stairway in way of the mooring station in the fore part was found very corroded.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16200,7 +16200,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The supports on the Monkey Island were very rusted.",
         "inspectorFinding": "The supports on the Monkey Island were very rusted.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16210,7 +16210,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The MF/HF box on the Monkey Island was damaged and not watertight.",
         "inspectorFinding": "The MF/HF box on the Monkey Island was damaged and not watertight.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16250,7 +16250,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Fore peak tank beams, floor and ordinary frame damaged and cracked.",
         "inspectorFinding": "Fore peak tank beams, floor and ordinary frame damaged and cracked.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16284,9 +16284,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-safety-of-navigation",
@@ -16308,9 +16308,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 22,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 22 項滯留缺陷；重點：航行安全、操作／設備缺陷、應急準備。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 22 項滯留滯留；重點：航行安全、操作／設備滯留、應急準備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16326,7 +16326,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Back-up station for nautical publications missing – only one computer with installed licensed publications available.",
         "inspectorFinding": "Back-up station for nautical publications missing – only one computer with installed licensed publications available.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16346,7 +16346,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Sailing directions were missing. ITU List V was not the latest edition.",
         "inspectorFinding": "Sailing directions were missing. ITU List V was not the latest edition.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16366,7 +16366,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The gyro compass was inoperative.",
         "inspectorFinding": "The gyro compass was inoperative.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16436,7 +16436,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Nautical publications were not updated (Master declared they use electronic NPs).",
         "inspectorFinding": "Nautical publications were not updated (Master declared they use electronic NPs).",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16446,7 +16446,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Nautical Publication were old editions.",
         "inspectorFinding": "Nautical Publication were old editions.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16466,7 +16466,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The ECDIS back up was inoperative.The ECDIS turned off when cables below the screen were touched. The installation requires Class verification as cables, etc., are not correctly fed.",
         "inspectorFinding": "The ECDIS back up was inoperative.The ECDIS turned off when cables below the screen were touched. The installation requires Class verification as cables, etc., are not correctly fed.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16516,7 +16516,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The Aldis Lamp was not working on the ship’s main electrical power.",
         "inspectorFinding": "The Aldis Lamp was not working on the ship’s main electrical power.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16540,9 +16540,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-radio-communication",
@@ -16564,15 +16564,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：操作／設備缺陷、證書／文件。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：操作／設備滯留、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Vessel is not receiving navtex messages. It was not possible to read the last message due to faded letters on the paper.",
         "inspectorFinding": "Vessel is not receiving navtex messages. It was not possible to read the last message due to faded letters on the paper.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16592,7 +16592,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Both INMARSAT sets were found inoperative (“transceiver not connected).",
         "inspectorFinding": "Both INMARSAT sets were found inoperative (“transceiver not connected).",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16612,7 +16612,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The shore-based maintenance agreement required by the CSRC was missing.",
         "inspectorFinding": "The shore-based maintenance agreement required by the CSRC was missing.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16626,9 +16626,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-propulsion-and-auxiliary-machinery",
@@ -16650,9 +16650,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：防污染、主輔機／機艙、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：防污染、主輔機／機艙、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16688,7 +16688,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Two of the diesel generators were inoperative.",
         "inspectorFinding": "Two of the diesel generators were inoperative.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16712,9 +16712,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-pollution-prevention-marpol-annex-vi",
@@ -16736,9 +16736,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：證書／文件、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：證書／文件、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16754,7 +16754,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Evidence for CII classification was not found onboard.",
         "inspectorFinding": "Evidence for CII classification was not found onboard.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16768,9 +16768,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-pollution-prevention-marpol-annex-v",
@@ -16792,9 +16792,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：防污染。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：防污染。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16824,9 +16824,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-pollution-prevention-marpol-annex-iv",
@@ -16848,9 +16848,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16870,9 +16870,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-pollution-prevention-marpol-annex-i",
@@ -16894,9 +16894,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：防污染、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16912,7 +16912,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "A bilge tank was found with portable hoses and a pumping system, not per the diagrams.",
         "inspectorFinding": "A bilge tank was found with portable hoses and a pumping system, not per the diagrams.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -16936,9 +16936,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-pollution-prevention-ballast-water",
@@ -16960,9 +16960,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：防污染、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：防污染、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -16998,7 +16998,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "the BWMS bypass valve alarm malfunctioned, and the flange connecting the UV unit and the inlet pipe was severely leaking. The BWMS is currently incapable of performing its intended functions properly and effectively.",
         "inspectorFinding": "the BWMS bypass valve alarm malfunctioned, and the flange connecting the UV unit and the inlet pipe was severely leaking. The BWMS is currently incapable of performing its intended functions properly and effectively.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17012,9 +17012,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-mlc-2006-health-protection-medical-care-social-security",
@@ -17036,15 +17036,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Some medicines expired.",
         "inspectorFinding": "Some medicines expired.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17058,9 +17058,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-mlc-2006-conditions-of-employment",
@@ -17082,9 +17082,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留缺陷；重點：MLC／船員權益。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 1 項滯留滯留；重點：MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -17104,9 +17104,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-mlc-2006-accommodation-recreational-facilities-food-and-catering",
@@ -17128,9 +17128,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 4,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留缺陷；重點：船員熟悉／演習、操作／設備缺陷、MLC／船員權益。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 4 項滯留滯留；重點：船員熟悉／演習、操作／設備滯留、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -17146,7 +17146,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Cold room found in very poor conditions (food stowed without food containers, food on the floor). Drums under refrigerator devices indicate leaks from the systems. The freezer temperature was -8°C.",
         "inspectorFinding": "Cold room found in very poor conditions (food stowed without food containers, food on the floor). Drums under refrigerator devices indicate leaks from the systems. The freezer temperature was -8°C.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17166,7 +17166,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Living conditions are below standard. I.e., beds provided with substandard bedding, locker doors missing, ventilation dirty.",
         "inspectorFinding": "Living conditions are below standard. I.e., beds provided with substandard bedding, locker doors missing, ventilation dirty.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17180,9 +17180,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-life-saving-appliances",
@@ -17204,9 +17204,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 31,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 31 項滯留缺陷；重點：救生設備、操作／設備缺陷、應急準備、主輔機／機艙、消防安全、證書／文件。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 31 項滯留滯留；重點：救生設備、操作／設備滯留、應急準備、主輔機／機艙、消防安全、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -17272,7 +17272,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Line-throwing devices were Inoperative, and the rockets expired.",
         "inspectorFinding": "Line-throwing devices were Inoperative, and the rockets expired.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17302,7 +17302,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The lifejacket’s lights found expired.",
         "inspectorFinding": "The lifejacket’s lights found expired.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17352,7 +17352,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "propeller without guard for the safety of persons in the water and to avoid damage to the propulsion system by floating debris",
         "inspectorFinding": "propeller without guard for the safety of persons in the water and to avoid damage to the propulsion system by floating debris",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17372,7 +17372,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "manually controlled interior light missing",
         "inspectorFinding": "manually controlled interior light missing",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17392,7 +17392,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "binnacle wrongly mounted",
         "inspectorFinding": "binnacle wrongly mounted",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17402,7 +17402,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "sea anchor missing",
         "inspectorFinding": "sea anchor missing",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17412,7 +17412,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "waterproof electric torch suitable for morse signalling found not ready for use (without batteries).",
         "inspectorFinding": "waterproof electric torch suitable for morse signalling found not ready for use (without batteries).",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17432,7 +17432,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The weak line of the liferaft was not connected to the ship.",
         "inspectorFinding": "The weak line of the liferaft was not connected to the ship.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17442,7 +17442,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Rocket parachute (12 pcs) expired.",
         "inspectorFinding": "Rocket parachute (12 pcs) expired.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17452,7 +17452,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Line throwing apparatus rocket expired.",
         "inspectorFinding": "Line throwing apparatus rocket expired.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17502,7 +17502,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "O.B. lifebuoys weight 2,5 kg.",
         "inspectorFinding": "O.B. lifebuoys weight 2,5 kg.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17512,7 +17512,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "No record of LSA weekly and monthly checks",
         "inspectorFinding": "No record of LSA weekly and monthly checks",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17526,9 +17526,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-ism",
@@ -17550,9 +17550,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留缺陷；重點：主輔機／機艙、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 2 項滯留滯留；重點：主輔機／機艙、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -17568,7 +17568,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The general air conditioning system onboard was defective.",
         "inspectorFinding": "The general air conditioning system onboard was defective.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17582,9 +17582,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-fire-safety",
@@ -17606,9 +17606,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 65,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 65 項滯留缺陷；重點：應急準備、主輔機／機艙、水密／結構、消防安全、船員熟悉／演習、操作／設備缺陷、MLC／船員權益。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 65 項滯留滯留；重點：應急準備、主輔機／機艙、水密／結構、消防安全、船員熟悉／演習、操作／設備滯留、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -17774,7 +17774,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "boundary cooling was not performed",
         "inspectorFinding": "boundary cooling was not performed",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17814,7 +17814,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Doors and ventilation were not closed",
         "inspectorFinding": "Doors and ventilation were not closed",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17824,7 +17824,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Electricity supply was not isolated",
         "inspectorFinding": "Electricity supply was not isolated",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17834,7 +17834,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Comunication was insufficient",
         "inspectorFinding": "Comunication was insufficient",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17884,7 +17884,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "nobody brought additional SCBA close to the scenario",
         "inspectorFinding": "nobody brought additional SCBA close to the scenario",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17934,7 +17934,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "no backdraft precautions have been taken",
         "inspectorFinding": "no backdraft precautions have been taken",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17944,7 +17944,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "no lifeline pull code has been established",
         "inspectorFinding": "no lifeline pull code has been established",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -17954,7 +17954,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "gloves have been worn wrongly.",
         "inspectorFinding": "gloves have been worn wrongly.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18004,7 +18004,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Two faults on the bridge alarm panel of the smoke/heat detector system.",
         "inspectorFinding": "Two faults on the bridge alarm panel of the smoke/heat detector system.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18014,7 +18014,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Fuel alarm system not as required. The fuel alarm compartment was found open.",
         "inspectorFinding": "Fuel alarm system not as required. The fuel alarm compartment was found open.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18194,7 +18194,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Correct functioning of the ME quick closing valve could not be demonstrated.",
         "inspectorFinding": "Correct functioning of the ME quick closing valve could not be demonstrated.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18204,7 +18204,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "No record of testing of the quick closing v/v of the DO settling tank.",
         "inspectorFinding": "No record of testing of the quick closing v/v of the DO settling tank.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18214,7 +18214,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The D.O. tank quick-closing valves and F.O. service tank were not functioning properly. The control air pipes were leaking.",
         "inspectorFinding": "The D.O. tank quick-closing valves and F.O. service tank were not functioning properly. The control air pipes were leaking.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18254,7 +18254,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "All external high-pressure fuel delivery lines between the high-pressure fuel pump and fuel injectors for the Aux. Eng. were not protected by a jacketed piping system as required.",
         "inspectorFinding": "All external high-pressure fuel delivery lines between the high-pressure fuel pump and fuel injectors for the Aux. Eng. were not protected by a jacketed piping system as required.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18268,9 +18268,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-emergency-systems",
@@ -18292,9 +18292,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 15,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留缺陷；重點：救生設備、應急準備、消防安全、操作／設備缺陷、主輔機／機艙。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 15 項滯留滯留；重點：救生設備、應急準備、消防安全、操作／設備滯留、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -18430,7 +18430,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Public address system wings speakers not working.",
         "inspectorFinding": "Public address system wings speakers not working.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18454,9 +18454,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-certificates-and-documentation",
@@ -18478,9 +18478,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 7,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留缺陷；重點：防污染、MLC／船員權益、水密／結構、證書／文件。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 7 項滯留滯留；重點：防污染、MLC／船員權益、水密／結構、證書／文件。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -18560,9 +18560,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-certificates-documentation-ship-certificates",
@@ -18584,9 +18584,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 14,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 14 項滯留缺陷；重點：證書／文件、操作／設備缺陷、ISM／安全管理、MLC／船員權益。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 14 項滯留滯留；重點：證書／文件、操作／設備滯留、ISM／安全管理、MLC／船員權益。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -18602,7 +18602,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "ISSC (short term) is not as per ISPS 2005.",
         "inspectorFinding": "ISSC (short term) is not as per ISPS 2005.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18682,7 +18682,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The two installed generators had a major conversion on 27-08-2008. No EIAPP could be shown.",
         "inspectorFinding": "The two installed generators had a major conversion on 27-08-2008. No EIAPP could be shown.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18692,7 +18692,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Continuous Synopsis Records (CSR) items missing.",
         "inspectorFinding": "Continuous Synopsis Records (CSR) items missing.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18736,9 +18736,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-certificates-documentation-crew",
@@ -18760,9 +18760,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留缺陷；重點：證書／文件、主輔機／機艙。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 3 項滯留滯留；重點：證書／文件、主輔機／機艙。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -18802,9 +18802,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-cargo-operations-including-equipment",
@@ -18826,15 +18826,15 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留缺陷；重點：操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 6 項滯留滯留；重點：操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The atmosphere testing instrument had a faulty oxygen sensor.",
         "inspectorFinding": "The atmosphere testing instrument had a faulty oxygen sensor.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18844,7 +18844,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The crane operator’s cabinet glass was broken.",
         "inspectorFinding": "The crane operator’s cabinet glass was broken.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18854,7 +18854,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The cargo securing manual was missing.",
         "inspectorFinding": "The cargo securing manual was missing.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18864,7 +18864,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Gas detector calibration overdue.",
         "inspectorFinding": "Gas detector calibration overdue.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18874,7 +18874,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Gas detector indicated sensor O",
         "inspectorFinding": "Gas detector indicated sensor O",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18884,7 +18884,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "fault and ZERO fault.",
         "inspectorFinding": "fault and ZERO fault.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18898,9 +18898,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "dromon-c25006-2025-alarms",
@@ -18922,9 +18922,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 5,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留缺陷；重點：防污染、主輔機／機艙、消防安全、操作／設備缺陷。",
+    "shortSummary": "2025-02-12 Multiple PSC inspections PSC 滯留案例，Multiple vessel types / 多船旗 / 未逐案披露，已收錄 5 項滯留滯留；重點：防污染、主輔機／機艙、消防安全、操作／設備滯留。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -18970,7 +18970,7 @@ export const inspectionCases: InspectionCase[] = [
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The water ingress alarm was inoperative.",
         "inspectorFinding": "The water ingress alarm was inoperative.",
         "detentionReason": "dromon-c25006-2025 來源明確標明這些為 detainable deficiencies / grounds for detention，且導致或促成滯留。",
@@ -18984,9 +18984,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "Dromon Bureau of Shipping / C25006 Alert on Detainable Deficiencies",
       "url": "https://www.dromon.com/2025/02/14/alert-on-detainable-deficiencies-32/",
       "publishedAt": "2025-02",
-      "sourceType": "官方/準官方滯留缺陷來源"
+      "sourceType": "官方/準官方滯留滯留來源"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0211-rizhao-liberia-bulk",
@@ -19008,9 +19008,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-11 Rizhao PSC 滯留案例，Bulk carrier / Liberia，已收錄 2 項滯留缺陷；重點：救生設備。",
+    "shortSummary": "2025-02-11 Rizhao PSC 滯留案例，Bulk carrier / Liberia，已收錄 2 項滯留滯留；重點：救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19019,7 +19019,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Lifeboat can not be water tight due to one designed hole exist on shell",
         "inspectorFinding": "Lifeboat can not be water tight due to one designed hole exist on shell",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救生艇殼體存在孔洞，影響水密性（Lifeboat can not be water tight due to one designed hole exist on shell）",
         "detentionGround": true
@@ -19029,7 +19029,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Gear handle rotating by moving parts of the lifeboat launching winch",
         "inspectorFinding": "Gear handle rotating by moving parts of the lifeboat launching winch",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救生艇降落絞車傳動機構異常（Gear handle rotating by moving parts of the lifeboat launching winch）",
         "detentionGround": true
@@ -19040,9 +19040,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0206-toyohashi-panama-cargo",
@@ -19064,9 +19064,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 1,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-06 Toyohashi PSC 滯留案例，Cargo ship / Panama，已收錄 1 項滯留缺陷；重點：航行安全。",
+    "shortSummary": "2025-02-06 Toyohashi PSC 滯留案例，Cargo ship / Panama，已收錄 1 項滯留滯留；重點：航行安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19075,7 +19075,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "航行安全",
         "original": "Fire alarm panel in navigation bridge kept activated fault alarm",
         "inspectorFinding": "Fire alarm panel in navigation bridge kept activated fault alarm",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "駕駛台火警控制面板持續報故障（Fire alarm panel in navigation bridge kept activated fault alarm）",
         "detentionGround": true
@@ -19086,9 +19086,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0206-tangshan-liberia-bulk",
@@ -19110,18 +19110,18 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 2,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-02-06 Tangshan PSC 滯留案例，Bulk carrier / Liberia，已收錄 2 項滯留缺陷；重點：操作／設備缺陷、救生設備。",
+    "shortSummary": "2025-02-06 Tangshan PSC 滯留案例，Bulk carrier / Liberia，已收錄 2 項滯留滯留；重點：操作／設備滯留、救生設備。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "The spray nozzle blocked in the paint store",
         "inspectorFinding": "The spray nozzle blocked in the paint store",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "油漆間噴淋頭堵塞（The spray nozzle blocked in the paint store）",
         "detentionGround": true
@@ -19131,7 +19131,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Rescue boat can not be started",
         "inspectorFinding": "Rescue boat can not be started",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救助艇發動機無法啟動（Rescue boat can not be started）",
         "detentionGround": true
@@ -19142,9 +19142,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-02",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0122-shanghai-panama-bulk",
@@ -19166,9 +19166,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-01-22 Shanghai PSC 滯留案例，Bulk carrier / Panama，已收錄 3 項滯留缺陷；重點：主輔機／機艙、操作／設備缺陷、消防安全。",
+    "shortSummary": "2025-01-22 Shanghai PSC 滯留案例，Bulk carrier / Panama，已收錄 3 項滯留滯留；重點：主輔機／機艙、操作／設備滯留、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19177,17 +19177,17 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "M/E dead slow down occurred unexpectedly due to No.1 auxiliary blower malfunction of M/E",
         "inspectorFinding": "M/E dead slow down occurred unexpectedly due to No.1 auxiliary blower malfunction of M/E",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "1號主機輔助風機故障導致主機意外降速（M/E dead slow down occurred unexpectedly due to No.1 auxiliary blower malfunction of M/E）",
         "detentionGround": true
       },
       {
         "code": "99xxx",
-        "category": "操作／設備缺陷",
+        "category": "操作／設備滯留",
         "original": "Only one set of telegraph between bridge and local operation position",
         "inspectorFinding": "Only one set of telegraph between bridge and local operation position",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "主機操縱部位與駕駛台僅配備單套車鐘系統（Only one set of telegraph between bridge and local operation position）",
         "detentionGround": true
@@ -19197,7 +19197,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Delivery pressure of the emergency fire pump found insufficient due to the shaft seal leaking",
         "inspectorFinding": "Delivery pressure of the emergency fire pump found insufficient due to the shaft seal leaking",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "應急消防泵軸封泄漏導致出水壓力不足（Delivery pressure of the emergency fire pump found insufficient due to the shaft seal leaking）",
         "detentionGround": true
@@ -19208,9 +19208,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-01",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0107-bordeaux-korea-chemical-tanker",
@@ -19232,9 +19232,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-01-07 Bordeaux PSC 滯留案例，Oil/Chemical tanker / Korea，已收錄 3 項滯留缺陷；重點：應急準備、救生設備、ISM／安全管理。",
+    "shortSummary": "2025-01-07 Bordeaux PSC 滯留案例，Oil/Chemical tanker / Korea，已收錄 3 項滯留滯留；重點：應急準備、救生設備、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19243,7 +19243,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "應急準備",
         "original": "Chief engineer fails to demonstrate automatic emergency generator",
         "inspectorFinding": "Chief engineer fails to demonstrate automatic emergency generator",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "輪機長未能成功演示應急發電機自動啟動程序（Chief engineer fails to demonstrate automatic emergency generator）",
         "detentionGround": true
@@ -19253,7 +19253,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "During test of lowering lifeboat, automatic release of the lashing was inoperative",
         "inspectorFinding": "During test of lowering lifeboat, automatic release of the lashing was inoperative",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "救生艇降落測試中自動脫鉤裝置失效（During test of lowering lifeboat, automatic release of the lashing was inoperative）",
         "detentionGround": true
@@ -19263,7 +19263,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "ISM／安全管理",
         "original": "SMS failure",
         "inspectorFinding": "SMS failure",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "安全管理體系失效，需要開展附加審核（SMS failure）",
         "detentionGround": true
@@ -19274,9 +19274,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-01",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0106-shenzhen-liberia-container",
@@ -19298,9 +19298,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 6,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-01-06 Shenzhen PSC 滯留案例，Container ship / Liberia，已收錄 6 項滯留缺陷；重點：船員熟悉／演習、救生設備、主輔機／機艙、MLC／船員權益、消防安全、ISM／安全管理。",
+    "shortSummary": "2025-01-06 Shenzhen PSC 滯留案例，Container ship / Liberia，已收錄 6 項滯留滯留；重點：船員熟悉／演習、救生設備、主輔機／機艙、MLC／船員權益、消防安全、ISM／安全管理。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19309,7 +19309,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "船員熟悉／演習",
         "original": "Abandon ship drill not comply with the requirement",
         "inspectorFinding": "Abandon ship drill not comply with the requirement",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "棄船演習不符合 SOLAS 要求（Abandon ship drill not comply with the requirement）",
         "detentionGround": true
@@ -19319,7 +19319,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "救生設備",
         "original": "Embarkation ladder rope broken on starboard embarkation station",
         "inspectorFinding": "Embarkation ladder rope broken on starboard embarkation station",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "右舷登乘站登乘梯牽繩斷裂（Embarkation ladder rope broken on starboard embarkation station）",
         "detentionGround": true
@@ -19329,7 +19329,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "主輔機／機艙",
         "original": "No.3 G/E F.O. isolating valve stuck in open",
         "inspectorFinding": "No.3 G/E F.O. isolating valve stuck in open",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "3號副機燃油隔離閥卡死在開啟位置（No.3 G/E F.O. isolating valve stuck in open）",
         "detentionGround": true
@@ -19339,7 +19339,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "MLC／船員權益",
         "original": "Wire penetration between bridge to accommodation sealed with flammable materials",
         "inspectorFinding": "Wire penetration between bridge to accommodation sealed with flammable materials",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "生活區與駕駛台穿艙件開口使用可燃材料封堵（Wire penetration between bridge to accommodation sealed with flammable materials）",
         "detentionGround": true
@@ -19349,7 +19349,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "In E/R floor, one point walking distance to any portable extinguisher more than 10 meters",
         "inspectorFinding": "In E/R floor, one point walking distance to any portable extinguisher more than 10 meters",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "機艙存在滅火器10米覆蓋盲區（In E/R floor, one point walking distance to any portable extinguisher more than 10 meters）",
         "detentionGround": true
@@ -19359,7 +19359,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "ISM／安全管理",
         "original": "SMS failure",
         "inspectorFinding": "SMS failure",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "安全管理體系失效，需要開展附加審核（SMS failure）",
         "detentionGround": true
@@ -19370,9 +19370,9 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-01",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   },
   {
     "id": "psc-2025-0103-guangzhou-panama-bulk",
@@ -19394,9 +19394,9 @@ export const inspectionCases: InspectionCase[] = [
     "detentionGroundCount": 3,
     "status": "detained",
     "evidenceLevel": "narrative",
-    "shortSummary": "2025-01-03 Guangzhou PSC 滯留案例，Bulk carrier / Panama，已收錄 3 項滯留缺陷；重點：防污染、消防安全。",
+    "shortSummary": "2025-01-03 Guangzhou PSC 滯留案例，Bulk carrier / Panama，已收錄 3 項滯留滯留；重點：防污染、消防安全。",
     "narrative": [
-      "本筆按用戶要求只保留滯留項目，非滯留缺陷不納入。",
+      "本筆按用戶要求只保留滯留項目，非滯留滯留不納入。",
       "船名/IMO 若公開來源未披露，先以港口國、日期、船旗和船型建立線索案，後續需用官方 Form A/B 或 MOU 資料庫補齊。"
     ],
     "deficiencies": [
@@ -19405,7 +19405,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "防污染",
         "original": "Crew not familiar with management of Garbage discharge. Food waste were discharge overboard",
         "inspectorFinding": "Crew not familiar with management of Garbage discharge. Food waste were discharge overboard",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "船員不熟悉垃圾排放管理規程，存在違規將廚餘垃圾倒入海中的行為（Crew not familiar with management of Garbage discharge. Food waste were discharge overboard）",
         "detentionGround": true
@@ -19415,7 +19415,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "The fixed fire detection and alarm system displayed 3 zones sensor fault.",
         "inspectorFinding": "The fixed fire detection and alarm system displayed 3 zones sensor fault.",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "固定式火警探測系統顯示3個防火分區的探測器故障（The fixed fire detection and alarm system displayed 3 zones sensor fault.）",
         "detentionGround": true
@@ -19425,7 +19425,7 @@ export const inspectionCases: InspectionCase[] = [
         "category": "消防安全",
         "original": "Three sprinkler in paint store corroded and malfunction.",
         "inspectorFinding": "Three sprinkler in paint store corroded and malfunction.",
-        "detentionReason": "來源段落標明為「滯留缺陷」/ detainable deficiency。",
+        "detentionReason": "來源段落標明為「滯留滯留」/ detainable deficiency。",
         "requiredRectification": "公開來源未披露完整整改驗證；需追 PSC Form A/B、港口國 detention notice 或官方資料庫。",
         "sourceQuote": "油漆間3處噴淋頭由於腐蝕堵塞而失效（Three sprinkler in paint store corroded and malfunction.）",
         "detentionGround": true
@@ -19436,11 +19436,11 @@ export const inspectionCases: InspectionCase[] = [
       "title": "PSCReady via Sohu / 2025 開年 10 大 PSC 滯留案例",
       "url": "https://www.sohu.com/a/896984711_121124367",
       "publishedAt": "2025-01",
-      "sourceType": "2025+ PSC 滯留缺陷線索 / 待官方複核"
+      "sourceType": "2025+ PSC 滯留滯留線索 / 待官方複核"
     },
-    "evidenceNote": "僅保留來源明確稱為滯留缺陷/grounds for detention 的項目；非滯留缺陷已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
+    "evidenceNote": "僅保留來源明確稱為滯留滯留/grounds for detention 的項目；非滯留滯留已排除。若來源非官方，頁面上保留來源標籤，後續需以官方 Form A/B 校核。"
   }
 ]
 
 export const shipTypes = ["Bulk carrier", "Bulk carrier / dangerous goods capable", "Cargo ship", "Container / bulk / general cargo majority", "Container ship", "General cargo / cargo ship", "Multiple vessel types", "Oil/Chemical tanker", "Source did not disclose vessel type"]
-export const categories = ["ISM／安全管理", "MLC／船員權益", "主輔機／機艙", "應急準備", "操作／設備缺陷", "救生設備", "水密／結構", "消防安全", "航行安全", "船員熟悉／演習", "證書／文件", "防污染"]
+export const categories = ["ISM／安全管理", "MLC／船員權益", "主輔機／機艙", "應急準備", "操作／設備滯留", "救生設備", "水密／結構", "消防安全", "航行安全", "船員熟悉／演習", "證書／文件", "防污染"]

@@ -118,13 +118,13 @@ function buildPrioritySignals(cases: InspectionCase[], topCategories: Array<{ ca
   const top = topCategories[0]
   if (top) signals.push(`第一優先檢查面向：${top.category}，在所選範圍內累計 ${top.count} 項滯留依據。`)
   const leadingRegion = regionBreakdown[0]
-  if (leadingRegion) signals.push(`地區重點：${leadingRegion.region} 目前案例/缺陷信號最集中（${leadingRegion.cases} 案、${leadingRegion.detainable} 項依據）。`)
+  if (leadingRegion) signals.push(`地區重點：${leadingRegion.region} 目前案例/滯留信號最集中（${leadingRegion.cases} 案、${leadingRegion.detainable} 項依據）。`)
   const indexOnly = cases.filter((item) => item.evidenceLevel === 'index-only')
-  if (indexOnly.length) signals.push(`${indexOnly.length} 筆為最新索引但缺少缺陷原文，需優先追月度清單或 Form A/B，避免用空白索引做原因分析。`)
+  if (indexOnly.length) signals.push(`${indexOnly.length} 筆為最新索引但缺少滯留原文，需優先追月度清單或 Form A/B，避免用空白索引做原因分析。`)
   const stillDetained = cases.filter((item) => item.status === 'detained')
   if (stillDetained.length) signals.push(`${stillDetained.length} 筆仍在滯留/未確認解除，適合作為本週跟蹤清單。`)
   const manuallyPrioritized = cases.flatMap((item) => item.deficiencies).filter((finding) => finding.priority === 'high' || finding.priority === 'medium' || finding.novel)
-  if (manuallyPrioritized.length) signals.push(`人工標記重點/新穎缺陷 ${manuallyPrioritized.length} 項，應納入公司預檢和船岸跟蹤清單。`)
+  if (manuallyPrioritized.length) signals.push(`人工標記重點/新穎滯留 ${manuallyPrioritized.length} 項，應納入公司預檢和船岸跟蹤清單。`)
   return signals
 }
 
@@ -132,7 +132,7 @@ function buildFocusDirections(cases: InspectionCase[], topCategories: Array<{ ca
   const manual = cases.flatMap((item) => item.deficiencies)
     .filter((finding) => finding.priority === 'high' || finding.novel)
     .slice(0, 4)
-    .map((finding) => `人工重點：${finding.category}｜${finding.novel ? '新穎缺陷' : '高關注'}｜${finding.original}`)
+    .map((finding) => `人工重點：${finding.category}｜${finding.novel ? '新穎滯留' : '高關注'}｜${finding.original}`)
   return [...manual, ...topCategories.slice(0, 4).map((item) => focusText(item.category, item.count))].slice(0, 6)
 }
 
@@ -156,12 +156,12 @@ function extractKeywords(text: string) {
 function focusText(category: string, count: number) {
   const guide: Record<string, string> = {
     '消防安全': '消防安全仍是重點：固定滅火、探火、風閘、防火門和消防演習需要上船前逐項測試。',
-    'ISM／安全管理': 'ISM 缺陷反映船岸管理失效：需追查重複缺陷、維護閉環和船員熟悉程度。',
+    'ISM／安全管理': 'ISM 滯留反映船岸管理失效：需追查重複滯留、維護閉環和船員熟悉程度。',
     '救生設備': '救生設備是高風險項：救生艇/救助艇、釋放裝置、登乘安排和演習記錄需提前核查。',
     '航行安全': '航行安全重點包括海圖、羅經、航次計劃、信號燈和駕駛台設備。',
     '防污染': '防污染檢查聚焦 MARPOL 設備、SOx/排放替代安排、油類留存和排放管路。',
-    'MLC／船員權益': 'MLC 類缺陷通常由投訴觸發，工資、休息、伙食、住宿和遣返資料要能即時證明。',
-    '操作／設備缺陷': '操作／設備缺陷多集中在具體設備失效、測試不能演示、貨物/機艙現場狀態不合格，需按設備逐項試驗。',
+    'MLC／船員權益': 'MLC 類滯留通常由投訴觸發，工資、休息、伙食、住宿和遣返資料要能即時證明。',
+    '操作／設備滯留': '操作／設備滯留多集中在具體設備失效、測試不能演示、貨物/機艙現場狀態不合格，需按設備逐項試驗。',
   }
-  return `${guide[category] ?? `${category} 類缺陷近期出現 ${count} 項滯留依據，建議納入預檢清單。`}（${count} 項）`
+  return `${guide[category] ?? `${category} 類滯留近期出現 ${count} 項滯留依據，建議納入預檢清單。`}（${count} 項）`
 }

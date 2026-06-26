@@ -115,7 +115,7 @@ describe('official refresh parsers', () => {
     const cases = parseParisCurrentDetentionsHtml(html, '2026-06-23T00:00:00.000Z')
     expect(cases).toHaveLength(1)
     expect(cases[0].evidenceLevel).toBe('index-only')
-    expect(cases[0].deficiencies[0].original).toContain('具體缺陷未公開')
+    expect(cases[0].deficiencies[0].original).toContain('具體滯留未公開')
   })
 })
 

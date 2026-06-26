@@ -88,12 +88,12 @@ function parseCaseBlock(block: string, context: McaParseContext): InspectionCase
     shortSummary,
     narrative: [
       `英國 MCA 月度公告記錄，${vessel} 在 ${port || '英國港口'} 接受 PSC 檢查後被滯留。`,
-      `公告摘要顯示共 ${deficiencyCount} 項缺失，其中 ${detentionGroundCount} 項列為 Grounds for Detention。`,
+      `公告摘要顯示共 ${deficiencyCount} 項滯留，其中 ${detentionGroundCount} 項列為 Grounds for Detention。`,
       releaseDate ? `公告記錄該船於 ${releaseDate} 解除滯留。` : '公告未提供明確解除滯留日期，或在統計截止時仍處於滯留狀態。',
     ],
     deficiencies: deficiencyRows,
     source: { authority: 'UK Maritime and Coastguard Agency', title: context.title, url: context.url, publishedAt: context.publishedAt, sourceType: '官方月度滯留報告' },
-    evidenceNote: 'MCA 月報公開的是滯留依據摘要；App 保留原文與缺陷代碼，但不把 “Not as required” 擴寫為未公開的現場細節。',
+    evidenceNote: 'MCA 月報公開的是滯留依據摘要；App 保留原文與滯留代碼，但不把 “Not as required” 擴寫為未公開的現場細節。',
     fetchedAt: context.fetchedAt,
   }
 }
@@ -149,7 +149,7 @@ function translateNature(nature: string) {
   const normalized = nature.trim().toLowerCase()
   if (normalized.includes('not as required')) return '不符合要求'
   if (normalized.includes('inoperative')) return '無法操作'
-  if (normalized.includes('missing')) return '缺失'
+  if (normalized.includes('missing')) return '滯留'
   if (normalized.includes('lack of familiarity')) return '船員不熟悉'
   if (normalized.includes('lack of training')) return '訓練不足'
   if (normalized.includes('expired')) return '已過期'

@@ -141,7 +141,7 @@ export const OPERATOR_ACTION_LABELS: Record<OperatorAction, string> = {
   edit_source: '修改來源',
   delete_source: '刪除來源',
   restore_source: '還原來源',
-  edit_finding: '修改缺陷',
+  edit_finding: '修改滯留',
   sync_dataset: '同步資料集',
   server_refresh: '後端刷新',
   manage_roster: '維護操作員名單',

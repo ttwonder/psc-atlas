@@ -11,7 +11,7 @@ function defectPreview(item: InspectionCase) {
     .filter((entry) => entry.category !== '索引資料')
     .slice(0, 2)
     .map((entry) => entry.original)
-  if (!concrete.length) return '此來源只提供近期滯留索引，未公開逐項缺陷內容。'
+  if (!concrete.length) return '此來源只提供近期滯留索引，未公開逐項滯留內容。'
   return concrete.join('；')
 }
 
@@ -45,7 +45,7 @@ export function CaseTable({ cases, selectedId, onSelect }: CaseTableProps) {
           <p className="case-card-summary">{item.shortSummary}</p>
           <p className="case-card-defects" lang="en">{defectPreview(item)}</p>
           <div className="case-card-badges">
-            <span>{item.deficiencyCount || item.deficiencies.length} 缺陷</span>
+            <span>{item.deficiencyCount || item.deficiencies.length} 滯留</span>
             <span>{item.detentionGroundCount} 滯留依據</span>
             <span className={`evidence-badge ${item.evidenceLevel}`}>{evidenceLabel(item)}</span>
           </div>
