@@ -7,9 +7,9 @@ import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
-import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, restoreSource, updateFinding, updateSourceBookmark, type SourceBookmarkDraft } from './lib/editorWorkflow'
+import { activeSources, deletedSources, getPriorityNovelFindings, markSourceDeleted, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
-import { describeCloudError, getCloudUser, isCloudConfigured, loadCloudDataset, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudSources } from './lib/cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, isCloudConfigured, loadCloudDataset, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
 import { buildRegionalReport } from './lib/report'
@@ -37,6 +37,7 @@ function App() {
   const [manualNotes, setManualNotes] = useState('')
   const [cloudConfigured] = useState(() => isCloudConfigured())
   const [cloudUserEmail, setCloudUserEmail] = useState<string | null>(null)
+  const [editorProfile, setEditorProfile] = useState<EditorProfile | null>(null)
   const [cloudEmailInput, setCloudEmailInput] = useState('')
   const [cloudMessage, setCloudMessage] = useState(() => isCloudConfigured() ? '雲端資料庫已設定，正在檢查登入與同步狀態……' : '尚未設定雲端資料庫；目前使用本機資料。')
   const [cloudLoading, setCloudLoading] = useState(false)
@@ -56,7 +57,11 @@ function App() {
       setCloudLoading(true)
       try {
         const user = await getCloudUser()
-        if (!cancelled) setCloudUserEmail(user?.email ?? null)
+        const profile = user ? await getEditorProfile() : null
+        if (!cancelled) {
+          setCloudUserEmail(user?.email ?? null)
+          setEditorProfile(profile)
+        }
         const dataset = await loadCloudDataset(inspectionCases, officialSourceMap)
         if (cancelled) return
         setCases(dataset.cases)
@@ -64,8 +69,8 @@ function App() {
         saveStoredCases(dataset.cases)
         saveStoredSources(dataset.sources)
         setCloudMessage(dataset.cloudCaseCount
-          ? `已從雲端載入 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源；本機 seed 已合併。${user ? `目前登入：${user.email}` : '目前未登入，只能讀取公開資料。'}`
-          : `雲端目前尚未有資料；正在使用本機 seed。${user ? '可按「同步目前資料到雲端」初始化資料庫。' : '請登入後同步目前資料到雲端。'}`)
+          ? `已從雲端載入 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源；本機 seed 已合併。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在操作員白名單，僅可讀）'}` : '目前未登入，只能讀取公開資料。'}`
+          : `雲端目前尚未有資料；正在使用本機 seed。${profile && canEditDataset(profile) ? '可按「同步目前資料到雲端」初始化資料庫。' : user ? '你已登入，但未獲 dataset/editor 權限。' : '請登入後同步目前資料到雲端。'}`)
       } catch (error) {
         if (!cancelled) setCloudMessage(`雲端讀取失敗：${describeCloudError(error)}；已保留本機資料。`)
       } finally {
@@ -114,6 +119,7 @@ function App() {
     try {
       await signOutCloud()
       setCloudUserEmail(null)
+      setEditorProfile(null)
       setCloudMessage('已登出；仍可讀取公開雲端資料，但不能寫入。')
     } catch (error) {
       setCloudMessage(`登出失敗：${describeCloudError(error)}`)
@@ -134,8 +140,15 @@ function App() {
         setCloudMessage('請先用 email 登入，才可以把資料寫入雲端。')
         return
       }
+      const profile = await getEditorProfile()
+      if (!canEditDataset(profile)) {
+        setEditorProfile(profile)
+        setCloudMessage('你已登入，但不是 editor/owner，不能同步整個資料集。')
+        return
+      }
       await upsertCloudDataset(cases, sources)
       setCloudUserEmail(user.email ?? null)
+      setEditorProfile(await getEditorProfile())
       setCloudMessage(`已同步到雲端：${cases.length} 筆案例、${cases.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項缺陷、${sources.length} 個來源。其他人重新打開網站即可看到。`)
     } catch (error) {
       setCloudMessage(`同步雲端失敗：${describeCloudError(error)}`)
@@ -186,8 +199,14 @@ function App() {
       saveStoredSources(mergedSources)
       const user = cloudConfigured ? await getCloudUser() : null
       if (user) {
-        await upsertCloudDataset(merged, mergedSources)
-        setCloudUserEmail(user.email ?? null)
+        const profile = await getEditorProfile()
+        setEditorProfile(profile)
+        if (canEditDataset(profile)) {
+          await upsertCloudDataset(merged, mergedSources)
+          setCloudUserEmail(user.email ?? null)
+        } else {
+          setCloudMessage('已在本機完成刷新；你不是 editor/owner，不能把整個資料集寫入雲端。')
+        }
       }
       setUpdateMessage(`更新完成：${result.messages.join('；')}；已按要求排除 FPMC、排除非滯留缺陷，只保留 2025 年以後滯留項。${user ? '已同步寫入雲端資料庫。' : cloudConfigured ? '雲端未登入，暫存於本機；登入後可同步到雲端。' : '目前使用本機資料。'}資料庫累積 ${merged.length} 筆案例、${merged.reduce((sum, item) => sum + item.deficiencies.length, 0)} 項滯留依據。`)
       if (!selected && merged.length) setSelected(merged[0])
@@ -199,7 +218,7 @@ function App() {
   }
 
   async function persistSources(nextSources: SourceBookmark[], successMessage: string) {
-    const merged = mergeSources([], nextSources)
+    const merged = purgeExpiredDeletedSources(mergeSources([], nextSources))
     setSources(merged)
     saveStoredSources(merged)
     if (!cloudConfigured) return
@@ -208,12 +227,38 @@ function App() {
       if (user) {
         await upsertCloudSources(merged)
         setCloudUserEmail(user.email ?? null)
+        setEditorProfile(await getEditorProfile())
         setCloudMessage(successMessage)
       } else {
         setCloudMessage('來源變更已保存到本機；請登入後按「同步目前資料到雲端」。')
       }
     } catch (error) {
       setCloudMessage(`來源已保存到本機，但同步雲端失敗：${describeCloudError(error)}`)
+    }
+  }
+
+  async function persistNewSource(item: SourceBookmark, nextSources: SourceBookmark[], successMessage: string) {
+    const merged = purgeExpiredDeletedSources(mergeSources([], nextSources))
+    setSources(merged)
+    saveStoredSources(merged)
+    if (!cloudConfigured) return
+    try {
+      const user = await getCloudUser()
+      if (user) {
+        const profile = await getEditorProfile()
+        setEditorProfile(profile)
+        if (!canAddSources(profile)) {
+          setCloudMessage('來源已保存到本機；你的 email 未在來源提交白名單內，不能寫入雲端。')
+          return
+        }
+        await upsertCloudSources([item])
+        setCloudUserEmail(user.email ?? null)
+        setCloudMessage(successMessage)
+      } else {
+        setCloudMessage('來源已保存到本機；請登入後再提交到雲端。')
+      }
+    } catch (error) {
+      setCloudMessage(`來源已保存到本機，但同步新增來源失敗：${describeCloudError(error)}`)
     }
   }
 
@@ -229,27 +274,31 @@ function App() {
       manual: true,
       notes: manualNotes.trim(),
     }
-    await persistSources(mergeSources(sources, [item]), `已把新來源同步到雲端：${item.title}`)
+    await persistNewSource(item, mergeSources(sources, [item]), `已把新來源同步到雲端：${item.title}`)
     setManualUrl(''); setManualTitle(''); setManualNotes('')
   }
 
   async function saveSourceEdit(id: string, draft: SourceBookmarkDraft) {
+    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以修改已採集來源。'); return }
     const next = sources.map((item) => item.id === id ? updateSourceBookmark(item, draft) : item)
     await persistSources(next, `已更新來源：${draft.title || id}`)
   }
 
   async function softDeleteSource(id: string, reason = '') {
+    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以刪除來源。'); return }
     const user = cloudConfigured ? await getCloudUser() : null
     const next = sources.map((item) => item.id === id ? markSourceDeleted(item, user?.email, reason) : item)
     await persistSources(next, '已移到「已刪除」板塊；30 天後會自動清除。')
   }
 
   async function restoreDeletedSource(id: string) {
+    if (!mayEditSources) { setCloudMessage('只有 editor/owner 可以還原來源。'); return }
     const next = sources.map((item) => item.id === id ? restoreSource(item) : item)
     await persistSources(next, '已還原來源。')
   }
 
   async function saveFindingEdit(caseId: string, findingIndex: number, draft: { category: string; notes: string; priority: 'low' | 'medium' | 'high'; novel: boolean }) {
+    if (!mayEditFindings) { setCloudMessage('只有 editor/owner 可以修改缺陷分類、備註、關注度和新穎標記。'); return }
     const nextCases = updateFinding(cases, caseId, findingIndex, draft)
     setCases(nextCases)
     saveStoredCases(nextCases)
@@ -260,6 +309,7 @@ function App() {
       if (user) {
         await upsertCloudDataset(nextCases, sources)
         setCloudUserEmail(user.email ?? null)
+        setEditorProfile(await getEditorProfile())
         setCloudMessage('缺陷備註/關注度已同步到雲端。')
       } else {
         setCloudMessage('缺陷修改已保存到本機；登入後可同步到雲端。')
@@ -278,6 +328,10 @@ function App() {
     link.click()
     URL.revokeObjectURL(url)
   }
+
+  const mayAddSources = canAddSources(editorProfile)
+  const mayEditSources = canEditSources(editorProfile)
+  const mayEditFindings = canEditDataset(editorProfile)
 
   return (
     <div className={`app-shell ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
@@ -298,10 +352,10 @@ function App() {
 
         {activePage === 'overview' ? <Overview trend={trend} cases={filteredCases} onSelect={selectCase} /> : null}
         {activePage === 'cases' ? <CasesPage cases={filteredCases} selected={selected} onSelect={selectCase} /> : null}
-        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={Boolean(cloudUserEmail)} onUpdateFinding={saveFindingEdit} /> : null}
+        {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={mayEditFindings} onUpdateFinding={saveFindingEdit} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
-        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canEditSources={Boolean(cloudUserEmail)} /> : null}
+        {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={mayAddSources} canEditSources={mayEditSources} editorProfile={editorProfile} /> : null}
       </main>
     </div>
   )
@@ -372,8 +426,16 @@ function PriorityNovelPage({ cases }: { cases: InspectionCase[] }) {
   )
 }
 
+function buildPreventionActions(trend: ReturnType<typeof calculateTrendSummary>) {
+  const actions = trend.topCategories.slice(0, 5).map((item) => `把「${item.category}」納入本週船舶預檢：按缺陷原文逐項核對，至少抽查 ${Math.min(item.count, 10)} 個對應設備/文件/演習記錄。`)
+  if (trend.topKeywords.length) actions.unshift(`高頻設備/作業詞：${trend.topKeywords.slice(0, 6).map((item) => `${item.keyword}(${item.count})`).join('、')}；優先安排船岸自查。`)
+  if (trend.indexOnlyCases) actions.push(`${trend.indexOnlyCases} 筆 index-only 來源不能直接作原因分析，需追 Form A/B、PDF 或港口國月報補原文。`)
+  return actions.slice(0, 7)
+}
+
 function AnalysisPage({ report, trend, range, onDownload }: { report: string; trend: ReturnType<typeof calculateTrendSummary>; range: TimeRangeKey; onDownload: () => void }) {
   const maxMonthly = Math.max(...trend.monthlyTrend.map((item) => item.detainable), 1)
+  const preventionActions = buildPreventionActions(trend)
   return (
     <div className="analysis-grid">
       <section className="analysis-hero panel">
@@ -388,6 +450,11 @@ function AnalysisPage({ report, trend, range, onDownload }: { report: string; tr
       <section className="panel priority-panel">
         <h2>優先信號</h2>
         <ul className="trend-list">{trend.prioritySignals.map((item) => <li key={item}>{item}</li>)}</ul>
+      </section>
+      <section className="panel prevention-panel">
+        <h2>公司預防行動清單</h2>
+        <p>把趨勢直接轉成船岸可執行的預檢/跟蹤項，而不是只看統計。</p>
+        <ol className="trend-list">{preventionActions.map((item) => <li key={item}>{item}</li>)}</ol>
       </section>
       <section className="panel"><h2>{timeRangeLabels[range]}主要缺陷面向</h2><div className="category-bars">{trend.topCategories.map((item) => <div key={item.category}><span>{item.category}</span><strong>{item.count}</strong><progress max={trend.topCategories[0]?.count || 1} value={item.count} /></div>)}</div></section>
       <section className="panel"><h2>地區案件與趨勢</h2><div className="region-breakdown">{trend.regionBreakdown.map((item) => <article key={item.region}><strong>{item.region}</strong><span>{item.cases} 案 / {item.detainable} 項依據</span><small>分析可用 {item.analysisReady}｜索引待補 {item.indexOnly}</small></article>)}</div></section>
@@ -415,7 +482,9 @@ interface SourcesPageProps {
   serverRefreshToken: string
   serverRefreshMessage: string
   serverRefreshLoading: boolean
+  canAddSources: boolean
   canEditSources: boolean
+  editorProfile: EditorProfile | null
   onServerRefreshToken: (value: string) => void
   onServerRefresh: () => void
   onCloudEmail: (value: string) => void
@@ -436,6 +505,7 @@ function SourcesPage(props: SourcesPageProps) {
   const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'pdf' | 'refresh'>('guides')
   const [editingSourceId, setEditingSourceId] = useState('')
   const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '' })
+  const [deleteReason, setDeleteReason] = useState('')
   const activeSourceList = activeSources(props.sources)
   const deletedSourceList = deletedSources(props.sources)
   return (
@@ -454,7 +524,7 @@ function SourcesPage(props: SourcesPageProps) {
           <p className="eyebrow">CLOUD DATABASE</p>
           <h2>雲端資料庫同步</h2>
           <p>{props.cloudMessage}</p>
-          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}` : 'Supabase 已設定；目前未登入，公開資料可讀但不能寫入。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY。'}</small>
+          <small>{props.cloudConfigured ? (props.cloudUserEmail ? `已登入：${props.cloudUserEmail}｜角色：${props.editorProfile?.role ?? '未在白名單'}｜${props.canEditSources ? '可修改/刪除來源與缺陷' : props.canAddSources ? '只能新增來源' : '只讀'}` : 'Supabase 已設定；目前未登入，公開資料可讀但不能寫入。') : '尚未設定 VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY。'}</small>
         </div>
         {props.cloudConfigured ? (
           <div className="cloud-actions">
@@ -467,7 +537,7 @@ function SourcesPage(props: SourcesPageProps) {
               </label>
             )}
             {!props.cloudUserEmail ? <button className="primary-button" type="button" onClick={props.onCloudSignIn} disabled={props.cloudLoading || !props.cloudEmailInput.trim()}>發送登入連結</button> : null}
-            <button className="primary-button" type="button" onClick={props.onCloudSync} disabled={props.cloudLoading || !props.cloudUserEmail}>{props.cloudLoading ? '同步中…' : '同步目前資料到雲端'}</button>
+            <button className="primary-button" type="button" onClick={props.onCloudSync} disabled={props.cloudLoading || !props.cloudUserEmail || !props.canEditSources}>{props.cloudLoading ? '同步中…' : '同步目前資料到雲端'}</button>
           </div>
         ) : (
           <div className="cloud-actions"><code>先建立 Supabase 專案並設定環境變數</code></div>
@@ -507,15 +577,17 @@ function SourcesPage(props: SourcesPageProps) {
       {sourceTab === 'collected' ? (
         <>
           <section className="panel source-form">
-            <h2>手動添加網頁備忘</h2>
+            <h2>手動添加網頁/PDF 備忘</h2>
             <label>網址<input value={props.manualUrl} onChange={(event) => props.onUrl(event.target.value)} placeholder="https://..." /></label>
             <label>標題<input value={props.manualTitle} onChange={(event) => props.onTitle(event.target.value)} placeholder="例如：某港口 PSC detention notice" /></label>
             <label>備註<textarea value={props.manualNotes} onChange={(event) => props.onNotes(event.target.value)} placeholder="用途、需要回頭查的頁碼或重點" /></label>
-            <button className="primary-button" type="button" onClick={props.onAdd}><Plus size={17} />加入網址清單</button>
+            <button className="primary-button" type="button" onClick={props.onAdd} disabled={props.cloudConfigured && props.cloudUserEmail !== null && !props.canAddSources}><Plus size={17} />加入網址清單</button>
+            {props.cloudUserEmail && !props.canAddSources ? <small className="permission-note">你的帳號目前不是 source_editor/editor/owner，不能寫入雲端來源。</small> : null}
           </section>
           <section className="panel collected-sources-panel">
             <h2>已採集 / 備忘網址清單</h2>
-            <p className="panel-hint">登入後可修改來源標題、網址、類型、機關與備註；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
+            <p className="panel-hint">source_editor 只能新增來源；editor/owner 可修改來源標題、網址、類型、機關與備註；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
+            {props.canEditSources ? <label className="delete-reason-field">刪除原因（可選）<input value={deleteReason} onChange={(event) => setDeleteReason(event.target.value)} placeholder="例如：重複來源 / 無效網址 / 已合併到其他來源" /></label> : null}
             <div className="source-list">{activeSourceList.map((item) => {
               const editing = editingSourceId === item.id
               return <article key={item.id} className={editing ? 'source-editing' : ''}>
@@ -538,7 +610,7 @@ function SourcesPage(props: SourcesPageProps) {
                     <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
                   </> : <>
                     <button className="text-button compact" type="button" onClick={() => { setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '' }) }}>修改</button>
-                    <button className="danger-button compact" type="button" onClick={() => props.onDeleteSource(item.id)}>刪除</button>
+                    <button className="danger-button compact" type="button" onClick={() => props.onDeleteSource(item.id, deleteReason)}>刪除</button>
                   </> : null}
                 </div>
               </article>
@@ -559,7 +631,7 @@ function SourcesPage(props: SourcesPageProps) {
         </section>
       ) : null}
 
-      {sourceTab === 'pdf' ? <PdfInsightPanel /> : null}
+      {sourceTab === 'pdf' ? <PdfInsightPanel sources={props.sources} /> : null}
 
       {sourceTab === 'refresh' ? (
         <section className="panel refresh-plan-panel full-span">

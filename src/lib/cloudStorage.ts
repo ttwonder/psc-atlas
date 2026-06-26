@@ -35,6 +35,27 @@ export interface CloudDataset {
   cloudSourceCount: number
 }
 
+export interface EditorProfile {
+  email: string
+  role: 'owner' | 'editor' | 'source_editor'
+  active: boolean
+  can_add_sources: boolean
+  can_sync_dataset: boolean
+  can_refresh: boolean
+}
+
+export function canEditDataset(profile: EditorProfile | null) {
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor' || profile.can_sync_dataset))
+}
+
+export function canEditSources(profile: EditorProfile | null) {
+  return Boolean(profile?.active && (profile.role === 'owner' || profile.role === 'editor'))
+}
+
+export function canAddSources(profile: EditorProfile | null) {
+  return Boolean(profile?.active && profile.can_add_sources)
+}
+
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
 
@@ -105,6 +126,21 @@ export async function getCloudUser(): Promise<User | null> {
   const { data, error } = await supabase.auth.getUser()
   if (error) return null
   return data.user
+}
+
+export async function getEditorProfile(): Promise<EditorProfile | null> {
+  const supabase = getSupabaseClient()
+  if (!supabase) return null
+  const user = await getCloudUser()
+  const email = user?.email?.toLowerCase()
+  if (!email) return null
+  const { data, error } = await supabase
+    .from('psc_editors')
+    .select('email, role, active, can_add_sources, can_sync_dataset, can_refresh')
+    .eq('email', email)
+    .maybeSingle()
+  if (error || !data) return null
+  return data as EditorProfile
 }
 
 export async function signInWithEmail(email: string) {

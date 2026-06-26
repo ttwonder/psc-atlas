@@ -9,6 +9,16 @@ type Sheet = {
 }
 
 export function exportCasesWorkbook(cases: InspectionCase[], sources: SourceBookmark[], sourceGuides: OfficialSourceGuide[] = [], filename = 'psc-detention-dossiers.xls') {
+  const sheets = buildWorkbookSheets(cases, sources, sourceGuides)
+  const workbookXml = buildSpreadsheetXml(sheets)
+  downloadTextFile(workbookXml, filename.endsWith('.xls') ? filename : filename.replace(/\.xlsx?$/i, '.xls'), 'application/vnd.ms-excel;charset=utf-8')
+}
+
+export function exportWorkbookSheetsForTest(cases: InspectionCase[], sources: SourceBookmark[], sourceGuides: OfficialSourceGuide[] = []) {
+  return buildWorkbookSheets(cases, sources, sourceGuides)
+}
+
+function buildWorkbookSheets(cases: InspectionCase[], sources: SourceBookmark[], sourceGuides: OfficialSourceGuide[] = []) {
   const sheets: Sheet[] = [
     {
       name: '案例總清單',
@@ -40,7 +50,9 @@ export function exportCasesWorkbook(cases: InspectionCase[], sources: SourceBook
         缺陷代碼: deficiency.code,
         分類: deficiency.category,
         官方原文: deficiency.original,
-        中文整理: deficiency.translation,
+        操作備註: deficiency.notes ?? '',
+        關注度: deficiency.priority === 'high' ? '高' : deficiency.priority === 'medium' ? '中' : deficiency.priority === 'low' ? '低' : '',
+        是否新穎: deficiency.novel ? 'Yes' : 'No',
         檢查員認定: deficiency.inspectorFinding ?? '',
         滯留理由: deficiency.detentionReason ?? '',
         整改要求: deficiency.requiredRectification ?? '',
@@ -59,6 +71,10 @@ export function exportCasesWorkbook(cases: InspectionCase[], sources: SourceBook
         類型: item.sourceType,
         URL: item.url,
         備註: item.notes ?? '',
+        是否已刪除: item.deletedAt ? 'Yes' : 'No',
+        刪除時間: item.deletedAt ?? '',
+        刪除原因: item.deleteReason ?? '',
+        更新時間: item.updatedAt ?? '',
         手動添加: item.manual ? 'Yes' : 'No',
         添加時間: item.addedAt,
       })),
@@ -85,8 +101,7 @@ export function exportCasesWorkbook(cases: InspectionCase[], sources: SourceBook
   }
 
   sheets.push({ name: '總結報告', rows: [{ 報告: buildRegionalReport(cases, '全部地區', 'all') }] })
-  const workbookXml = buildSpreadsheetXml(sheets)
-  downloadTextFile(workbookXml, filename.endsWith('.xls') ? filename : filename.replace(/\.xlsx?$/i, '.xls'), 'application/vnd.ms-excel;charset=utf-8')
+  return sheets
 }
 
 export function buildSpreadsheetXml(sheets: Sheet[]) {

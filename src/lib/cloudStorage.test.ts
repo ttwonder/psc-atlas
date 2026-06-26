@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudSourceRow } from './cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudSourceRow, type EditorProfile } from './cloudStorage'
 
 const sampleCase: InspectionCase = {
   id: 'case-1',
@@ -88,4 +88,17 @@ describe('cloud storage row mapping', () => {
     expect(describeCloudError({ message: 'duplicate key value violates unique constraint', code: '23505', details: 'url already exists' })).toContain('duplicate key value')
     expect(describeCloudError({ error_description: 'Invalid path specified in request URL' })).toBe('Invalid path specified in request URL')
   })
+
+  it('distinguishes source submitters from operators', () => {
+    const sourceEditor: EditorProfile = { email: 'source@example.com', role: 'source_editor', active: true, can_add_sources: true, can_sync_dataset: false, can_refresh: false }
+    const operator: EditorProfile = { email: 'editor@example.com', role: 'editor', active: true, can_add_sources: true, can_sync_dataset: true, can_refresh: false }
+
+    expect(canAddSources(sourceEditor)).toBe(true)
+    expect(canEditSources(sourceEditor)).toBe(false)
+    expect(canEditDataset(sourceEditor)).toBe(false)
+    expect(canEditSources(operator)).toBe(true)
+    expect(canEditDataset(operator)).toBe(true)
+    expect(canAddSources(null)).toBe(false)
+  })
+
 })
