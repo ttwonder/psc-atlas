@@ -1,4 +1,4 @@
-import type { SourceBookmark } from '../types'
+import type { PdfReferenceLevel, SourceBookmark } from '../types'
 import { slugify } from './storage'
 
 export interface PdfSourceBrief {
@@ -11,6 +11,27 @@ export interface PdfSourceBrief {
   bullets: string[]
 }
 
+export type PdfAttentionFilter = 'all' | 'attention' | 'normal'
+
+export interface PdfReviewMeta {
+  needsAttention: boolean
+  referenceLevel: PdfReferenceLevel
+  coverage: string
+}
+
+export interface PdfReviewDraft {
+  needsAttention?: boolean
+  referenceLevel?: PdfReferenceLevel
+  coverage?: string
+}
+
+export interface PdfSourceFilters {
+  authority: string
+  attention: PdfAttentionFilter
+  referenceLevel: PdfReferenceLevel | 'all'
+  coverage: string
+}
+
 export function isPdfSource(item: SourceBookmark) {
   return /\.pdf($|[?#])/i.test(item.url)
     || /\bpdf\b/i.test(`${item.sourceType} ${item.title} ${(item.tags ?? []).join(' ')}`)
@@ -18,6 +39,44 @@ export function isPdfSource(item: SourceBookmark) {
 
 export function getPdfSources(sources: SourceBookmark[]) {
   return sources.filter((item) => !item.deletedAt && !isPdfNotNeeded(item) && isPdfSource(item))
+}
+
+export function getPdfReviewMeta(item: SourceBookmark): PdfReviewMeta {
+  return {
+    needsAttention: Boolean(item.pdfNeedsAttention || item.tags?.includes('pdf-attention')),
+    referenceLevel: item.pdfReferenceLevel ?? referenceLevelFromTags(item.tags) ?? 'medium',
+    coverage: item.pdfCoverage?.trim() || coverageFromTags(item.tags) || '未標記',
+  }
+}
+
+export function updatePdfReviewMeta(item: SourceBookmark, draft: PdfReviewDraft, now = new Date().toISOString()): SourceBookmark {
+  const current = getPdfReviewMeta(item)
+  return {
+    ...item,
+    pdfNeedsAttention: draft.needsAttention ?? current.needsAttention,
+    pdfReferenceLevel: draft.referenceLevel ?? current.referenceLevel,
+    pdfCoverage: draft.coverage?.trim() || current.coverage,
+    updatedAt: now,
+  }
+}
+
+export function filterPdfSources(sources: SourceBookmark[], filters: PdfSourceFilters) {
+  return getPdfSources(sources).filter((item) => {
+    const meta = getPdfReviewMeta(item)
+    if (filters.authority !== 'all' && (item.authority || item.sourceType || '未標記來源') !== filters.authority) return false
+    if (filters.attention === 'attention' && !meta.needsAttention) return false
+    if (filters.attention === 'normal' && meta.needsAttention) return false
+    if (filters.referenceLevel !== 'all' && meta.referenceLevel !== filters.referenceLevel) return false
+    if (filters.coverage !== 'all' && meta.coverage !== filters.coverage) return false
+    return true
+  })
+}
+
+export function paginatePdfSources(sources: SourceBookmark[], page: number, pageSize = 20) {
+  const totalPages = Math.max(1, Math.ceil(sources.length / pageSize))
+  const safePage = Math.min(Math.max(1, page), totalPages)
+  const start = (safePage - 1) * pageSize
+  return { items: sources.slice(start, start + pageSize), page: safePage, totalPages, pageSize, totalItems: sources.length }
 }
 
 export function getPdfSelectionKey(item: Pick<SourceBookmark, 'url' | 'id'>) {
@@ -150,6 +209,18 @@ export async function discoverPdfSourcesFromPages(sources: SourceBookmark[], opt
 
 function isGenericPdfTitle(value: string) {
   return /^(pdf|pdf文件|pdf 文件|download|下載|打開|open|view|document)$/i.test(value.trim())
+}
+
+function referenceLevelFromTags(tags: string[] | undefined): PdfReferenceLevel | undefined {
+  if (tags?.includes('pdf-ref-high')) return 'high'
+  if (tags?.includes('pdf-ref-medium')) return 'medium'
+  if (tags?.includes('pdf-ref-low')) return 'low'
+  return undefined
+}
+
+function coverageFromTags(tags: string[] | undefined) {
+  const tag = tags?.find((item) => item.startsWith('pdf-coverage:'))
+  return tag ? tag.replace('pdf-coverage:', '').trim() : ''
 }
 
 function isPdfUrlLike(value: string) {

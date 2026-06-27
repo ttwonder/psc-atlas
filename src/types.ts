@@ -2,6 +2,7 @@ export type CaseStatus = 'detained' | 'released' | 'clear'
 export type EvidenceLevel = 'narrative' | 'official-summary' | 'index-only' | 'full-dossier'
 export type TimeRangeKey = '3m' | '6m' | '1y' | 'all'
 export type FindingPriority = 'low' | 'medium' | 'high'
+export type PdfReferenceLevel = 'low' | 'medium' | 'high'
 
 export interface Deficiency {
   code: string
@@ -78,6 +79,9 @@ export interface SourceBookmark {
   tags?: string[]
   storageUrl?: string
   pdfArchivedAt?: string
+  pdfNeedsAttention?: boolean
+  pdfReferenceLevel?: PdfReferenceLevel
+  pdfCoverage?: string
 }
 
 export type SourceAutoFetch = 'enabled' | 'partial' | 'manual' | 'restricted'

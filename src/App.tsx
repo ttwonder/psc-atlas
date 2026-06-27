@@ -13,7 +13,7 @@ import { canAddSources, canEditDataset, canEditSources, describeCloudError, getC
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { buildManualCaseDraftFromHtml } from './lib/temporaryWebsiteCase'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
-import { discoverPdfSourcesFromPages } from './lib/pdfSources'
+import { discoverPdfSourcesFromPages, updatePdfReviewMeta, type PdfReviewDraft } from './lib/pdfSources'
 import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, identityFromRosterSelection, normalizeOperatorRoles, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './lib/operatorAccess'
 import { buildRegionalReport } from './lib/report'
 import { loadStoredCases, loadStoredSources, mergeCases, mergeSources, saveStoredCases, saveStoredSources, sourceFromCase, sourceFromGuide, slugify } from './lib/storage'
@@ -599,6 +599,16 @@ function App() {
     })
   }
 
+  async function savePdfReviewMeta(id: string, draft: PdfReviewDraft) {
+    const before = sources.find((item) => item.id === id)
+    requestOperator('edit_source', before?.title ?? id, async (actor) => {
+      const after = before ? updatePdfReviewMeta(before, draft) : null
+      const next = sources.map((item) => item.id === id && after ? after : item)
+      await persistSources(next, '已更新 PDF 審閱標記。')
+      await appendAuditLog(buildAuditLog({ actor, action: 'edit_source', targetType: 'source', targetId: id, targetTitle: `PDF 審閱標記：${before?.title ?? id}`, before, after }))
+    })
+  }
+
   async function restoreDeletedSource(id: string) {
     const before = sources.find((item) => item.id === id)
     requestOperator('restore_source', before?.title ?? id, async (actor) => {
@@ -719,7 +729,7 @@ function App() {
         {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} onAddManualFinding={saveManualFinding} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
-        {activePage === 'pdf' ? <PdfInsightPanel sources={sources} onDeleteSource={softDeleteSource} onMarkPdfNotNeeded={markPdfSourceNotNeeded} /> : null}
+        {activePage === 'pdf' ? <PdfInsightPanel sources={sources} onDeleteSource={softDeleteSource} onMarkPdfNotNeeded={markPdfSourceNotNeeded} onUpdatePdfMeta={savePdfReviewMeta} /> : null}
         {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
         {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {})} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} onUpdateRosterRole={updateRosterRole} /> : null}
       </main>

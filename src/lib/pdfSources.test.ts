@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, getPdfSelectionKey, getPdfSources } from './pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, filterPdfSources, getPdfReviewMeta, getPdfSelectionKey, getPdfSources, paginatePdfSources, updatePdfReviewMeta } from './pdfSources'
 import type { SourceBookmark } from '../types'
 
 const sources: SourceBookmark[] = [
@@ -117,6 +117,41 @@ describe('pdf source utilities', () => {
   it('uses normalized URL, not source id, as PDF selection key', () => {
     expect(getPdfSelectionKey({ ...sources[0], id: 'a', url: 'https://example.com/report.pdf' })).toBe('https://example.com/report.pdf')
     expect(getPdfSelectionKey({ ...sources[0], id: 'a', url: 'https://example.com/report.pdf/' })).toBe('https://example.com/report.pdf')
+  })
+
+
+  it('updates and reads PDF review metadata for attention, reference level, and coverage', () => {
+    const updated = updatePdfReviewMeta(sources[0], {
+      needsAttention: true,
+      referenceLevel: 'high',
+      coverage: '2026 Q1',
+    }, '2026-06-27T00:00:00.000Z')
+
+    expect(getPdfReviewMeta(updated)).toEqual({ needsAttention: true, referenceLevel: 'high', coverage: '2026 Q1' })
+    expect(updated.updatedAt).toBe('2026-06-27T00:00:00.000Z')
+  })
+
+  it('filters PDF sources by authority, attention, reference level, and coverage', () => {
+    const pdfs: SourceBookmark[] = [
+      updatePdfReviewMeta({ ...sources[0], id: 'a', authority: 'USCG', url: 'https://example.com/a.pdf' }, { needsAttention: true, referenceLevel: 'high', coverage: '2026 Q1' }),
+      updatePdfReviewMeta({ ...sources[0], id: 'b', authority: 'ABS', url: 'https://example.com/b.pdf' }, { needsAttention: false, referenceLevel: 'low', coverage: '2025 年度匯總' }),
+      updatePdfReviewMeta({ ...sources[0], id: 'c', authority: 'USCG', url: 'https://example.com/c.pdf' }, { needsAttention: true, referenceLevel: 'medium', coverage: '2026 上半年' }),
+    ]
+
+    expect(filterPdfSources(pdfs, { authority: 'USCG', attention: 'attention', referenceLevel: 'all', coverage: 'all' }).map((item) => item.id)).toEqual(['a', 'c'])
+    expect(filterPdfSources(pdfs, { authority: 'all', attention: 'all', referenceLevel: 'high', coverage: '2026 Q1' }).map((item) => item.id)).toEqual(['a'])
+  })
+
+  it('paginates collected PDFs at 20 per page', () => {
+    const pdfs = Array.from({ length: 45 }, (_, index): SourceBookmark => ({
+      ...sources[0],
+      id: `pdf-${index}`,
+      url: `https://example.com/${index}.pdf`,
+    }))
+
+    expect(paginatePdfSources(pdfs, 1).items).toHaveLength(20)
+    expect(paginatePdfSources(pdfs, 3).items).toHaveLength(5)
+    expect(paginatePdfSources(pdfs, 3).totalPages).toBe(3)
   })
 
 })

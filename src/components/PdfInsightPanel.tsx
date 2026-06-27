@@ -1,27 +1,41 @@
 import { useMemo, useState } from 'react'
-import { CheckSquare, ExternalLink, FileText, Link, Trash2, Upload } from 'lucide-react'
+import { ExternalLink, FileText, Link, Trash2, Upload } from 'lucide-react'
 import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
-import { buildPdfSourceBrief, displayPdfTitle, getPdfSelectionKey, getPdfSources } from '../lib/pdfSources'
-import type { SourceBookmark } from '../types'
+import { displayPdfTitle, filterPdfSources, getPdfReviewMeta, getPdfSources, paginatePdfSources, type PdfReviewDraft, type PdfSourceFilters } from '../lib/pdfSources'
+import type { PdfReferenceLevel, SourceBookmark } from '../types'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
 
-export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeeded }: { sources?: SourceBookmark[]; onDeleteSource?: (id: string, reason?: string) => void | Promise<void>; onMarkPdfNotNeeded?: (id: string) => void | Promise<void> }) {
+const referenceLabels: Record<PdfReferenceLevel, string> = { low: '低', medium: '中', high: '高' }
+
+export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeeded, onUpdatePdfMeta }: {
+  sources?: SourceBookmark[]
+  onDeleteSource?: (id: string, reason?: string) => void | Promise<void>
+  onMarkPdfNotNeeded?: (id: string) => void | Promise<void>
+  onUpdatePdfMeta?: (id: string, draft: PdfReviewDraft) => void | Promise<void>
+}) {
   const [fileName, setFileName] = useState('')
   const [status, setStatus] = useState('尚未上傳 PDF')
   const [pdfUrl, setPdfUrl] = useState('')
   const [urlTaskMessage, setUrlTaskMessage] = useState('尚未提交 PDF URL 任務')
   const [insights, setInsights] = useState<PdfInsights | null>(null)
   const [textPreview, setTextPreview] = useState('')
-  const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const [authorityFilter, setAuthorityFilter] = useState('all')
+  const [attentionFilter, setAttentionFilter] = useState<PdfSourceFilters['attention']>('all')
+  const [referenceFilter, setReferenceFilter] = useState<PdfReferenceLevel | 'all'>('all')
+  const [coverageFilter, setCoverageFilter] = useState('all')
+  const [page, setPage] = useState(1)
 
   const pdfSources = useMemo(() => getPdfSources(sources), [sources])
-  const selectedPdfSources = useMemo(() => pdfSources.filter((item) => selectedIds.includes(getPdfSelectionKey(item))), [pdfSources, selectedIds])
-  const sourceBriefs = useMemo(() => selectedPdfSources.map(buildPdfSourceBrief), [selectedPdfSources])
+  const authorityOptions = useMemo(() => Array.from(new Set(pdfSources.map((item) => item.authority || item.sourceType || '未標記來源'))).sort(), [pdfSources])
+  const coverageOptions = useMemo(() => Array.from(new Set([...buildCoverageOptions(), ...pdfSources.map((item) => getPdfReviewMeta(item).coverage).filter(Boolean)])).sort(sortCoverage), [pdfSources])
+  const filteredSources = useMemo(() => filterPdfSources(pdfSources, { authority: authorityFilter, attention: attentionFilter, referenceLevel: referenceFilter, coverage: coverageFilter }), [attentionFilter, authorityFilter, coverageFilter, pdfSources, referenceFilter])
+  const pageData = useMemo(() => paginatePdfSources(filteredSources, page, 20), [filteredSources, page])
   const deficiencyDrafts = useMemo(() => insights?.deficiencyCandidates.map((item, index) => pdfCandidateToDeficiencyDraft(item, pdfUrl || fileName || 'uploaded-pdf', index + 1)) ?? [], [fileName, insights, pdfUrl])
 
-  function togglePdf(id: string) {
-    setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id])
+  function updateFilter(run: () => void) {
+    run()
+    setPage(1)
   }
 
   async function extractPdf(data: ArrayBuffer, label: string) {
@@ -34,8 +48,8 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
     const pdf = await pdfjs.getDocument({ data }).promise
     const pageTexts: string[] = []
     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
-      const page = await pdf.getPage(pageNumber)
-      const content = await page.getTextContent()
+      const pageItem = await pdf.getPage(pageNumber)
+      const content = await pageItem.getTextContent()
       const text = content.items.map((item) => 'str' in item ? item.str : '').join(' ')
       pageTexts.push(`--- Page ${pageNumber} ---\n${text}`)
     }
@@ -102,59 +116,57 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
         <small>{urlTaskMessage}</small>
       </section>
 
-      <section className="pdf-workbench">
-        <article className="panel pdf-source-picker">
-          <header>
-            <div>
-              <p className="eyebrow">COLLECTED PDFS</p>
-              <h3>已採集在線 PDF</h3>
-            </div>
-            <span>{pdfSources.length} 個</span>
-          </header>
-          <div className="pdf-check-list">
-            {pdfSources.length ? pdfSources.map((item) => {
-              const selectionKey = getPdfSelectionKey(item)
-              const checked = selectedIds.includes(selectionKey)
-              return (
-                <article key={item.id} className={checked ? 'pdf-check-item selected' : 'pdf-check-item'}>
-                  <label className="pdf-check-toggle">
-                    <input type="checkbox" checked={checked} onChange={() => togglePdf(selectionKey)} />
-                    <div className="pdf-check-copy">
-                      <strong>{displayPdfTitle(item)}</strong>
-                      <span>{item.authority ?? item.sourceType} · {item.status ?? 'new'}</span>
-                      <small>{item.storageUrl ? '已有備用歸檔地址' : '使用在線 PDF 原始網址'}</small>
-                    </div>
-                  </label>
-                  <div className="pdf-check-actions">
-                    <a href={item.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>打開 <ExternalLink size={12} /></a>
-                    {onDeleteSource ? <button className="danger-button compact" type="button" onClick={(event) => { event.stopPropagation(); onDeleteSource(item.id, 'PDF 資料頁刪除') }}><Trash2 size={12} />刪除</button> : null}
-                    {onMarkPdfNotNeeded ? <button className="text-button compact pdf-not-needed-button" type="button" onClick={(event) => { event.stopPropagation(); onMarkPdfNotNeeded(item.id) }}>不需要</button> : null}
-                  </div>
-                </article>
-              )
-            }) : <p className="panel-hint">目前來源清單中沒有識別到 PDF。可在本頁貼 PDF URL 或到資料來源新增網址備忘。</p>}
+      <section className="panel pdf-source-list-panel">
+        <header className="pdf-list-header">
+          <div>
+            <p className="eyebrow">COLLECTED PDFS</p>
+            <h3>已採集在線 PDF</h3>
+            <p>每頁最多 20 個；可按來源、是否需關注、參考意義與覆蓋範圍篩選。</p>
           </div>
-        </article>
+          <span>{filteredSources.length} / {pdfSources.length} 個</span>
+        </header>
 
-        <article className="panel pdf-selected-summary">
-          <header>
-            <div>
-              <p className="eyebrow">SELECTED PDF BRIEF</p>
-              <h3>勾選 PDF 的來源與重點</h3>
-            </div>
-            <CheckSquare size={18} />
-          </header>
-          {sourceBriefs.length ? sourceBriefs.map((brief) => (
-            <section key={brief.id} className="pdf-brief-card">
-              <div className="pdf-brief-title">
-                <strong>{brief.title}</strong>
-                <a href={brief.url} target="_blank" rel="noreferrer">打開 PDF <ExternalLink size={12} /></a>
-              </div>
-              <ul>{brief.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
-              <p className="pdf-online-line"><Link size={13} /><a href={brief.url} target="_blank" rel="noreferrer">{brief.url}</a></p>{brief.storageUrl ? <p className="pdf-storage-line">備用歸檔地址：{brief.storageUrl}</p> : null}
-            </section>
-          )) : <div className="empty-state compact"><strong>請先勾選左側 PDF</strong><span>勾選後，這裡會用清單形式顯示 PDF 大致介紹、來源、狀態、標籤、備註與在線原始網址。</span></div>}
-        </article>
+        <div className="pdf-filter-row">
+          <label>地方 / 來源<select value={authorityFilter} onChange={(event) => updateFilter(() => setAuthorityFilter(event.target.value))}><option value="all">全部來源</option>{authorityOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+          <label>是否需要關注<select value={attentionFilter} onChange={(event) => updateFilter(() => setAttentionFilter(event.target.value as PdfSourceFilters['attention']))}><option value="all">全部</option><option value="attention">需關注</option><option value="normal">未標記關注</option></select></label>
+          <label>參考意義<select value={referenceFilter} onChange={(event) => updateFilter(() => setReferenceFilter(event.target.value as PdfReferenceLevel | 'all'))}><option value="all">全部</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
+          <label>覆蓋範圍<select value={coverageFilter} onChange={(event) => updateFilter(() => setCoverageFilter(event.target.value))}><option value="all">全部</option>{coverageOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+        </div>
+
+        <div className="pdf-table-list">
+          {pageData.items.length ? pageData.items.map((item) => {
+            const meta = getPdfReviewMeta(item)
+            const authority = item.authority || item.sourceType || '未標記來源'
+            return (
+              <article key={item.id} className={`pdf-list-row ${meta.needsAttention ? 'needs-attention' : ''}`}>
+                <div className="pdf-list-main">
+                  <strong>{displayPdfTitle(item)}</strong>
+                  <span>{authority} · {item.status ?? 'new'} · 參考意義：{referenceLabels[meta.referenceLevel]} · 覆蓋：{meta.coverage}</span>
+                  {item.notes ? <small>備註：{item.notes}</small> : null}
+                  {item.tags?.length ? <small>標籤：{item.tags.join('、')}</small> : null}
+                  <p className="pdf-online-line"><Link size={13} /><a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></p>
+                  {item.storageUrl ? <p className="pdf-storage-line">備用歸檔地址：{item.storageUrl}</p> : null}
+                </div>
+                <div className="pdf-review-controls">
+                  <button className={meta.needsAttention ? 'primary-button compact' : 'text-button compact'} type="button" onClick={() => onUpdatePdfMeta?.(item.id, { needsAttention: !meta.needsAttention })}>{meta.needsAttention ? '已關注' : '需關注'}</button>
+                  <label>參考意義<select value={meta.referenceLevel} onChange={(event) => onUpdatePdfMeta?.(item.id, { referenceLevel: event.target.value as PdfReferenceLevel })}><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></label>
+                  <label>覆蓋時間<select value={meta.coverage} onChange={(event) => onUpdatePdfMeta?.(item.id, { coverage: event.target.value })}>{coverageOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
+                </div>
+                <div className="pdf-list-actions">
+                  <a href={item.url} target="_blank" rel="noreferrer">打開 <ExternalLink size={12} /></a>
+                  {onDeleteSource ? <button className="danger-button compact" type="button" onClick={() => onDeleteSource(item.id, 'PDF 資料頁刪除')}><Trash2 size={12} />刪除</button> : null}
+                  {onMarkPdfNotNeeded ? <button className="text-button compact" type="button" onClick={() => onMarkPdfNotNeeded(item.id)}>不需要</button> : null}
+                </div>
+              </article>
+            )
+          }) : <p className="panel-hint">目前沒有符合篩選條件的 PDF。可放寬篩選或到資料來源新增網址備忘。</p>}
+        </div>
+
+        <footer className="pdf-pagination">
+          <button className="text-button compact" type="button" disabled={pageData.page <= 1} onClick={() => setPage((value) => Math.max(1, value - 1))}>上一頁</button>
+          <span>第 {pageData.page} / {pageData.totalPages} 頁，每頁最多 20 個</span>
+          <button className="text-button compact" type="button" disabled={pageData.page >= pageData.totalPages} onClick={() => setPage((value) => Math.min(pageData.totalPages, value + 1))}>下一頁</button>
+        </footer>
       </section>
 
       {insights ? (
@@ -196,4 +208,16 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
       </aside>
     </div>
   )
+}
+
+function buildCoverageOptions() {
+  const year = new Date().getFullYear()
+  const years = [year + 1, year, year - 1, year - 2]
+  return ['未標記', ...years.flatMap((item) => [`${item} Q1`, `${item} Q2`, `${item} Q3`, `${item} Q4`, `${item} 上半年`, `${item} 下半年`, `${item} 年度匯總`])]
+}
+
+function sortCoverage(a: string, b: string) {
+  if (a === '未標記') return -1
+  if (b === '未標記') return 1
+  return b.localeCompare(a, 'zh-Hant')
 }
