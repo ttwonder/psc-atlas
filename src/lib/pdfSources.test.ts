@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, filterPdfSources, getPdfReviewMeta, getPdfSelectionKey, getPdfSources, paginatePdfSources, updatePdfReviewMeta } from './pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, buildPdfCoverage, buildPdfCoverageYearOptions, filterPdfSources, getPdfReviewMeta, getPdfSelectionKey, getPdfSources, paginatePdfSources, splitPdfCoverage, updatePdfReviewMeta } from './pdfSources'
 import type { SourceBookmark } from '../types'
 
 const sources: SourceBookmark[] = [
@@ -152,6 +152,31 @@ describe('pdf source utilities', () => {
     expect(paginatePdfSources(pdfs, 1).items).toHaveLength(20)
     expect(paginatePdfSources(pdfs, 3).items).toHaveLength(5)
     expect(paginatePdfSources(pdfs, 3).totalPages).toBe(3)
+  })
+
+
+  it('builds compact coverage year and period controls up to 2100', () => {
+    const years = buildPdfCoverageYearOptions(2024, 2100)
+
+    expect(years[0]).toBe('未標記')
+    expect(years.slice(1, 4)).toEqual(['2024', '2025', '2026'])
+    expect(years.at(-1)).toBe('2100')
+    expect(buildPdfCoverage('2026', 'Q1')).toBe('2026 Q1')
+    expect(buildPdfCoverage('2026', '年度匯總')).toBe('2026 年度匯總')
+    expect(buildPdfCoverage('未標記', 'Q1')).toBe('未標記')
+    expect(splitPdfCoverage('2026 下半年')).toEqual({ year: '2026', period: '下半年' })
+    expect(splitPdfCoverage('未標記')).toEqual({ year: '未標記', period: '未標記' })
+  })
+
+  it('filters PDF sources by coverage year and period separately', () => {
+    const pdfs: SourceBookmark[] = [
+      updatePdfReviewMeta({ ...sources[0], id: 'a', url: 'https://example.com/a.pdf' }, { coverage: '2026 Q1' }),
+      updatePdfReviewMeta({ ...sources[0], id: 'b', url: 'https://example.com/b.pdf' }, { coverage: '2026 年度匯總' }),
+      updatePdfReviewMeta({ ...sources[0], id: 'c', url: 'https://example.com/c.pdf' }, { coverage: '2025 Q1' }),
+    ]
+
+    expect(filterPdfSources(pdfs, { authority: 'all', attention: 'all', referenceLevel: 'all', coverage: 'all', coverageYear: '2026', coveragePeriod: 'all' }).map((item) => item.id)).toEqual(['a', 'b'])
+    expect(filterPdfSources(pdfs, { authority: 'all', attention: 'all', referenceLevel: 'all', coverage: 'all', coverageYear: 'all', coveragePeriod: 'Q1' }).map((item) => item.id)).toEqual(['a', 'c'])
   })
 
 })

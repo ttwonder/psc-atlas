@@ -12,6 +12,9 @@ export interface PdfSourceBrief {
 }
 
 export type PdfAttentionFilter = 'all' | 'attention' | 'normal'
+export type PdfCoveragePeriod = 'Q1' | 'Q2' | 'Q3' | 'Q4' | '上半年' | '下半年' | '年度匯總'
+export const PDF_COVERAGE_UNMARKED = '未標記'
+export const PDF_COVERAGE_PERIODS: PdfCoveragePeriod[] = ['Q1', 'Q2', 'Q3', 'Q4', '上半年', '下半年', '年度匯總']
 
 export interface PdfReviewMeta {
   needsAttention: boolean
@@ -30,6 +33,8 @@ export interface PdfSourceFilters {
   attention: PdfAttentionFilter
   referenceLevel: PdfReferenceLevel | 'all'
   coverage: string
+  coverageYear?: string
+  coveragePeriod?: string
 }
 
 export function isPdfSource(item: SourceBookmark) {
@@ -60,6 +65,26 @@ export function updatePdfReviewMeta(item: SourceBookmark, draft: PdfReviewDraft,
   }
 }
 
+export function buildPdfCoverageYearOptions(startYear = new Date().getFullYear() - 2, endYear = 2100) {
+  const years: string[] = [PDF_COVERAGE_UNMARKED]
+  for (let year = startYear; year <= endYear; year += 1) years.push(String(year))
+  return years
+}
+
+export function splitPdfCoverage(coverage: string) {
+  const value = coverage?.trim() || PDF_COVERAGE_UNMARKED
+  if (!value || value === PDF_COVERAGE_UNMARKED) return { year: PDF_COVERAGE_UNMARKED, period: PDF_COVERAGE_UNMARKED }
+  const year = value.match(/\b(20\d{2}|19\d{2}|2100)\b/)?.[1] ?? PDF_COVERAGE_UNMARKED
+  const period = PDF_COVERAGE_PERIODS.find((item) => value.includes(item)) ?? PDF_COVERAGE_UNMARKED
+  return { year, period }
+}
+
+export function buildPdfCoverage(year: string, period: string) {
+  if (!year || year === PDF_COVERAGE_UNMARKED) return PDF_COVERAGE_UNMARKED
+  if (!period || period === PDF_COVERAGE_UNMARKED) return year
+  return `${year} ${period}`
+}
+
 export function filterPdfSources(sources: SourceBookmark[], filters: PdfSourceFilters) {
   return getPdfSources(sources).filter((item) => {
     const meta = getPdfReviewMeta(item)
@@ -68,6 +93,9 @@ export function filterPdfSources(sources: SourceBookmark[], filters: PdfSourceFi
     if (filters.attention === 'normal' && meta.needsAttention) return false
     if (filters.referenceLevel !== 'all' && meta.referenceLevel !== filters.referenceLevel) return false
     if (filters.coverage !== 'all' && meta.coverage !== filters.coverage) return false
+    const coverageParts = splitPdfCoverage(meta.coverage)
+    if (filters.coverageYear && filters.coverageYear !== 'all' && coverageParts.year !== filters.coverageYear) return false
+    if (filters.coveragePeriod && filters.coveragePeriod !== 'all' && coverageParts.period !== filters.coveragePeriod) return false
     return true
   })
 }

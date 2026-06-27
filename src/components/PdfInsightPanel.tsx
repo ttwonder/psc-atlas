@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { ExternalLink, FileText, Link, Trash2, Upload } from 'lucide-react'
 import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
-import { displayPdfTitle, filterPdfSources, getPdfReviewMeta, getPdfSources, paginatePdfSources, type PdfReviewDraft, type PdfSourceFilters } from '../lib/pdfSources'
+import { buildPdfCoverage, buildPdfCoverageYearOptions, displayPdfTitle, filterPdfSources, getPdfReviewMeta, getPdfSources, paginatePdfSources, PDF_COVERAGE_PERIODS, PDF_COVERAGE_UNMARKED, splitPdfCoverage, type PdfReviewDraft, type PdfSourceFilters } from '../lib/pdfSources'
 import type { PdfReferenceLevel, SourceBookmark } from '../types'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
 
@@ -23,13 +23,15 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
   const [authorityFilter, setAuthorityFilter] = useState('all')
   const [attentionFilter, setAttentionFilter] = useState<PdfSourceFilters['attention']>('all')
   const [referenceFilter, setReferenceFilter] = useState<PdfReferenceLevel | 'all'>('all')
-  const [coverageFilter, setCoverageFilter] = useState('all')
+  const [coverageYearFilter, setCoverageYearFilter] = useState('all')
+  const [coveragePeriodFilter, setCoveragePeriodFilter] = useState('all')
   const [page, setPage] = useState(1)
 
   const pdfSources = useMemo(() => getPdfSources(sources), [sources])
   const authorityOptions = useMemo(() => Array.from(new Set(pdfSources.map((item) => item.authority || item.sourceType || '未標記來源'))).sort(), [pdfSources])
-  const coverageOptions = useMemo(() => Array.from(new Set([...buildCoverageOptions(), ...pdfSources.map((item) => getPdfReviewMeta(item).coverage).filter(Boolean)])).sort(sortCoverage), [pdfSources])
-  const filteredSources = useMemo(() => filterPdfSources(pdfSources, { authority: authorityFilter, attention: attentionFilter, referenceLevel: referenceFilter, coverage: coverageFilter }), [attentionFilter, authorityFilter, coverageFilter, pdfSources, referenceFilter])
+  const coverageYearOptions = useMemo(() => buildPdfCoverageYearOptions(2024, 2100), [])
+  const coveragePeriodOptions = useMemo(() => [PDF_COVERAGE_UNMARKED, ...PDF_COVERAGE_PERIODS], [])
+  const filteredSources = useMemo(() => filterPdfSources(pdfSources, { authority: authorityFilter, attention: attentionFilter, referenceLevel: referenceFilter, coverage: 'all', coverageYear: coverageYearFilter, coveragePeriod: coveragePeriodFilter }), [attentionFilter, authorityFilter, coveragePeriodFilter, coverageYearFilter, pdfSources, referenceFilter])
   const pageData = useMemo(() => paginatePdfSources(filteredSources, page, 20), [filteredSources, page])
   const deficiencyDrafts = useMemo(() => insights?.deficiencyCandidates.map((item, index) => pdfCandidateToDeficiencyDraft(item, pdfUrl || fileName || 'uploaded-pdf', index + 1)) ?? [], [fileName, insights, pdfUrl])
 
@@ -130,12 +132,14 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
           <label>地方 / 來源<select value={authorityFilter} onChange={(event) => updateFilter(() => setAuthorityFilter(event.target.value))}><option value="all">全部來源</option>{authorityOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
           <label>是否需要關注<select value={attentionFilter} onChange={(event) => updateFilter(() => setAttentionFilter(event.target.value as PdfSourceFilters['attention']))}><option value="all">全部</option><option value="attention">需關注</option><option value="normal">未標記關注</option></select></label>
           <label>參考意義<select value={referenceFilter} onChange={(event) => updateFilter(() => setReferenceFilter(event.target.value as PdfReferenceLevel | 'all'))}><option value="all">全部</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
-          <label>覆蓋範圍<select value={coverageFilter} onChange={(event) => updateFilter(() => setCoverageFilter(event.target.value))}><option value="all">全部</option>{coverageOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+          <label>覆蓋年份<select value={coverageYearFilter} onChange={(event) => updateFilter(() => setCoverageYearFilter(event.target.value))}><option value="all">全部年份</option>{coverageYearOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+          <label>覆蓋期間<select value={coveragePeriodFilter} onChange={(event) => updateFilter(() => setCoveragePeriodFilter(event.target.value))}><option value="all">全部期間</option>{coveragePeriodOptions.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
         </div>
 
         <div className="pdf-table-list">
           {pageData.items.length ? pageData.items.map((item) => {
             const meta = getPdfReviewMeta(item)
+            const coverageParts = splitPdfCoverage(meta.coverage)
             const authority = item.authority || item.sourceType || '未標記來源'
             return (
               <article key={item.id} className={`pdf-list-row ${meta.needsAttention ? 'needs-attention' : ''}`}>
@@ -150,7 +154,8 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
                 <div className="pdf-review-controls">
                   <button className={meta.needsAttention ? 'primary-button compact' : 'text-button compact'} type="button" onClick={() => onUpdatePdfMeta?.(item.id, { needsAttention: !meta.needsAttention })}>{meta.needsAttention ? '已關注' : '需關注'}</button>
                   <label>參考意義<select value={meta.referenceLevel} onChange={(event) => onUpdatePdfMeta?.(item.id, { referenceLevel: event.target.value as PdfReferenceLevel })}><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></label>
-                  <label>覆蓋時間<select value={meta.coverage} onChange={(event) => onUpdatePdfMeta?.(item.id, { coverage: event.target.value })}>{coverageOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
+                  <label>覆蓋年份<select value={coverageParts.year} onChange={(event) => onUpdatePdfMeta?.(item.id, { coverage: buildPdfCoverage(event.target.value, coverageParts.period) })}>{coverageYearOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
+                  <label>覆蓋期間<select value={coverageParts.period} onChange={(event) => onUpdatePdfMeta?.(item.id, { coverage: buildPdfCoverage(coverageParts.year, event.target.value) })}>{coveragePeriodOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
                 </div>
                 <div className="pdf-list-actions">
                   <a href={item.url} target="_blank" rel="noreferrer">打開 <ExternalLink size={12} /></a>
@@ -208,16 +213,4 @@ export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeed
       </aside>
     </div>
   )
-}
-
-function buildCoverageOptions() {
-  const year = new Date().getFullYear()
-  const years = [year + 1, year, year - 1, year - 2]
-  return ['未標記', ...years.flatMap((item) => [`${item} Q1`, `${item} Q2`, `${item} Q3`, `${item} Q4`, `${item} 上半年`, `${item} 下半年`, `${item} 年度匯總`])]
-}
-
-function sortCoverage(a: string, b: string) {
-  if (a === '未標記') return -1
-  if (b === '未標記') return 1
-  return b.localeCompare(a, 'zh-Hant')
 }
