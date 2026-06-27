@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, getPdfSources } from './pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, discoverPdfSourcesFromPages, extractPdfLinksFromHtml, getPdfSelectionKey, getPdfSources } from './pdfSources'
 import type { SourceBookmark } from '../types'
 
 const sources: SourceBookmark[] = [
@@ -92,6 +92,31 @@ describe('pdf source utilities', () => {
 
     expect(displayPdfTitle(item)).toBe('abs port state control guide 2026')
     expect(buildPdfSourceBrief(item).title).toBe('abs port state control guide 2026')
+  })
+
+
+  it('does not rediscover PDFs already collected, deleted, or marked not needed', async () => {
+    const discovered = await discoverPdfSourcesFromPages([
+      { id: 'page', title: 'Source page', url: 'https://example.com/page', sourceType: '手動備忘', addedAt: '2026-06-01T00:00:00.000Z', manual: true },
+      { id: 'existing', title: 'Existing PDF', url: 'https://example.com/keep.pdf', sourceType: '在線 PDF / 自動抓取', addedAt: '2026-06-01T00:00:00.000Z', manual: false },
+      { id: 'deleted', title: 'Deleted PDF', url: 'https://example.com/deleted.pdf', sourceType: '在線 PDF / 自動抓取', addedAt: '2026-06-01T00:00:00.000Z', manual: false, deletedAt: '2026-06-02T00:00:00.000Z' },
+      { id: 'not-needed', title: 'Not needed PDF', url: 'https://example.com/not-needed.pdf', sourceType: '在線 PDF / 自動抓取', addedAt: '2026-06-01T00:00:00.000Z', manual: false, status: 'failed', tags: ['pdf-not-needed'] },
+    ], {
+      fetcher: async () => ({ ok: true, text: async () => `
+        <a href="/keep.pdf">Already collected</a>
+        <a href="/deleted.pdf">Deleted earlier</a>
+        <a href="/not-needed.pdf">Do not collect</a>
+        <a href="/new.pdf">New PDF</a>
+      ` }),
+      fetchedAt: '2026-06-26T00:00:00.000Z',
+    })
+
+    expect(discovered.sources.map((item) => item.url)).toEqual(['https://example.com/new.pdf'])
+  })
+
+  it('uses normalized URL, not source id, as PDF selection key', () => {
+    expect(getPdfSelectionKey({ ...sources[0], id: 'a', url: 'https://example.com/report.pdf' })).toBe('https://example.com/report.pdf')
+    expect(getPdfSelectionKey({ ...sources[0], id: 'a', url: 'https://example.com/report.pdf/' })).toBe('https://example.com/report.pdf')
   })
 
 })

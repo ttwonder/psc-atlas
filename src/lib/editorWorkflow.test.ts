@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, purgeExpiredDeletedSources, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings, stripDeficiencyTranslations, pdfCandidateToDeficiencyDraft } from './editorWorkflow'
+import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, purgeExpiredDeletedSources, markPdfNotNeeded, markSourceDeleted, updateSourceBookmark, updateFinding, getPriorityNovelFindings, stripDeficiencyTranslations, pdfCandidateToDeficiencyDraft } from './editorWorkflow'
 
 const source: SourceBookmark = {
   id: 's1',
@@ -79,6 +79,17 @@ describe('editor workflow helpers', () => {
     expect(deletedSources([source, deleted])).toHaveLength(1)
     expect(purgeExpiredDeletedSources([deleted], new Date('2026-03-01T00:00:00.000Z'))).toHaveLength(1)
     expect(purgeExpiredDeletedSources([deleted], new Date('2026-03-05T00:00:00.000Z'))).toHaveLength(0)
+  })
+
+
+
+  it('keeps PDF not-needed markers after normal deleted-source purge window', () => {
+    const notNeeded = markPdfNotNeeded(source, '海技組/朱世毅', 'not useful', '2026-02-01T00:00:00.000Z')
+
+    expect(activeSources([notNeeded])).toHaveLength(0)
+    expect(notNeeded.tags).toContain('pdf-not-needed')
+    expect(notNeeded.status).toBe('failed')
+    expect(purgeExpiredDeletedSources([notNeeded], new Date('2026-06-01T00:00:00.000Z'))).toHaveLength(1)
   })
 
   it('updates editable finding fields while tracking operator metadata', () => {

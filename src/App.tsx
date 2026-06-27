@@ -7,10 +7,11 @@ import { PdfInsightPanel } from './components/PdfInsightPanel'
 import { Sidebar, type NavKey } from './components/Sidebar'
 import { categories as seedCategories, inspectionCases, shipTypes as seedShipTypes } from './data/cases'
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
-import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, getPriorityNovelFindings, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type ManualCaseDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
+import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, getPriorityNovelFindings, markPdfNotNeeded, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type ManualCaseDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
 import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
+import { buildManualCaseDraftFromHtml } from './lib/temporaryWebsiteCase'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
 import { discoverPdfSourcesFromPages } from './lib/pdfSources'
 import { DEFAULT_OPERATOR_ROSTER, OPERATOR_ACTION_LABELS, OPERATOR_DEPARTMENTS, buildAuditLog, canOperatorPerform, cloudProfileToIdentity, identityFromRosterSelection, normalizeOperatorRoles, normalizeOperatorRoster, verifyOperatorIdentity, type OperatorAction, type OperatorAuditLog, type OperatorIdentity, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './lib/operatorAccess'
@@ -588,6 +589,16 @@ function App() {
     })
   }
 
+  async function markPdfSourceNotNeeded(id: string) {
+    const before = sources.find((item) => item.id === id)
+    requestOperator('delete_source', before?.title ?? id, async (actor) => {
+      const after = before ? markPdfNotNeeded(before, `${actor.department}/${actor.name}`) : null
+      const next = sources.map((item) => item.id === id && after ? after : item)
+      await persistSources(next, '已標記為「不需要」；此 PDF 已從清單移除，之後自動抓取會跳過。')
+      await appendAuditLog(buildAuditLog({ actor, action: 'delete_source', targetType: 'source', targetId: id, targetTitle: `不需要 PDF：${before?.title ?? id}`, before, after }))
+    })
+  }
+
   async function restoreDeletedSource(id: string) {
     const before = sources.find((item) => item.id === id)
     requestOperator('restore_source', before?.title ?? id, async (actor) => {
@@ -708,7 +719,7 @@ function App() {
         {activePage === 'findings' ? <FindingsPage cases={filteredCases} selected={selected} onSelect={selectCase} query={deferredQuery} categories={categories} canEdit={hasWriteIdentity} onRequestEdit={(targetTitle, proceed) => requestOperator('edit_finding', targetTitle, proceed)} onUpdateFinding={saveFindingEdit} onAddManualFinding={saveManualFinding} /> : null}
         {activePage === 'priority' ? <PriorityNovelPage cases={filteredCases} /> : null}
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
-        {activePage === 'pdf' ? <PdfInsightPanel sources={sources} onDeleteSource={softDeleteSource} /> : null}
+        {activePage === 'pdf' ? <PdfInsightPanel sources={sources} onDeleteSource={softDeleteSource} onMarkPdfNotNeeded={markPdfSourceNotNeeded} /> : null}
         {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
         {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {})} onClearOperator={() => setCurrentOperator(null)} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} onUpdateRosterRole={updateRosterRole} /> : null}
       </main>
@@ -753,6 +764,11 @@ function CasesPage(props: { cases: InspectionCase[]; selected: InspectionCase | 
 
 function ManualCaseForm({ onSubmit }: { onSubmit: (draft: ManualCaseDraft) => void }) {
   const [open, setOpen] = useState(false)
+  const [tempOpen, setTempOpen] = useState(false)
+  const [tempUrl, setTempUrl] = useState('')
+  const [tempLoading, setTempLoading] = useState(false)
+  const [tempDraft, setTempDraft] = useState<ManualCaseDraft | null>(null)
+  const [tempMessage, setTempMessage] = useState('')
   const [vessel, setVessel] = useState('')
   const [imo, setImo] = useState('')
   const [flag, setFlag] = useState('')
@@ -766,6 +782,34 @@ function ManualCaseForm({ onSubmit }: { onSubmit: (draft: ManualCaseDraft) => vo
   const [detentionItemsText, setDetentionItemsText] = useState('')
   const [message, setMessage] = useState('')
 
+  async function analyzeTemporaryUrl() {
+    const url = tempUrl.trim()
+    if (!url) { setTempMessage('請先輸入臨時網站網址。'); return }
+    setTempLoading(true)
+    setTempMessage('正在讀取臨時網站並分析滯留內容……')
+    setTempDraft(null)
+    try {
+      const response = await fetch(url)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      const html = await response.text()
+      const draft = buildManualCaseDraftFromHtml(html, url)
+      setTempDraft(draft)
+      setTempMessage(`已分析出「${draft.vessel}」與 ${draft.detentionItemsText.split(/\r?\n/).filter(Boolean).length} 條候選滯留；請確認後保存。`)
+    } catch (error) {
+      setTempMessage(`無法直接讀取此網站：${error instanceof Error ? error.message : String(error)}。若是 CORS/防爬限制，請先手動複製滯留內容到「手動增加案例」，或之後接後端代理抓取。`)
+    } finally {
+      setTempLoading(false)
+    }
+  }
+
+  function saveTemporaryDraft() {
+    if (!tempDraft) { setTempMessage('請先分析網址。'); return }
+    if (!tempDraft.detentionItemsText.trim()) { setTempMessage('未找到可保存的滯留內容，請先人工補充。'); return }
+    onSubmit(tempDraft)
+    setTempMessage(`已提交「${tempDraft.vessel}」臨時網站案例，請完成身份確認後保存。`)
+    setTempOpen(false)
+  }
+
   function submit() {
     if (!vessel.trim()) { setMessage('請先輸入船名。'); return }
     if (!detentionItemsText.trim()) { setMessage('請至少輸入一條滯留內容。'); return }
@@ -775,7 +819,18 @@ function ManualCaseForm({ onSubmit }: { onSubmit: (draft: ManualCaseDraft) => vo
   }
 
   return <section className="panel manual-entry-panel">
-    <header className="manual-entry-header"><div><p className="eyebrow">MANUAL CASE ENTRY</p><h2>手動增加案例</h2><p>可批量輸入同一案例中的多條滯留；每行格式：代碼 | 類別 | 滯留原文。</p></div><button className="primary-button" type="button" onClick={() => setOpen((value) => !value)}>{open ? '收起' : '手動增加案例'}</button></header>
+    <header className="manual-entry-header"><div><p className="eyebrow">MANUAL CASE ENTRY</p><h2>手動增加案例</h2><p>可批量輸入同一案例中的多條滯留；每行格式：代碼 | 類別 | 滯留原文。</p></div><div className="manual-entry-header-actions"><button className="export-button" type="button" onClick={() => setTempOpen((value) => !value)}>{tempOpen ? '收起臨時網站' : '從臨時網站手動增加案例'}</button><button className="primary-button" type="button" onClick={() => setOpen((value) => !value)}>{open ? '收起' : '手動增加案例'}</button></div></header>
+    {tempOpen ? <div className="manual-entry-grid temporary-site-grid">
+      <label className="wide">臨時網站網址<input value={tempUrl} onChange={(event) => setTempUrl(event.target.value)} placeholder="https://.../detention-report" /></label>
+      <div className="manual-entry-actions"><button className="primary-button" type="button" onClick={analyzeTemporaryUrl} disabled={tempLoading}>{tempLoading ? '分析中…' : '分析網址'}</button>{tempDraft ? <button className="export-button" type="button" onClick={saveTemporaryDraft}>保存為案例</button> : null}<button className="text-button" type="button" onClick={() => setTempOpen(false)}>取消</button></div>
+      {tempDraft ? <div className="temporary-site-preview wide">
+        <strong>解析預覽：{tempDraft.vessel}</strong>
+        <span>IMO {tempDraft.imo || '待補'} · {tempDraft.flag || '待補'} · {tempDraft.date} · {tempDraft.port || '待補'}</span>
+        <p>{tempDraft.summary}</p>
+        <pre>{tempDraft.detentionItemsText}</pre>
+      </div> : null}
+    </div> : null}
+    {tempMessage ? <p className="permission-note">{tempMessage}</p> : null}
     {open ? <div className="manual-entry-grid">
       <label>船名<input value={vessel} onChange={(event) => setVessel(event.target.value)} placeholder="例如 MANUAL VESSEL" /></label>
       <label>IMO<input value={imo} onChange={(event) => setImo(event.target.value)} placeholder="可留空" /></label>

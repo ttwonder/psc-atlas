@@ -645,7 +645,8 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 .pdf-check-copy { min-width: 0; }
 .pdf-check-list strong { display: block; color: #37406b; font-size: 12.5px; line-height: 1.32; overflow-wrap: anywhere; }
 .pdf-check-list span, .pdf-check-list small { display: block; color: #778098; font-size: 11px; line-height: 1.35; }
-.pdf-check-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; align-items: center; }
+.pdf-check-actions { display: grid; grid-template-columns: repeat(2, minmax(58px, auto)); gap: 6px; justify-content: flex-end; align-items: center; }
+.pdf-check-actions .pdf-not-needed-button { grid-column: 2; }
 .pdf-check-actions a, .pdf-check-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 28px; padding: 0 8px; border-radius: 8px; font-size: 11px; font-weight: 850; white-space: nowrap; }
 .pdf-check-actions a { border: 1px solid #bfc7ff; color: #4f4bb8; background: #f6f5ff; text-decoration: none; }
 .pdf-check-actions .danger-button { border-color: #fecaca; color: #b42318; background: #fff5f5; }
@@ -740,7 +741,8 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 
 /* Manual case / detention entry */
 .manual-entry-panel { border-left: 4px solid #8fd5f8; background: linear-gradient(135deg, #fff7fb, #f0fbff); }
-.manual-entry-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.manual-entry-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.manual-entry-header-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
 .manual-entry-header h2 { margin: 0 0 4px; }
 .manual-entry-header p:not(.eyebrow) { margin: 0; color: #66708a; font-size: 12px; line-height: 1.5; }
 .manual-entry-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
@@ -752,6 +754,9 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 .manual-entry-grid textarea { min-height: 78px; padding: 8px 9px; resize: vertical; }
 .manual-entry-grid textarea[placeholder*="07105"] { min-height: 122px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
 .manual-entry-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; }
+.temporary-site-preview { display: grid; gap: 6px; padding: 10px; border: 1px dashed #b9c7f7; border-radius: 10px; background: rgba(255,255,255,.78); color: #37406b; }
+.temporary-site-preview span, .temporary-site-preview p { margin: 0; color: #66708a; font-size: 12px; }
+.temporary-site-preview pre { max-height: 180px; margin: 0; padding: 9px; overflow: auto; border-radius: 8px; background: #f7f9ff; color: #24314f; white-space: pre-wrap; font-size: 11.5px; line-height: 1.45; }
 .manual-inline-check { align-content: center; min-height: 34px; padding: 7px 9px; border: 1px solid #e5ddff; border-radius: 9px; background: #fff; }
 @media (max-width: 960px) { .manual-entry-grid, .manual-entry-grid.compact { grid-template-columns: 1fr; } .manual-entry-header { align-items: stretch; flex-direction: column; } }
 

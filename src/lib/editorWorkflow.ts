@@ -88,6 +88,15 @@ export function markSourceDeleted(source: SourceBookmark, deletedBy?: string | n
   }
 }
 
+export function markPdfNotNeeded(source: SourceBookmark, deletedBy?: string | null, reason = '', now = new Date().toISOString()): SourceBookmark {
+  return {
+    ...markSourceDeleted(source, deletedBy, reason || '不需要此 PDF，之後自動抓取時跳過。', now),
+    status: 'failed',
+    tags: Array.from(new Set([...(source.tags ?? []), 'pdf-not-needed'])),
+    notes: [source.notes, '不需要此 PDF，之後自動抓取時跳過。'].filter(Boolean).join('｜'),
+  }
+}
+
 export function restoreSource(source: SourceBookmark, now = new Date().toISOString()): SourceBookmark {
   const { deletedAt: _deletedAt, deletedBy: _deletedBy, deleteReason: _deleteReason, ...rest } = source
   return { ...rest, updatedAt: now }
@@ -107,6 +116,7 @@ export function purgeExpiredDeletedSources(sources: SourceBookmark[], now = new 
   const threshold = now.getTime() - DELETED_SOURCE_RETENTION_DAYS * DAY_MS
   return sources.filter((item) => {
     if (!item.deletedAt) return true
+    if (item.tags?.includes('pdf-not-needed')) return true
     const deletedTime = Date.parse(item.deletedAt)
     return Number.isFinite(deletedTime) && deletedTime >= threshold
   })

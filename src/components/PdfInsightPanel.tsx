@@ -2,11 +2,11 @@ import { useMemo, useState } from 'react'
 import { CheckSquare, ExternalLink, FileText, Link, Trash2, Upload } from 'lucide-react'
 import { pdfCandidateToDeficiencyDraft } from '../lib/editorWorkflow'
 import { buildPdfInsights, type PdfInsights } from '../lib/pdfInsights'
-import { buildPdfSourceBrief, displayPdfTitle, getPdfSources } from '../lib/pdfSources'
+import { buildPdfSourceBrief, displayPdfTitle, getPdfSelectionKey, getPdfSources } from '../lib/pdfSources'
 import type { SourceBookmark } from '../types'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url'
 
-export function PdfInsightPanel({ sources = [], onDeleteSource }: { sources?: SourceBookmark[]; onDeleteSource?: (id: string, reason?: string) => void | Promise<void> }) {
+export function PdfInsightPanel({ sources = [], onDeleteSource, onMarkPdfNotNeeded }: { sources?: SourceBookmark[]; onDeleteSource?: (id: string, reason?: string) => void | Promise<void>; onMarkPdfNotNeeded?: (id: string) => void | Promise<void> }) {
   const [fileName, setFileName] = useState('')
   const [status, setStatus] = useState('尚未上傳 PDF')
   const [pdfUrl, setPdfUrl] = useState('')
@@ -16,7 +16,7 @@ export function PdfInsightPanel({ sources = [], onDeleteSource }: { sources?: So
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 
   const pdfSources = useMemo(() => getPdfSources(sources), [sources])
-  const selectedPdfSources = useMemo(() => pdfSources.filter((item) => selectedIds.includes(item.id)), [pdfSources, selectedIds])
+  const selectedPdfSources = useMemo(() => pdfSources.filter((item) => selectedIds.includes(getPdfSelectionKey(item))), [pdfSources, selectedIds])
   const sourceBriefs = useMemo(() => selectedPdfSources.map(buildPdfSourceBrief), [selectedPdfSources])
   const deficiencyDrafts = useMemo(() => insights?.deficiencyCandidates.map((item, index) => pdfCandidateToDeficiencyDraft(item, pdfUrl || fileName || 'uploaded-pdf', index + 1)) ?? [], [fileName, insights, pdfUrl])
 
@@ -113,11 +113,12 @@ export function PdfInsightPanel({ sources = [], onDeleteSource }: { sources?: So
           </header>
           <div className="pdf-check-list">
             {pdfSources.length ? pdfSources.map((item) => {
-              const checked = selectedIds.includes(item.id)
+              const selectionKey = getPdfSelectionKey(item)
+              const checked = selectedIds.includes(selectionKey)
               return (
                 <article key={item.id} className={checked ? 'pdf-check-item selected' : 'pdf-check-item'}>
                   <label className="pdf-check-toggle">
-                    <input type="checkbox" checked={checked} onChange={() => togglePdf(item.id)} />
+                    <input type="checkbox" checked={checked} onChange={() => togglePdf(selectionKey)} />
                     <div className="pdf-check-copy">
                       <strong>{displayPdfTitle(item)}</strong>
                       <span>{item.authority ?? item.sourceType} · {item.status ?? 'new'}</span>
@@ -127,6 +128,7 @@ export function PdfInsightPanel({ sources = [], onDeleteSource }: { sources?: So
                   <div className="pdf-check-actions">
                     <a href={item.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>打開 <ExternalLink size={12} /></a>
                     {onDeleteSource ? <button className="danger-button compact" type="button" onClick={(event) => { event.stopPropagation(); onDeleteSource(item.id, 'PDF 資料頁刪除') }}><Trash2 size={12} />刪除</button> : null}
+                    {onMarkPdfNotNeeded ? <button className="text-button compact pdf-not-needed-button" type="button" onClick={(event) => { event.stopPropagation(); onMarkPdfNotNeeded(item.id) }}>不需要</button> : null}
                   </div>
                 </article>
               )

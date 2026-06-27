@@ -17,7 +17,15 @@ export function isPdfSource(item: SourceBookmark) {
 }
 
 export function getPdfSources(sources: SourceBookmark[]) {
-  return sources.filter((item) => !item.deletedAt && isPdfSource(item))
+  return sources.filter((item) => !item.deletedAt && !isPdfNotNeeded(item) && isPdfSource(item))
+}
+
+export function getPdfSelectionKey(item: Pick<SourceBookmark, 'url' | 'id'>) {
+  return normalizePdfUrl(item.url) || item.id
+}
+
+export function isPdfNotNeeded(item: SourceBookmark) {
+  return item.tags?.includes('pdf-not-needed') || item.status === 'failed' && /不需要|not needed/i.test(item.deleteReason ?? item.notes ?? '')
 }
 
 export function displayPdfTitle(item: Pick<SourceBookmark, 'title' | 'url' | 'authority' | 'sourceType'>) {
@@ -99,6 +107,7 @@ export async function discoverPdfSourcesFromPages(sources: SourceBookmark[], opt
     .filter((item) => !item.deletedAt && !isPdfSource(item) && /^https?:\/\//i.test(item.url))
     .sort((a, b) => Number(b.manual) - Number(a.manual) || b.addedAt.localeCompare(a.addedAt))
     .slice(0, maxPages)
+  const skippedPdfUrls = new Set(sources.filter((item) => isPdfSource(item) || item.deletedAt || isPdfNotNeeded(item)).map((item) => normalizePdfUrl(item.url)).filter(Boolean))
 
   const discovered: SourceBookmark[] = []
   const messages: string[] = []
@@ -110,7 +119,7 @@ export async function discoverPdfSourcesFromPages(sources: SourceBookmark[], opt
         continue
       }
       const html = await response.text()
-      const links = extractPdfLinksFromHtml(html, source.url)
+      const links = extractPdfLinksFromHtml(html, source.url).filter((link) => !skippedPdfUrls.has(normalizePdfUrl(link.url)))
       if (!links.length) {
         messages.push(`${source.title} 未找到 PDF 連結`)
         continue
@@ -145,6 +154,16 @@ function isGenericPdfTitle(value: string) {
 
 function isPdfUrlLike(value: string) {
   return /\.pdf(?:$|[?#])/i.test(value.trim())
+}
+
+function normalizePdfUrl(value: string) {
+  try {
+    const url = new URL(value.trim())
+    url.hash = ''
+    return url.toString().replace(/\/$/, '')
+  } catch {
+    return value.trim().replace(/\/$/, '')
+  }
 }
 
 function resolveUrl(rawUrl: string, baseUrl: string) {
