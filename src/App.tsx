@@ -1038,8 +1038,8 @@ function SourcesPage(props: SourcesPageProps) {
   const [sourceTab, setSourceTab] = useState<'guides' | 'collected' | 'deleted' | 'refresh'>('guides')
   const [editingSourceId, setEditingSourceId] = useState('')
   const [sourceDraft, setSourceDraft] = useState<SourceBookmarkDraft>({ title: '', url: '', sourceType: '', authority: '', notes: '', publishedAt: '', fetchedAt: '', evidenceLevel: undefined, autoFetch: undefined, status: 'new', tags: '', storageUrl: '' })
-  const [deleteReason, setDeleteReason] = useState('')
   const [sourcePermissionMessage, setSourcePermissionMessage] = useState('')
+  const [advancedRefreshOpen, setAdvancedRefreshOpen] = useState(false)
   const activeSourceList = activeSources(props.sources)
   const deletedSourceList = deletedSources(props.sources)
   return (
@@ -1120,7 +1120,6 @@ function SourcesPage(props: SourcesPageProps) {
           <section className="panel collected-sources-panel">
             <h2>已採集 / 備忘網址清單</h2>
             <p className="panel-hint">操作員以上可修改來源各欄位並刪除來源；刪除會先移到「已刪除」板塊，30 天後自動清空。</p>
-            <label className="delete-reason-field">刪除原因（可選）<input value={deleteReason} onChange={(event) => setDeleteReason(event.target.value)} placeholder="例如：重複來源 / 無效網址 / 已合併到其他來源" /></label>
             {sourcePermissionMessage ? <div className="permission-note">{sourcePermissionMessage}</div> : null}
             <div className="source-list">{activeSourceList.map((item) => {
               const editing = editingSourceId === item.id
@@ -1151,7 +1150,7 @@ function SourcesPage(props: SourcesPageProps) {
                     <button className="text-button compact" type="button" onClick={() => setEditingSourceId('')}>取消</button>
                   </> : <>
                     <button className="text-button compact" type="button" onClick={() => { const beginEdit = () => { setSourcePermissionMessage(''); setEditingSourceId(item.id); setSourceDraft({ title: item.title, url: item.url, sourceType: item.sourceType, authority: item.authority ?? '', notes: item.notes ?? '', publishedAt: item.publishedAt ?? '', fetchedAt: item.fetchedAt ?? '', evidenceLevel: item.evidenceLevel, autoFetch: item.autoFetch, status: item.status ?? 'new', tags: item.tags?.join(', ') ?? '', storageUrl: item.storageUrl ?? '', pdfArchivedAt: item.pdfArchivedAt ?? '' }) }; if (!props.canEditSources) { props.onRequestOperator('edit_source', item.title, beginEdit); return } beginEdit() }}>修改</button>
-                    <button className="danger-button compact" type="button" onClick={() => { const runDelete = () => { setSourcePermissionMessage(''); props.onDeleteSource(item.id, deleteReason) }; if (!props.canEditSources) { props.onRequestOperator('delete_source', item.title, runDelete); return } runDelete() }}>刪除</button>
+                    <button className="danger-button compact" type="button" onClick={() => { const runDelete = () => { setSourcePermissionMessage(''); props.onDeleteSource(item.id, '資料來源頁刪除') }; if (!props.canEditSources) { props.onRequestOperator('delete_source', item.title, runDelete); return } runDelete() }}>刪除</button>
                   </>}
                 </div>
               </article>
@@ -1176,7 +1175,14 @@ function SourcesPage(props: SourcesPageProps) {
       {sourceTab === 'refresh' ? (
         <section className="panel refresh-plan-panel full-span">
           <h2>後端自動抓取與補案策略</h2>
-          <div className="server-refresh-box">
+          <div className="advanced-refresh-summary">
+            <div>
+              <strong>自動抓取策略說明</strong>
+              <p>一般操作請用頁面上方「獲取最新滯留」。Vercel 後端刷新只給部署/管理員在需要繞過 CORS 或由伺服器寫入 Supabase 時使用。</p>
+            </div>
+            <button className="text-button compact" type="button" onClick={() => setAdvancedRefreshOpen((value) => !value)}>{advancedRefreshOpen ? '收起高級設定' : '高級：Vercel 後端刷新'}</button>
+          </div>
+          {advancedRefreshOpen ? <div className="server-refresh-box">
             <div>
               <strong>Vercel 後端刷新</strong>
               <p>{props.serverRefreshMessage}</p>
@@ -1186,7 +1192,7 @@ function SourcesPage(props: SourcesPageProps) {
               <input type="password" value={props.serverRefreshToken} onChange={(event) => props.onServerRefreshToken(event.target.value)} placeholder="輸入 PSC_REFRESH_TOKEN" />
             </label>
             <button className="primary-button" type="button" onClick={props.onServerRefresh} disabled={props.serverRefreshLoading || !props.serverRefreshToken.trim()}>{props.serverRefreshLoading ? '後端抓取中…' : '由後端獲取最新滯留'}</button>
-          </div>
+          </div> : null}
           <div className="refresh-plan-grid">
             {props.sourceGuides.map((item) => <article key={item.id}><strong>{item.title}</strong><span>{item.autoFetch}</span><p>{item.refreshScope}</p><small>{item.nextAction}</small></article>)}
           </div>
