@@ -110,6 +110,16 @@ function saveLocalAuditLogs(logs: OperatorAuditLog[]) {
   localStorage.setItem(OPERATOR_AUDIT_STORAGE_KEY, JSON.stringify(logs.slice(0, 500)))
 }
 
+function getRosterMismatches(expected: OperatorRoster, actual: OperatorRoster) {
+  return OPERATOR_DEPARTMENTS.flatMap((dept) => {
+    const expectedNames = expected[dept] ?? []
+    const actualNames = actual[dept] ?? []
+    const missing = expectedNames.filter((name) => !actualNames.includes(name)).map((name) => `${dept}/${name}: 雲端缺少`)
+    const extra = actualNames.filter((name) => !expectedNames.includes(name)).map((name) => `${dept}/${name}: 雲端仍存在`)
+    return [...missing, ...extra]
+  })
+}
+
 function getRoleMismatches(expected: OperatorRoleMap, actual: OperatorRoleMap, roster: OperatorRoster) {
   return Object.entries(roster).flatMap(([department, names]) => names.flatMap((name) => {
     const dept = department as keyof OperatorRoleMap
@@ -117,6 +127,11 @@ function getRoleMismatches(expected: OperatorRoleMap, actual: OperatorRoleMap, r
     const actualRole = actual[dept]?.[name] ?? 'operator'
     return expectedRole === actualRole ? [] : [`${department}/${name}: 應為 ${expectedRole}，雲端讀回 ${actualRole}`]
   }))
+}
+
+function filterPasswordsForRoster(passwords: AdminPasswordMap, roster: OperatorRoster) {
+  const activeKeys = new Set(OPERATOR_DEPARTMENTS.flatMap((dept) => roster[dept].map((name) => adminPasswordKey(dept, name))))
+  return normalizeAdminPasswordMap(Object.fromEntries(Object.entries(passwords).filter(([key]) => activeKeys.has(key))))
 }
 
 
@@ -425,7 +440,7 @@ function App() {
         await upsertCloudOperatorRoster(normalized, normalizedRoles)
         const verified = await loadCloudOperatorRoster()
         if (verified) {
-          const mismatches = getRoleMismatches(normalizedRoles, verified.roles, normalized)
+          const mismatches = [...getRosterMismatches(normalized, verified.roster), ...getRoleMismatches(normalizedRoles, verified.roles, normalized)]
           applyCloudRoster(verified)
           if (mismatches.length > 0) {
             const message = `人員權限雲端保存後讀回仍不一致：${mismatches.slice(0, 3).join('；')}。請確認你點的是「保存人員權限修改」，並已執行 supabase/operator-cloud-permissions-fix.sql。`
@@ -524,6 +539,44 @@ function App() {
         saveCurrentOperator(nextIdentity)
       }
       setOwnerLoginMessage(cloudConfigured ? '人員權限修改已保存到雲端。' : '人員權限修改已保存到本機；目前尚未設定 Supabase。')
+    })
+  }
+
+  async function savePersonnelManagementDraft(nextRosterInput: OperatorRoster, nextRolesInput: OperatorRoleMap, nextPasswordsInput: AdminPasswordMap) {
+    requestOperator('manage_roster', '保存全部人員管理修改', async (actor) => {
+      const nextRoster = normalizeOperatorRoster(nextRosterInput)
+      const nextRoles = normalizeOperatorRoles(nextRolesInput, nextRoster)
+      const nextPasswords = filterPasswordsForRoster(nextPasswordsInput, nextRoster)
+      const before = { roster: operatorRoster, roles: operatorRoles, passwordKeys: Object.keys(adminPasswords).sort() }
+      const after = { roster: nextRoster, roles: nextRoles, passwordKeys: Object.keys(nextPasswords).sort() }
+      const saved = await persistOperatorRoster(nextRoster, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      if (!saved) return
+      try {
+        if (cloudConfigured) await upsertCloudPermissionSettings(ownerPassword, nextPasswords)
+        setAdminPasswords(nextPasswords)
+        saveAdminPasswords(nextPasswords)
+        if (currentOperator && currentOperator.role !== 'owner' && OPERATOR_DEPARTMENTS.includes(currentOperator.department as keyof OperatorRoster)) {
+          const dept = currentOperator.department as keyof OperatorRoster
+          const stillExists = nextRoster[dept].includes(currentOperator.name)
+          if (!stillExists) {
+            setCurrentOperator(null)
+            saveCurrentOperator(null)
+          } else {
+            const role = nextRoles[dept]?.[currentOperator.name] ?? 'operator'
+            const nextIdentity = { ...currentOperator, role }
+            setCurrentOperator(nextIdentity)
+            saveCurrentOperator(nextIdentity)
+          }
+        }
+        const message = cloudConfigured ? '全部人員、權限與密碼已保存到 Supabase 雲端，並已重新讀回核對。' : '全部人員、權限與密碼已保存到本機；目前尚未設定 Supabase。'
+        setCloudMessage(message)
+        setOwnerLoginMessage(message)
+        await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: 'personnel-management', targetTitle: '保存全部人員管理修改', before, after }))
+      } catch (error) {
+        const message = `人員名單已保存，但人員密碼雲端同步失敗：${describeCloudError(error)}`
+        setCloudMessage(message)
+        setOwnerLoginMessage(message)
+      }
     })
   }
 
@@ -932,9 +985,9 @@ function App() {
         {activePage === 'analysis' ? <AnalysisPage report={report} trend={trend} range={timeRange} onDownload={downloadReport} /> : null}
         {activePage === 'pdf' ? <PdfInsightPanel sources={sources} onDeleteSource={softDeleteSource} onMarkPdfNotNeeded={markPdfSourceNotNeeded} onUpdatePdfMeta={savePdfReviewMeta} /> : null}
         {activePage === 'sources' ? <SourcesPage sources={sources} sourceGuides={officialSourceMap} manualUrl={manualUrl} manualTitle={manualTitle} manualNotes={manualNotes} loading={loading} updateMessage={updateMessage} cloudConfigured={cloudConfigured} cloudUserEmail={cloudUserEmail} cloudEmailInput={cloudEmailInput} cloudMessage={cloudMessage} cloudLoading={cloudLoading} serverRefreshToken={serverRefreshToken} serverRefreshMessage={serverRefreshMessage} serverRefreshLoading={serverRefreshLoading} onServerRefreshToken={setServerRefreshToken} onServerRefresh={refreshViaServer} onCloudEmail={setCloudEmailInput} onCloudSignIn={handleCloudSignIn} onCloudSignOut={handleCloudSignOut} onCloudSync={syncCurrentDatasetToCloud} onUrl={setManualUrl} onTitle={setManualTitle} onNotes={setManualNotes} onAdd={addManualSource} onRefresh={refreshLatest} onRequestOperator={requestOperator} onSaveSource={saveSourceEdit} onDeleteSource={softDeleteSource} onRestoreSource={restoreDeletedSource} canAddSources={true} canEditSources={hasWriteIdentity} editorProfile={editorProfile} /> : null}
-        {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} adminPasswords={adminPasswords} ownerPasswordInput={ownerPasswordInput} ownerLoginMessage={ownerLoginMessage} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onOwnerPasswordInput={setOwnerPasswordInput} onOwnerLogin={loginOwnerWithPassword} onOwnerPasswordReset={resetOwnerPassword} onOwnerPasswordChange={updateOwnerPassword} onAdminPasswordChange={updateAdminPassword} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {}, true)} onClearOperator={logoutOperatorIdentity} onAddRosterName={addRosterName} onRemoveRosterName={removeRosterName} onSaveRosterRoles={saveRosterRoles} /> : null}
+        {activePage === 'permissions' ? <PermissionsPage cloudUserEmail={cloudUserEmail} editorProfile={editorProfile} currentOperator={currentOperator} operatorRoster={operatorRoster} operatorRoles={operatorRoles} adminPasswords={adminPasswords} ownerPasswordInput={ownerPasswordInput} ownerLoginMessage={ownerLoginMessage} auditLogs={auditLogs} canManageRoster={canManageOperatorRoster} onOwnerPasswordInput={setOwnerPasswordInput} onOwnerLogin={loginOwnerWithPassword} onOwnerPasswordReset={resetOwnerPassword} onOwnerPasswordChange={updateOwnerPassword} onRequestAdminAccess={() => requestOperator('manage_roster', '進入權限管理頁', async () => {}, true)} onClearOperator={logoutOperatorIdentity} onSavePersonnelManagement={savePersonnelManagementDraft} /> : null}
       </main>
-      {pendingOperatorAction ? <OperatorIdentityModal action={pendingOperatorAction.action} targetTitle={pendingOperatorAction.targetTitle} roster={operatorRoster} roles={operatorRoles} message={operatorIdentityMessage} onCancel={() => { setPendingOperatorAction(null); setOperatorIdentityMessage('') }} onConfirm={confirmOperatorIdentity} /> : null}
+      {pendingOperatorAction ? <OperatorIdentityModal action={pendingOperatorAction.action} targetTitle={pendingOperatorAction.targetTitle} roster={operatorRoster} roles={operatorRoles} adminPasswords={adminPasswords} message={operatorIdentityMessage} onCancel={() => { setPendingOperatorAction(null); setOperatorIdentityMessage('') }} onConfirm={confirmOperatorIdentity} /> : null}
     </div>
   )
 }
@@ -1396,21 +1449,42 @@ function SourcesPage(props: SourcesPageProps) {
 }
 
 
-function OperatorIdentityModal({ action, targetTitle, roster, roles, message, onCancel, onConfirm }: {
+function OperatorIdentityModal({ action, targetTitle, roster, roles, adminPasswords, message, onCancel, onConfirm }: {
   action: OperatorAction
   targetTitle: string
   roster: OperatorRoster
   roles: OperatorRoleMap
+  adminPasswords: AdminPasswordMap
   message: string
   onCancel: () => void
   onConfirm: (identity: OperatorIdentity) => void | Promise<void>
 }) {
   const [department, setDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
   const [name, setName] = useState('')
+  const [adminPasswordInput, setAdminPasswordInput] = useState('')
+  const [localMessage, setLocalMessage] = useState('')
   const names = roster[department as keyof OperatorRoster] ?? []
+  const selectedIdentity = identityFromRosterSelection(department, name, roles)
+  const selectedPassword = adminPasswords[adminPasswordKey(department, name)] ?? ''
+  const needsAdminPassword = selectedIdentity.role === 'admin'
   useEffect(() => {
     setName((current) => names.includes(current) ? current : (names[0] ?? ''))
+    setAdminPasswordInput('')
+    setLocalMessage('')
   }, [department, names])
+  function confirm() {
+    if (needsAdminPassword) {
+      if (!selectedPassword) {
+        setLocalMessage('此管理員尚未設定密碼，請 Owner 先在人員管理表設定。')
+        return
+      }
+      if (adminPasswordInput.trim() !== selectedPassword.trim()) {
+        setLocalMessage('管理員密碼錯誤。')
+        return
+      }
+    }
+    onConfirm(selectedIdentity)
+  }
   return (
     <div className="operator-modal-backdrop" role="dialog" aria-modal="true" aria-label="確認操作身份">
       <section className="operator-modal">
@@ -1430,18 +1504,68 @@ function OperatorIdentityModal({ action, targetTitle, roster, roles, message, on
             </select>
           </label>
         </div>
-        {message ? <div className="permission-note">{message}</div> : null}
-        <p className="panel-hint">操作員只需選擇部門與姓名；Owner/Admin 若已用 Supabase 登入，會自動使用管理身份，不會跳此窗口。</p>
+        {needsAdminPassword ? <label>管理員密碼
+          <input type="password" value={adminPasswordInput} onChange={(event) => { setAdminPasswordInput(event.target.value); setLocalMessage('') }} placeholder={selectedPassword ? '輸入此管理員密碼' : '尚未設定密碼'} />
+        </label> : null}
+        {message || localMessage ? <div className="permission-note">{localMessage || message}</div> : null}
+        <p className="panel-hint">操作員只需選擇部門與姓名；若選擇管理員，必須輸入 Owner 在人員管理表設定的密碼。</p>
         <div className="operator-modal-actions">
           <button className="text-button compact" type="button" onClick={onCancel}>取消</button>
-          <button className="primary-button" type="button" onClick={() => onConfirm(identityFromRosterSelection(department, name, roles))} disabled={!department || !name}>確認並執行</button>
+          <button className="primary-button" type="button" onClick={confirm} disabled={!department || !name || (needsAdminPassword && (!selectedPassword || !adminPasswordInput.trim()))}>確認並執行</button>
         </div>
       </section>
     </div>
   )
 }
 
-function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, operatorRoster, operatorRoles, adminPasswords, ownerPasswordInput, ownerLoginMessage, auditLogs, canManageRoster, onOwnerPasswordInput, onOwnerLogin, onOwnerPasswordReset, onOwnerPasswordChange, onAdminPasswordChange, onRequestAdminAccess, onClearOperator, onAddRosterName, onRemoveRosterName, onSaveRosterRoles }: {
+type PersonnelDraftRow = {
+  id: string
+  department: string
+  name: string
+  originalKey: string
+  role: RosterManagedRole
+  password: string
+}
+
+function buildPersonnelRows(roster: OperatorRoster, roles: OperatorRoleMap, passwords: AdminPasswordMap): PersonnelDraftRow[] {
+  return OPERATOR_DEPARTMENTS.flatMap((department) => roster[department].map((name) => {
+    const key = adminPasswordKey(department, name)
+    return {
+      id: `${department}::${name}`,
+      department,
+      name,
+      originalKey: key,
+      role: roles[department]?.[name] ?? 'operator',
+      password: passwords[key] ?? '',
+    }
+  }))
+}
+
+function rowsToRoster(rows: PersonnelDraftRow[]): OperatorRoster {
+  const grouped = OPERATOR_DEPARTMENTS.reduce((acc, department) => ({ ...acc, [department]: [] as string[] }), {} as OperatorRoster)
+  rows.forEach((row) => {
+    const department = row.department as keyof OperatorRoster
+    const name = row.name.trim()
+    if (OPERATOR_DEPARTMENTS.includes(department) && name) grouped[department].push(name)
+  })
+  return normalizeOperatorRoster(grouped)
+}
+
+function rowsToRoles(rows: PersonnelDraftRow[], roster: OperatorRoster): OperatorRoleMap {
+  const raw = OPERATOR_DEPARTMENTS.reduce((acc, department) => ({ ...acc, [department]: {} as Record<string, RosterManagedRole> }), {} as OperatorRoleMap)
+  rows.forEach((row) => {
+    const department = row.department as keyof OperatorRoleMap
+    const name = row.name.trim()
+    if (OPERATOR_DEPARTMENTS.includes(department) && name) raw[department][name] = row.role
+  })
+  return normalizeOperatorRoles(raw, roster)
+}
+
+function rowsToPasswords(rows: PersonnelDraftRow[]): AdminPasswordMap {
+  return normalizeAdminPasswordMap(Object.fromEntries(rows.map((row) => [adminPasswordKey(row.department, row.name), row.password])))
+}
+
+function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, operatorRoster, operatorRoles, adminPasswords, ownerPasswordInput, ownerLoginMessage, auditLogs, canManageRoster, onOwnerPasswordInput, onOwnerLogin, onOwnerPasswordReset, onOwnerPasswordChange, onRequestAdminAccess, onClearOperator, onSavePersonnelManagement }: {
   cloudUserEmail: string | null
   editorProfile: EditorProfile | null
   currentOperator: OperatorIdentity | null
@@ -1456,24 +1580,59 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
   onOwnerLogin: () => void
   onOwnerPasswordReset: () => void
   onOwnerPasswordChange: (value: string) => void
-  onAdminPasswordChange: (department: string, name: string, password: string) => void | Promise<void>
   onRequestAdminAccess: () => void
   onClearOperator: () => void
-  onAddRosterName: (department: string, name: string, role?: RosterManagedRole) => void | Promise<void>
-  onRemoveRosterName: (department: string, name: string) => void | Promise<void>
-  onSaveRosterRoles: (roles: OperatorRoleMap) => void | Promise<void>
+  onSavePersonnelManagement: (roster: OperatorRoster, roles: OperatorRoleMap, passwords: AdminPasswordMap) => void | Promise<void>
 }) {
-  const [department, setDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
-  const [name, setName] = useState('')
-  const [newRole, setNewRole] = useState<RosterManagedRole>('operator')
   const [ownerNewPassword, setOwnerNewPassword] = useState('')
-  const [adminPasswordDrafts, setAdminPasswordDrafts] = useState<AdminPasswordMap>(() => adminPasswords)
-  const [draftRoles, setDraftRoles] = useState<OperatorRoleMap>(() => operatorRoles)
-  useEffect(() => { setDraftRoles(operatorRoles) }, [operatorRoles])
-  const totalNames = Object.values(operatorRoster).reduce((sum, names) => sum + names.length, 0)
+  const [personnelRows, setPersonnelRows] = useState<PersonnelDraftRow[]>(() => buildPersonnelRows(operatorRoster, operatorRoles, adminPasswords))
+  const [newDepartment, setNewDepartment] = useState<string>(OPERATOR_DEPARTMENTS[0])
+  const [newName, setNewName] = useState('')
+  const [newRole, setNewRole] = useState<RosterManagedRole>('operator')
+  const [newPassword, setNewPassword] = useState('')
+
+  useEffect(() => {
+    setPersonnelRows(buildPersonnelRows(operatorRoster, operatorRoles, adminPasswords))
+  }, [operatorRoster, operatorRoles, adminPasswords])
+
+  const draftRoster = rowsToRoster(personnelRows)
+  const draftRoles = rowsToRoles(personnelRows, draftRoster)
+  const draftPasswords = filterPasswordsForRoster(rowsToPasswords(personnelRows), draftRoster)
+  const totalNames = personnelRows.filter((row) => row.name.trim()).length
+  const adminCount = personnelRows.filter((row) => row.role === 'admin' && row.name.trim()).length
   const isOwner = currentOperator?.role === 'owner' || editorProfile?.role === 'owner'
-  const adminPeople = OPERATOR_DEPARTMENTS.flatMap((dept) => operatorRoster[dept].filter((person) => (draftRoles[dept]?.[person] ?? operatorRoles[dept]?.[person] ?? 'operator') === 'admin').map((person) => ({ dept, person, key: adminPasswordKey(dept, person) })))
-  const hasRoleDraftChanges = OPERATOR_DEPARTMENTS.some((dept) => operatorRoster[dept].some((person) => (draftRoles[dept]?.[person] ?? 'operator') !== (operatorRoles[dept]?.[person] ?? 'operator')))
+  const duplicateKeys = personnelRows.reduce((acc, row) => {
+    const key = adminPasswordKey(row.department, row.name)
+    if (!row.name.trim()) return acc
+    acc[key] = (acc[key] ?? 0) + 1
+    return acc
+  }, {} as Record<string, number>)
+  const duplicateList = Object.entries(duplicateKeys).filter(([, count]) => count > 1).map(([key]) => key)
+  const hasBlankName = personnelRows.some((row) => !row.name.trim())
+  const originalRows = buildPersonnelRows(operatorRoster, operatorRoles, adminPasswords)
+  const draftSignature = JSON.stringify(personnelRows.map((row) => ({ department: row.department, name: row.name.trim(), role: row.role, password: row.password.trim() })))
+  const originalSignature = JSON.stringify(originalRows.map((row) => ({ department: row.department, name: row.name.trim(), role: row.role, password: row.password.trim() })))
+  const hasDraftChanges = draftSignature !== originalSignature
+  const canSavePersonnel = !hasBlankName && duplicateList.length === 0 && personnelRows.length > 0
+
+  function updateRow(id: string, patch: Partial<PersonnelDraftRow>) {
+    setPersonnelRows((rows) => rows.map((row) => row.id === id ? { ...row, ...patch } : row))
+  }
+
+  function addDraftPerson() {
+    const name = newName.trim()
+    if (!name) return
+    const id = `new::${Date.now()}::${Math.random().toString(16).slice(2)}`
+    setPersonnelRows((rows) => [...rows, { id, department: newDepartment, name, originalKey: '', role: newRole, password: newPassword.trim() }])
+    setNewName('')
+    setNewPassword('')
+    setNewRole('operator')
+  }
+
+  function resetPersonnelDraft() {
+    setPersonnelRows(buildPersonnelRows(operatorRoster, operatorRoles, adminPasswords))
+  }
+
   const loginPanel = (
     <section className="panel owner-login-panel full-span">
       <div>
@@ -1495,56 +1654,65 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
   if (!canManageRoster) {
     return <div className="permissions-page">{loginPanel}<section className="panel permissions-denied full-span"><p className="eyebrow">ACCESS CONTROL</p><h2>權限管理</h2><p>此頁只限 Owner 或管理員進入。普通操作員不能查看或修改人員名單與操作 LOG。</p><small>{cloudUserEmail ? `目前 Supabase 登入：${cloudUserEmail}｜角色：${editorProfile?.role ?? '未在管理白名單'}` : '目前未用 Owner/Admin 登入，也未確認管理員身份。'}</small></section></div>
   }
+
   return (
     <div className="permissions-page">
       <section className="panel permissions-hero full-span">
         <div>
           <p className="eyebrow">ACCESS CONTROL</p>
           <h2>權限管理</h2>
-          <p>Owner 可用密碼直接登入；管理員使用名單身份進入。普通操作員仍只在修改來源/滯留時確認部門與姓名並寫入 LOG。</p>
+          <p>Owner 可統一修改所有人員的用戶名、角色與密碼；所有改動必須點「保存全部人員管理修改」才會同步到 Supabase。</p>
         </div>
         <div className="permission-status-grid">
           <article><span>雲端 Email 身份</span><strong>{cloudUserEmail ?? '未登入'}</strong><small>{editorProfile?.role ?? '不影響本機 Owner 權限'}</small></article>
           <article><span>目前身份</span><strong>{currentOperator ? `${currentOperator.department}/${currentOperator.name}` : '未選擇'}</strong><small>{currentOperator?.role ?? '可登入或更換用戶'}</small>{currentOperator ? <button className="text-button compact" type="button" onClick={onClearOperator}>更換用戶</button> : null}</article>
-          <article><span>操作員名單</span><strong>{totalNames}</strong><small>{OPERATOR_DEPARTMENTS.length} 個部門</small></article>
-          <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>{isOwner ? 'Owner：可看/改管理員密碼' : '管理員：不可查看密碼'}</small></article>
+          <article><span>人員總數</span><strong>{totalNames}</strong><small>{OPERATOR_DEPARTMENTS.length} 個部門 / {adminCount} 位管理員</small></article>
+          <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>{isOwner ? 'Owner：可改所有用戶名與密碼' : '管理員：不可查看密碼'}</small></article>
         </div>
       </section>
       {loginPanel}
 
       {isOwner ? <section className="panel admin-password-panel full-span">
-        <h2>Owner 專用：管理員密碼</h2>
-        <p className="panel-hint">只有 Owner 可以看到和修改這些密碼。密碼會保存到 Supabase 雲端供多人共用；目前是內部靜態工具的明文密碼模式，若之後要更嚴格，再改為 Edge Function/後端雜湊驗證。</p>
+        <h2>Owner 密碼</h2>
+        <p className="panel-hint">Owner 密碼獨立於人員表。人員密碼保存在下面的人員管理表中；角色為管理員時，該密碼用於管理員登入。</p>
         <div className="owner-password-row">
           <label>修改 Owner 密碼<input type="password" value={ownerNewPassword} onChange={(event) => setOwnerNewPassword(event.target.value)} placeholder="新的 Owner 密碼" /></label>
           <button className="primary-button" type="button" disabled={!ownerNewPassword.trim()} onClick={() => { onOwnerPasswordChange(ownerNewPassword); setOwnerNewPassword('') }}>更新 Owner 密碼</button>
         </div>
-        <div className="admin-password-list">
-          {adminPeople.map(({ dept, person, key }) => <article key={key}>
-            <div><strong>{person}</strong><span>{dept} / 管理員</span></div>
-            <input type="text" value={adminPasswordDrafts[key] ?? adminPasswords[key] ?? ''} onChange={(event) => setAdminPasswordDrafts({ ...adminPasswordDrafts, [key]: event.target.value })} placeholder="設定管理員密碼" />
-            <button className="primary-button compact" type="button" onClick={() => onAdminPasswordChange(dept, person, adminPasswordDrafts[key] ?? adminPasswords[key] ?? '')}>保存密碼</button>
-          </article>)}
-        </div>
-        {adminPeople.length === 0 ? <div className="empty-state"><strong>目前沒有管理員</strong><span>請先在人員名單將人員設為管理員。</span></div> : null}
       </section> : null}
 
-      <section className="panel roster-panel">
-        <h2>操作員預設名單</h2>
-        <p className="panel-hint">一般操作員不需要 email 登入；修改來源/滯留時會從這裡選部門和姓名。人員權限下拉修改後，請點「保存人員權限修改」才會正式保存。</p>
-        <div className="roster-save-row"><button className="primary-button" type="button" onClick={() => onSaveRosterRoles(draftRoles)}>{hasRoleDraftChanges ? '保存人員權限修改（有未保存變更）' : '保存人員權限修改'}</button><small>{hasRoleDraftChanges ? '你已修改人員權限，刷新前請點此按鈕保存到 Supabase。' : '新增/移除人員會立即保存；權限下拉改動需按此按鈕。'}</small></div>
+      <section className="panel roster-panel full-span">
+        <h2>人員管理</h2>
+        <p className="panel-hint">Owner 可修改所有人員的用戶名、角色與密碼；刪除只會在保存後正式同步到 Supabase。普通操作員密碼可先設定，但只有設為管理員後才用於管理員登入。</p>
+        <div className="roster-save-row">
+          <button className="primary-button" type="button" disabled={!canSavePersonnel} onClick={() => onSavePersonnelManagement(draftRoster, draftRoles, draftPasswords)}>{hasDraftChanges ? '保存全部人員管理修改（有未保存變更）' : '保存全部人員管理修改'}</button>
+          <button className="text-button compact" type="button" onClick={resetPersonnelDraft} disabled={!hasDraftChanges}>放棄未保存修改</button>
+          <small>{hasDraftChanges ? '你已修改人員資料，刷新前請保存到 Supabase。' : '目前沒有未保存修改。'}</small>
+        </div>
+        {duplicateList.length ? <div className="permission-note">重複人員：{duplicateList.join('、')}。同一部門不可有相同用戶名。</div> : null}
+        {hasBlankName ? <div className="permission-note">有空白用戶名，請填寫或刪除該列。</div> : null}
         <div className="roster-add-form">
-          <label>部門<select value={department} onChange={(event) => setDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
-          <label>姓名<input value={name} onChange={(event) => setName(event.target.value)} placeholder="輸入姓名" /></label>
+          <label>部門<select value={newDepartment} onChange={(event) => setNewDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
+          <label>用戶名<input value={newName} onChange={(event) => setNewName(event.target.value)} placeholder="輸入用戶名 / 姓名" /></label>
           <label>權限<select value={newRole} onChange={(event) => setNewRole(event.target.value as RosterManagedRole)}><option value="operator">操作員</option><option value="admin">管理員</option></select></label>
-          <button className="primary-button" type="button" disabled={!canManageRoster || !name.trim()} onClick={() => { onAddRosterName(department, name, newRole); setName('') }}>新增人員</button>
+          <label>密碼<input type="text" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} placeholder="可留空；Owner 可之後補" /></label>
+          <button className="primary-button" type="button" disabled={!canManageRoster || !newName.trim()} onClick={addDraftPerson}>新增到草稿</button>
         </div>
-        <div className="roster-list">
-          {OPERATOR_DEPARTMENTS.map((dept) => <article key={dept}>
-            <h3>{dept}<span>{operatorRoster[dept].length}</span></h3>
-            <div>{operatorRoster[dept].map((person) => { const role = draftRoles[dept]?.[person] ?? operatorRoles[dept]?.[person] ?? 'operator'; return <span key={person} className={`roster-person roster-role-${role}`}>{person}<select value={role} onChange={(event) => setDraftRoles({ ...draftRoles, [dept]: { ...(draftRoles[dept] ?? {}), [person]: event.target.value as RosterManagedRole } })} aria-label={`${person} 權限`}><option value="operator">操作員</option><option value="admin">管理員</option></select><button type="button" aria-label={`移除 ${person}`} onClick={() => onRemoveRosterName(dept, person)}>×</button></span> })}</div>
-          </article>)}
+        <div className="personnel-table" role="table" aria-label="人員管理表">
+          <div className="personnel-table-head" role="row"><span>部門</span><span>用戶名</span><span>權限</span><span>密碼</span><span>操作</span></div>
+          {personnelRows.map((row) => {
+            const key = adminPasswordKey(row.department, row.name)
+            const duplicated = duplicateKeys[key] > 1
+            return <div className={`personnel-table-row ${row.role === 'admin' ? 'roster-role-admin' : 'roster-role-operator'} ${duplicated ? 'has-error' : ''}`} role="row" key={row.id}>
+              <select value={row.department} onChange={(event) => updateRow(row.id, { department: event.target.value })}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select>
+              <input value={row.name} onChange={(event) => updateRow(row.id, { name: event.target.value })} aria-label={`${row.originalKey || key} 用戶名`} />
+              <select value={row.role} onChange={(event) => updateRow(row.id, { role: event.target.value as RosterManagedRole })} aria-label={`${row.name} 權限`}><option value="operator">操作員</option><option value="admin">管理員</option></select>
+              {isOwner ? <input type="text" value={row.password} onChange={(event) => updateRow(row.id, { password: event.target.value })} placeholder="設定密碼" aria-label={`${row.name} 密碼`} /> : <span className="panel-hint">Owner 可見</span>}
+              <button className="danger-button compact" type="button" onClick={() => setPersonnelRows((rows) => rows.filter((item) => item.id !== row.id))}>刪除</button>
+            </div>
+          })}
         </div>
+        {personnelRows.length === 0 ? <div className="empty-state"><strong>目前沒有任何人員</strong><span>請先新增至少一位人員。</span></div> : null}
       </section>
 
       <section className="panel audit-panel">
