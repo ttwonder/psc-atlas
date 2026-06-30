@@ -344,6 +344,10 @@ function App() {
   }
 
   async function updateOwnerPassword(nextPassword: string) {
+    if (currentOperator?.role !== 'owner' && editorProfile?.role !== 'owner') {
+      setOwnerLoginMessage('只有 Owner 可以修改 Owner 密碼。')
+      return
+    }
     const normalized = nextPassword.trim()
     if (!normalized) return
     try {
@@ -357,6 +361,10 @@ function App() {
   }
 
   async function resetOwnerPassword() {
+    if (currentOperator?.role !== 'owner' && editorProfile?.role !== 'owner') {
+      setOwnerLoginMessage('只有 Owner 可以重置 Owner 密碼。')
+      return
+    }
     try {
       if (cloudConfigured) await upsertCloudPermissionSettings(DEFAULT_OWNER_PASSWORD, adminPasswords)
       setOwnerPassword(DEFAULT_OWNER_PASSWORD)
@@ -1644,7 +1652,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
         <label>Owner 密碼<input type="password" value={ownerPasswordInput} onChange={(event) => onOwnerPasswordInput(event.target.value)} placeholder="輸入 Owner 密碼" /></label>
         <button className="primary-button" type="button" onClick={onOwnerLogin} disabled={!ownerPasswordInput.trim()}>Owner 登入</button>
         <button className="export-button" type="button" onClick={onRequestAdminAccess}>確認 / 更換管理員</button>
-        <button className="text-button compact" type="button" onClick={onOwnerPasswordReset}>重置 Owner 初始密碼</button>
+        {isOwner ? <button className="text-button compact" type="button" onClick={onOwnerPasswordReset}>重置 Owner 初始密碼</button> : null}
         {currentOperator ? <button className="text-button compact" type="button" onClick={onClearOperator}>退出目前身份</button> : null}
       </div>
       {ownerLoginMessage ? <div className="permission-note">{ownerLoginMessage}</div> : null}
