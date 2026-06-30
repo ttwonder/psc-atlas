@@ -101,18 +101,16 @@ describe('cloud storage row mapping', () => {
   })
 
 
-  it('builds operator roster rows with roles and without null ids for new rows', () => {
+  it('builds operator roster rows with roles and UUID ids for upsert compatibility', () => {
     const rows = toCloudOperatorRosterRows(
       { 海技組: ['朱世毅', '陳宜斌'] } as any,
       { 海技組: { 朱世毅: 'admin', 陳宜斌: 'operator' } } as any,
-      [],
+      [{ id: '11111111-1111-4111-8111-111111111111', department: '海技組', name: '朱世毅' }],
     )
 
-    expect(rows).toEqual([
-      { department: '海技組', name: '朱世毅', role: 'admin', active: true, sort_order: 0 },
-      { department: '海技組', name: '陳宜斌', role: 'operator', active: true, sort_order: 1 },
-    ])
-    expect(rows.some((row) => Object.prototype.hasOwnProperty.call(row, 'id'))).toBe(false)
+    expect(rows[0]).toEqual({ id: '11111111-1111-4111-8111-111111111111', department: '海技組', name: '朱世毅', role: 'admin', active: true, sort_order: 0 })
+    expect(rows[1]).toMatchObject({ department: '海技組', name: '陳宜斌', role: 'operator', active: true, sort_order: 1 })
+    expect(rows[1].id).toMatch(/^[0-9a-f-]{36}$/)
   })
 
   it('maps owner and admin password settings for cloud storage', () => {

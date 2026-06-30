@@ -317,19 +317,33 @@ export async function upsertCloudPermissionSettings(ownerPassword: string, admin
   if (error) throw error
 }
 
+function createRosterRowId() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+    const random = Math.floor(Math.random() * 16)
+    const value = char === 'x' ? random : (random & 0x3) | 0x8
+    return value.toString(16)
+  })
+}
+
 export function toCloudOperatorRosterRows(roster: OperatorRoster, roles: OperatorRoleMap = normalizeOperatorRoles(null, roster), existingRows: Array<{ id: string; department: string; name: string }> = []): CloudOperatorRosterRow[] {
   const normalized = normalizeOperatorRoster(roster)
   const normalizedRoles = normalizeOperatorRoles(roles, normalized)
+  const existingByKey = new Map(existingRows.map((item) => [`${item.department}\u0000${item.name}`, item.id]))
   const activeKeys = new Set(Object.entries(normalized).flatMap(([department, names]) => names.map((name) => `${department}\u0000${name}`)))
   const rows: CloudOperatorRosterRow[] = []
   Object.entries(normalized).forEach(([department, names]) => {
-    names.forEach((name, index) => rows.push({
-      department,
-      name,
-      role: normalizedRoles[department as keyof OperatorRoleMap]?.[name] === 'admin' ? 'admin' : 'operator',
-      active: true,
-      sort_order: index,
-    }))
+    names.forEach((name, index) => {
+      const key = `${department}\u0000${name}`
+      rows.push({
+        id: existingByKey.get(key) ?? createRosterRowId(),
+        department,
+        name,
+        role: normalizedRoles[department as keyof OperatorRoleMap]?.[name] === 'admin' ? 'admin' : 'operator',
+        active: true,
+        sort_order: index,
+      })
+    })
   })
   existingRows.forEach((item) => {
     if (!activeKeys.has(`${item.department}\u0000${item.name}`)) rows.push({ id: item.id, department: item.department, name: item.name, role: 'operator', active: false, sort_order: 0 })
