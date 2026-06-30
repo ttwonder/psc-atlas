@@ -1,5 +1,7 @@
 export type OperatorRole = 'owner' | 'admin' | 'operator'
 export type RosterManagedRole = 'admin' | 'operator'
+export type AdminPasswordMap = Record<string, string>
+export const DEFAULT_OWNER_PASSWORD = 'PSC-OWNER-2026'
 
 export type OperatorAction =
   | 'add_source'
@@ -134,6 +136,24 @@ export function buildAuditLog({ actor, action, targetType, targetId, targetTitle
     before,
     after,
   }
+}
+
+export function normalizeAdminPasswordMap(value: unknown): AdminPasswordMap {
+  const source = value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {}
+  return Object.entries(source).reduce((acc, [key, rawPassword]) => {
+    const normalizedKey = key.trim()
+    const password = typeof rawPassword === 'string' ? rawPassword.trim() : ''
+    if (normalizedKey && password) acc[normalizedKey] = password
+    return acc
+  }, {} as AdminPasswordMap)
+}
+
+export function verifyOwnerPassword(input: string, storedPassword = DEFAULT_OWNER_PASSWORD) {
+  return input.trim().length > 0 && input.trim() === storedPassword.trim()
+}
+
+export function adminPasswordKey(department: string, name: string) {
+  return `${department.trim()}/${name.trim()}`
 }
 
 export const OPERATOR_ACTION_LABELS: Record<OperatorAction, string> = {

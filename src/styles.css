@@ -830,3 +830,19 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
   .pdf-list-actions { grid-template-columns: 1fr; justify-content: stretch; }
   .pdf-list-actions button:nth-child(3) { grid-column: auto; }
 }
+
+.owner-login-panel { display: grid; grid-template-columns: minmax(0, .75fr) minmax(360px, 1fr); gap: 16px; align-items: end; border-color: #bdd8ef; background: linear-gradient(135deg, #f7fbff, #fff); }
+.owner-login-form { display: grid; grid-template-columns: minmax(190px, 1fr) auto auto auto; gap: 10px; align-items: end; }
+.owner-login-form label, .owner-password-row label { display: grid; gap: 6px; color: #52697f; font-size: 12px; font-weight: 850; }
+.owner-login-form input, .owner-password-row input, .admin-password-list input { min-height: 42px; border: 1px solid #cbd7e3; border-radius: 10px; padding: 0 11px; color: #17344e; background: #fff; font: inherit; }
+.admin-password-panel { display: grid; gap: 12px; border-color: #e3cda3; background: #fffdf7; }
+.owner-password-row { display: grid; grid-template-columns: minmax(240px, 1fr) auto; gap: 10px; align-items: end; max-width: 680px; }
+.admin-password-list { display: grid; gap: 8px; }
+.admin-password-list article { display: grid; grid-template-columns: minmax(180px, .7fr) minmax(220px, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid #eadfc7; border-radius: 12px; background: #fff; }
+.admin-password-list article div { display: grid; gap: 3px; }
+.admin-password-list article strong { color: #17344e; }
+.admin-password-list article span { color: #6f8498; font-size: 12px; }
+.primary-button.compact { min-height: 34px; padding: 0 10px; font-size: 12px; }
+@media (max-width: 980px) {
+  .owner-login-panel, .owner-login-form, .owner-password-row, .admin-password-list article { grid-template-columns: 1fr; }
+}

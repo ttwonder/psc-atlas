@@ -9,6 +9,9 @@ import {
   verifyOperatorIdentity,
   type OperatorIdentity,
   cloudProfileToIdentity,
+  DEFAULT_OWNER_PASSWORD,
+  normalizeAdminPasswordMap,
+  verifyOwnerPassword,
 } from './operatorAccess'
 
 describe('operator access workflow', () => {
@@ -68,6 +71,12 @@ describe('operator access workflow', () => {
 
     expect(roles['航運處']['吳建泰處長']).toBe('admin')
     expect(canOperatorPerform(identityFromRosterSelection('航運處', '吳建泰處長', roles), 'manage_roster')).toBe(true)
+  })
+
+  it('verifies owner password without email confirmation and normalizes admin password map', () => {
+    expect(verifyOwnerPassword(DEFAULT_OWNER_PASSWORD, DEFAULT_OWNER_PASSWORD)).toBe(true)
+    expect(verifyOwnerPassword(' wrong ', DEFAULT_OWNER_PASSWORD)).toBe(false)
+    expect(normalizeAdminPasswordMap({ '航運處/吳建泰處長': ' 123456 ', x: '', y: 123 })).toEqual({ '航運處/吳建泰處長': '123456' })
   })
 
   it('builds an audit log with actor and target details', () => {
