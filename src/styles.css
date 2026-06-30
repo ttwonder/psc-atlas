@@ -846,3 +846,8 @@ body { background: linear-gradient(135deg, #fff8fc 0%, #f3fbff 42%, #fff9e7 100%
 @media (max-width: 980px) {
   .owner-login-panel, .owner-login-form, .owner-password-row, .admin-password-list article { grid-template-columns: 1fr; }
 }
+
+.owner-login-form { grid-template-columns: minmax(180px, 1fr) auto auto auto auto; }
+.roster-save-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 10px 0 14px; padding: 10px 12px; border: 1px solid #dbe5ee; border-radius: 10px; background: #f8fbfd; }
+.roster-save-row small { color: #62748a; font-size: 12px; }
+.permission-note.compact { min-height: 34px; display: inline-flex; align-items: center; padding: 0 10px; font-size: 12px; }

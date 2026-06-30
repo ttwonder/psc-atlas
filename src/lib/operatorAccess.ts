@@ -1,7 +1,7 @@
 export type OperatorRole = 'owner' | 'admin' | 'operator'
 export type RosterManagedRole = 'admin' | 'operator'
 export type AdminPasswordMap = Record<string, string>
-export const DEFAULT_OWNER_PASSWORD = 'PSC-OWNER-2026'
+export const DEFAULT_OWNER_PASSWORD = 'owner'
 
 export type OperatorAction =
   | 'add_source'
