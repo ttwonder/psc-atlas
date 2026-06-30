@@ -415,8 +415,9 @@ th:first-child { padding-left: 16px; }
 .operator-modal p { color: #52697f; line-height: 1.7; }
 .operator-target { padding: 10px 12px; border-radius: 10px; background: #f4f8fb; word-break: break-word; }
 .operator-modal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
-.operator-modal-grid label, .roster-add-form label { display: grid; gap: 6px; color: #52697f; font-size: 12px; font-weight: 850; }
-.operator-modal-grid select, .roster-add-form select, .roster-add-form input { min-height: 42px; border: 1px solid #cbd7e3; border-radius: 10px; padding: 0 11px; color: #17344e; background: #fff; font: inherit; }
+.operator-modal-grid label, .roster-add-form label, .operator-password-field { display: grid; gap: 6px; color: #52697f; font-size: 12px; font-weight: 850; }
+.operator-modal-grid select, .roster-add-form select, .roster-add-form input, .operator-password-field input { min-height: 42px; border: 1px solid #cbd7e3; border-radius: 10px; padding: 0 11px; color: #17344e; background: #fff; font: inherit; }
+.operator-password-field { margin: 12px 0 8px; }
 .personnel-table { display: grid; gap: 7px; max-height: 680px; overflow: auto; padding-right: 4px; }
 .personnel-table-head, .personnel-table-row { display: grid; grid-template-columns: 150px minmax(150px, 1fr) 120px minmax(150px, 1fr) auto; gap: 8px; align-items: center; }
 .personnel-table-head { padding: 0 8px 4px; color: #6f8498; font-size: 11px; font-weight: 900; text-transform: uppercase; }

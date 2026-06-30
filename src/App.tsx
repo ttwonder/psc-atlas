@@ -1504,7 +1504,7 @@ function OperatorIdentityModal({ action, targetTitle, roster, roles, adminPasswo
             </select>
           </label>
         </div>
-        {needsAdminPassword ? <label>管理員密碼
+        {needsAdminPassword ? <label className="operator-password-field">管理員密碼
           <input type="password" value={adminPasswordInput} onChange={(event) => { setAdminPasswordInput(event.target.value); setLocalMessage('') }} placeholder={selectedPassword ? '輸入此管理員密碼' : '尚未設定密碼'} />
         </label> : null}
         {message || localMessage ? <div className="permission-note">{localMessage || message}</div> : null}
