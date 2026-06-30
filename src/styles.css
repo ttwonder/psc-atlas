@@ -38,6 +38,13 @@ button { white-space: nowrap; }
 .page-header p { margin: 9px 0 0; color: var(--muted); font-size: 16px; }
 .export-button, .primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 17px; border-radius: 7px; font-size: 13px; font-weight: 700; }
 .header-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.header-identity-controls { display: inline-flex; align-items: center; gap: 6px; padding: 4px; border: 1px solid #dbe5ee; border-radius: 10px; background: #fbfdff; }
+.header-identity-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; color: #52697f; background: #eef5fb; font-size: 12px; font-weight: 850; white-space: nowrap; }
+.header-identity-owner { color: #6d28d9; background: #f3e8ff; }
+.header-identity-admin { color: #9a3412; background: #ffedd5; }
+.header-identity-operator { color: #075985; background: #e0f2fe; }
+.header-identity-none { color: #6f8498; background: #f4f8fb; }
+.compact-identity-button { min-height: 28px; padding: 0 9px; font-size: 12px; }
 .export-button:disabled { opacity: .6; cursor: progress; }
 .spin { animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -309,7 +316,7 @@ th:first-child { padding-left: 16px; }
   .page-header { align-items: center; }
   .page-header h1 { font-size: 27px; }
   .page-header p { font-size: 13px; }
-  .export-button { display: none; }
+  .export-button:not(.compact-identity-button) { display: none; }
   .mobile-menu { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #cbd7e3; border-radius: 7px; color: #173a5c; background: #fff; }
   .filter-bar { grid-template-columns: 1fr 1fr; margin-bottom: 20px; }
   .finding-toolbar { align-items: stretch; flex-direction: column; }

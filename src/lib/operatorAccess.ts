@@ -13,6 +13,7 @@ export type OperatorAction =
   | 'server_refresh'
   | 'manage_roster'
   | 'purge_deleted'
+  | 'switch_identity'
 
 export interface OperatorIdentity {
   department: string
@@ -103,7 +104,7 @@ export function verifyOperatorIdentity(identity: OperatorIdentity | null | undef
 export function canOperatorPerform(identity: OperatorIdentity | null | undefined, action: OperatorAction) {
   if (!identity) return false
   if (identity.role === 'owner' || identity.role === 'admin') return true
-  return ['add_source', 'edit_source', 'delete_source', 'restore_source', 'edit_finding', 'server_refresh'].includes(action)
+  return ['add_source', 'edit_source', 'delete_source', 'restore_source', 'edit_finding', 'server_refresh', 'switch_identity'].includes(action)
 }
 
 export function cloudProfileToIdentity(profile: { email?: string | null, role?: string | null } | null | undefined): OperatorIdentity | null {
@@ -166,4 +167,5 @@ export const OPERATOR_ACTION_LABELS: Record<OperatorAction, string> = {
   server_refresh: '後端刷新',
   manage_roster: '維護操作員名單',
   purge_deleted: '清理已刪除資料',
+  switch_identity: '人員登入 / 切換',
 }

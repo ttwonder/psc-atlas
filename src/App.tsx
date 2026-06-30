@@ -343,6 +343,10 @@ function App() {
     setOwnerLoginMessage('已清除目前本機身份，可重新登入或更換用戶。')
   }
 
+  function openOperatorSwitch() {
+    requestOperator('switch_identity', '人員登入 / 切換', async () => {}, true)
+  }
+
   async function updateOwnerPassword(nextPassword: string) {
     if (currentOperator?.role !== 'owner' && editorProfile?.role !== 'owner') {
       setOwnerLoginMessage('只有 Owner 可以修改 Owner 密碼。')
@@ -974,6 +978,11 @@ function App() {
         <header className="page-header">
           <div><h1>PSC 滯留案例卷宗 App</h1><p>累積官方來源、近期趨勢、地區報告、預防自查清單與 Excel 匯出</p></div>
           <div className="header-actions">
+            <div className="header-identity-controls">
+              <span className={`header-identity-pill header-identity-${currentOperator?.role ?? 'none'}`}>{currentOperator ? `${currentOperator.department}/${currentOperator.name} · ${currentOperator.role}` : '未登入人員'}</span>
+              <button className="export-button compact-identity-button" type="button" onClick={openOperatorSwitch}>人員登入 / 切換</button>
+              {currentOperator ? <button className="text-button compact compact-identity-button" type="button" onClick={logoutOperatorIdentity}>退出身份</button> : null}
+            </div>
             <button className="export-button" type="button" onClick={refreshLatest} disabled={loading}><RefreshCw size={18} className={loading ? 'spin' : ''} />獲取最新滯留</button>
             {activePage === 'permissions'
               ? <button className="primary-button save-changes-button" type="button" disabled title="人員權限請使用頁面中的『保存人員權限修改』">權限請用下方保存</button>
