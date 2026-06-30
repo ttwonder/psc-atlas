@@ -418,12 +418,20 @@ th:first-child { padding-left: 16px; }
 .operator-modal-grid label, .roster-add-form label, .operator-password-field { display: grid; gap: 6px; color: #52697f; font-size: 12px; font-weight: 850; }
 .operator-modal-grid select, .roster-add-form select, .roster-add-form input, .operator-password-field input { min-height: 42px; border: 1px solid #cbd7e3; border-radius: 10px; padding: 0 11px; color: #17344e; background: #fff; font: inherit; }
 .operator-password-field { margin: 12px 0 8px; }
-.personnel-table { display: grid; gap: 7px; max-height: 680px; overflow: auto; padding-right: 4px; }
-.personnel-table-head, .personnel-table-row { display: grid; grid-template-columns: 150px minmax(150px, 1fr) 120px minmax(150px, 1fr) auto; gap: 8px; align-items: center; }
-.personnel-table-head { padding: 0 8px 4px; color: #6f8498; font-size: 11px; font-weight: 900; text-transform: uppercase; }
-.personnel-table-row { padding: 8px; border: 1px solid #dbe5ee; border-radius: 12px; background: #fbfdff; }
-.personnel-table-row select, .personnel-table-row input { width: 100%; min-height: 36px; border: 1px solid #cbd7e3; border-radius: 9px; padding: 0 10px; color: #17344e; background: #fff; font: inherit; font-size: 12px; }
-.personnel-table-row.has-error { border-color: #f97316; background: #fff7ed; }
+.department-personnel-groups { display: grid; gap: 8px; max-height: 680px; overflow: auto; padding-right: 4px; }
+.department-personnel-group { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; align-items: start; padding: 8px; border: 1px solid #dbe5ee; border-radius: 12px; background: #fbfdff; }
+.department-personnel-group header { display: grid; gap: 2px; padding-top: 4px; color: #12314e; }
+.department-personnel-group header strong { font-size: 13px; line-height: 1.25; }
+.department-personnel-group header span { color: #6f8498; font-size: 11px; }
+.personnel-chip-list { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.personnel-chip { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; padding: 4px; border: 1px solid #dbe5ee; border-radius: 10px; background: #eef5fb; }
+.personnel-chip.has-error { border-color: #f97316; background: #fff7ed !important; }
+.personnel-chip input, .personnel-chip select { min-height: 28px; border: 1px solid #cbd7e3; border-radius: 7px; padding: 0 7px; color: #17344e; background: #fff; font: inherit; font-size: 11px; }
+.personnel-name-input { width: 88px; font-weight: 800; }
+.personnel-role-select { width: 64px; }
+.personnel-password-input { width: 66px; }
+.personnel-delete-button { width: 28px; min-width: 28px; padding: 0 !important; font-size: 14px; font-weight: 900; }
+.empty-department-chip { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; color: #8aa0b3; background: #f4f8fb; font-size: 11px; }
 .operator-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
 .permissions-page { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 18px; }
 .permissions-page .full-span { grid-column: 1 / -1; }
@@ -447,7 +455,7 @@ th:first-child { padding-left: 16px; }
 .audit-log-list strong { color: #17344e; font-size: 13px; }
 .audit-log-list span, .audit-log-list small { color: #6f8498; font-size: 11px; }
 .audit-log-list p { margin: 0; color: #24425e; font-size: 12px; line-height: 1.55; word-break: break-word; }
-@media (max-width: 980px) { .permissions-page, .permissions-hero, .permission-status-grid, .roster-add-form, .operator-modal-grid, .personnel-table-head, .personnel-table-row { grid-template-columns: 1fr; } }
+@media (max-width: 980px) { .permissions-page, .permissions-hero, .permission-status-grid, .roster-add-form, .operator-modal-grid, .department-personnel-group { grid-template-columns: 1fr; } .personnel-chip { width: 100%; } }
 
 
 /* Compact layout pass: reduce wasted space and prevent button wrapping */

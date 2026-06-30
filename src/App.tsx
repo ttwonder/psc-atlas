@@ -1706,18 +1706,25 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
           <label>密碼<input type="text" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} placeholder="可留空；Owner 可之後補" /></label>
           <button className="primary-button" type="button" disabled={!canManageRoster || !newName.trim()} onClick={addDraftPerson}>新增到草稿</button>
         </div>
-        <div className="personnel-table" role="table" aria-label="人員管理表">
-          <div className="personnel-table-head" role="row"><span>部門</span><span>用戶名</span><span>權限</span><span>密碼</span><span>操作</span></div>
-          {personnelRows.map((row) => {
-            const key = adminPasswordKey(row.department, row.name)
-            const duplicated = duplicateKeys[key] > 1
-            return <div className={`personnel-table-row ${row.role === 'admin' ? 'roster-role-admin' : 'roster-role-operator'} ${duplicated ? 'has-error' : ''}`} role="row" key={row.id}>
-              <select value={row.department} onChange={(event) => updateRow(row.id, { department: event.target.value })}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select>
-              <input value={row.name} onChange={(event) => updateRow(row.id, { name: event.target.value })} aria-label={`${row.originalKey || key} 用戶名`} />
-              <select value={row.role} onChange={(event) => updateRow(row.id, { role: event.target.value as RosterManagedRole })} aria-label={`${row.name} 權限`}><option value="operator">操作員</option><option value="admin">管理員</option></select>
-              {isOwner ? <input type="text" value={row.password} onChange={(event) => updateRow(row.id, { password: event.target.value })} placeholder="設定密碼" aria-label={`${row.name} 密碼`} /> : <span className="panel-hint">Owner 可見</span>}
-              <button className="danger-button compact" type="button" onClick={() => setPersonnelRows((rows) => rows.filter((item) => item.id !== row.id))}>刪除</button>
-            </div>
+        <div className="department-personnel-groups" aria-label="人員管理表">
+          {OPERATOR_DEPARTMENTS.map((dept) => {
+            const deptRows = personnelRows.filter((row) => row.department === dept)
+            return <article className="department-personnel-group" key={dept}>
+              <header><strong>{dept}</strong><span>{deptRows.length} 人</span></header>
+              <div className="personnel-chip-list">
+                {deptRows.map((row) => {
+                  const key = adminPasswordKey(row.department, row.name)
+                  const duplicated = duplicateKeys[key] > 1
+                  return <div className={`personnel-chip ${row.role === 'admin' ? 'roster-role-admin' : 'roster-role-operator'} ${duplicated ? 'has-error' : ''}`} key={row.id}>
+                    <input className="personnel-name-input" value={row.name} onChange={(event) => updateRow(row.id, { name: event.target.value })} aria-label={`${row.originalKey || key} 用戶名`} />
+                    <select className="personnel-role-select" value={row.role} onChange={(event) => updateRow(row.id, { role: event.target.value as RosterManagedRole })} aria-label={`${row.name} 權限`}><option value="operator">操作員</option><option value="admin">管理員</option></select>
+                    {isOwner ? <input className="personnel-password-input" type="text" value={row.password} onChange={(event) => updateRow(row.id, { password: event.target.value })} placeholder="密碼" aria-label={`${row.name} 密碼`} /> : null}
+                    <button className="danger-button compact personnel-delete-button" type="button" aria-label={`刪除 ${row.name}`} title="刪除" onClick={() => setPersonnelRows((rows) => rows.filter((item) => item.id !== row.id))}>×</button>
+                  </div>
+                })}
+                {deptRows.length === 0 ? <span className="empty-department-chip">暫無人員</span> : null}
+              </div>
+            </article>
           })}
         </div>
         {personnelRows.length === 0 ? <div className="empty-state"><strong>目前沒有任何人員</strong><span>請先新增至少一位人員。</span></div> : null}
