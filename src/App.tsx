@@ -9,7 +9,7 @@ import { categories as seedCategories, inspectionCases, shipTypes as seedShipTyp
 import { officialSourceMap, sourceCoverageSummary, autoFetchSummary } from './data/sourceMap'
 import { activeSources, appendManualFindingToCase, createManualInspectionCase, deletedSources, getPriorityNovelFindings, markPdfNotNeeded, markSourceDeleted, priorityLabel, purgeExpiredDeletedSources, restoreSource, updateFinding, updateSourceBookmark, type FindingDraft, type ManualCaseDraft, type SourceBookmarkDraft } from './lib/editorWorkflow'
 import { exportCasesWorkbook } from './lib/excel'
-import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, getCloudUser, getEditorProfile, insertCloudAuditLog, isCloudConfigured, loadCloudDataset, loadCloudOperatorRoster, loadCloudPermissionSettings, signInWithEmail, signOutCloud, upsertCloudDataset, upsertCloudOperatorRoster, upsertCloudPermissionSettings, upsertCloudSources, type EditorProfile } from './lib/cloudStorage'
 import { runServerRefresh } from './lib/serverRefreshClient'
 import { buildManualCaseDraftFromHtml } from './lib/temporaryWebsiteCase'
 import { fetchLatestOfficialCases } from './lib/officialRefresh'
@@ -154,6 +154,22 @@ function App() {
   const shipTypes = useMemo(() => Array.from(new Set([...seedShipTypes, ...cases.map((item) => item.shipType)])).sort(), [cases])
   const categories = useMemo(() => Array.from(new Set([...seedCategories, ...cases.flatMap((item) => item.deficiencies.map((entry) => entry.category))])).sort(), [cases])
 
+  function applyCloudRoster(cloudRoster: { roster: OperatorRoster; roles: OperatorRoleMap } | null) {
+    if (!cloudRoster) return
+    setOperatorRoster(cloudRoster.roster)
+    setOperatorRoles(cloudRoster.roles)
+    saveLocalOperatorRoster(cloudRoster.roster)
+    saveLocalOperatorRoles(cloudRoster.roles, cloudRoster.roster)
+  }
+
+  function applyCloudPermissionSettings(settings: { ownerPassword: string; adminPasswords: AdminPasswordMap } | null) {
+    if (!settings) return
+    setOwnerPassword(settings.ownerPassword)
+    saveOwnerPassword(settings.ownerPassword)
+    setAdminPasswords(settings.adminPasswords)
+    saveAdminPasswords(settings.adminPasswords)
+  }
+
   useEffect(() => {
     let cancelled = false
     async function loadCloud() {
@@ -180,14 +196,16 @@ function App() {
         })
         try {
           const cloudRoster = await loadCloudOperatorRoster()
-          if (cloudRoster) {
-            setOperatorRoster(cloudRoster.roster)
-            setOperatorRoles(cloudRoster.roles)
-            saveLocalOperatorRoster(cloudRoster.roster)
-            saveLocalOperatorRoles(cloudRoster.roles, cloudRoster.roster)
-          }
+          applyCloudRoster(cloudRoster)
         } catch (error) {
           console.warn('Load PSC operator roster failed', error)
+        }
+        try {
+          const cloudSettings = await loadCloudPermissionSettings()
+          applyCloudPermissionSettings(cloudSettings)
+        } catch (error) {
+          console.warn('Load PSC operator password settings failed', error)
+          setCloudMessage((current) => `${current}；權限密碼設定表尚未建立，請執行最新版 Supabase SQL。`)
         }
         setCloudMessage(dataset.cloudCaseCount
           ? `已從雲端載入 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源；本機 seed 已合併。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在操作員白名單，僅可讀）'}` : '目前未登入，只能讀取公開資料。'}`
@@ -226,16 +244,18 @@ function App() {
       setEditorProfile(profile)
       try {
         const cloudRoster = await loadCloudOperatorRoster()
-        if (cloudRoster) {
-          setOperatorRoster(cloudRoster.roster)
-          setOperatorRoles(cloudRoster.roles)
-          saveLocalOperatorRoster(cloudRoster.roster)
-          saveLocalOperatorRoles(cloudRoster.roles, cloudRoster.roster)
-        }
+        applyCloudRoster(cloudRoster)
       } catch (error) {
         console.warn('Load PSC operator roster failed', error)
       }
-      setCloudMessage(`${reason}完成：已載入雲端 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在白名單）'}` : '目前未登入；若 Supabase RLS 僅允許登入寫入，修改只能先存本機。'}`)
+      try {
+        const cloudSettings = await loadCloudPermissionSettings()
+        applyCloudPermissionSettings(cloudSettings)
+      } catch (error) {
+        console.warn('Load PSC operator password settings failed', error)
+        setCloudMessage((current) => `${current}；權限密碼設定表尚未建立，請執行最新版 Supabase SQL。`)
+      }
+      setCloudMessage(`${reason}完成：已載入雲端 ${dataset.cloudCaseCount} 筆案例、${dataset.cloudSourceCount} 個來源。${user ? `目前登入：${user.email}${profile ? `（${profile.role}）` : '（未在白名單）'}` : '目前未登入；Owner/管理員密碼權限不需要 Email 驗證。'}`)
     } catch (error) {
       setCloudMessage(`取得雲端最新內容失敗：${describeCloudError(error)}；已保留本機資料。`)
     } finally {
@@ -299,21 +319,31 @@ function App() {
     setOwnerLoginMessage('已清除目前本機身份，可重新登入或更換用戶。')
   }
 
-  function updateOwnerPassword(nextPassword: string) {
+  async function updateOwnerPassword(nextPassword: string) {
     const normalized = nextPassword.trim()
     if (!normalized) return
-    setOwnerPassword(normalized)
-    saveOwnerPassword(normalized)
-    setOwnerLoginMessage('Owner 密碼已更新。')
+    try {
+      if (cloudConfigured) await upsertCloudPermissionSettings(normalized, adminPasswords)
+      setOwnerPassword(normalized)
+      saveOwnerPassword(normalized)
+      setOwnerLoginMessage(cloudConfigured ? 'Owner 密碼已保存到雲端。' : 'Owner 密碼已保存到本機；目前尚未設定 Supabase。')
+    } catch (error) {
+      setOwnerLoginMessage(`Owner 密碼雲端保存失敗：${describeCloudError(error)}`)
+    }
   }
 
-  function resetOwnerPassword() {
-    setOwnerPassword(DEFAULT_OWNER_PASSWORD)
-    saveOwnerPassword(DEFAULT_OWNER_PASSWORD)
-    setOwnerPasswordInput('')
-    setCurrentOperator(null)
-    saveCurrentOperator(null)
-    setOwnerLoginMessage(`Owner 密碼已重置為初始密碼：${DEFAULT_OWNER_PASSWORD}`)
+  async function resetOwnerPassword() {
+    try {
+      if (cloudConfigured) await upsertCloudPermissionSettings(DEFAULT_OWNER_PASSWORD, adminPasswords)
+      setOwnerPassword(DEFAULT_OWNER_PASSWORD)
+      saveOwnerPassword(DEFAULT_OWNER_PASSWORD)
+      setOwnerPasswordInput('')
+      setCurrentOperator(null)
+      saveCurrentOperator(null)
+      setOwnerLoginMessage(`Owner 密碼已重置為初始密碼並保存${cloudConfigured ? '到雲端' : '到本機'}：${DEFAULT_OWNER_PASSWORD}`)
+    } catch (error) {
+      setOwnerLoginMessage(`Owner 密碼重置失敗：${describeCloudError(error)}`)
+    }
   }
 
   async function updateAdminPassword(department: string, name: string, password: string) {
@@ -325,9 +355,15 @@ function App() {
     const key = adminPasswordKey(department, name)
     const before = adminPasswords[key] ? { passwordSet: true } : { passwordSet: false }
     const next = normalizeAdminPasswordMap({ ...adminPasswords, [key]: password })
-    setAdminPasswords(next)
-    saveAdminPasswords(next)
-    await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: key, targetTitle: `更新管理員密碼：${key}`, before, after: { passwordSet: Boolean(next[key]) } }))
+    try {
+      if (cloudConfigured) await upsertCloudPermissionSettings(ownerPassword, next)
+      setAdminPasswords(next)
+      saveAdminPasswords(next)
+      setOwnerLoginMessage(cloudConfigured ? '管理員密碼已保存到雲端。' : '管理員密碼已保存到本機；目前尚未設定 Supabase。')
+      await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: key, targetTitle: `更新管理員密碼：${key}`, before, after: { passwordSet: Boolean(next[key]) } }))
+    } catch (error) {
+      setOwnerLoginMessage(`管理員密碼雲端保存失敗：${describeCloudError(error)}`)
+    }
   }
 
   async function appendAuditLog(log: OperatorAuditLog) {
@@ -372,15 +408,20 @@ function App() {
     await pending.onConfirm(identity)
   }
 
-  async function persistOperatorRoster(nextRoster: OperatorRoster, nextRoles: OperatorRoleMap = operatorRoles, forceCloudSync = false) {
+  async function persistOperatorRoster(nextRoster: OperatorRoster, nextRoles: OperatorRoleMap = operatorRoles, _forceCloudSync = false) {
     const normalized = normalizeOperatorRoster(nextRoster)
     const normalizedRoles = normalizeOperatorRoles(nextRoles, normalized)
-    setOperatorRoster(normalized)
-    setOperatorRoles(normalizedRoles)
-    saveLocalOperatorRoster(normalized)
-    saveLocalOperatorRoles(normalizedRoles, normalized)
-    if (cloudConfigured && (forceCloudSync || canManageOperatorRoster)) {
-      try { await upsertCloudOperatorRoster(normalized, normalizedRoles) } catch (error) { setCloudMessage(`操作員名單已保存到本機，但同步 Supabase 失敗：${describeCloudError(error)}`) }
+    try {
+      if (cloudConfigured) await upsertCloudOperatorRoster(normalized, normalizedRoles)
+      setOperatorRoster(normalized)
+      setOperatorRoles(normalizedRoles)
+      saveLocalOperatorRoster(normalized)
+      saveLocalOperatorRoles(normalizedRoles, normalized)
+      setCloudMessage(cloudConfigured ? '人員權限已保存到 Supabase 雲端，其他人刷新後會看到最新版本。' : '尚未設定 Supabase；人員權限只保存到本機暫存。')
+      return true
+    } catch (error) {
+      setCloudMessage(`人員權限雲端保存失敗：${describeCloudError(error)}。請先執行最新版 Supabase SQL，或檢查 anon RLS 政策。`)
+      return false
     }
   }
 
@@ -392,7 +433,8 @@ function App() {
       const before = operatorRoster
       const next = normalizeOperatorRoster({ ...operatorRoster, [dept]: [...operatorRoster[dept], trimmed] })
       const nextRoles = normalizeOperatorRoles({ ...operatorRoles, [dept]: { ...(operatorRoles[dept] ?? {}), [trimmed]: role } }, next)
-      await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      const saved = await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      if (!saved) return
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `新增 ${trimmed}`, before, after: next }))
     })
   }
@@ -409,9 +451,15 @@ function App() {
       const passwordKey = adminPasswordKey(department, name)
       const nextPasswords = { ...adminPasswords }
       delete nextPasswords[passwordKey]
-      setAdminPasswords(nextPasswords)
-      saveAdminPasswords(nextPasswords)
-      await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      const saved = await persistOperatorRoster(next, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      if (!saved) return
+      try {
+        if (cloudConfigured) await upsertCloudPermissionSettings(ownerPassword, nextPasswords)
+        setAdminPasswords(nextPasswords)
+        saveAdminPasswords(nextPasswords)
+      } catch (error) {
+        setCloudMessage(`人員已移除，但管理員密碼雲端同步失敗：${describeCloudError(error)}`)
+      }
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: dept, targetTitle: `移除 ${name}`, before, after: next }))
     })
   }
@@ -426,9 +474,15 @@ function App() {
           if ((nextRoles[dept]?.[person] ?? 'operator') !== 'admin') delete nextPasswords[adminPasswordKey(dept, person)]
         })
       })
-      setAdminPasswords(nextPasswords)
-      saveAdminPasswords(nextPasswords)
-      await persistOperatorRoster(operatorRoster, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      const saved = await persistOperatorRoster(operatorRoster, nextRoles, canOperatorPerform(actor, 'manage_roster'))
+      if (!saved) return
+      try {
+        if (cloudConfigured) await upsertCloudPermissionSettings(ownerPassword, nextPasswords)
+        setAdminPasswords(nextPasswords)
+        saveAdminPasswords(nextPasswords)
+      } catch (error) {
+        setCloudMessage(`人員權限已保存，但管理員密碼雲端同步失敗：${describeCloudError(error)}`)
+      }
       await appendAuditLog(buildAuditLog({ actor, action: 'manage_roster', targetType: 'roster', targetId: 'role-map', targetTitle: '保存人員權限修改', before, after: nextRoles }))
       if (currentOperator && currentOperator.role !== 'owner' && OPERATOR_DEPARTMENTS.includes(currentOperator.department as keyof OperatorRoster)) {
         const dept = currentOperator.department as keyof OperatorRoster
@@ -437,7 +491,7 @@ function App() {
         setCurrentOperator(nextIdentity)
         saveCurrentOperator(nextIdentity)
       }
-      setOwnerLoginMessage('人員權限修改已保存。')
+      setOwnerLoginMessage(cloudConfigured ? '人員權限修改已保存到雲端。' : '人員權限修改已保存到本機；目前尚未設定 Supabase。')
     })
   }
 
@@ -1415,7 +1469,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
           <p>Owner 可用密碼直接登入；管理員使用名單身份進入。普通操作員仍只在修改來源/滯留時確認部門與姓名並寫入 LOG。</p>
         </div>
         <div className="permission-status-grid">
-          <article><span>Supabase 身份</span><strong>{cloudUserEmail ?? '未登入'}</strong><small>{editorProfile?.role ?? '未在管理白名單'}</small></article>
+          <article><span>雲端 Email 身份</span><strong>{cloudUserEmail ?? '未登入'}</strong><small>{editorProfile?.role ?? '不影響本機 Owner 權限'}</small></article>
           <article><span>目前身份</span><strong>{currentOperator ? `${currentOperator.department}/${currentOperator.name}` : '未選擇'}</strong><small>{currentOperator?.role ?? '可登入或更換用戶'}</small>{currentOperator ? <button className="text-button compact" type="button" onClick={onClearOperator}>更換用戶</button> : null}</article>
           <article><span>操作員名單</span><strong>{totalNames}</strong><small>{OPERATOR_DEPARTMENTS.length} 個部門</small></article>
           <article><span>管理名單權限</span><strong>{canManageRoster ? '可維護' : '不可維護'}</strong><small>{isOwner ? 'Owner：可看/改管理員密碼' : '管理員：不可查看密碼'}</small></article>
@@ -1425,7 +1479,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
 
       {isOwner ? <section className="panel admin-password-panel full-span">
         <h2>Owner 專用：管理員密碼</h2>
-        <p className="panel-hint">只有 Owner 可以看到和修改這些密碼。密碼以本機明文保存，適合內部靜態工具；若之後改成後端登入，再改為雜湊/服務端驗證。</p>
+        <p className="panel-hint">只有 Owner 可以看到和修改這些密碼。密碼會保存到 Supabase 雲端供多人共用；目前是內部靜態工具的明文密碼模式，若之後要更嚴格，再改為 Edge Function/後端雜湊驗證。</p>
         <div className="owner-password-row">
           <label>修改 Owner 密碼<input type="password" value={ownerNewPassword} onChange={(event) => setOwnerNewPassword(event.target.value)} placeholder="新的 Owner 密碼" /></label>
           <button className="primary-button" type="button" disabled={!ownerNewPassword.trim()} onClick={() => { onOwnerPasswordChange(ownerNewPassword); setOwnerNewPassword('') }}>更新 Owner 密碼</button>

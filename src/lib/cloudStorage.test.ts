@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { InspectionCase, SourceBookmark } from '../types'
-import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudSourceRow, toCloudCaseRow, toCloudOperatorRosterRows, toCloudSourceRow, uniqueCloudSourceRows, type EditorProfile } from './cloudStorage'
+import { canAddSources, canEditDataset, canEditSources, describeCloudError, fromCloudCaseRow, fromCloudPermissionSettingRows, fromCloudSourceRow, toCloudCaseRow, toCloudOperatorRosterRows, toCloudPermissionSettingRows, toCloudSourceRow, uniqueCloudSourceRows, type EditorProfile } from './cloudStorage'
 
 const sampleCase: InspectionCase = {
   id: 'case-1',
@@ -113,6 +113,22 @@ describe('cloud storage row mapping', () => {
       { department: '海技組', name: '陳宜斌', role: 'operator', active: true, sort_order: 1 },
     ])
     expect(rows.some((row) => Object.prototype.hasOwnProperty.call(row, 'id'))).toBe(false)
+  })
+
+  it('maps owner and admin password settings for cloud storage', () => {
+    const rows = toCloudPermissionSettingRows({
+      ownerPassword: ' owner-2 ',
+      adminPasswords: { '航運處/吳建泰處長': ' 123456 ', empty: '' },
+    })
+
+    expect(rows).toEqual([
+      { setting_key: 'owner_password', setting_value: 'owner-2' },
+      { setting_key: 'admin_passwords', setting_value: { '航運處/吳建泰處長': '123456' } },
+    ])
+    expect(fromCloudPermissionSettingRows(rows)).toEqual({
+      ownerPassword: 'owner-2',
+      adminPasswords: { '航運處/吳建泰處長': '123456' },
+    })
   })
 
 

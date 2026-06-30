@@ -1,6 +1,6 @@
 import { createClient, type SupabaseClient, type User } from '@supabase/supabase-js'
 import type { InspectionCase, OfficialSourceGuide, SourceBookmark } from '../types'
-import { normalizeOperatorRoles, normalizeOperatorRoster, type OperatorAuditLog, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './operatorAccess'
+import { DEFAULT_OWNER_PASSWORD, normalizeAdminPasswordMap, normalizeOperatorRoles, normalizeOperatorRoster, type AdminPasswordMap, type OperatorAuditLog, type OperatorRoleMap, type OperatorRoster, type RosterManagedRole } from './operatorAccess'
 import { mergeCases, mergeSources, sourceFromCase, sourceFromGuide } from './storage'
 
 export interface CloudCaseRow {
@@ -270,6 +270,51 @@ export interface CloudOperatorRosterRow {
 export interface CloudOperatorRosterState {
   roster: OperatorRoster
   roles: OperatorRoleMap
+}
+
+export interface CloudPermissionSettings {
+  ownerPassword: string
+  adminPasswords: AdminPasswordMap
+}
+
+export interface CloudPermissionSettingRow {
+  setting_key: string
+  setting_value: unknown
+}
+
+export function toCloudPermissionSettingRows(settings: CloudPermissionSettings): CloudPermissionSettingRow[] {
+  return [
+    { setting_key: 'owner_password', setting_value: settings.ownerPassword.trim() || DEFAULT_OWNER_PASSWORD },
+    { setting_key: 'admin_passwords', setting_value: normalizeAdminPasswordMap(settings.adminPasswords) },
+  ]
+}
+
+export function fromCloudPermissionSettingRows(rows: CloudPermissionSettingRow[] | null | undefined): CloudPermissionSettings {
+  const byKey = new Map((rows ?? []).map((row) => [row.setting_key, row.setting_value]))
+  const ownerValue = byKey.get('owner_password')
+  return {
+    ownerPassword: typeof ownerValue === 'string' && ownerValue.trim() ? ownerValue.trim() : DEFAULT_OWNER_PASSWORD,
+    adminPasswords: normalizeAdminPasswordMap(byKey.get('admin_passwords')),
+  }
+}
+
+export async function loadCloudPermissionSettings(): Promise<CloudPermissionSettings | null> {
+  const supabase = getSupabaseClient()
+  if (!supabase) return null
+  const { data, error } = await supabase
+    .from('psc_operator_settings')
+    .select('setting_key, setting_value')
+    .in('setting_key', ['owner_password', 'admin_passwords'])
+  if (error) throw error
+  return fromCloudPermissionSettingRows((data ?? []) as CloudPermissionSettingRow[])
+}
+
+export async function upsertCloudPermissionSettings(ownerPassword: string, adminPasswords: AdminPasswordMap) {
+  const supabase = getSupabaseClient()
+  if (!supabase) throw new Error('尚未設定 Supabase URL / anon key')
+  const rows = toCloudPermissionSettingRows({ ownerPassword, adminPasswords })
+  const { error } = await supabase.from('psc_operator_settings').upsert(rows, { onConflict: 'setting_key' })
+  if (error) throw error
 }
 
 export function toCloudOperatorRosterRows(roster: OperatorRoster, roles: OperatorRoleMap = normalizeOperatorRoles(null, roster), existingRows: Array<{ id: string; department: string; name: string }> = []): CloudOperatorRosterRow[] {
