@@ -412,15 +412,31 @@ function App() {
     const normalized = normalizeOperatorRoster(nextRoster)
     const normalizedRoles = normalizeOperatorRoles(nextRoles, normalized)
     try {
-      if (cloudConfigured) await upsertCloudOperatorRoster(normalized, normalizedRoles)
-      setOperatorRoster(normalized)
-      setOperatorRoles(normalizedRoles)
-      saveLocalOperatorRoster(normalized)
-      saveLocalOperatorRoles(normalizedRoles, normalized)
-      setCloudMessage(cloudConfigured ? '人員權限已保存到 Supabase 雲端，其他人刷新後會看到最新版本。' : '尚未設定 Supabase；人員權限只保存到本機暫存。')
+      if (cloudConfigured) {
+        await upsertCloudOperatorRoster(normalized, normalizedRoles)
+        const verified = await loadCloudOperatorRoster()
+        if (verified) {
+          applyCloudRoster(verified)
+        } else {
+          setOperatorRoster(normalized)
+          setOperatorRoles(normalizedRoles)
+          saveLocalOperatorRoster(normalized)
+          saveLocalOperatorRoles(normalizedRoles, normalized)
+        }
+      } else {
+        setOperatorRoster(normalized)
+        setOperatorRoles(normalizedRoles)
+        saveLocalOperatorRoster(normalized)
+        saveLocalOperatorRoles(normalizedRoles, normalized)
+      }
+      const message = cloudConfigured ? '人員權限已保存到 Supabase 雲端，並已重新讀回核對。' : '尚未設定 Supabase；人員權限只保存到本機暫存。'
+      setCloudMessage(message)
+      setOwnerLoginMessage(message)
       return true
     } catch (error) {
-      setCloudMessage(`人員權限雲端保存失敗：${describeCloudError(error)}。請先執行最新版 Supabase SQL，或檢查 anon RLS 政策。`)
+      const message = `人員權限雲端保存失敗：${describeCloudError(error)}。請先執行 supabase/operator-cloud-permissions-fix.sql，或檢查 anon RLS 政策。`
+      setCloudMessage(message)
+      setOwnerLoginMessage(message)
       return false
     }
   }
@@ -1438,7 +1454,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
   useEffect(() => { setDraftRoles(operatorRoles) }, [operatorRoles])
   const totalNames = Object.values(operatorRoster).reduce((sum, names) => sum + names.length, 0)
   const isOwner = currentOperator?.role === 'owner' || editorProfile?.role === 'owner'
-  const adminPeople = OPERATOR_DEPARTMENTS.flatMap((dept) => operatorRoster[dept].filter((person) => (operatorRoles[dept]?.[person] ?? 'operator') === 'admin').map((person) => ({ dept, person, key: adminPasswordKey(dept, person) })))
+  const adminPeople = OPERATOR_DEPARTMENTS.flatMap((dept) => operatorRoster[dept].filter((person) => (draftRoles[dept]?.[person] ?? operatorRoles[dept]?.[person] ?? 'operator') === 'admin').map((person) => ({ dept, person, key: adminPasswordKey(dept, person) })))
   const loginPanel = (
     <section className="panel owner-login-panel full-span">
       <div>
