@@ -110,6 +110,15 @@ function saveLocalAuditLogs(logs: OperatorAuditLog[]) {
   localStorage.setItem(OPERATOR_AUDIT_STORAGE_KEY, JSON.stringify(logs.slice(0, 500)))
 }
 
+function getRoleMismatches(expected: OperatorRoleMap, actual: OperatorRoleMap, roster: OperatorRoster) {
+  return Object.entries(roster).flatMap(([department, names]) => names.flatMap((name) => {
+    const dept = department as keyof OperatorRoleMap
+    const expectedRole = expected[dept]?.[name] ?? 'operator'
+    const actualRole = actual[dept]?.[name] ?? 'operator'
+    return expectedRole === actualRole ? [] : [`${department}/${name}: 應為 ${expectedRole}，雲端讀回 ${actualRole}`]
+  }))
+}
+
 
 function App() {
   const [cases, setCases] = useState<InspectionCase[]>(() => loadStoredCases(inspectionCases))
@@ -416,7 +425,14 @@ function App() {
         await upsertCloudOperatorRoster(normalized, normalizedRoles)
         const verified = await loadCloudOperatorRoster()
         if (verified) {
+          const mismatches = getRoleMismatches(normalizedRoles, verified.roles, normalized)
           applyCloudRoster(verified)
+          if (mismatches.length > 0) {
+            const message = `人員權限雲端保存後讀回仍不一致：${mismatches.slice(0, 3).join('；')}。請確認你點的是「保存人員權限修改」，並已執行 supabase/operator-cloud-permissions-fix.sql。`
+            setCloudMessage(message)
+            setOwnerLoginMessage(message)
+            return false
+          }
         } else {
           setOperatorRoster(normalized)
           setOperatorRoles(normalizedRoles)
@@ -898,7 +914,9 @@ function App() {
           <div><h1>PSC 滯留案例卷宗 App</h1><p>累積官方來源、近期趨勢、地區報告、預防自查清單與 Excel 匯出</p></div>
           <div className="header-actions">
             <button className="export-button" type="button" onClick={refreshLatest} disabled={loading}><RefreshCw size={18} className={loading ? 'spin' : ''} />獲取最新滯留</button>
-            <button className="primary-button save-changes-button" type="button" onClick={saveCurrentChangesToCloud} disabled={cloudLoading}>保存修改</button>
+            {activePage === 'permissions'
+              ? <button className="primary-button save-changes-button" type="button" disabled title="人員權限請使用頁面中的『保存人員權限修改』">權限請用下方保存</button>
+              : <button className="primary-button save-changes-button" type="button" onClick={saveCurrentChangesToCloud} disabled={cloudLoading}>保存修改</button>}
             <button className="export-button" type="button" onClick={() => exportCasesWorkbook(filteredCases, sources, officialSourceMap)}><Download size={18} />匯出 Excel</button>
           </div>
           <button className="mobile-menu" type="button" aria-label="開啟導覽" onClick={() => setMobileNavOpen(true)}><Menu /></button>
@@ -1455,6 +1473,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
   const totalNames = Object.values(operatorRoster).reduce((sum, names) => sum + names.length, 0)
   const isOwner = currentOperator?.role === 'owner' || editorProfile?.role === 'owner'
   const adminPeople = OPERATOR_DEPARTMENTS.flatMap((dept) => operatorRoster[dept].filter((person) => (draftRoles[dept]?.[person] ?? operatorRoles[dept]?.[person] ?? 'operator') === 'admin').map((person) => ({ dept, person, key: adminPasswordKey(dept, person) })))
+  const hasRoleDraftChanges = OPERATOR_DEPARTMENTS.some((dept) => operatorRoster[dept].some((person) => (draftRoles[dept]?.[person] ?? 'operator') !== (operatorRoles[dept]?.[person] ?? 'operator')))
   const loginPanel = (
     <section className="panel owner-login-panel full-span">
       <div>
@@ -1513,7 +1532,7 @@ function PermissionsPage({ cloudUserEmail, editorProfile, currentOperator, opera
       <section className="panel roster-panel">
         <h2>操作員預設名單</h2>
         <p className="panel-hint">一般操作員不需要 email 登入；修改來源/滯留時會從這裡選部門和姓名。人員權限下拉修改後，請點「保存人員權限修改」才會正式保存。</p>
-        <div className="roster-save-row"><button className="primary-button" type="button" onClick={() => onSaveRosterRoles(draftRoles)}>保存人員權限修改</button><small>新增/移除人員會立即保存；權限下拉改動需按此按鈕。</small></div>
+        <div className="roster-save-row"><button className="primary-button" type="button" onClick={() => onSaveRosterRoles(draftRoles)}>{hasRoleDraftChanges ? '保存人員權限修改（有未保存變更）' : '保存人員權限修改'}</button><small>{hasRoleDraftChanges ? '你已修改人員權限，刷新前請點此按鈕保存到 Supabase。' : '新增/移除人員會立即保存；權限下拉改動需按此按鈕。'}</small></div>
         <div className="roster-add-form">
           <label>部門<select value={department} onChange={(event) => setDepartment(event.target.value)}>{OPERATOR_DEPARTMENTS.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
           <label>姓名<input value={name} onChange={(event) => setName(event.target.value)} placeholder="輸入姓名" /></label>
